@@ -1,0 +1,187 @@
+.feature-hanging-area {
+  overflow: visible !important;
+  perspective: 1400px;
+  position: relative;
+  z-index: 2;
+}
+
+.feature-hanging-area .feature-one-single {
+  min-width: 0;
+  z-index: 2;
+}
+
+.feature-hanging-area .feature-one-single::before,
+.feature-hanging-area .feature-one-single::after {
+  display: none;
+}
+
+.feature-hanging-area .hanging-feature-string {
+  position: absolute;
+  top: -180px;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.feature-hanging-area .hanging-feature-rope-shadow,
+.feature-hanging-area .hanging-feature-rope-core,
+.feature-hanging-area .hanging-feature-rope-twist {
+  fill: none;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.feature-hanging-area .hanging-feature-rope-shadow {
+  stroke: rgb(67 44 24 / 34%);
+  stroke-width: 5px;
+}
+
+.feature-hanging-area .hanging-feature-rope-core {
+  stroke: #9b7046;
+  stroke-width: 3px;
+}
+
+.feature-hanging-area .hanging-feature-rope-twist {
+  stroke: #e4c59b;
+  stroke-dasharray: 2 3.5;
+  stroke-dashoffset: 1;
+  stroke-width: 1.2px;
+}
+
+.feature-hanging-area .hanging-feature-rope-anchor {
+  fill: #9b7046;
+  stroke: #e4c59b;
+  stroke-width: 1px;
+}
+
+.feature-hanging-area .feature-style-one-item.hanging-feature-card {
+  position: relative;
+  z-index: 1;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition:
+    box-shadow 220ms ease,
+    filter 220ms ease;
+}
+
+.feature-hanging-area .hanging-feature-card > img {
+  width: 100%;
+  max-width: 100%;
+  height: 150px;
+  margin: 0 auto 18px;
+  border-radius: 18px;
+  object-fit: contain;
+}
+
+.hanging-feature-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--color-primary, #ffb21d);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.feature-hanging-area .feature-one-single:nth-child(odd) .hanging-feature-card {
+  margin-top: 60px;
+}
+
+.feature-hanging-area .hanging-feature-card:hover,
+.feature-hanging-area .hanging-feature-card:focus-visible {
+  box-shadow: 0 28px 55px rgb(0 0 0 / 18%);
+  outline: none;
+}
+
+.feature-hanging-area .hanging-feature-card:focus-visible {
+  outline: 2px solid var(--color-primary, #ffb21d);
+  outline-offset: 4px;
+}
+
+.feature-hanging-area .hanging-feature-card.is-dragging {
+  cursor: grabbing;
+  filter: brightness(1.03);
+  z-index: 3;
+}
+
+.hanging-feature-hint {
+  display: block;
+  margin-top: 14px;
+  color: var(--color-primary, #ffb21d);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-hanging-area .hanging-feature-card {
+    transition: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .feature-hanging-area .row {
+    row-gap: 20px;
+  }
+
+  .feature-hanging-area .feature-one-single {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 520px;
+    margin-inline: auto;
+    padding-top: 88px;
+  }
+
+  .feature-hanging-area .hanging-feature-string {
+    top: 0;
+    height: 88px;
+  }
+
+  .feature-hanging-area
+    .feature-one-single
+    .feature-style-one-item.hanging-feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 34px 24px;
+  }
+
+  .feature-hanging-area .hanging-feature-card img {
+    height: 130px;
+    margin-bottom: 18px;
+  }
+
+  .feature-hanging-area
+    .feature-one-single:nth-child(2n)
+    .hanging-feature-card
+    h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .feature-hanging-area .feature-style-one-item.hanging-feature-card {
+    padding-inline: 20px;
+    border-radius: 22px;
+  }
+
+  .feature-hanging-area .hanging-feature-card h4 {
+    font-size: clamp(19px, 5.2vw, 23px);
+  }
+
+  .feature-hanging-area .hanging-feature-card p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+}

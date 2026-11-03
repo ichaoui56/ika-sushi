@@ -8,7 +8,7 @@
 (function($) {
 	"use strict";
 
-	$(document).ready(function() {
+	function initializePage() {
 
 		/* ==================================================
 		    # Tooltip Init
@@ -384,34 +384,6 @@
 
 
 		/* ==================================================
-		    Splite Text
-		================================================== */
-		let text_split = document.querySelector(".split-text");
-		if (text_split) {
-			const animEls = document.querySelectorAll('.split-text');
-			animEls.forEach(el => {
-				var splitEl = new SplitText(el, {
-					type: "lines, words",
-					linesClass: "line"
-				});
-				var splitTl = gsap.timeline({
-					duration: 0,
-					ease: 'power4',
-					scrollTrigger: {
-						trigger: el,
-						start: 'top 90%'
-					}
-				});
-
-				splitTl.from(splitEl.words, {
-					yPercent: "100",
-					stagger: 0.025,
-				});
-
-			});
-		}
-		
-		/* ==================================================
 			Dark Light Switcher
 		================================================== */
 		$(".radio-btn").on("click", function() {
@@ -460,26 +432,10 @@
 			});
 		});
 
-	}); // end document ready function
-
-	/* ==================================================
-        Preloader Init
-     ===============================================*/
-	 function loader() {
-		$(window).on('load', function() {
-			$('#restan-preloader').addClass('loaded');
-			$("#loading").fadeOut(500);
-			// Una vez haya terminado el preloader aparezca el scroll
-
-			if ($('#restan-preloader').hasClass('loaded')) {
-				// Es para que una vez que se haya ido el preloader se elimine toda la seccion preloader
-				$('#preloader').delay(900).queue(function() {
-					$(this).remove();
-				});
-			}
-		});
 	}
-	loader();
+
+	$(document).ready(initializePage);
+	document.addEventListener("foodu:route-change", initializePage);
 
 
 })(jQuery); // End jQuery

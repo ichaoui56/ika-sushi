@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import "../style.css";
+import { StoreProvider } from "../components/store/StoreProvider";
+import { StorefrontInteractionBridge } from "../components/store/StorefrontInteractionBridge";
+import { StoreFeedback } from "../components/store/StoreFeedback";
+import { CartDrawer } from "../components/store/CartDrawer";
+import { LocaleProvider } from "../components/i18n/LocaleProvider";
 
 const stylesheets = [
   "bootstrap.min.css",
@@ -16,8 +22,8 @@ const stylesheets = [
 ];
 
 export const metadata: Metadata = {
-  title: "Foodu - Food & Restaurant",
-  description: "Foodu restaurant website",
+  title: "Foodu Sushi & Seafood",
+  description: "Fresh sushi and seafood, prepared with care at Foodu.",
   icons: { icon: "/assets/img/favicon.png" },
 };
 
@@ -27,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         {stylesheets.map((stylesheet) => (
           <link
@@ -38,7 +44,16 @@ export default function RootLayout({
         ))}
         <link rel="stylesheet" href="/style.css" />
       </head>
-      <body>{children}</body>
+      <body>
+        <LocaleProvider>
+          <StoreProvider>
+            {children}
+            <StorefrontInteractionBridge />
+            <StoreFeedback />
+            <CartDrawer />
+          </StoreProvider>
+        </LocaleProvider>
+      </body>
     </html>
   );
 }
