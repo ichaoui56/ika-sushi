@@ -4,6 +4,8 @@ export interface CatalogProduct extends StoreProduct {
   description: string;
   tags: string[];
   categories: string[];
+  isBestSeller?: boolean;
+  originalPrice?: number;
 }
 
 export const catalogProducts: CatalogProduct[] = [
@@ -16,6 +18,8 @@ export const catalogProducts: CatalogProduct[] = [
     description: "Hand-pressed seasoned rice topped with fresh salmon and citrus.",
     tags: ["Salmon", "Nigiri"],
     categories: ["sushi", "nigiri"],
+    isBestSeller: true,
+    originalPrice: 15,
   },
   {
     id: "dragon-roll",
@@ -26,6 +30,8 @@ export const catalogProducts: CatalogProduct[] = [
     description: "A signature sushi roll layered with salmon, avocado, and tobiko.",
     tags: ["Signature", "Roll"],
     categories: ["sushi", "rolls"],
+    isBestSeller: true,
+    originalPrice: 20,
   },
   {
     id: "spicy-tuna-roll",
@@ -36,6 +42,7 @@ export const catalogProducts: CatalogProduct[] = [
     description: "Fresh tuna, crisp cucumber, and a gentle kick of house spice.",
     tags: ["Tuna", "Spicy"],
     categories: ["sushi", "rolls"],
+    isBestSeller: true,
   },
   {
     id: "tempura-prawn-roll",
@@ -46,6 +53,8 @@ export const catalogProducts: CatalogProduct[] = [
     description: "Crisp golden prawns rolled with rice, nori, and creamy avocado.",
     tags: ["Prawn", "Tempura"],
     categories: ["sushi", "rolls", "seafood"],
+    isBestSeller: true,
+    originalPrice: 18,
   },
   {
     id: "salmon-sashimi",
@@ -56,6 +65,7 @@ export const catalogProducts: CatalogProduct[] = [
     description: "Delicate slices of sashimi-grade salmon, simply prepared.",
     tags: ["Salmon", "Sashimi"],
     categories: ["sashimi", "seafood"],
+    isBestSeller: true,
   },
   {
     id: "grilled-salmon",
@@ -66,6 +76,7 @@ export const catalogProducts: CatalogProduct[] = [
     description: "Flame-seared salmon finished with lemon and fresh herbs.",
     tags: ["Salmon", "Grilled"],
     categories: ["seafood", "grilled"],
+    originalPrice: 23,
   },
   {
     id: "lobster-sushi-platter",
@@ -86,5 +97,105 @@ export const catalogProducts: CatalogProduct[] = [
     description: "Golden, tender white fish served with fresh herbs and lemon.",
     tags: ["White Fish", "Crispy"],
     categories: ["seafood"],
+  },
+  {
+    id: "tuna-nigiri",
+    name: "Tuna Nigiri",
+    price: 13,
+    image: "/assets/img/shop/Shushi.png",
+    quantity: 1,
+    description: "Silky tuna laid over hand-pressed seasoned rice.",
+    tags: ["Tuna", "Nigiri"],
+    categories: ["sushi", "nigiri"],
+  },
+  {
+    id: "ebi-nigiri",
+    name: "Ebi Nigiri",
+    price: 12,
+    image: "/assets/img/shop/Prawns-Fry.png",
+    quantity: 1,
+    description: "Sweet prawn served over seasoned sushi rice.",
+    tags: ["Prawn", "Nigiri"],
+    categories: ["sushi", "nigiri", "seafood"],
+  },
+  {
+    id: "yellowtail-nigiri",
+    name: "Yellowtail Nigiri",
+    price: 14,
+    image: "/assets/img/shop/Salmon-Fry.png",
+    quantity: 1,
+    description: "A delicate slice of yellowtail over hand-pressed rice.",
+    tags: ["Yellowtail", "Nigiri"],
+    categories: ["sushi", "nigiri", "seafood"],
+  },
+  {
+    id: "salmon-avocado-roll",
+    name: "Salmon Avocado Roll",
+    price: 15,
+    image: "/assets/img/shop/Shushi.png",
+    quantity: 1,
+    description: "Fresh salmon and ripe avocado rolled with seasoned rice.",
+    tags: ["Salmon", "Roll"],
+    categories: ["sushi", "rolls"],
+  },
+  {
+    id: "tuna-sashimi",
+    name: "Tuna Sashimi",
+    price: 19,
+    image: "/assets/img/shop/Pangasius-or-Basa.png",
+    quantity: 1,
+    description: "Clean, delicate slices of sashimi-grade tuna.",
+    tags: ["Tuna", "Sashimi"],
+    categories: ["sashimi", "seafood"],
+  },
+  {
+    id: "yellowtail-sashimi",
+    name: "Yellowtail Sashimi",
+    price: 20,
+    image: "/assets/img/shop/Salmon-Fry.png",
+    quantity: 1,
+    description: "Buttery yellowtail sliced fresh and served simply.",
+    tags: ["Yellowtail", "Sashimi"],
+    categories: ["sashimi", "seafood"],
+  },
+  {
+    id: "scallop-sashimi",
+    name: "Scallop Sashimi",
+    price: 21,
+    image: "/assets/img/shop/Crustaceans-such-as-lobsters.png",
+    quantity: 1,
+    description: "Sweet, tender scallop sashimi with a clean finish.",
+    tags: ["Scallop", "Sashimi"],
+    categories: ["sashimi", "seafood"],
+  },
+  {
+    id: "miso-glazed-white-fish",
+    name: "Miso-Glazed White Fish",
+    price: 18,
+    image: "/assets/img/shop/Pangasius-or-Basa.png",
+    quantity: 1,
+    description: "White fish grilled with a savory-sweet miso glaze.",
+    tags: ["White Fish", "Grilled"],
+    categories: ["seafood", "grilled"],
+  },
+  {
+    id: "garlic-butter-prawns",
+    name: "Garlic Butter Prawns",
+    price: 20,
+    image: "/assets/img/shop/Prawns-Fry.png",
+    quantity: 1,
+    description: "Char-grilled prawns finished with garlic butter and herbs.",
+    tags: ["Prawn", "Grilled"],
+    categories: ["seafood", "grilled"],
+  },
+  {
+    id: "teriyaki-salmon-skewers",
+    name: "Teriyaki Salmon Skewers",
+    price: 22,
+    image: "/assets/img/shop/Salmon-Fry.png",
+    quantity: 1,
+    description: "Grilled salmon skewers brushed with house teriyaki.",
+    tags: ["Salmon", "Grilled"],
+    categories: ["seafood", "grilled"],
   },
 ];

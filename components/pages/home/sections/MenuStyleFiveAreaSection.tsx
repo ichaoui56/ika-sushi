@@ -1,53 +1,42 @@
 import Link from "next/link";
+import { ProductCarouselControls } from "../../../store/ProductCarouselControls";
+import { ProductCard } from "../../../store/ProductCard";
 import { catalogProducts } from "../../../store/products";
 
 export default function MenuStyleFiveAreaSection() {
+  const promotions = catalogProducts.filter((product) => product.originalPrice !== undefined);
+  const renderCards = (isDuplicate = false) => (
+    <ul
+      className="foodu-picks-group"
+    >
+      {promotions.map((product) => (
+        <li className="foodu-pick-item" key={`${isDuplicate ? "loop" : "featured"}-${product.id}`}>
+          <ProductCard product={product} className="foodu-pick-card" cartLabel="Order now" />
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
-    <section className="menu-style-five-area default-padding bg-cover">
+    <section className="menu-style-five-area default-padding bg-cover foodu-top-picks">
       <div className="container">
-        <div className="row align-items-center">
-          <div className="col-lg-5">
-            <h4 className="sub-heading">Made fresh every day</h4>
-            <h2 className="title split-text">A Taste of Japan &amp; the Sea</h2>
-            <p>
-              From delicate sashimi to hand-rolled sushi and fresh-caught
-              seafood, every plate is made to bring you closer to the coast.
-            </p>
-            <Link className="btn btn-theme btn-md animation mt-20" href="/food-menu">
-              Explore the menu
-            </Link>
-          </div>
-          <div className="col-lg-6 offset-lg-1">
-            <div className="food-menu-style-five-items mt-40">
-              <ul className="menu-list">
-                {catalogProducts.slice(0, 4).map((product) => (
-                  <li
-                    key={product.id}
-                    className="d-flex align-items-center justify-content-between"
-                  >
-                    <Link
-                      className="d-flex align-items-center"
-                      href="/shop-single"
-                    >
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        width="72"
-                        height="72"
-                        style={{ objectFit: "contain", marginRight: "18px" }}
-                      />
-                      <span>
-                        <strong>{product.name}</strong>
-                        <small className="d-block">{product.description}</small>
-                      </span>
-                    </Link>
-                    <strong>${product.price.toFixed(2)}</strong>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+        <div className="foodu-picks-heading">
+          <h4 className="foodu-picks-eyebrow">LIMITED-TIME OFFERS</h4>
+          <h2 className="foodu-picks-title">Fresh finds for less</h2>
+          <p>Enjoy these special prices on a few of our kitchen favorites.</p>
+          <Link className="ika-menu-cta" href="/food-menu">
+            <span>EXPLORE THE MENU</span>
+            <span className="ika-menu-cta-arrow" aria-hidden="true">
+              <i className="fas fa-arrow-right" />
+            </span>
+          </Link>
         </div>
+        <ProductCarouselControls label="Promotional products">
+          <div className="foodu-picks-track">
+            {renderCards()}
+            {renderCards(true)}
+          </div>
+        </ProductCarouselControls>
       </div>
     </section>
   );

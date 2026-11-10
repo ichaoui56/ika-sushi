@@ -113,7 +113,7 @@ export function SiteHeader() {
           <div className="foodu-header-controls">
             <div className="foodu-header-actions">
               <LanguageSwitcher />
-              <ThemeModeToggle />
+
               <Link
                 className="foodu-icon-link"
                 href="/login"

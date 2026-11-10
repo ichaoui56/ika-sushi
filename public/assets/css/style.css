@@ -6209,16 +6209,7 @@ ul.meal-items.style-two li {
 	z-index: 1;
 }
 
-.menu-style-five-area::after {
-	position: absolute;
-	left: 0;
-	top: 0;
-	content: "";
-	height: 100%;
-	width: 37%;
-	background: var(--white);
-	z-index: -1;
-}
+
 
 .nav-tabs.food-menu-five-navs {
 	margin: 0;
@@ -8274,9 +8265,7 @@ ul.footer-social li a:hover {
 	}
 
 	/* Food Menu Five */
-	.menu-style-five-area::after {
-		width: 40%;
-	}
+
 
 	.thumb-style-two {
 		padding-right: 30px;
@@ -8653,10 +8642,7 @@ ul.footer-social li a:hover {
 		margin: 0;
 	}
 
-	/* Food Menu Five */
-	.menu-style-five-area::after {
-		display: none;
-	}
+	
 
 	.fun-fact-style-two {
 		justify-content: center;
@@ -9380,10 +9366,7 @@ ul.footer-social li a:hover {
 		margin-bottom: 15px;
 	}
 
-	/* Food Menu Five */
-	.menu-style-five-area::after {
-		display: none;
-	}
+	
 
 	.food-menu-style-five-items {
 		margin-top: 40px;
@@ -9771,9 +9754,6 @@ ul.footer-social li a:hover {
 		padding: 50px 37px;
 	}
 
-	.menu-style-five-area::after {
-		display: none;
-	}
 
 	.food-menu-style-five-items {
 		margin-top: 40px;
@@ -11082,11 +11062,6 @@ body.rtl .radio-btn-dark {
 .rtl .banner-area.banner-style-four p {
 	padding-right: 0;
 	padding-left: 10%;
-}
-
-.rtl .menu-style-five-area::after {
-    right: 0;
-	left: auto;
 }
 
 .rtl ul.meal-items li .content .top h4 {

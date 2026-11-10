@@ -23,6 +23,7 @@ const scripts = [
 ];
 
 let scriptsPromise: Promise<void> | undefined;
+let scriptsReady = false;
 
 function loadScripts() {
   scriptsPromise ??= (async () => {
@@ -37,6 +38,7 @@ function loadScripts() {
         document.body.appendChild(script);
       });
     }
+    scriptsReady = true;
   })().catch((error: unknown) => {
     scriptsPromise = undefined;
     throw error;
@@ -56,6 +58,7 @@ export default function LegacyPage({
   const previousPathname = useRef(pathname);
 
   useEffect(() => {
+    const shouldReinitialize = scriptsReady;
     let savedMode: string | null = null;
     try {
       savedMode = window.localStorage.getItem("foodu-color-mode");
@@ -67,9 +70,15 @@ export default function LegacyPage({
       savedMode ? savedMode === "dark" : dark,
     );
 
-    void loadScripts().catch((error: unknown) => {
-      console.error("Failed to initialize the legacy page scripts.", error);
-    });
+    void loadScripts()
+      .then(() => {
+        if (shouldReinitialize) {
+          document.dispatchEvent(new Event("foodu:route-change"));
+        }
+      })
+      .catch((error: unknown) => {
+        console.error("Failed to initialize the legacy page scripts.", error);
+      });
 
     return () => {
       if (dark) document.body.classList.remove("bg-dark-secondary");
