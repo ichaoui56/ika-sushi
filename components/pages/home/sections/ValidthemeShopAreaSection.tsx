@@ -1,19 +1,74 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { ProductCard } from "../../../store/ProductCard";
-import { catalogProducts } from "../../../store/products";
-
-const categoryNames: Record<string, string> = {
-  sushi: "Sushi",
-  nigiri: "Nigiri",
-  rolls: "Rolls",
-  seafood: "Seafood",
-  sashimi: "Sashimi",
-  grilled: "Grilled",
-};
+import { catalogProducts, menuCategories } from "../../../store/products";
 
 export default function ValidthemeShopAreaSection() {
-  const categories = Array.from(new Set(catalogProducts.flatMap((product) => product.categories)));
+  const categories = menuCategories;
+  const activeCategoryRef = useRef<string>(categories[0].id);
+  const categoryNavRef = useRef<HTMLElement>(null);
+
+  const setActiveCategory = (categoryId: string) => {
+    if (activeCategoryRef.current === categoryId) return;
+    activeCategoryRef.current = categoryId;
+
+    const nav = categoryNavRef.current;
+    if (!nav) return;
+
+    const tabs = Array.from(nav.querySelectorAll<HTMLAnchorElement>("a[data-category-id]"));
+    const activeTab = tabs.find((tab) => tab.dataset.categoryId === categoryId);
+    tabs.forEach((tab) => {
+      const isActive = tab.dataset.categoryId === categoryId;
+      tab.classList.toggle("is-active", isActive);
+      if (isActive) {
+        tab.setAttribute("aria-current", "location");
+      } else {
+        tab.removeAttribute("aria-current");
+      }
+    });
+
+    if (!activeTab) return;
+    const left = activeTab.offsetLeft - (nav.clientWidth - activeTab.offsetWidth) / 2;
+    nav.scrollTo({
+      left,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+    });
+  };
+
+  useEffect(() => {
+    let frame: number | null = null;
+
+    const updateActiveCategory = () => {
+      frame = null;
+      const marker = (categoryNavRef.current?.getBoundingClientRect().bottom ?? 120) + 20;
+      let nextCategory: string = categories[0].id;
+
+      for (const category of categories) {
+        const section = document.getElementById(`foodu-menu-${category.id}`);
+        if (!section) continue;
+        if (section.getBoundingClientRect().top > marker) break;
+        nextCategory = category.id;
+      }
+
+      setActiveCategory(nextCategory);
+    };
+
+    const scheduleUpdate = () => {
+      if (frame !== null) return;
+      frame = window.requestAnimationFrame(updateActiveCategory);
+    };
+
+    scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
+  }, [categories]);
 
   return (
     <section className="validtheme-shop-area default-padding text-center foodu-full-menu">
@@ -33,18 +88,23 @@ export default function ValidthemeShopAreaSection() {
           <i className="fas fa-chevron-right foodu-menu-hint-right" aria-hidden="true" />
         </p>
         <nav
+          ref={categoryNavRef}
           className="foodu-menu-category-nav"
           aria-label="Jump to menu category"
         >
           {categories.map((category, index) => (
             <a
-              key={category}
-              href={`#foodu-menu-${category}`}
+              key={category.id}
+              className={index === 0 ? "is-active" : undefined}
+              aria-current={index === 0 ? "location" : undefined}
+              data-category-id={category.id}
+              href={`#foodu-menu-${category.id}`}
               onClick={(event) => {
                 event.preventDefault();
-                const target = document.getElementById(`foodu-menu-${category}`);
+                const target = document.getElementById(`foodu-menu-${category.id}`);
                 if (!target) return;
-                window.history.pushState(null, "", `#foodu-menu-${category}`);
+                setActiveCategory(category.id);
+                window.history.pushState(null, "", `#foodu-menu-${category.id}`);
                 target.scrollIntoView({
                   behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
                   block: "start",
@@ -52,25 +112,25 @@ export default function ValidthemeShopAreaSection() {
               }}
             >
               <span className="foodu-menu-tab-index">{String(index + 1).padStart(2, "0")}</span>
-              {categoryNames[category] ?? category}
+              {category.name}
             </a>
           ))}
         </nav>
         <div className="foodu-menu-category-list">
           {categories.map((category, index) => {
-            const products = catalogProducts.filter((product) => product.categories.includes(category));
-            const titleId = `foodu-menu-title-${category}`;
+            const products = catalogProducts.filter((product) => product.categories.includes(category.id));
+            const titleId = `foodu-menu-title-${category.id}`;
 
             return (
               <section
                 className="foodu-menu-category"
-                id={`foodu-menu-${category}`}
-                key={category}
+                id={`foodu-menu-${category.id}`}
+                key={category.id}
                 aria-labelledby={titleId}
               >
                 <header className="foodu-menu-category-heading">
                   <span>{String(index + 1).padStart(2, "0")}</span>
-                  <h3 id={titleId}>{categoryNames[category] ?? category}</h3>
+                  <h3 id={titleId}>{category.name}</h3>
                   <p>{String(products.length).padStart(2, "0")} dishes</p>
                 </header>
                 <div className="foodu-product-grid foodu-home-product-grid foodu-category-product-grid">

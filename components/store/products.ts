@@ -8,7 +8,50 @@ export interface CatalogProduct extends StoreProduct {
   originalPrice?: number;
 }
 
-export const catalogProducts: CatalogProduct[] = [
+export const menuCategories = [
+  { id: "lunch-boxes", name: "Lunch Boxes", basePrice: 18, imageSet: "seafood", dishes: ["Salmon Lunch Box", "Teriyaki Chicken Lunch Box", "Prawn Tempura Lunch Box", "Veggie Sushi Lunch Box"] },
+  { id: "bentos", name: "Bentos", basePrice: 17, imageSet: "seafood", dishes: ["Salmon Bento", "Chicken Katsu Bento", "Ebi Tempura Bento", "Garden Vegetable Bento"] },
+  { id: "starters", name: "Starters", basePrice: 8, imageSet: "starter", dishes: ["Edamame with Sea Salt", "Prawn Tempura Bites", "Crispy Chicken Gyoza", "Sesame Cucumber Salad"] },
+  { id: "soupes", name: "Soupes", basePrice: 7, imageSet: "seafood", dishes: ["Classic Miso Soup", "Salmon Miso Soup", "Seafood Miso Soup", "Silken Tofu Soup"] },
+  { id: "salades", name: "Salades", basePrice: 10, imageSet: "seafood", dishes: ["Wakame Seaweed Salad", "Salmon Avocado Salad", "Crispy Prawn Salad", "Sesame Cucumber Salad"] },
+  { id: "cirashi-bowl", name: "Cirashi Bowl", basePrice: 19, imageSet: "sushi", dishes: ["Salmon Chirashi Bowl", "Tuna Chirashi Bowl", "Ebi Chirashi Bowl", "Chef's Mixed Chirashi Bowl"] },
+  { id: "bao-buns", name: "Bao Buns", basePrice: 13, imageSet: "bread", dishes: ["Crispy Prawn Bao", "Teriyaki Chicken Bao", "Salmon Avocado Bao", "Crispy Tofu Bao"] },
+  { id: "tacos", name: "Tacos", basePrice: 14, imageSet: "taco", dishes: ["Crispy Fish Taco", "Salmon Avocado Taco", "Prawn Tempura Taco", "Spicy Tuna Taco"] },
+  { id: "tartare", name: "Tartare", basePrice: 18, imageSet: "seafood", dishes: ["Salmon Citrus Tartare", "Tuna Sesame Tartare", "Sea Bass Herb Tartare", "Mixed Seafood Tartare"] },
+  { id: "crispy-rice", name: "Crispy Rice", basePrice: 12, imageSet: "sushi", dishes: ["Spicy Tuna Crispy Rice", "Salmon Crispy Rice", "Ebi Crispy Rice", "Avocado Crispy Rice"] },
+  { id: "rouleux", name: "Rouleux", basePrice: 14, imageSet: "sushi", dishes: ["Salmon Avocado Rouleux", "Spicy Tuna Rouleux", "Prawn Tempura Rouleux", "Garden Vegetable Rouleux"] },
+  { id: "tataki", name: "Tataki", basePrice: 19, imageSet: "seafood", dishes: ["Seared Salmon Tataki", "Pepper Tuna Tataki", "Yellowtail Tataki", "Scallop Tataki"] },
+  { id: "carpaccios", name: "Carpaccios", basePrice: 20, imageSet: "seafood", dishes: ["Salmon Citrus Carpaccio", "Tuna Carpaccio", "Yellowtail Carpaccio", "Scallop Carpaccio"] },
+  { id: "sashimi", name: "Sashimi", basePrice: 18, imageSet: "seafood", dishes: ["Salmon Sashimi Selection", "Tuna Sashimi Selection", "Yellowtail Sashimi Selection", "Scallop Sashimi Selection"] },
+  { id: "gunkan", name: "Gunkan", basePrice: 12, imageSet: "sushi", dishes: ["Salmon Roe Gunkan", "Spicy Tuna Gunkan", "Ebi Gunkan", "Wakame Gunkan"] },
+  { id: "temari", name: "Temari", basePrice: 11, imageSet: "sushi", dishes: ["Salmon Temari", "Tuna Temari", "Prawn Temari", "Avocado Temari"] },
+  { id: "temaki", name: "Temaki", basePrice: 13, imageSet: "sushi", dishes: ["Salmon Temaki", "Spicy Tuna Temaki", "Ebi Tempura Temaki", "California Temaki"] },
+  { id: "nigiri", name: "Nigiri", basePrice: 12, imageSet: "sushi", dishes: ["Seared Salmon Nigiri", "Tuna Nigiri Set", "Ebi Nigiri Set", "Yellowtail Nigiri Set"] },
+  { id: "futomaki", name: "Futomaki", basePrice: 15, imageSet: "sushi", dishes: ["Salmon Futomaki", "Spicy Tuna Futomaki", "Prawn Tempura Futomaki", "Garden Futomaki"] },
+  { id: "maki", name: "Maki", basePrice: 10, imageSet: "sushi", dishes: ["Salmon Maki", "Tuna Maki", "Cucumber Maki", "Avocado Maki"] },
+  { id: "fresh-rolls", name: "Fresh Rolls", basePrice: 12, imageSet: "sushi", dishes: ["Fresh Salmon Roll", "Prawn Fresh Roll", "Tuna Fresh Roll", "Garden Fresh Roll"] },
+  { id: "blossom", name: "Blossom", basePrice: 15, imageSet: "sushi", dishes: ["Salmon Blossom Roll", "Prawn Blossom Roll", "Tuna Blossom Roll", "Avocado Blossom Roll"] },
+  { id: "aromaki", name: "Aromaki", basePrice: 15, imageSet: "sushi", dishes: ["Salmon Aromaki", "Crunchy Prawn Aromaki", "Spicy Tuna Aromaki", "Avocado Aromaki"] },
+  { id: "spring-rolls", name: "Spring Rolls", basePrice: 9, imageSet: "starter", dishes: ["Crispy Prawn Spring Rolls", "Salmon Spring Rolls", "Chicken Spring Rolls", "Vegetable Spring Rolls"] },
+  { id: "california-rolls", name: "California Rolls", basePrice: 14, imageSet: "sushi", dishes: ["Crab California Roll", "Spicy Tuna California Roll", "Ebi California Roll", "Avocado California Roll"] },
+  { id: "ika-rolls", name: "Ika Rolls", basePrice: 15, imageSet: "sushi", dishes: ["Ika Tempura Roll", "Spicy Ika Roll", "Ika Avocado Roll", "Crispy Ika Roll"] },
+  { id: "crunchy", name: "Crunchy", basePrice: 14, imageSet: "starter", dishes: ["Crunchy Prawn Roll", "Crispy Salmon Roll", "Spicy Crunch Roll", "Tempura Crunch Roll"] },
+  { id: "plats", name: "Plats", basePrice: 19, imageSet: "seafood", dishes: ["Miso-Glazed Cod", "Garlic Butter Prawns", "Salmon Teppanyaki", "Teriyaki Salmon Plate"] },
+  { id: "jus", name: "Jus", basePrice: 6, imageSet: "drinks", dishes: ["Fresh Mango Juice", "Lemon Mint Juice", "Passion Fruit Juice", "Lychee Juice"] },
+  { id: "dessert", name: "Dessert", basePrice: 8, imageSet: "dessert", dishes: ["Chocolate Fondant", "Matcha Cheesecake", "Mango Mochi", "Vanilla Mochi"] },
+] as const;
+
+const demoImageSets = {
+  seafood: ["/assets/img/shop/Salmon-Fry.png", "/assets/img/shop/Prawns-Fry.png", "/assets/img/shop/Pangasius-or-Basa.png", "/assets/img/shop/Crustaceans-such-as-lobsters.png"],
+  sushi: ["/assets/img/shop/Shushi.png", "/assets/img/shop/Salmon-Fry.png", "/assets/img/shop/Prawns-Fry.png", "/assets/img/shop/Crustaceans-such-as-lobsters.png"],
+  starter: ["/assets/img/shop/french-fries.png", "/assets/img/shop/chicken-nuggets.png", "/assets/img/shop/fried-chicekn.png", "/assets/img/shop/Prawns-Fry.png"],
+  bread: ["/assets/img/shop/Brown-bread.png", "/assets/img/shop/fried-chicekn.png", "/assets/img/shop/Salmon-Fry.png", "/assets/img/shop/Shushi.png"],
+  taco: ["/assets/img/shop/Fish-Tacos.png", "/assets/img/shop/Prawns-Fry.png", "/assets/img/shop/Salmon-Fry.png", "/assets/img/shop/Shushi.png"],
+  drinks: ["/assets/img/shop/Americano-Cofee.png", "/assets/img/shop/1.png", "/assets/img/shop/2.png", "/assets/img/shop/3.png"],
+  dessert: ["/assets/img/shop/Chocolate-brownie.png", "/assets/img/shop/Lemon-Meringue-Pie.png", "/assets/img/shop/White-Chocolate-Cheesecake.png", "/assets/img/shop/Vanilla-Cupcakes.png"],
+} as const;
+
+const existingProducts: CatalogProduct[] = [
   {
     id: "salmon-nigiri",
     name: "Salmon Nigiri",
@@ -17,7 +60,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Hand-pressed seasoned rice topped with fresh salmon and citrus.",
     tags: ["Salmon", "Nigiri"],
-    categories: ["sushi", "nigiri"],
+    categories: ["nigiri"],
     isBestSeller: true,
     originalPrice: 15,
   },
@@ -29,7 +72,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "A signature sushi roll layered with salmon, avocado, and tobiko.",
     tags: ["Signature", "Roll"],
-    categories: ["sushi", "rolls"],
+    categories: ["california-rolls"],
     isBestSeller: true,
     originalPrice: 20,
   },
@@ -41,7 +84,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Fresh tuna, crisp cucumber, and a gentle kick of house spice.",
     tags: ["Tuna", "Spicy"],
-    categories: ["sushi", "rolls"],
+    categories: ["maki"],
     isBestSeller: true,
   },
   {
@@ -52,7 +95,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Crisp golden prawns rolled with rice, nori, and creamy avocado.",
     tags: ["Prawn", "Tempura"],
-    categories: ["sushi", "rolls", "seafood"],
+    categories: ["crunchy"],
     isBestSeller: true,
     originalPrice: 18,
   },
@@ -64,7 +107,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Delicate slices of sashimi-grade salmon, simply prepared.",
     tags: ["Salmon", "Sashimi"],
-    categories: ["sashimi", "seafood"],
+    categories: ["sashimi"],
     isBestSeller: true,
   },
   {
@@ -75,7 +118,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Flame-seared salmon finished with lemon and fresh herbs.",
     tags: ["Salmon", "Grilled"],
-    categories: ["seafood", "grilled"],
+    categories: ["plats"],
     originalPrice: 23,
   },
   {
@@ -86,7 +129,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "A celebratory platter with sweet lobster and chef-selected sushi.",
     tags: ["Lobster", "Platter"],
-    categories: ["sushi", "seafood"],
+    categories: ["plats", "starters"],
   },
   {
     id: "crispy-white-fish",
@@ -96,7 +139,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Golden, tender white fish served with fresh herbs and lemon.",
     tags: ["White Fish", "Crispy"],
-    categories: ["seafood"],
+    categories: ["plats"],
   },
   {
     id: "tuna-nigiri",
@@ -106,7 +149,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Silky tuna laid over hand-pressed seasoned rice.",
     tags: ["Tuna", "Nigiri"],
-    categories: ["sushi", "nigiri"],
+    categories: ["nigiri"],
   },
   {
     id: "ebi-nigiri",
@@ -116,7 +159,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Sweet prawn served over seasoned sushi rice.",
     tags: ["Prawn", "Nigiri"],
-    categories: ["sushi", "nigiri", "seafood"],
+    categories: ["nigiri"],
   },
   {
     id: "yellowtail-nigiri",
@@ -126,7 +169,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "A delicate slice of yellowtail over hand-pressed rice.",
     tags: ["Yellowtail", "Nigiri"],
-    categories: ["sushi", "nigiri", "seafood"],
+    categories: ["nigiri"],
   },
   {
     id: "salmon-avocado-roll",
@@ -136,7 +179,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Fresh salmon and ripe avocado rolled with seasoned rice.",
     tags: ["Salmon", "Roll"],
-    categories: ["sushi", "rolls"],
+    categories: ["california-rolls"],
   },
   {
     id: "tuna-sashimi",
@@ -146,7 +189,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Clean, delicate slices of sashimi-grade tuna.",
     tags: ["Tuna", "Sashimi"],
-    categories: ["sashimi", "seafood"],
+    categories: ["sashimi"],
   },
   {
     id: "yellowtail-sashimi",
@@ -156,7 +199,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Buttery yellowtail sliced fresh and served simply.",
     tags: ["Yellowtail", "Sashimi"],
-    categories: ["sashimi", "seafood"],
+    categories: ["sashimi"],
   },
   {
     id: "scallop-sashimi",
@@ -166,7 +209,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Sweet, tender scallop sashimi with a clean finish.",
     tags: ["Scallop", "Sashimi"],
-    categories: ["sashimi", "seafood"],
+    categories: ["sashimi"],
   },
   {
     id: "miso-glazed-white-fish",
@@ -176,7 +219,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "White fish grilled with a savory-sweet miso glaze.",
     tags: ["White Fish", "Grilled"],
-    categories: ["seafood", "grilled"],
+    categories: ["plats"],
   },
   {
     id: "garlic-butter-prawns",
@@ -186,7 +229,7 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Char-grilled prawns finished with garlic butter and herbs.",
     tags: ["Prawn", "Grilled"],
-    categories: ["seafood", "grilled"],
+    categories: ["plats"],
   },
   {
     id: "teriyaki-salmon-skewers",
@@ -196,6 +239,21 @@ export const catalogProducts: CatalogProduct[] = [
     quantity: 1,
     description: "Grilled salmon skewers brushed with house teriyaki.",
     tags: ["Salmon", "Grilled"],
-    categories: ["seafood", "grilled"],
+    categories: ["plats"],
   },
 ];
+
+const demoProducts: CatalogProduct[] = menuCategories.flatMap((category) =>
+  category.dishes.map((name, index) => ({
+    id: `demo-${category.id}-${index + 1}`,
+    name,
+    price: category.basePrice + index * 2,
+    image: demoImageSets[category.imageSet][index],
+    quantity: 1,
+    description: `${name} prepared fresh to order with carefully selected ingredients.`,
+    tags: [category.name, ["Classic", "House special", "Chef's pick", "Signature"][index]],
+    categories: [category.id],
+  })),
+);
+
+export const catalogProducts: CatalogProduct[] = [...existingProducts, ...demoProducts];

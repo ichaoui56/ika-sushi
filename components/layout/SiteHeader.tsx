@@ -136,7 +136,7 @@ export function SiteHeader() {
                 <CountBadge count={cartCount} />
               </Link>
               <Link
-                className="foodu-icon-link"
+                className="foodu-icon-link foodu-header-wishlist"
                 href="/wishlist"
                 aria-label={`Wishlist, ${wishlistCount} items`}
                 title="Wishlist"

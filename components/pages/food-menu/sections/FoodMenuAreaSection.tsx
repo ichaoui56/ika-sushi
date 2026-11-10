@@ -4,12 +4,33 @@ import { useState } from "react";
 import { ProductCard } from "../../../store/ProductCard";
 import { catalogProducts } from "../../../store/products";
 
-const filters = [
+const filters: { label: string; value: string[] | null }[] = [
   { label: "All", value: null },
-  { label: "Sushi & Rolls", value: ["sushi", "rolls"] },
-  { label: "Sashimi", value: ["sashimi"] },
-  { label: "Seafood", value: ["seafood"] },
-  { label: "Nigiri", value: ["nigiri"] },
+  { label: "Lunch & Bentos", value: ["lunch-boxes", "bentos"] },
+  { label: "Starters", value: ["starters", "soupes", "salades"] },
+  {
+    label: "Sushi & Rolls",
+    value: [
+      "cirashi-bowl",
+      "crispy-rice",
+      "rouleux",
+      "gunkan",
+      "temari",
+      "temaki",
+      "nigiri",
+      "futomaki",
+      "maki",
+      "fresh-rolls",
+      "blossom",
+      "aromaki",
+      "spring-rolls",
+      "california-rolls",
+      "ika-rolls",
+      "crunchy",
+    ],
+  },
+  { label: "Sashimi & Tartare", value: ["tartare", "tataki", "carpaccios", "sashimi"] },
+  { label: "Plats & Dessert", value: ["bao-buns", "tacos", "plats", "jus", "dessert"] },
 ];
 
 export default function FoodMenuAreaSection() {

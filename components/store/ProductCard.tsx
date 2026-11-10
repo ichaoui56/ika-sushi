@@ -126,13 +126,22 @@ export function ProductCard({
         <h3><Link href="/shop-single">{product.name}</Link></h3>
         <p className="foodu-product-description">{description}</p>
         <div className="foodu-product-footer">
-          <strong>{formatPrice(product.price)}</strong>
-          {originalPrice !== undefined && (
-            <del className="foodu-product-old-price">{formatPrice(originalPrice)}</del>
-          )}
+          <div className="foodu-product-price">
+            <strong>{formatPrice(product.price)}</strong>
+            {originalPrice !== undefined && (
+              <del className="foodu-product-old-price">{formatPrice(originalPrice)}</del>
+            )}
+          </div>
           {removable && (
-            <button type="button" className="foodu-product-remove" onClick={() => void handleWishlist()}>
-              Remove
+            <button
+              type="button"
+              className="foodu-product-remove"
+              aria-label={`Remove ${product.name} from wishlist`}
+              title={`Remove ${product.name} from wishlist`}
+              onClick={() => void handleWishlist()}
+            >
+              <i className="fas fa-trash-alt" aria-hidden="true" />
+              <span>Remove</span>
             </button>
           )}
           <button

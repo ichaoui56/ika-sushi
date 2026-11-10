@@ -655,6 +655,1187 @@ Sidebar heading:  22px 'Jost', sans-serif
   min-height: 45vh;
 }
 
+.foodu-cart-page {
+  padding-top: 62px;
+  padding-bottom: 88px;
+  background: #f3f6f3;
+}
+
+.foodu-cart-heading {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.foodu-cart-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: #a33c2d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.foodu-cart-heading h2,
+.foodu-cart-summary h2 {
+  margin: 0;
+  color: #072b31;
+  font-family: Belleza, Georgia, serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.foodu-cart-count {
+  padding: 8px 12px;
+  border: 1px solid rgba(7, 43, 49, 0.12);
+  border-radius: 999px;
+  color: #385b5d;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.foodu-cart-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+  align-items: start;
+  gap: 24px;
+}
+
+.foodu-cart-items {
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.foodu-cart-item {
+  min-width: 0;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr) 112px 132px;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(7, 43, 49, 0.09);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(7, 43, 49, 0.045);
+}
+
+.foodu-cart-item-image {
+  width: 92px;
+  aspect-ratio: 1;
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #edf2ef;
+}
+
+.foodu-cart-item-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.foodu-cart-item-info {
+  min-width: 0;
+}
+
+.foodu-cart-item-info > span,
+.foodu-cart-quantity-control > span,
+.foodu-cart-item-total > span {
+  display: block;
+  color: #73827d;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.foodu-cart-item-info h3 {
+  margin: 5px 0 4px;
+  color: #072b31;
+  font-family: Belleza, Georgia, serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.foodu-cart-item-info h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.foodu-cart-item-info h3 a:hover {
+  color: #a33c2d;
+}
+
+.foodu-cart-item-info p {
+  margin: 0;
+  color: #78837e;
+  font-size: 12px;
+}
+
+.foodu-cart-quantity-block {
+  display: grid;
+  justify-items: start;
+  gap: 7px;
+}
+
+.foodu-cart-quantity-block > span {
+  color: #73827d;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.foodu-cart-quantity-stepper {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #dfe6e2;
+  border-radius: 8px;
+  background: #fbfcfb;
+}
+
+.foodu-cart-quantity-stepper button {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 7px;
+  color: #072b31;
+  background: transparent;
+  cursor: pointer;
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.foodu-cart-quantity-stepper button:hover:not(:disabled),
+.foodu-cart-quantity-stepper button:focus-visible {
+  color: #fff;
+  background: #072b31;
+}
+
+.foodu-cart-quantity-stepper button:disabled {
+  color: #aeb8b3;
+  cursor: not-allowed;
+}
+
+.foodu-cart-quantity-stepper output {
+  min-width: 32px;
+  color: #072b31;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.foodu-cart-quantity-stepper button:focus-visible {
+  outline: 2px solid #a33c2d;
+  outline-offset: 1px;
+}
+
+.foodu-cart-quantity {
+  width: 84px;
+  min-height: 38px;
+  padding: 0 9px;
+  border: 1px solid #dfe6e2;
+  border-radius: 7px;
+  color: #072b31;
+  background: #fbfcfb;
+  font: inherit;
+  font-size: 14px;
+}
+
+.foodu-cart-item-total {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.foodu-cart-item-total > strong {
+  color: #a33c2d;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.foodu-cart-remove {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid rgba(163, 60, 45, 0.18);
+  border-radius: 7px;
+  color: #a33c2d;
+  background: #fff7f4;
+  cursor: pointer;
+  transition: color 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+.foodu-cart-remove span {
+  display: none;
+}
+
+.foodu-cart-remove:hover,
+.foodu-cart-remove:focus-visible {
+  border-color: #a33c2d;
+  color: #fff;
+  background: #a33c2d;
+}
+
+.foodu-cart-remove:focus-visible {
+  outline: 3px solid rgba(163, 60, 45, 0.25);
+  outline-offset: 2px;
+}
+
+.foodu-cart-continue {
+  width: fit-content;
+  min-height: 42px;
+  margin-top: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #375e5c;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.foodu-cart-continue:hover {
+  color: #a33c2d;
+}
+
+.foodu-cart-summary {
+  position: sticky;
+  top: 108px;
+  padding: 24px;
+  border: 1px solid rgba(7, 43, 49, 0.1);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(7, 43, 49, 0.07);
+}
+
+.foodu-cart-summary h2 {
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.foodu-cart-summary-row {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #edf0ed;
+  color: #52635e;
+  font-size: 13px;
+}
+
+.foodu-cart-summary-row strong {
+  color: #072b31;
+  font-size: 14px;
+}
+
+.foodu-cart-shipping > span:last-child {
+  max-width: 150px;
+  color: #79857f;
+  font-size: 11px;
+  text-align: right;
+}
+
+.foodu-cart-grand-total {
+  min-height: 60px;
+  margin-top: 6px;
+  border-bottom: 0;
+  color: #072b31;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.foodu-cart-grand-total strong:last-child {
+  color: #a33c2d;
+  font-size: 20px;
+}
+
+.foodu-cart-summary-note {
+  margin: 0 0 18px;
+  color: #7a8580;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.foodu-cart-checkout {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 7px;
+  color: #fff;
+  background: #072b31;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.foodu-cart-checkout:hover,
+.foodu-cart-checkout:focus-visible {
+  transform: translateY(-1px);
+  color: #fff;
+  background: #0c424a;
+}
+
+.foodu-cart-secure-note {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #72817a;
+  font-size: 11px;
+}
+
+.foodu-cart-secure-note i {
+  color: #a33c2d;
+}
+
+.foodu-cart-empty {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 58px 24px;
+  border-color: rgba(7, 43, 49, 0.1);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(7, 43, 49, 0.06);
+}
+
+.foodu-cart-empty > i {
+  width: 62px;
+  height: 62px;
+  margin-bottom: 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #072b31;
+  font-size: 24px;
+}
+
+.foodu-cart-empty .foodu-cart-checkout {
+  width: fit-content;
+  margin: 20px auto 0;
+}
+
+.foodu-checkout-page {
+  min-height: 55vh;
+  padding: 52px 0 84px;
+  background: #f3f6f3;
+}
+
+.foodu-checkout-heading {
+  margin-bottom: 24px;
+}
+
+.foodu-checkout-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: #a33c2d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.foodu-checkout-heading h2 {
+  margin: 0;
+  color: #072b31;
+  font-family: Belleza, Georgia, serif;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.foodu-checkout-heading p {
+  margin: 8px 0 0;
+  color: #65756f;
+  font-size: 14px;
+}
+
+.foodu-checkout-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  align-items: start;
+  gap: 22px;
+}
+
+.foodu-checkout-form-panel,
+.foodu-checkout-summary {
+  min-width: 0;
+  padding: 26px;
+  border: 1px solid rgba(7, 43, 49, 0.1);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(7, 43, 49, 0.06);
+}
+
+.foodu-checkout-panel-heading {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.foodu-checkout-step {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #072b31;
+  background: #e8f0ed;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.foodu-checkout-panel-heading h3,
+.foodu-checkout-summary-heading h3 {
+  margin: 0;
+  color: #072b31;
+  font-family: Belleza, Georgia, serif;
+  font-size: 23px;
+  font-weight: 400;
+}
+
+.foodu-checkout-panel-heading p {
+  margin: 5px 0 0;
+  color: #74817b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.foodu-checkout-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px 14px;
+}
+
+.foodu-checkout-field {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.foodu-checkout-location-field {
+  grid-column: 1 / -1;
+}
+
+.foodu-checkout-field label {
+  color: #26454a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.foodu-checkout-field input,
+.foodu-checkout-field textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 11px 13px;
+  border: 1px solid #dfe6e2;
+  border-radius: 7px;
+  outline: none;
+  color: #072b31;
+  background: #fbfcfb;
+  font: inherit;
+  font-size: 13px;
+  transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+.foodu-checkout-field textarea {
+  min-height: 92px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.foodu-checkout-field input:focus,
+.foodu-checkout-field textarea:focus {
+  border-color: #072b31;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(7, 43, 49, 0.1);
+}
+
+.foodu-checkout-location-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.foodu-use-location {
+  min-height: 34px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid rgba(7, 43, 49, 0.16);
+  border-radius: 6px;
+  color: #072b31;
+  background: #fff;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+.foodu-use-location:hover:not(:disabled),
+.foodu-use-location:focus-visible {
+  border-color: #072b31;
+  color: #fff;
+  background: #072b31;
+}
+
+.foodu-use-location:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.foodu-checkout-location-status {
+  margin: 0;
+  color: #526a60;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.foodu-checkout-map-link {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #a33c2d;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.foodu-checkout-submit {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 21px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 0;
+  border-radius: 7px;
+  color: #fff;
+  background: #072b31;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.foodu-checkout-submit:hover,
+.foodu-checkout-submit:focus-visible {
+  transform: translateY(-1px);
+  color: #fff;
+  background: #0c424a;
+}
+
+.foodu-checkout-notice {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: #355b4a;
+  background: #edf5f0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.foodu-checkout-privacy {
+  margin: 14px 0 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  color: #7a8580;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.foodu-checkout-privacy i {
+  margin-top: 2px;
+  color: #a33c2d;
+}
+
+.foodu-checkout-summary {
+  position: sticky;
+  top: 108px;
+}
+
+.foodu-checkout-summary-heading {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.foodu-checkout-summary-heading .foodu-checkout-eyebrow {
+  margin-bottom: 5px;
+  font-size: 10px;
+}
+
+.foodu-checkout-summary-heading > span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: #49645a;
+  background: #edf4f0;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.foodu-checkout-order-items {
+  display: grid;
+  gap: 12px;
+}
+
+.foodu-checkout-order-item {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.foodu-checkout-order-item img {
+  width: 54px;
+  height: 54px;
+  border-radius: 7px;
+  object-fit: contain;
+  background: #f0f4f1;
+}
+
+.foodu-checkout-order-item h4 {
+  margin: 0 0 4px;
+  overflow: hidden;
+  color: #173a3e;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+}
+
+.foodu-checkout-order-item div > span {
+  color: #7b8782;
+  font-size: 10px;
+}
+
+.foodu-checkout-order-item > strong {
+  color: #a33c2d;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.foodu-checkout-totals {
+  margin-top: 18px;
+  padding-top: 10px;
+  border-top: 1px solid #e8eeea;
+}
+
+.foodu-checkout-totals > div {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #65746e;
+  font-size: 12px;
+}
+
+.foodu-checkout-totals strong {
+  color: #072b31;
+  font-size: 13px;
+}
+
+.foodu-checkout-totals .foodu-checkout-total {
+  min-height: 50px;
+  margin-top: 4px;
+  border-top: 1px solid #e8eeea;
+  color: #072b31;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.foodu-checkout-totals .foodu-checkout-total strong:last-child {
+  color: #a33c2d;
+  font-size: 19px;
+}
+
+.foodu-checkout-edit-cart {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #506c62;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.foodu-checkout-edit-cart:hover {
+  color: #a33c2d;
+}
+
+.foodu-checkout-empty {
+  max-width: 560px;
+  margin: 24px auto;
+  padding: 40px 24px;
+  border: 1px solid rgba(7, 43, 49, 0.1);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(7, 43, 49, 0.06);
+  text-align: center;
+}
+
+.foodu-checkout-empty h2 {
+  margin: 0;
+  color: #072b31;
+  font-family: Belleza, Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.foodu-checkout-empty p {
+  margin: 8px 0 0;
+  color: #718079;
+  font-size: 13px;
+}
+
+.foodu-order-success {
+  width: min(940px, 100%);
+  margin: 12px auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+  overflow: hidden;
+  border: 1px solid rgba(7, 43, 49, 0.1);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 16px 42px rgba(7, 43, 49, 0.09);
+}
+
+.foodu-order-success-main {
+  padding: 34px;
+}
+
+.foodu-order-success-icon {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 20px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(7, 43, 49, 0.12);
+  border-radius: 50%;
+  color: #fff;
+  background: #072b31;
+  box-shadow: 0 8px 20px rgba(7, 43, 49, 0.16);
+  font-size: 20px;
+}
+
+.foodu-order-success-main h2 {
+  margin: 0;
+  color: #072b31;
+  font-family: Belleza, Georgia, serif;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.foodu-order-success-lead {
+  margin: 8px 0 0;
+  color: #64746d;
+  font-size: 14px;
+}
+
+.foodu-order-reference {
+  margin: 18px 0;
+  padding: 11px 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px dashed rgba(7, 43, 49, 0.2);
+  border-radius: 7px;
+  color: #61736b;
+  background: #f5f8f6;
+  font-size: 12px;
+}
+
+.foodu-order-reference strong {
+  color: #072b31;
+  font-size: 13px;
+}
+
+.foodu-order-success-contact {
+  display: grid;
+  gap: 5px;
+}
+
+.foodu-order-success-contact > span {
+  margin-top: 8px;
+  color: #74837c;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.foodu-order-success-contact > strong {
+  color: #173a3e;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.foodu-order-success-contact > a {
+  width: fit-content;
+  margin-top: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #a33c2d;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.foodu-order-success-contact > a:hover {
+  text-decoration: underline;
+}
+
+.foodu-order-demo-note {
+  margin: 20px 0 0;
+  padding: 10px 12px;
+  border-left: 3px solid #d6a64f;
+  color: #6f7169;
+  background: #faf8f1;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.foodu-order-success-summary {
+  padding: 30px 24px;
+  border-left: 1px solid #e8eeea;
+  background: #f8faf8;
+}
+
+.foodu-order-success-summary h3 {
+  margin: 0 0 16px;
+  color: #072b31;
+  font-family: Belleza, Georgia, serif;
+  font-size: 23px;
+  font-weight: 400;
+}
+
+.foodu-order-success-item {
+  min-width: 0;
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #e5ebe7;
+}
+
+.foodu-order-success-item img {
+  width: 46px;
+  height: 46px;
+  border-radius: 6px;
+  object-fit: contain;
+  background: #edf2ef;
+}
+
+.foodu-order-success-item div {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.foodu-order-success-item div strong {
+  overflow: hidden;
+  color: #173a3e;
+  font-size: 12px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+}
+
+.foodu-order-success-item div span {
+  color: #74817b;
+  font-size: 10px;
+}
+
+.foodu-order-success-item > strong {
+  color: #a33c2d;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.foodu-order-success-total {
+  min-height: 54px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #072b31;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.foodu-order-success-total strong {
+  color: #a33c2d;
+  font-size: 19px;
+}
+
+.foodu-order-edit {
+  width: 100%;
+  min-height: 40px;
+  margin-top: 9px;
+  border: 1px solid rgba(7, 43, 49, 0.15);
+  border-radius: 7px;
+  color: #385e5c;
+  background: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.foodu-order-edit:hover,
+.foodu-order-edit:focus-visible {
+  border-color: #072b31;
+  color: #fff;
+  background: #072b31;
+}
+
+@media (max-width: 767px) {
+  .foodu-order-success {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .foodu-order-success-main {
+    padding: 25px 20px;
+  }
+
+  .foodu-order-success-main h2 {
+    font-size: 29px;
+  }
+
+  .foodu-order-success-summary {
+    padding: 23px 20px;
+    border-top: 1px solid #e8eeea;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .foodu-checkout-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .foodu-checkout-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 575px) {
+  .foodu-checkout-page {
+    padding: 34px 0 58px;
+  }
+
+  .foodu-checkout-heading h2 {
+    font-size: 30px;
+  }
+
+  .foodu-checkout-form-panel,
+  .foodu-checkout-summary {
+    padding: 19px 16px;
+  }
+
+  .foodu-checkout-fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 15px;
+  }
+
+  .foodu-checkout-location-field {
+    grid-column: auto;
+  }
+
+  .foodu-checkout-location-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .foodu-checkout-order-item {
+    grid-template-columns: 48px minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .foodu-checkout-order-item img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 991px) {
+  .foodu-cart-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .foodu-cart-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 575px) {
+  .foodu-cart-page {
+    padding: 38px 0 62px;
+  }
+
+  .foodu-cart-heading {
+    margin-bottom: 16px;
+    align-items: center;
+  }
+
+  .foodu-cart-heading h2 {
+    font-size: 25px;
+  }
+
+  .foodu-cart-count {
+    padding: 7px 9px;
+    font-size: 11px;
+  }
+
+  .foodu-cart-items {
+    gap: 9px;
+  }
+
+  .foodu-cart-item {
+    grid-template-columns: 68px minmax(0, 1fr) 74px;
+    grid-template-areas:
+      "image info total"
+      "image quantity total";
+    gap: 8px 10px;
+    padding: 10px;
+    border-radius: 9px;
+  }
+
+  .foodu-cart-item-image {
+    grid-area: image;
+    width: 68px;
+  }
+
+  .foodu-cart-item-info {
+    grid-area: info;
+  }
+
+  .foodu-cart-item-info > span,
+  .foodu-cart-item-total > span {
+    font-size: 9px;
+  }
+
+  .foodu-cart-item-info h3 {
+    margin: 3px 0;
+    font-size: 15px;
+  }
+
+  .foodu-cart-item-info p {
+    font-size: 11px;
+  }
+
+  .foodu-cart-quantity-block {
+    grid-area: quantity;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: start;
+    gap: 8px;
+  }
+
+  .foodu-cart-quantity-block > span {
+    font-size: 9px;
+  }
+
+  .foodu-cart-quantity-stepper {
+    min-height: 36px;
+  }
+
+  .foodu-cart-quantity-stepper button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .foodu-cart-quantity-stepper output {
+    min-width: 24px;
+  }
+
+  .foodu-cart-item-total {
+    grid-area: total;
+    align-self: stretch;
+    justify-content: space-between;
+  }
+
+  .foodu-cart-item-total > strong {
+    font-size: 13px;
+  }
+
+  .foodu-cart-remove {
+    width: 32px;
+    height: 32px;
+    align-self: flex-end;
+  }
+
+  .foodu-cart-remove span {
+    display: none;
+  }
+
+  .foodu-cart-summary {
+    padding: 19px 16px;
+  }
+
+  .foodu-cart-summary h2 {
+    font-size: 23px;
+  }
+
+  .foodu-cart-empty {
+    padding: 42px 18px;
+  }
+
+  .foodu-cart-empty h2 {
+    font-size: 22px;
+  }
+}
+
 .foodu-cart-drawer-layer {
   position: fixed;
   z-index: 1300;
@@ -1066,6 +2247,10 @@ Sidebar heading:  22px 'Jost', sans-serif
 
   .foodu-header-actions > .foodu-icon-link:not(.foodu-desktop-cart) {
     display: none;
+  }
+
+  .foodu-header-actions > .foodu-icon-link.foodu-header-wishlist {
+    display: inline-flex;
   }
 
   .foodu-header-actions .foodu-language-switcher {
@@ -3390,7 +4575,8 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .foodu-full-menu {
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   background: #f5f8f6;
 }
 
@@ -3434,16 +4620,29 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .foodu-menu-category-nav {
+  position: sticky;
+  top: 109px;
+  z-index: 20;
   display: flex;
   max-width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
   overflow-x: auto;
   margin: 32px auto 58px;
-  padding: 8px 2px 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(23, 56, 59, 0.1);
+  border-radius: 999px;
+  background: rgba(245, 248, 246, 0.96);
+  box-shadow: 0 8px 22px rgba(23, 56, 59, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   overscroll-behavior-x: contain;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(23, 56, 59, 0.32) transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.foodu-menu-category-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .foodu-menu-category-nav a {
@@ -3465,7 +4664,8 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .foodu-menu-category-nav a:hover,
-.foodu-menu-category-nav a:focus-visible {
+.foodu-menu-category-nav a:focus-visible,
+.foodu-menu-category-nav a.is-active {
   transform: translateY(-2px);
   border-color: #17383b;
   color: #fff;
@@ -3479,7 +4679,8 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .foodu-menu-category-nav a:hover .foodu-menu-tab-index,
-.foodu-menu-category-nav a:focus-visible .foodu-menu-tab-index {
+.foodu-menu-category-nav a:focus-visible .foodu-menu-tab-index,
+.foodu-menu-category-nav a.is-active .foodu-menu-tab-index {
   color: #f4c679;
 }
 
@@ -3531,6 +4732,7 @@ Sidebar heading:  22px 'Jost', sans-serif
 
 @media (max-width: 767px) {
   .foodu-menu-category-nav {
+    top: 76px;
     justify-content: flex-start;
     margin-right: 0;
     margin-left: 0;
@@ -3906,7 +5108,7 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .foodu-menu-category {
-  scroll-margin-top: 32px;
+  scroll-margin-top: 166px;
 }
 
 .foodu-menu-category + .foodu-menu-category {
@@ -4596,7 +5798,226 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .foodu-wishlist-grid {
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.foodu-wishlist-product-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  border: 1px solid rgba(7, 43, 49, 0.1);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(7, 43, 49, 0.07);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.foodu-wishlist-product-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(7, 43, 49, 0.2);
+  box-shadow: 0 14px 30px rgba(7, 43, 49, 0.12);
+}
+
+.foodu-wishlist-product-card .foodu-product-image {
+  aspect-ratio: 1.15;
+  background: linear-gradient(145deg, #f3f6f3, #e7eeea);
+}
+
+.foodu-wishlist-product-card .foodu-product-image img {
+  padding: 10px;
+  object-fit: contain;
+}
+
+.foodu-wishlist-product-card .foodu-product-content {
+  min-width: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.foodu-wishlist-product-card .foodu-product-content h3 {
+  color: #072b31;
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.foodu-wishlist-product-card .foodu-product-description {
+  display: none;
+}
+
+.foodu-wishlist-product-card .foodu-product-footer {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.foodu-wishlist-product-card .foodu-product-price {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.foodu-wishlist-product-card .foodu-product-price > strong {
+  color: #a33c2d;
+}
+
+.foodu-wishlist-product-card .foodu-product-remove {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.foodu-wishlist-product-card .foodu-product-cart {
+  width: 100%;
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+.foodu-wishlist-product-card .foodu-product-remove {
+  display: inline-flex;
+  min-height: 38px;
+  padding: 0 12px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid rgba(163, 60, 45, 0.2);
+  border-radius: 999px;
+  color: #a33c2d;
+  background: #fff6f3;
+  font-size: 12px;
+  font-weight: 700;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.foodu-wishlist-product-card .foodu-product-remove:hover:not(:disabled),
+.foodu-wishlist-product-card .foodu-product-remove:focus-visible {
+  border-color: #a33c2d;
+  color: #fff;
+  background: #a33c2d;
+}
+
+.foodu-wishlist-product-card .foodu-product-remove:focus-visible {
+  outline: 3px solid rgba(163, 60, 45, 0.24);
+  outline-offset: 2px;
+}
+
+@media (max-width: 575px) {
+  .foodu-product-grid.foodu-wishlist-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-image {
+    aspect-ratio: 0.92;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-tools {
+    top: 5px;
+    right: 5px;
+    left: 5px;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+
+  .foodu-wishlist-product-card button.foodu-product-tool {
+    width: 25px;
+    height: 25px;
+    flex: 0 0 25px;
+    font-size: 11px;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-tooltip,
+  .foodu-wishlist-product-card .foodu-product-tags {
+    display: none;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-content {
+    padding: 8px 7px 9px;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-content h3 {
+    min-height: 31px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 5px;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-price {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-price > strong {
+    font-size: 12px;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-price .foodu-product-old-price {
+    display: none;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-remove {
+    grid-column: 2;
+    grid-row: 1;
+    width: 36px;
+    height: 36px;
+    min-height: 36px;
+    flex: 0 0 36px;
+    padding: 0;
+    justify-self: end;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-remove,
+  .foodu-wishlist-product-card .foodu-product-cart {
+    width: 100%;
+    min-width: 0;
+    min-height: 30px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(7, 43, 49, 0.14);
+    border-radius: 6px;
+    font-size: 12px;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-remove {
+    width: 36px;
+    color: #a33c2d;
+    background: #fff6f3;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-remove span {
+    display: none;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-cart {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    min-height: 38px;
+    padding: 0 6px;
+    color: #fff;
+    background: #072b31;
+    font-size: 11px;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .foodu-wishlist-product-card .foodu-product-cart span {
+    display: inline;
+    white-space: nowrap;
+  }
 }
 
 @keyframes foodu-action-pulse {

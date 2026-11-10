@@ -23,7 +23,13 @@ export default function WishlistContent() {
   return (
     <div className="foodu-product-grid foodu-wishlist-grid">
       {wishlist.map((item) => (
-        <ProductCard key={item.id} product={item} removable />
+        <ProductCard
+          key={item.id}
+          product={item}
+          className="foodu-wishlist-product-card"
+          cartLabel="Ajouter au panier"
+          removable
+        />
       ))}
     </div>
   );
