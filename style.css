@@ -655,6 +655,37 @@ Sidebar heading:  22px 'Jost', sans-serif
   min-height: 45vh;
 }
 
+.restan-preloader .animation-preloader {
+  width: 132px;
+  height: 132px;
+  display: grid;
+  place-items: center;
+}
+
+.restan-preloader .animation-preloader::after {
+  display: none;
+}
+
+.foodu-preloader-logo {
+  width: 116px;
+  height: 116px;
+  display: block;
+  border-radius: 50%;
+  object-fit: contain;
+  animation: foodu-preloader-pulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes foodu-preloader-pulse {
+  from { transform: scale(0.96); }
+  to { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .foodu-preloader-logo {
+    animation: none;
+  }
+}
+
 .foodu-cart-page {
   padding-top: 62px;
   padding-bottom: 88px;
