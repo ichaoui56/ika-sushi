@@ -1288,8 +1288,10 @@ Sidebar heading:  22px 'Jost', sans-serif
     bottom: calc(10px + env(safe-area-inset-bottom));
     left: 10px;
     width: auto;
-    min-height: 76px;
-    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    height: 80px;
+    min-height: 80px;
+    box-sizing: border-box;
+    padding: 8px 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;

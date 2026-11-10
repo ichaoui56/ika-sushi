@@ -13,7 +13,7 @@ import FeatureStyleOneAreaSection from "./sections/FeatureStyleOneAreaSection";
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <TopBar />
       <SiteHeader />

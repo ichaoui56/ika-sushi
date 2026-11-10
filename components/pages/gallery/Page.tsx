@@ -10,7 +10,7 @@ import GalleryStyleTwoAreaSection from "./sections/GalleryStyleTwoAreaSection";
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <TopBar />
       <SiteHeader />

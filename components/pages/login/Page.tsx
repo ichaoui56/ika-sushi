@@ -6,7 +6,7 @@ import LoginAreaSection from "./sections/LoginAreaSection";
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <LoginAreaSection />
     </LegacyPage>

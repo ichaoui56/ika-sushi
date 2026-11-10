@@ -20,7 +20,7 @@ import MostSelledProducts from "./sections/MostSelledProducts";
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <TopBar />
       <SiteHeader />

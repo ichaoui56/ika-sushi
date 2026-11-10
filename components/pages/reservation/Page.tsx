@@ -10,7 +10,7 @@ import ReservationStyleOneAreaSection from "./sections/ReservationStyleOneAreaSe
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <TopBar />
       <SiteHeader />

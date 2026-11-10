@@ -10,7 +10,7 @@ import ChefSingleAreaSection from "./sections/ChefSingleAreaSection";
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <TopBar />
       <SiteHeader />

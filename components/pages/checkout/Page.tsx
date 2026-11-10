@@ -10,7 +10,7 @@ import CheckoutAreaSection from "./sections/CheckoutAreaSection";
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <TopBar />
       <SiteHeader />

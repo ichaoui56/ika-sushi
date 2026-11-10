@@ -10,7 +10,7 @@ import ValidthemeShopSingleAreaSection from "./sections/ValidthemeShopSingleArea
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <TopBar />
       <SiteHeader />

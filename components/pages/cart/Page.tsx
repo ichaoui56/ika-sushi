@@ -10,7 +10,7 @@ import CartPageSection from "./sections/CartPageSection";
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <TopBar />
       <SiteHeader />

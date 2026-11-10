@@ -14,7 +14,7 @@ import TestimonialsSection from "./sections/TestimonialsSection";
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <TopBar />
       <SiteHeader />

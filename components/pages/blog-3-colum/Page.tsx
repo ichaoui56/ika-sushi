@@ -10,7 +10,7 @@ import BlogContentSection from "./sections/BlogContentSection";
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <TopBar />
       <SiteHeader />

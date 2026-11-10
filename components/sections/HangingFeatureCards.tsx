@@ -157,7 +157,7 @@ function HangingFeatureCard({
       if (!rope) return;
 
       const mobile = window.matchMedia("(max-width: 767px)").matches;
-      rope.setAttribute("viewBox", mobile ? "0 0 100 100" : "0 0 100 400");
+      rope.setAttribute("viewBox", mobile ? "0 0 100 240" : "0 0 100 400");
       renderCardPosition(positionRef.current);
     };
 

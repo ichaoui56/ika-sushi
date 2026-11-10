@@ -10,7 +10,7 @@ import ErrorPageAreaSection from "./sections/ErrorPageAreaSection";
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <TopBar />
       <SiteHeader />

@@ -9,7 +9,7 @@ import WishlistContent from "./WishlistContent";
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <Preloader />
       <TopBar />
       <SiteHeader />

@@ -10,7 +10,7 @@ import ContactStyleOneAreaSection from "./sections/ContactStyleOneAreaSection";
 export default function Page() {
   return (
     <LegacyPage>
-      <ThemeToggle />
+      
       <TopBar />
       <SiteHeader />
       <BreadcrumbSection />
