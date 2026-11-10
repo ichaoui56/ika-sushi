@@ -31,10 +31,10 @@ export default function Page() {
       <ValidthemeShopAreaSection />
       <DiscountAreaSection />
       <FeatureStyleOneAreaSection />
-      <ChefStyleOneAreaSection />
-      <TestimonialsSection />
-      <GalleryStyleTwoAreaSection />
-      <BrandAreaSection />
+      {/* <ChefStyleOneAreaSection /> */}
+      {/* <TestimonialsSection /> */}
+      {/* <GalleryStyleTwoAreaSection /> */}
+      {/* <BrandAreaSection /> */}
       <HomeBlogSection />
       <Footer />
     </LegacyPage>

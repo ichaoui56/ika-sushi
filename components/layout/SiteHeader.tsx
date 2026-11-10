@@ -268,6 +268,23 @@ export function SiteHeader() {
         </Link>
       </nav>
 
+      {scrolled && !menuOpen && (
+        <button
+          className="foodu-back-to-top"
+          type="button"
+          aria-label="Back to top"
+          title="Back to top"
+          onClick={() =>
+            document.documentElement.scrollIntoView({
+              block: "start",
+              behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+            })
+          }
+        >
+          <i className="fas fa-arrow-up" aria-hidden="true" />
+        </button>
+      )}
+
       {error && (
         <div className="foodu-store-error" role="alert">
           Saved cart unavailable: {error}
