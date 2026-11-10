@@ -27,7 +27,7 @@ export default function ReservationStyleOneAreaSection() {
                         className="form-control"
                         id="phone"
                         name="phone"
-                        placeholder="+4733378901"
+                        placeholder="0632933941"
                         type="text"
                       />
                     </div>

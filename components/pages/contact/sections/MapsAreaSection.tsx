@@ -28,7 +28,7 @@ export default function MapsAreaSection() {
                       <div className="content">
                         <h5 className="title">Hotline</h5>
 
-                        <a href="">+4733378901</a>
+                        <a href="tel:+212632933941">0632933941</a>
                       </div>
                     </li>
 

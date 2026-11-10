@@ -84,7 +84,7 @@ export default function ReservationStyleTwoAreaSection() {
                             className="form-control"
                             id="phone"
                             name="phone"
-                            placeholder="+4733378901"
+                            placeholder="0632933941"
                             type="text"
                           />
                         </div>
@@ -178,7 +178,7 @@ export default function ReservationStyleTwoAreaSection() {
                             className="form-control"
                             id="phone2"
                             name="phone2"
-                            placeholder="+4733378901"
+                            placeholder="0632933941"
                             type="text"
                           />
                         </div>
@@ -272,7 +272,7 @@ export default function ReservationStyleTwoAreaSection() {
                             className="form-control"
                             id="phone3"
                             name="phone3"
-                            placeholder="+4733378901"
+                            placeholder="0632933941"
                             type="text"
                           />
                         </div>

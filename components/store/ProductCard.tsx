@@ -39,9 +39,9 @@ export function ProductCard({
   const liked = wishlist.some((item) => item.id === product.id);
   const description =
     "description" in product
-      ? product.description
-      : "Freshly prepared with quality ingredients and served with care.";
-  const tags = "tags" in product ? product.tags : [];
+      ? translate(product.description, locale)
+      : translate("Freshly prepared with quality ingredients and served with care.", locale);
+  const tags = "tags" in product ? product.tags.map((tag) => translate(tag, locale)) : [];
   const originalPrice = "originalPrice" in product ? product.originalPrice : undefined;
   const productName = translate(product.name, locale);
 
@@ -98,7 +98,7 @@ export function ProductCard({
             onClick={() => setDetailsOpen(true)}
           >
             <i className="far fa-eye" aria-hidden="true" />
-            <span className="foodu-product-tooltip">Quick view</span>
+            <span className="foodu-product-tooltip">{translate("Quick view", locale)}</span>
           </button>
           <button
             type="button"
@@ -108,7 +108,7 @@ export function ProductCard({
             onClick={() => void handleAddToCart()}
           >
             <i className="fas fa-shopping-bag" aria-hidden="true" />
-            <span className="foodu-product-tooltip">Add to cart</span>
+            <span className="foodu-product-tooltip">{translate("Add to cart", locale)}</span>
           </button>
           <button
             type="button"
@@ -119,7 +119,7 @@ export function ProductCard({
             onClick={() => void handleWishlist()}
           >
             <i className={`${liked ? "fas" : "far"} fa-heart`} aria-hidden="true" />
-            <span className="foodu-product-tooltip">{liked ? "Remove from wishlist" : "Add to wishlist"}</span>
+            <span className="foodu-product-tooltip">{translate(liked ? "Remove from wishlist" : "Add to wishlist", locale)}</span>
           </button>
         </div>
       </div>
@@ -145,7 +145,7 @@ export function ProductCard({
               onClick={() => void handleWishlist()}
             >
               <i className="fas fa-trash-alt" aria-hidden="true" />
-              <span>Remove</span>
+              <span>{translate("Remove", locale)}</span>
             </button>
           )}
           <button
@@ -155,7 +155,7 @@ export function ProductCard({
             onClick={() => void handleAddToCart()}
           >
             <i className="fas fa-shopping-bag" aria-hidden="true" />
-            <span>{busy === "cart" ? "Adding..." : cartLabel}</span>
+            <span>{busy === "cart" ? translate("Adding...", locale) : translate(cartLabel, locale)}</span>
           </button>
         </div>
       </div>
@@ -169,24 +169,24 @@ export function ProductCard({
           if (event.target === detailsRef.current) setDetailsOpen(false);
         }}
       >
-        <button type="button" className="foodu-dialog-close" aria-label="Close product details" onClick={() => setDetailsOpen(false)}>
+        <button type="button" className="foodu-dialog-close" aria-label={translate("Close product details", locale)} onClick={() => setDetailsOpen(false)}>
           <i className="fas fa-times" aria-hidden="true" />
         </button>
         <img src={product.image} alt={productName} />
         <div className="foodu-dialog-content">
-          <span className="foodu-dialog-eyebrow">Fresh from our kitchen</span>
+          <span className="foodu-dialog-eyebrow">{translate("Fresh from our kitchen", locale)}</span>
           <h2 id={dialogTitleId}>{productName}</h2>
           <p id={dialogDescriptionId}>{description}</p>
           <strong>{formatPrice(product.price)}</strong>
           <button type="button" className="foodu-product-cart" disabled={!ready || busy !== null} onClick={() => void handleAddToCart()}>
-            <i className="fas fa-shopping-bag" aria-hidden="true" /> Add to cart
+            <i className="fas fa-shopping-bag" aria-hidden="true" /> {translate("Add to cart", locale)}
           </button>
           <Link
             className="foodu-dialog-details"
             href="/shop-single"
             onClick={() => setDetailsOpen(false)}
           >
-            View full product details
+            {translate("View full product details", locale)}
             <i className="fas fa-arrow-right" aria-hidden="true" />
           </Link>
         </div>

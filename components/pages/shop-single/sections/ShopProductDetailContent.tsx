@@ -4,9 +4,14 @@ import { useRef, useState } from "react";
 import { useStore } from "../../../store/StoreProvider";
 import { ProductCard } from "../../../store/ProductCard";
 import { catalogProducts } from "../../../store/products";
+import { useLocale } from "../../../i18n/LocaleProvider";
+import { translate } from "../../../i18n/translations";
 
 export default function ShopProductDetailContent() {
+  const { locale } = useLocale();
   const featuredProduct = catalogProducts[0];
+  const productName = translate(featuredProduct.name, locale);
+  const productDescription = translate(featuredProduct.description, locale);
   const { addToCart, ready } = useStore();
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
@@ -32,7 +37,7 @@ export default function ShopProductDetailContent() {
         new CustomEvent("foodu:store-feedback", {
           detail: {
             action: "cart",
-            message: `${featuredProduct.name} added to cart`,
+            message: translate(`${featuredProduct.name} added to cart`, locale),
           },
         }),
       );
@@ -59,29 +64,29 @@ export default function ShopProductDetailContent() {
         <div className="foodu-product-detail">
           <div className="foodu-detail-gallery">
             <div className="foodu-detail-image">
-              <span className="foodu-detail-badge">Guest favorite</span>
-              <img src={featuredProduct.image} alt={featuredProduct.name} />
-              <span className="foodu-detail-image-caption">Prepared fresh to order</span>
+              <span className="foodu-detail-badge">{translate("Guest favorite", locale)}</span>
+              <img src={featuredProduct.image} alt={productName} />
+              <span className="foodu-detail-image-caption">{translate("Prepared fresh to order", locale)}</span>
             </div>
             <div className="foodu-detail-gallery-note">
               <i className="fas fa-leaf" aria-hidden="true" />
-              <span>Fresh ingredients, thoughtfully prepared</span>
+              <span>{translate("Fresh ingredients, thoughtfully prepared", locale)}</span>
             </div>
           </div>
           <div className="foodu-detail-info">
-            <span className="foodu-detail-eyebrow">Fresh from our kitchen</span>
-            <h1>{featuredProduct.name}</h1>
-            <div className="foodu-detail-rating" aria-label="A customer favorite">
+            <span className="foodu-detail-eyebrow">{translate("Fresh from our kitchen", locale)}</span>
+            <h1>{productName}</h1>
+            <div className="foodu-detail-rating" aria-label={translate("A customer favorite", locale)}>
               <span aria-hidden="true">★★★★★</span>
-              <small>Customer favorite</small>
+              <small>{translate("Customer favorite", locale)}</small>
             </div>
-            <p className="foodu-detail-description">{featuredProduct.description}</p>
+            <p className="foodu-detail-description">{productDescription}</p>
             <strong className="foodu-detail-price">${featuredProduct.price.toFixed(2)}</strong>
             <div className="foodu-detail-tags">
-              {featuredProduct.tags.map((tag) => <span key={tag}>{tag}</span>)}
+              {featuredProduct.tags.map((tag) => <span key={tag}>{translate(tag, locale)}</span>)}
             </div>
             <div className="foodu-detail-order-row">
-              <div className="foodu-detail-quantity" role="group" aria-label="Quantity">
+              <div className="foodu-detail-quantity" role="group" aria-label={translate("Quantity", locale)}>
                 <button
                   type="button"
                   aria-label="Decrease quantity"
@@ -106,29 +111,29 @@ export default function ShopProductDetailContent() {
                 onClick={() => void handleAddToCart()}
               >
                 <i className="fas fa-shopping-bag" aria-hidden="true" />
-                <span>{isAdding ? "Adding..." : "Add to cart"}</span>
+                <span>{isAdding ? translate("Adding...", locale) : translate("Add to cart", locale)}</span>
                 <strong>${(featuredProduct.price * quantity).toFixed(2)}</strong>
               </button>
             </div>
             <p className="foodu-detail-service">
-              <i className="fas fa-check" aria-hidden="true" /> Made fresh when you order
+              <i className="fas fa-check" aria-hidden="true" /> {translate("Made fresh when you order", locale)}
             </p>
           </div>
         </div>
         <section className="foodu-related-section" aria-labelledby="foodu-related-title">
           <div className="foodu-related-heading">
-            <h2 id="foodu-related-title">More from our sushi &amp; seafood menu</h2>
-            <div className="foodu-related-controls" role="group" aria-label="Related products carousel controls">
+            <h2 id="foodu-related-title">{translate("More from our sushi & seafood menu", locale)}</h2>
+            <div className="foodu-related-controls" role="group" aria-label={translate("Related products carousel controls", locale)}>
               <button
                 type="button"
-                aria-label="Show previous products"
+                aria-label={translate("Show previous products", locale)}
                 onClick={() => scrollRelatedProducts(-1)}
               >
                 <i className="fas fa-arrow-left" aria-hidden="true" />
               </button>
               <button
                 type="button"
-                aria-label="Show next products"
+                aria-label={translate("Show next products", locale)}
                 onClick={() => scrollRelatedProducts(1)}
               >
                 <i className="fas fa-arrow-right" aria-hidden="true" />
@@ -138,7 +143,7 @@ export default function ShopProductDetailContent() {
           <div
             className="foodu-related-viewport"
             ref={relatedProductsRef}
-            aria-label="Related sushi and seafood products"
+            aria-label={translate("Related sushi and seafood products", locale)}
             tabIndex={0}
           >
             <div className="foodu-related-track">

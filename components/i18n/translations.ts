@@ -83,6 +83,10 @@ const french: Record<string, string> = {
   "Spicy Tuna Roll": "Rouleau de thon épicé",
   "Tempura Prawn Roll": "Rouleau aux crevettes tempura",
   "Salmon Sashimi": "Sashimi de saumon",
+  "Seared Salmon Tataki": "Tataki de saumon saisi",
+  "Pepper Tuna Tataki": "Tataki de thon au poivre",
+  "Yellowtail Tataki": "Tataki de sériole",
+  "Scallop Tataki": "Tataki de coquille Saint-Jacques",
   "Grilled Salmon": "Saumon grillé",
   "Lobster Sushi Platter": "Plateau de sushi au homard",
   "Crispy White Fish": "Poisson blanc croustillant",
@@ -217,6 +221,16 @@ const french: Record<string, string> = {
   "Flame-seared salmon finished with lemon and fresh herbs.": "Saumon saisi à la flamme, accompagné de citron et d'herbes fraîches.",
   "A celebratory platter with sweet lobster and chef-selected sushi.": "Un plateau festif de homard doux et de sushi sélectionnés par le chef.",
   "Golden, tender white fish served with fresh herbs and lemon.": "Poisson blanc tendre et doré, servi avec des herbes fraîches et du citron.",
+    "Silky tuna laid over hand-pressed seasoned rice.": "Thon fondant posé sur du riz assaisonné façonné à la main.",
+    "Sweet prawn served over seasoned sushi rice.": "Crevette délicate servie sur du riz à sushi assaisonné.",
+    "A delicate slice of yellowtail over hand-pressed rice.": "Une fine tranche de sériole sur du riz façonné à la main.",
+    "Fresh salmon and ripe avocado rolled with seasoned rice.": "Saumon frais et avocat mûr roulés avec du riz assaisonné.",
+    "Clean, delicate slices of sashimi-grade tuna.": "Fines tranches de thon de qualité sashimi, à la saveur délicate.",
+    "Buttery yellowtail sliced fresh and served simply.": "Sériole fraîche à la texture fondante, tranchée et servie simplement.",
+    "Sweet, tender scallop sashimi with a clean finish.": "Sashimi de coquille Saint-Jacques tendre et délicat, aux notes fraîches.",
+    "White fish grilled with a savory-sweet miso glaze.": "Poisson blanc grillé et nappé d'un glaçage au miso doux et savoureux.",
+    "Char-grilled prawns finished with garlic butter and herbs.": "Crevettes grillées au charbon, relevées de beurre à l'ail et d'herbes.",
+    "Grilled salmon skewers brushed with house teriyaki.": "Brochettes de saumon grillé nappées de sauce teriyaki maison.",
   "Prepared to order with carefully selected seafood and traditionally seasoned rice.": "Préparé à la commande avec des fruits de mer sélectionnés et du riz assaisonné traditionnellement.",
   "Fresh sushi and seafood, prepared with care at Foodu.": "Des sushi et fruits de mer frais, préparés avec soin chez Foodu.",
   "Foodu Sushi & Seafood": "Foodu Sushi et Fruits de mer",
@@ -308,7 +322,7 @@ const french: Record<string, string> = {
   "GLOBAL 5K+ HAPPY SPONSORS WITH US": "Plus de 5 000 partenaires nous font confiance",
   "Find Food Lounge": "Trouvez Food Lounge",
   "Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from.": "Nous mettons en œuvre des stratégies gagnant-gagnant pour offrir une expérience toujours meilleure. Notre équipe fait évoluer chaque jour l'art de recevoir.",
-  "Phone: +4733378901": "Téléphone : +4733378901",
+  "Phone: 0632933941": "Téléphone : 0632933941",
   "Email: food@restan.com": "E-mail : food@restan.com",
   "MADE FRESH EVERY DAY": "PRÉPARÉ FRAIS CHAQUE JOUR",
   "EXPLORE THE MENU": "DÉCOUVRIR LE MENU",
@@ -734,6 +748,10 @@ const arabic: Record<string, string> = {
   "Spicy Tuna Roll": "لفائف التونة الحارة",
   "Tempura Prawn Roll": "لفائف روبيان التمبورا",
   "Salmon Sashimi": "ساشيمي السلمون",
+  "Seared Salmon Tataki": "تاتاكي السلمون المشوي سريعًا",
+  "Pepper Tuna Tataki": "تاتاكي التونة بالفلفل",
+  "Yellowtail Tataki": "تاتاكي سمك الذيل الأصفر",
+  "Scallop Tataki": "تاتاكي الإسكالوب",
   "Grilled Salmon": "سلمون مشوي",
   "Lobster Sushi Platter": "طبق سوشي الكركند",
   "Crispy White Fish": "سمك أبيض مقرمش",
@@ -855,6 +873,34 @@ const arabic: Record<string, string> = {
   "Flame-seared salmon finished with lemon and fresh herbs.": "سلمون مشوي على اللهب مع الليمون والأعشاب الطازجة.",
   "A celebratory platter with sweet lobster and chef-selected sushi.": "طبق احتفالي من الكركند اللذيذ والسوشي المختار بعناية من الشيف.",
   "Golden, tender white fish served with fresh herbs and lemon.": "سمك أبيض طري وذهبي يُقدّم مع الأعشاب الطازجة والليمون.",
+    "Silky tuna laid over hand-pressed seasoned rice.": "تونة طرية فوق أرز متبل ومشكّل يدويًا.",
+    "Sweet prawn served over seasoned sushi rice.": "روبيان طري يُقدّم فوق أرز سوشي متبل.",
+    "A delicate slice of yellowtail over hand-pressed rice.": "شريحة رقيقة من سمك الذيل الأصفر فوق أرز مشكّل يدويًا.",
+    "Fresh salmon and ripe avocado rolled with seasoned rice.": "سلمون طازج وأفوكادو ناضج ملفوفان مع أرز متبل.",
+    "Clean, delicate slices of sashimi-grade tuna.": "شرائح تونة رقيقة وطازجة بجودة الساشيمي.",
+    "Buttery yellowtail sliced fresh and served simply.": "سمك ذيل أصفر طازج بقوام طري، مقطع ومُقدّم ببساطة.",
+    "Sweet, tender scallop sashimi with a clean finish.": "ساشيمي إسكالوب طري وحلو بنكهة نقية.",
+    "White fish grilled with a savory-sweet miso glaze.": "سمك أبيض مشوي ومغطى بصلصة ميسو حلوة ومالحة.",
+    "Char-grilled prawns finished with garlic butter and herbs.": "روبيان مشوي على الفحم مع زبدة الثوم والأعشاب.",
+    "Grilled salmon skewers brushed with house teriyaki.": "أسياخ سلمون مشوية ومغطاة بصلصة ترياكي الخاصة بنا.",
+    "Close product details": "إغلاق تفاصيل المنتج",
+    "View full product details": "عرض تفاصيل المنتج كاملة",
+    "Guest favorite": "من المفضلات لدى الضيوف",
+    "Prepared fresh to order": "يُحضّر طازجًا عند الطلب",
+    "Fresh ingredients, thoughtfully prepared": "مكونات طازجة وتحضير متقن",
+    "A customer favorite": "من الأطباق المفضلة لدى العملاء",
+    "Customer favorite": "مفضل لدى العملاء",
+    "Made fresh when you order": "يُحضّر طازجًا عند طلبك",
+    "More from our sushi & seafood menu": "المزيد من قائمة السوشي والمأكولات البحرية",
+    "Related products carousel controls": "أزرار تصفح المنتجات ذات الصلة",
+    "Show previous products": "عرض المنتجات السابقة",
+    "Show next products": "عرض المنتجات التالية",
+    "Related sushi and seafood products": "منتجات السوشي والمأكولات البحرية ذات الصلة",
+    "Classic": "كلاسيكي",
+    "House special": "خلطة المطعم الخاصة",
+    "Chef's pick": "اختيار الشيف",
+    "Soupes": "الحساء",
+    "Salades": "السلطات",
   "Prepared to order with carefully selected seafood and traditionally seasoned rice.": "يُحضّر عند الطلب بمأكولات بحرية مختارة وأرز متبل بالطريقة التقليدية.",
   "Fresh sushi and seafood, prepared with care at Foodu.": "سوشي ومأكولات بحرية طازجة تُحضّر بعناية في فودو.",
   "Foodu Sushi & Seafood": "فودو للسوشي والمأكولات البحرية",
@@ -935,7 +981,7 @@ const arabic: Record<string, string> = {
   "GLOBAL 5K+ HAPPY SPONSORS WITH US": "أكثر من ٥٠٠٠ شريك يثقون بنا",
   "Find Food Lounge": "اعثر على مطعم فود لاونج",
   "Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from.": "نحرص على تقديم تجربة مميزة باستمرار، ونطوّر ضيافتنا يومًا بعد يوم لنمنحكم أفضل الأطباق والخدمة.",
-  "Phone: +4733378901": "الهاتف: ‎+4733378901",
+  "Phone: 0632933941": "الهاتف: 0632933941",
   "Email: food@restan.com": "البريد الإلكتروني: food@restan.com",
   "MADE FRESH EVERY DAY": "يُحضّر طازجًا كل يوم",
   "EXPLORE THE MENU": "اكتشف القائمة",
@@ -1023,7 +1069,7 @@ const productNameTerms: Record<Exclude<Locale, "en">, Record<string, string>> = 
     miso: "miso", soup: "soupe", seafood: "fruits de mer", silken: "soyeux", tofu: "tofu", wakame: "wakame",
     seaweed: "algue", avocado: "avocat", chirashi: "chirashi", tuna: "thon", "chef's": "du chef",
     mixed: "assorti", bowl: "bol", bao: "bao", fish: "poisson", taco: "taco", citrus: "aux agrumes",
-    tartare: "tartare", herb: "aux herbes", bass: "bar", spicy: "épicé", rice: "riz", rouleux: "rouleux",
+    tartare: "tartare", tataki: "tataki", herb: "aux herbes", bass: "bar", spicy: "épicé", rice: "riz", rouleux: "rouleux",
     seared: "saisi", pepper: "poivre", yellowtail: "sériole", scallop: "coquille Saint-Jacques",
     carpaccio: "carpaccio", selection: "sélection", roe: "œufs de poisson", gunkan: "gunkan", temari: "temari",
     temaki: "temaki", california: "california", set: "assortiment", futomaki: "futomaki", maki: "maki",
@@ -1044,7 +1090,7 @@ const productNameTerms: Record<Exclude<Locale, "en">, Record<string, string>> = 
     miso: "ميسو", soup: "حساء", seafood: "المأكولات البحرية", silken: "حريري", tofu: "توفو", wakame: "واكامي",
     seaweed: "الأعشاب البحرية", avocado: "الأفوكادو", chirashi: "شيراشي", tuna: "التونة", "chef's": "الشيف",
     mixed: "مشكل", bowl: "وعاء", bao: "باو", fish: "السمك", taco: "تاكو", citrus: "الحمضيات",
-    tartare: "تارتار", herb: "الأعشاب", bass: "القاروص", spicy: "حار", rice: "الأرز", rouleux: "رولو",
+    tartare: "تارتار", tataki: "تاتاكي", herb: "الأعشاب", bass: "القاروص", spicy: "حار", rice: "الأرز", rouleux: "رولو",
     seared: "مشوي سريعًا", pepper: "الفلفل", yellowtail: "سمك الذيل الأصفر", scallop: "الإسكالوب", crab: "السلطعون",
     carpaccio: "كارباتشيو", selection: "تشكيلة", roe: "بيض السمك", gunkan: "غونكان", temari: "تماري",
     temaki: "تيماكي", california: "كاليفورنيا", set: "مجموعة", futomaki: "فوتوماكي", maki: "ماكي",
@@ -1072,11 +1118,21 @@ export function translate(value: string, locale: Locale): string {
   const normalized = normalize(value);
   let translated = translations[locale].get(normalized);
   if (!translated) {
+    const generatedDescription = value.match(
+      /^(.+) prepared fresh to order with carefully selected ingredients\.$/i,
+    );
     const action = normalized.match(/^(.+) (added to cart|added to wishlist|removed from wishlist)$/);
     const count = normalized.match(/^(cart|wishlist), (\d+) items?$/);
     const removal = normalized.match(/^remove (.+) from cart$/);
     const quantity = normalized.match(/^quantity for (.+)$/);
-    if (action) {
+    if (generatedDescription && locale !== "en") {
+      const productName = translate(generatedDescription[1], locale);
+      if (productName !== generatedDescription[1]) {
+        translated = locale === "fr"
+          ? `${productName} préparé frais à la commande avec des ingrédients soigneusement sélectionnés.`
+          : `${productName} يُحضّر طازجًا عند الطلب بمكونات مختارة بعناية.`;
+      }
+    } else if (action) {
       const item = translate(action[1], locale);
       const suffix = locale === "fr"
         ? action[2] === "added to cart" ? "ajouté au panier" : action[2] === "added to wishlist" ? "ajouté aux favoris" : "retiré des favoris"

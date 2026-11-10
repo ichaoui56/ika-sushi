@@ -82,11 +82,7 @@ export function Footer() {
                   </div>
 
                   <div className="content">
-                    <a href="tel:2151234567">+123 34598768</a>
-
-                    <br />
-
-                    <a href="tel:2151234567">+554 34598734</a>
+                    <a href="tel:+212632933941">0632933941</a>
                   </div>
                 </li>
 

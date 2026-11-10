@@ -35,7 +35,7 @@ export default function ChefSingleAreaSection() {
                 <li>
                   <i className="fas fa-phone-alt" />
 
-                  <a href="tel:123-456-7890">+44-20-7328-4499</a>
+                  <a href="tel:+212632933941">0632933941</a>
                 </li>
               </ul>
 

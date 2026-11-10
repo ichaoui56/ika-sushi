@@ -268,6 +268,19 @@ export function SiteHeader() {
         </Link>
       </nav>
 
+      {!menuOpen && (
+        <a
+          className="foodu-floating-whatsapp"
+          href="https://wa.me/212632933941"
+          aria-label="Message us on WhatsApp"
+          title="Message us on WhatsApp"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="fab fa-whatsapp" aria-hidden="true" />
+        </a>
+      )}
+
       {scrolled && !menuOpen && (
         <button
           className="foodu-back-to-top"
