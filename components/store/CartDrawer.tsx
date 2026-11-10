@@ -163,13 +163,13 @@ export function CartDrawer() {
             <span>{translate("Subtotal", locale)}</span>
             <strong>{formatPrice(subtotal)}</strong>
           </div>
-          <Link
+          {/* <Link
             className="foodu-cart-drawer-action foodu-cart-drawer-view"
             href="/cart"
             onClick={() => setIsOpen(false)}
           >
             {translate("View cart", locale)}
-          </Link>
+          </Link> */}
           <Link
             className="foodu-cart-drawer-action foodu-cart-drawer-checkout"
             href="/checkout"

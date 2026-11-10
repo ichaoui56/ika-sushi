@@ -8,6 +8,37 @@
 (function($) {
 	"use strict";
 
+	function initializeBannerFade() {
+		$(".banner-fade").each(function() {
+			var initialSlide = this.swiper ? this.swiper.realIndex : 0;
+			if (this.swiper) this.swiper.destroy(true, true);
+
+			new Swiper(this, {
+				direction: "horizontal",
+				initialSlide: initialSlide,
+				loop: true,
+				effect: "fade",
+				fadeEffect: {
+					crossFade: true
+				},
+				speed: 2000,
+				autoplay: {
+					delay: 5000,
+					disableOnInteraction: false,
+				},
+				pagination: {
+					el: '.swiper-pagination',
+					type: 'bullets',
+					clickable: true,
+				},
+				navigation: {
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev"
+				}
+			});
+		});
+	}
+
 	function initializePage() {
 
 		/* ==================================================
@@ -154,37 +185,7 @@
 		/* ==================================================
             # Banner Carousel
          ===============================================*/
-		const bannerFade = new Swiper(".banner-fade", {
-			// Optional parameters
-			direction: "horizontal",
-			loop: true,
-			effect: "fade",
-			fadeEffect: {
-				crossFade: true
-			},
-			speed: 2000,
-			autoplay: {
-				delay: 5000,
-				disableOnInteraction: false,
-			},
-			// If we need pagination
-			pagination: {
-				el: '.swiper-pagination',
-				type: 'bullets',
-				clickable: true,
-			},
-
-			// Navigation arrows
-			navigation: {
-				nextEl: ".swiper-button-next",
-				prevEl: ".swiper-button-prev"
-			}
-
-			// And if we need scrollbar
-			/*scrollbar: {
-            el: '.swiper-scrollbar',
-          },*/
-		});
+		initializeBannerFade();
 
 
 		/* ==================================================
@@ -436,5 +437,6 @@
 
 	$(document).ready(initializePage);
 	document.addEventListener("foodu:route-change", initializePage);
+	document.addEventListener("foodu:locale-change", initializeBannerFade);
 
 })(jQuery); // End jQuery

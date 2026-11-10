@@ -24,7 +24,7 @@ const stylesheets = [
 export const metadata: Metadata = {
   title: "Foodu Sushi & Seafood",
   description: "Fresh sushi and seafood, prepared with care at Foodu.",
-  icons: { icon: "/assets/img/favicon.png" },
+  icons: { icon: "/adventure-bay.webp" },
 };
 
 export default function RootLayout({

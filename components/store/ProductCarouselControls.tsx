@@ -67,7 +67,8 @@ export function ProductCarouselControls({ label, children }: ProductCarouselCont
       drag.moved = true;
       marqueeRef.current?.classList.add("is-dragging");
       moveEvent.preventDefault();
-      const nextTime = drag.startTime + (deltaX / drag.distance) * drag.duration;
+      const direction = document.documentElement.dir === "rtl" ? -1 : 1;
+      const nextTime = drag.startTime + (deltaX / drag.distance) * drag.duration * direction;
       drag.animation.currentTime = ((nextTime % drag.duration) + drag.duration) % drag.duration;
     };
 

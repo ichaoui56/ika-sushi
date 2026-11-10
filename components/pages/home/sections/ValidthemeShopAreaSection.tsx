@@ -1,10 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useLocale } from "../../../i18n/LocaleProvider";
+import { translate } from "../../../i18n/translations";
 import { ProductCard } from "../../../store/ProductCard";
 import { catalogProducts, menuCategories } from "../../../store/products";
 
 export default function ValidthemeShopAreaSection() {
+  const { locale } = useLocale();
   const categories = menuCategories;
   const activeCategoryRef = useRef<string>(categories[0].id);
   const categoryNavRef = useRef<HTMLElement>(null);
@@ -78,13 +81,13 @@ export default function ValidthemeShopAreaSection() {
       </div>
       <div className="container">
         <div className="foodu-full-menu-heading">
-          <span className="foodu-full-menu-kicker">THE COMPLETE SELECTION</span>
-          <h2 id="foodu-full-menu-title">Explore the full menu</h2>
-          <p>Every dish on our menu, organized by category. Choose a section to browse.</p>
+          <span className="foodu-full-menu-kicker">{translate("THE COMPLETE SELECTION", locale)}</span>
+          <h2 id="foodu-full-menu-title">{translate("Explore the full menu", locale)}</h2>
+          <p>{translate("Every dish on our menu, organized by category. Choose a section to browse.", locale)}</p>
         </div>
-        <p className="foodu-menu-category-hint" aria-label="Drag left or right to see more categories">
+        <p className="foodu-menu-category-hint" aria-label={translate("Drag left or right to see more categories", locale)}>
           <i className="fas fa-chevron-left foodu-menu-hint-left" aria-hidden="true" />
-          <span>Drag left or right to see more categories</span>
+          <span>{translate("Drag left or right to see more categories", locale)}</span>
           <i className="fas fa-chevron-right foodu-menu-hint-right" aria-hidden="true" />
         </p>
         <nav
@@ -92,34 +95,39 @@ export default function ValidthemeShopAreaSection() {
           className="foodu-menu-category-nav"
           aria-label="Jump to menu category"
         >
-          {categories.map((category, index) => (
-            <a
-              key={category.id}
-              className={index === 0 ? "is-active" : undefined}
-              aria-current={index === 0 ? "location" : undefined}
-              data-category-id={category.id}
-              href={`#foodu-menu-${category.id}`}
-              onClick={(event) => {
-                event.preventDefault();
-                const target = document.getElementById(`foodu-menu-${category.id}`);
-                if (!target) return;
-                setActiveCategory(category.id);
-                window.history.pushState(null, "", `#foodu-menu-${category.id}`);
-                target.scrollIntoView({
-                  behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
-                  block: "start",
-                });
-              }}
-            >
-              <span className="foodu-menu-tab-index">{String(index + 1).padStart(2, "0")}</span>
-              {category.name}
-            </a>
-          ))}
+          {categories.map((category, index) => {
+            const translatedCategoryName = translate(category.name, locale);
+
+            return (
+              <a
+                key={category.id}
+                className={index === 0 ? "is-active" : undefined}
+                aria-current={index === 0 ? "location" : undefined}
+                data-category-id={category.id}
+                href={`#foodu-menu-${category.id}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  const target = document.getElementById(`foodu-menu-${category.id}`);
+                  if (!target) return;
+                  setActiveCategory(category.id);
+                  window.history.pushState(null, "", `#foodu-menu-${category.id}`);
+                  target.scrollIntoView({
+                    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+                    block: "start",
+                  });
+                }}
+              >
+                <span className="foodu-menu-tab-index">{String(index + 1).padStart(2, "0")}</span>
+                {translatedCategoryName}
+              </a>
+            );
+          })}
         </nav>
         <div className="foodu-menu-category-list">
           {categories.map((category, index) => {
             const products = catalogProducts.filter((product) => product.categories.includes(category.id));
             const titleId = `foodu-menu-title-${category.id}`;
+            const translatedCategoryName = translate(category.name, locale);
 
             return (
               <section
@@ -130,8 +138,10 @@ export default function ValidthemeShopAreaSection() {
               >
                 <header className="foodu-menu-category-heading">
                   <span>{String(index + 1).padStart(2, "0")}</span>
-                  <h3 id={titleId}>{category.name}</h3>
-                  <p>{String(products.length).padStart(2, "0")} dishes</p>
+                  <h3 id={titleId}>{translatedCategoryName}</h3>
+                  <p>
+                    {String(products.length).padStart(2, "0")} {translate("dishes", locale)}
+                  </p>
                 </header>
                 <div className="foodu-product-grid foodu-home-product-grid foodu-category-product-grid">
                   {products.map((product) => (

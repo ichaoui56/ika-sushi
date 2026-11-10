@@ -134,7 +134,11 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  useEffect(() => localizeDocument(locale), [locale]);
+  useEffect(() => {
+    const cleanup = localizeDocument(locale);
+    document.dispatchEvent(new CustomEvent("foodu:locale-change", { detail: { locale } }));
+    return cleanup;
+  }, [locale]);
 
   const context = useMemo(() => ({ locale, setLocale }), [locale, setLocale]);
   return <LocaleContext.Provider value={context}>{children}</LocaleContext.Provider>;

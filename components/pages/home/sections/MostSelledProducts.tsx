@@ -1,8 +1,13 @@
+"use client";
+
+import { useLocale } from "../../../i18n/LocaleProvider";
+import { translate } from "../../../i18n/translations";
 import { ProductCard } from "../../../store/ProductCard";
 import { ProductCarouselControls } from "../../../store/ProductCarouselControls";
 import { catalogProducts } from "../../../store/products";
 
 export default function MostSelledProducts() {
+  const { locale } = useLocale();
   const bestSellers = catalogProducts.filter((product) => product.isBestSeller);
   const renderCards = (isDuplicate = false) => (
     <ul
@@ -11,7 +16,7 @@ export default function MostSelledProducts() {
       {bestSellers.map((product, index) => (
         <li className="foodu-pick-item" key={`${isDuplicate ? "loop" : "bestseller"}-${product.id}`}>
           
-          <ProductCard product={product} className="foodu-pick-card" cartLabel="Order now" />
+          <ProductCard product={product} className="foodu-pick-card" cartLabel={translate("Order now", locale)} />
         </li>
       ))}
     </ul>
@@ -47,11 +52,11 @@ export default function MostSelledProducts() {
 
       <div className="container">
         <div className="foodu-picks-heading">
-          <h4 className="foodu-picks-eyebrow">LOVED BY OUR GUESTS</h4>
-          <h2 className="foodu-picks-title" id="foodu-best-sellers-title">The best sellers</h2>
-          <p>Our most-ordered sushi and seafood, made fresh for every order.</p>
+          <h4 className="foodu-picks-eyebrow">{translate("LOVED BY OUR GUESTS", locale)}</h4>
+          <h2 className="foodu-picks-title" id="foodu-best-sellers-title">{translate("The best sellers", locale)}</h2>
+          <p>{translate("Our most-ordered sushi and seafood, made fresh for every order.", locale)}</p>
         </div>
-        <ProductCarouselControls label="Best-selling sushi and seafood">
+        <ProductCarouselControls label={translate("Best-selling sushi and seafood", locale)}>
           <div className="foodu-picks-track">
             {renderCards()}
             {renderCards(true)}

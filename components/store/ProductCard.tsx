@@ -4,6 +4,8 @@ import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { useStore, type StoreProduct } from "./StoreProvider";
 import type { CatalogProduct } from "./products";
+import { useLocale } from "../i18n/LocaleProvider";
+import { translate } from "../i18n/translations";
 
 interface ProductCardProps {
   product: StoreProduct | CatalogProduct;
@@ -27,6 +29,7 @@ export function ProductCard({
   className = "",
   cartLabel = "Add to cart",
 }: ProductCardProps) {
+  const { locale } = useLocale();
   const { wishlist, ready, addToCart, toggleWishlist, removeFromWishlist } = useStore();
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [busy, setBusy] = useState<"cart" | "wishlist" | null>(null);
@@ -40,6 +43,7 @@ export function ProductCard({
       : "Freshly prepared with quality ingredients and served with care.";
   const tags = "tags" in product ? product.tags : [];
   const originalPrice = "originalPrice" in product ? product.originalPrice : undefined;
+  const productName = translate(product.name, locale);
 
   useEffect(() => {
     const dialog = detailsRef.current;
@@ -54,7 +58,7 @@ export function ProductCard({
     try {
       if (removable) await removeFromWishlist(product.id);
       else await toggleWishlist(product);
-      notify("wishlist", removable || liked ? `${product.name} removed from wishlist` : `${product.name} added to wishlist`);
+      notify("wishlist", translate(removable || liked ? `${product.name} removed from wishlist` : `${product.name} added to wishlist`, locale));
     } catch (error) {
       notify("error", error instanceof Error ? error.message : "Could not update your wishlist.");
     } finally {
@@ -67,7 +71,7 @@ export function ProductCard({
     setBusy("cart");
     try {
       await addToCart({ ...product, quantity: 1 });
-      notify("cart", `${product.name} added to cart`);
+      notify("cart", translate(`${product.name} added to cart`, locale));
     } catch (error) {
       notify("error", error instanceof Error ? error.message : "Could not add this item to your cart.");
     } finally {
@@ -78,8 +82,8 @@ export function ProductCard({
   return (
     <article className={`foodu-product-card ${className}`.trim()}>
       <div className="foodu-product-image">
-        <Link href="/shop-single" aria-label={`View ${product.name}`}>
-          <img src={product.image} alt={product.name} />
+        <Link href="/shop-single" aria-label={`View ${productName}`}>
+          <img src={product.image} alt={productName} />
         </Link>
         {originalPrice !== undefined && (
           <span className="foodu-product-promo-badge">
@@ -90,7 +94,7 @@ export function ProductCard({
           <button
             type="button"
             className="foodu-product-tool"
-            aria-label={`View details for ${product.name}`}
+            aria-label={`View details for ${productName}`}
             onClick={() => setDetailsOpen(true)}
           >
             <i className="far fa-eye" aria-hidden="true" />
@@ -99,7 +103,7 @@ export function ProductCard({
           <button
             type="button"
             className={`foodu-product-tool${busy === "cart" ? " is-busy" : ""}`}
-            aria-label={`Add ${product.name} to cart`}
+            aria-label={`Add ${productName} to cart`}
             disabled={!ready || busy !== null}
             onClick={() => void handleAddToCart()}
           >
@@ -109,7 +113,7 @@ export function ProductCard({
           <button
             type="button"
             className={`foodu-product-tool foodu-product-like${liked ? " is-liked" : ""}${busy === "wishlist" ? " is-busy" : ""}`}
-            aria-label={liked ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
+            aria-label={liked ? `Remove ${productName} from wishlist` : `Add ${productName} to wishlist`}
             aria-pressed={liked}
             disabled={!ready || busy !== null}
             onClick={() => void handleWishlist()}
@@ -123,7 +127,7 @@ export function ProductCard({
         <div className="foodu-product-tags">
           {tags.slice(0, 2).map((tag) => <span key={tag}>{tag}</span>)}
         </div>
-        <h3><Link href="/shop-single">{product.name}</Link></h3>
+        <h3><Link href="/shop-single">{productName}</Link></h3>
         <p className="foodu-product-description">{description}</p>
         <div className="foodu-product-footer">
           <div className="foodu-product-price">
@@ -136,8 +140,8 @@ export function ProductCard({
             <button
               type="button"
               className="foodu-product-remove"
-              aria-label={`Remove ${product.name} from wishlist`}
-              title={`Remove ${product.name} from wishlist`}
+              aria-label={`Remove ${productName} from wishlist`}
+              title={`Remove ${productName} from wishlist`}
               onClick={() => void handleWishlist()}
             >
               <i className="fas fa-trash-alt" aria-hidden="true" />
@@ -168,10 +172,10 @@ export function ProductCard({
         <button type="button" className="foodu-dialog-close" aria-label="Close product details" onClick={() => setDetailsOpen(false)}>
           <i className="fas fa-times" aria-hidden="true" />
         </button>
-        <img src={product.image} alt={product.name} />
+        <img src={product.image} alt={productName} />
         <div className="foodu-dialog-content">
           <span className="foodu-dialog-eyebrow">Fresh from our kitchen</span>
-          <h2 id={dialogTitleId}>{product.name}</h2>
+          <h2 id={dialogTitleId}>{productName}</h2>
           <p id={dialogDescriptionId}>{description}</p>
           <strong>{formatPrice(product.price)}</strong>
           <button type="button" className="foodu-product-cart" disabled={!ready || busy !== null} onClick={() => void handleAddToCart()}>

@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useLocale } from "../../../i18n/LocaleProvider";
+import { translate } from "../../../i18n/translations";
 
 const heroSlides = [
   {
@@ -38,8 +42,10 @@ const heroSlides = [
 ];
 
 export default function HeroSection() {
+  const { locale } = useLocale();
+
   return (
-    <section className="ika-hero" aria-label="IKA Sushi">
+    <section className="ika-hero" aria-label={translate("IKA Sushi", locale)}>
       <div className="ika-hero-decoration" aria-hidden="true">
         <span className="ika-hero-branch ika-hero-branch-left" />
         <span className="ika-hero-branch ika-hero-branch-right" />
@@ -65,20 +71,20 @@ export default function HeroSection() {
                       decoding="async"
                     />
                     <span>
-                      <span>{slide.eyebrow}</span>
-                      <strong>{slide.badgeLine}</strong>
+                      <span>{translate(slide.eyebrow, locale)}</span>
+                      <strong>{translate(slide.badgeLine, locale)}</strong>
                     </span>
                   </div>
 
                   <h1 className="ika-hero-title">
-                    <span>{slide.titleLineOne}</span>
-                    <span className="ika-hero-title-accent">{slide.titleLineTwo}</span>
+                    <span>{translate(slide.titleLineOne, locale)}</span>
+                    <span className="ika-hero-title-accent">{translate(slide.titleLineTwo, locale)}</span>
                   </h1>
 
-                  <p className="ika-hero-description">{slide.description}</p>
+                  <p className="ika-hero-description">{translate(slide.description, locale)}</p>
 
                   <Link className="ika-hero-cta" href="/shop">
-                    <span>COMMANDER</span>
+                    <span>{translate("COMMANDER", locale)}</span>
                     <span className="ika-hero-cta-arrow" aria-hidden="true">
                       <i className="fas fa-arrow-right" />
                     </span>
@@ -109,14 +115,14 @@ export default function HeroSection() {
           <button
             className="swiper-button-prev"
             type="button"
-            aria-label="Previous hero slide"
+            aria-label={translate("Previous hero slide", locale)}
           >
             <i className="fas fa-chevron-left" aria-hidden="true" />
           </button>
           <button
             className="swiper-button-next"
             type="button"
-            aria-label="Next hero slide"
+            aria-label={translate("Next hero slide", locale)}
           >
             <i className="fas fa-chevron-right" aria-hidden="true" />
           </button>

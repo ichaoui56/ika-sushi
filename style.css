@@ -3634,6 +3634,10 @@ Sidebar heading:  22px 'Jost', sans-serif
   animation: foodu-picks-loop 42s linear infinite;
 }
 
+[dir="rtl"] .foodu-picks-track {
+  animation-name: foodu-picks-loop-rtl;
+}
+
 .foodu-picks-group {
   display: flex;
   flex: 0 0 auto;
@@ -3792,6 +3796,11 @@ Sidebar heading:  22px 'Jost', sans-serif
 @keyframes foodu-picks-loop {
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
+}
+
+@keyframes foodu-picks-loop-rtl {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .foodu-best-sellers {
