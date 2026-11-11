@@ -459,12 +459,15 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .foodu-desktop-nav a:hover,
-.foodu-desktop-nav a:focus-visible {
+.foodu-desktop-nav a:focus-visible,
+.foodu-desktop-nav a.is-active {
+  font-weight: 700;
   color: var(--foodu-green);
 }
 
 .foodu-desktop-nav a:hover::after,
-.foodu-desktop-nav a:focus-visible::after {
+.foodu-desktop-nav a:focus-visible::after,
+.foodu-desktop-nav a.is-active::after {
   right: 0;
   left: 0;
 }
@@ -1225,6 +1228,7 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .foodu-checkout-field input,
+.foodu-checkout-field select,
 .foodu-checkout-field textarea {
   width: 100%;
   min-width: 0;
@@ -1237,7 +1241,22 @@ Sidebar heading:  22px 'Jost', sans-serif
   background: #fbfcfb;
   font: inherit;
   font-size: 13px;
+  line-height: 1.4;
   transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+.foodu-checkout-field select {
+  min-height: 50px;
+  padding-inline: 13px 38px;
+  cursor: pointer;
+}
+
+.foodu-checkout-field select:invalid {
+  color: #788785;
+}
+
+.foodu-checkout-field select option {
+  color: #072b31;
 }
 
 .foodu-checkout-field textarea {
@@ -1247,10 +1266,18 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .foodu-checkout-field input:focus,
+.foodu-checkout-field select:focus,
 .foodu-checkout-field textarea:focus {
   border-color: #072b31;
   background: #fff;
   box-shadow: 0 0 0 3px rgba(7, 43, 49, 0.1);
+}
+
+.foodu-checkout-field-hint {
+  margin: -1px 0 0;
+  color: #788785;
+  font-size: 11px;
+  line-height: 1.4;
 }
 
 .foodu-checkout-location-heading {
@@ -1516,6 +1543,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 16px 42px rgba(7, 43, 49, 0.09);
+  animation: foodu-checkout-success-in 520ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
 .foodu-order-success-main {
@@ -1534,6 +1562,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   background: #072b31;
   box-shadow: 0 8px 20px rgba(7, 43, 49, 0.16);
   font-size: 20px;
+  animation: foodu-checkout-success-mark 620ms 120ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
 .foodu-order-success-main h2 {
@@ -1684,6 +1713,12 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-weight: 800;
 }
 
+.foodu-order-success-total.is-subtotal {
+  min-height: 36px;
+  margin-top: 12px;
+  border-top: 1px solid #e5ebe7;
+}
+
 .foodu-order-success-total strong {
   color: #a33c2d;
   font-size: 19px;
@@ -1777,6 +1812,14 @@ Sidebar heading:  22px 'Jost', sans-serif
   .foodu-checkout-order-item img {
     width: 48px;
     height: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="hidden"]),
+  select,
+  textarea {
+    font-size: 16px !important;
   }
 }
 
@@ -2486,6 +2529,15 @@ Sidebar heading:  22px 'Jost', sans-serif
     background: rgba(158, 36, 0, 0.2);
   }
 
+  .foodu-mobile-menu nav > a.is-active {
+    color: #f4c679;
+    background: rgba(158, 36, 0, 0.12);
+  }
+
+  .foodu-mobile-menu nav > a.is-active .foodu-mobile-link-number {
+    color: #fff;
+  }
+
   .foodu-mobile-link-number {
     color: #e8a392;
     font: 600 11px/1 Arial, sans-serif;
@@ -2883,6 +2935,21 @@ Sidebar heading:  22px 'Jost', sans-serif
 [lang="ar"] h5,
 [lang="ar"] h6 {
   text-align: center;
+}
+
+html[lang="ar"] body,
+html[lang="ar"] body a,
+html[lang="ar"] body button,
+html[lang="ar"] body input,
+html[lang="ar"] body select,
+html[lang="ar"] body textarea,
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6 {
+  font-family: "Cairo", var(--font-default, sans-serif);
 }
 
 .ika-hero {
@@ -6537,6 +6604,17 @@ Sidebar heading:  22px 'Jost', sans-serif
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+@keyframes foodu-checkout-success-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes foodu-checkout-success-mark {
+  0% { opacity: 0; transform: scale(0.55) rotate(-12deg); }
+  72% { opacity: 1; transform: scale(1.08) rotate(3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
 @keyframes foodu-menu-product-in {
   from {
     opacity: 0;
@@ -6870,6 +6948,8 @@ Sidebar heading:  22px 'Jost', sans-serif
   .foodu-count-badge.is-popping,
   .foodu-toast,
   .foodu-toast-icon,
+  .foodu-order-success,
+  .foodu-order-success-icon,
   .foodu-product-dialog[open] {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;

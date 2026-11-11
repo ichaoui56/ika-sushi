@@ -9,7 +9,7 @@ import { LanguageSwitcher } from "../i18n/LocaleProvider";
 const links = [
   { label: "Home", href: "/" },
   { label: "Menu", href: "/food-menu" },
-  { label: "Shop", href: "/shop" },
+  { label: "Orders", href: "/orders" },
   { label: "About us", href: "/about-us" },
   { label: "Contact us", href: "/contact" },
 ];
@@ -123,6 +123,10 @@ export function SiteHeader() {
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
+  const isPrimaryLinkActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <>
@@ -137,11 +141,19 @@ export function SiteHeader() {
               <img src="/logo.png" alt="IKA SUSHI" />
             </Link>
             <nav className="foodu-desktop-nav" aria-label="Main navigation">
-              {links.map((link) => (
-                <Link key={link.href} href={link.href}>
-                  {link.label}
-                </Link>
-              ))}
+              {links.map((link) => {
+                const active = isPrimaryLinkActive(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={active ? "is-active" : undefined}
+                    aria-current={active ? "page" : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 
@@ -206,21 +218,26 @@ export function SiteHeader() {
           <span className="foodu-mobile-mark">FOODU</span>
         </div>
         <nav aria-label="Mobile navigation">
-          {links.map((link, index) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={closeMenu}
-              tabIndex={menuOpen ? 0 : -1}
-              style={{ "--menu-index": index } as CSSProperties}
-            >
-              <span className="foodu-mobile-link-number">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span>{link.label}</span>
-              <i className="fas fa-arrow-right" aria-hidden="true" />
-            </Link>
-          ))}
+          {links.map((link, index) => {
+            const active = isPrimaryLinkActive(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={active ? "is-active" : undefined}
+                aria-current={active ? "page" : undefined}
+                onClick={closeMenu}
+                tabIndex={menuOpen ? 0 : -1}
+                style={{ "--menu-index": index } as CSSProperties}
+              >
+                <span className="foodu-mobile-link-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span>{link.label}</span>
+                <i className="fas fa-arrow-right" aria-hidden="true" />
+              </Link>
+            );
+          })}
         </nav>
         <div className="foodu-mobile-shortcuts">
           <Link
