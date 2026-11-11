@@ -13,6 +13,8 @@ export default function ValidthemeShopAreaSection() {
   const [searchOpen, setSearchOpen] = useState(false);
   const activeCategoryRef = useRef<string>(categories[0].id);
   const categoryNavRef = useRef<HTMLElement>(null);
+  const searchFormRef = useRef<HTMLFormElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const normalizedQuery = searchQuery.trim().toLocaleLowerCase(locale);
   const searchResults = normalizedQuery
     ? catalogProducts
@@ -114,6 +116,45 @@ export default function ValidthemeShopAreaSection() {
     };
   }, [categories]);
 
+  useEffect(() => {
+    if (!searchOpen || !window.matchMedia("(max-width: 767px)").matches) return;
+
+    const viewport = window.visualViewport;
+    if (!viewport) return;
+
+    const isKeyboardVisible = () => window.innerHeight - viewport.height > 120;
+    let keyboardWasVisible = isKeyboardVisible();
+    const handleViewportResize = () => {
+      const keyboardIsVisible = isKeyboardVisible();
+      if (keyboardWasVisible && !keyboardIsVisible) setSearchOpen(false);
+      keyboardWasVisible = keyboardIsVisible;
+    };
+
+    const handleFocusOut = () => {
+      const activeElement = document.activeElement;
+      if (
+        !searchFormRef.current ||
+        !searchInputRef.current ||
+        activeElement === searchInputRef.current ||
+        searchFormRef.current.contains(activeElement)
+      ) {
+        return;
+      }
+
+      setSearchOpen(false);
+    };
+
+    viewport.addEventListener("resize", handleViewportResize);
+    window.addEventListener("resize", handleViewportResize);
+    document.addEventListener("focusin", handleFocusOut);
+
+    return () => {
+      viewport.removeEventListener("resize", handleViewportResize);
+      window.removeEventListener("resize", handleViewportResize);
+      document.removeEventListener("focusin", handleFocusOut);
+    };
+  }, [searchOpen]);
+
   return (
     <section className="validtheme-shop-area default-padding text-center foodu-full-menu">
       <div className="shape-seperate">
@@ -133,6 +174,7 @@ export default function ValidthemeShopAreaSection() {
         </p>
         <div className="foodu-menu-controls">
           <form
+            ref={searchFormRef}
             className="foodu-menu-search"
             role="search"
             aria-label={translate("Search menu products", locale)}
@@ -150,6 +192,7 @@ export default function ValidthemeShopAreaSection() {
             <label className="foodu-menu-search-field">
               <i className="fas fa-search" aria-hidden="true" />
               <input
+                ref={searchInputRef}
                 type="search"
                 value={searchQuery}
                 placeholder={translate("Search by dish or ingredient...", locale)}
@@ -161,6 +204,11 @@ export default function ValidthemeShopAreaSection() {
                   setSearchOpen(true);
                 }}
                 onFocus={() => setSearchOpen(true)}
+                onBlur={() => {
+                  if (document.activeElement && searchFormRef.current && !searchFormRef.current.contains(document.activeElement)) {
+                    setSearchOpen(false);
+                  }
+                }}
                 onKeyDown={(event) => {
                   if (event.key === "Escape") setSearchOpen(false);
                 }}
