@@ -565,7 +565,7 @@ Sidebar heading:  22px 'Jost', sans-serif
 
 .foodu-back-to-top {
   position: fixed;
-  z-index: 998;
+  z-index: 1000;
   right: 24px;
   bottom: 24px;
   width: 50px;
@@ -599,7 +599,7 @@ Sidebar heading:  22px 'Jost', sans-serif
 
 .foodu-floating-whatsapp {
   position: fixed;
-  z-index: 998;
+  z-index: 1000;
   left: 15px;
   bottom: 18px;
   width: 50px;
@@ -627,7 +627,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   outline-offset: 3px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1199px) {
   .foodu-back-to-top {
     right: 16px;
     bottom: calc(102px + env(safe-area-inset-bottom));
@@ -635,14 +635,7 @@ Sidebar heading:  22px 'Jost', sans-serif
 
   .foodu-floating-whatsapp {
     left: 15px;
-    
-  }
-}
-
-@media (max-width: 1200px) {
-
-  .foodu-floating-whatsapp {
-    bottom: 100px;
+    bottom: calc(102px + env(safe-area-inset-bottom));
   }
 }
 
@@ -4769,9 +4762,7 @@ html[lang="ar"] h6 {
 }
 
 .foodu-menu-controls {
-  position: sticky;
-  top: 109px;
-  z-index: 20;
+  position: relative;
   display: grid;
   grid-template-columns: minmax(250px, 0.78fr) minmax(0, 2fr);
   align-items: center;
@@ -5112,7 +5103,6 @@ html[lang="ar"] h6 {
 
 @media (max-width: 767px) {
   .foodu-menu-controls {
-    top: 76px;
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
     margin: 24px 0 42px;
