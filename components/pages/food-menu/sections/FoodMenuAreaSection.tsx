@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ProductCard } from "../../../store/ProductCard";
 import { catalogProducts, menuCategories } from "../../../store/products";
 
@@ -34,12 +34,16 @@ const matchesMenuQuery = (
   return searchableText.includes(query);
 };
 
+import { useLocale } from "../../../i18n/LocaleProvider";
+import { translate } from "../../../i18n/translations";
 export default function FoodMenuAreaSection() {
-  const [activeFilter, setActiveFilter] = useState<string[] | null>(null);
+  const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
+  const activeCategoryRef = useRef<string | null>(null);
   const searchFormRef = useRef<HTMLFormElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const filterRailRef = useRef<HTMLDivElement>(null);
 
   const normalizedQuery = searchQuery.trim().toLowerCase();
 
@@ -66,8 +70,60 @@ export default function FoodMenuAreaSection() {
     [normalizedQuery],
   );
 
+  useEffect(() => {
+    const marker = Math.min(200, window.innerHeight - 1);
+    const bottomInset = Math.max(0, window.innerHeight - marker - 1);
+    const updateActiveCategory = () => {
+      let nextCategory: string | null = null;
+      for (const { category } of categorySections) {
+        const heading = document.getElementById(`foodu-menu-category-title-${category.id}`);
+        if (!heading) continue;
+        if (heading.getBoundingClientRect().top > marker) break;
+        nextCategory = category.id;
+      }
+      if (activeCategoryRef.current === nextCategory) return;
+      activeCategoryRef.current = nextCategory;
+      setActiveCategoryId(nextCategory);
+    };
+
+    const observer = new IntersectionObserver(updateActiveCategory, {
+      rootMargin: `-${marker}px 0px -${bottomInset}px 0px`,
+      threshold: 0,
+    });
+    categorySections.forEach(({ category }) => {
+      const heading = document.getElementById(`foodu-menu-category-title-${category.id}`);
+      if (heading) observer.observe(heading);
+    });
+    updateActiveCategory();
+
+    return () => observer.disconnect();
+  }, [categorySections]);
+
+  useEffect(() => {
+    const rail = filterRailRef.current;
+    if (!rail) return;
+
+    if (!activeCategoryId) {
+      rail.scrollTo({
+        left: 0,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+      });
+      return;
+    }
+
+    const tab = rail.querySelector<HTMLButtonElement>(`[data-category-id="${activeCategoryId}"]`);
+    if (!tab) return;
+
+    const tabLeft = tab.getBoundingClientRect().left - rail.getBoundingClientRect().left + rail.scrollLeft;
+    rail.scrollTo({
+      left: tabLeft - (rail.clientWidth - tab.offsetWidth) / 2,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+    });
+  }, [activeCategoryId]);
+
   const handleCategorySelection = (categoryId: string | null) => {
-    setActiveFilter(categoryId ? [categoryId] : null);
+    activeCategoryRef.current = categoryId;
+    setActiveCategoryId(categoryId);
     setSearchQuery("");
     setSearchOpen(false);
 
@@ -89,7 +145,8 @@ export default function FoodMenuAreaSection() {
     setSearchQuery("");
     setSearchOpen(false);
     const categoryId = selectedProduct.categories[0];
-    setActiveFilter(categoryId ? [categoryId] : null);
+    activeCategoryRef.current = categoryId ?? null;
+    setActiveCategoryId(categoryId ?? null);
 
     const productElement = categoryId
       ? document.getElementById(`foodu-product-${categoryId}-${productId}`)
@@ -100,6 +157,7 @@ export default function FoodMenuAreaSection() {
     });
   };
 
+  const { locale } = useLocale();
   return (
     <section className="food-menu-area bg-gray default-padding">
       <div className="container">
@@ -176,41 +234,50 @@ export default function FoodMenuAreaSection() {
           </form>
         </div>
 
+        <p
+          className="foodu-menu-filters-hint"
+          aria-label={translate("Drag left or right", locale)}
+        >
+          <i className="fas fa-arrows-alt-h" aria-hidden="true" />
+          <span>{translate("Drag left or right", locale)}</span>
+        </p>
         <div className="foodu-menu-filters-wrap">
-          <p className="foodu-menu-filters-hint" aria-label="Drag left or right to browse categories">
-            <i className="fas fa-arrows-alt-h" aria-hidden="true" />
-            <span>Drag left or right</span>
-          </p>
           <div
+            ref={filterRailRef}
             className="mix-item-menu foodu-menu-filters"
             role="group"
             aria-label="Filter menu by category"
           >
-            {filters.map((filter) => {
-              const isActive = activeFilter === filter.value;
-              const productCount =
-                filter.value === null
-                  ? catalogProducts.length
-                  : catalogProducts.filter((product) =>
-                      filter.value?.some((category) =>
-                        product.categories.includes(category),
-                      ),
-                    ).length;
-              return (
-                <button
-                  key={filter.label}
-                  className={isActive ? "active" : ""}
-                  aria-pressed={isActive}
-                  type="button"
-                  onClick={() => handleCategorySelection(filter.value?.[0] ?? null)}
-                >
-                  {filter.label}
-                  <span className="foodu-menu-filter-count" aria-hidden="true">
-                    {productCount}
-                  </span>
-                </button>
-              );
-            })}
+            <div className="foodu-menu-filters-track">
+              {filters.map((filter) => {
+                const categoryId = filter.value?.[0] ?? null;
+                const isActive = activeCategoryId === categoryId;
+                const productCount =
+                  filter.value === null
+                    ? catalogProducts.length
+                    : catalogProducts.filter((product) =>
+                        filter.value?.some((category) =>
+                          product.categories.includes(category),
+                        ),
+                      ).length;
+                return (
+                  <button
+                    key={filter.label}
+                    className={isActive ? "active" : ""}
+                    aria-pressed={isActive}
+                    aria-current={isActive ? "location" : undefined}
+                    data-category-id={categoryId ?? undefined}
+                    type="button"
+                    onClick={() => handleCategorySelection(filter.value?.[0] ?? null)}
+                  >
+                    {filter.label}
+                    <span className="foodu-menu-filter-count" aria-hidden="true">
+                      {productCount}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
