@@ -206,6 +206,7 @@ export default function ValidthemeShopAreaSection() {
               </div>
             )}
           </form>
+        </div>
           <nav
             ref={categoryNavRef}
             className="foodu-menu-category-nav"
@@ -239,7 +240,6 @@ export default function ValidthemeShopAreaSection() {
               );
             })}
           </nav>
-        </div>
         <div className="foodu-menu-category-list">
           {categories.map((category, index) => {
             const products = catalogProducts.filter((product) => product.categories.includes(category.id));

@@ -4763,11 +4763,12 @@ html[lang="ar"] h6 {
 
 .foodu-menu-controls {
   position: relative;
+  width: min(100%, 520px);
   display: grid;
-  grid-template-columns: minmax(250px, 0.78fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   gap: 12px;
-  margin: 32px auto 58px;
+  margin: 32px auto 16px;
   padding: 10px;
   border: 1px solid rgba(23, 56, 59, 0.1);
   border-radius: 20px;
@@ -4775,6 +4776,10 @@ html[lang="ar"] h6 {
   box-shadow: 0 10px 28px rgba(23, 56, 59, 0.1);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+}
+
+.foodu-menu-controls:focus-within {
+  z-index: 21;
 }
 
 .foodu-menu-search {
@@ -4997,16 +5002,17 @@ html[lang="ar"] h6 {
 }
 
 .foodu-menu-category-nav {
-  position: relative;
-  top: auto;
-  z-index: auto;
+  position: sticky;
+  top: 109px;
+  z-index: 20;
   display: flex;
   max-width: 100%;
   justify-content: flex-start;
   gap: 8px;
   overflow-x: auto;
-  margin: 0;
-  padding: 0;
+  margin: 0 0 42px;
+  padding: 10px 0;
+  background: #f5f8f6;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -5103,11 +5109,18 @@ html[lang="ar"] h6 {
 
 @media (max-width: 767px) {
   .foodu-menu-controls {
+    width: 100%;
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
-    margin: 24px 0 42px;
+    margin: 24px 0 12px;
     padding: 8px;
     border-radius: 16px;
+  }
+
+  .foodu-menu-category-nav {
+    top: 76px;
+    margin-bottom: 30px;
+    padding: 8px 0;
   }
 
   .foodu-menu-search-field,
@@ -5500,7 +5513,13 @@ html[lang="ar"] h6 {
 }
 
 .foodu-menu-category {
-  scroll-margin-top: 242px;
+  scroll-margin-top: 195px;
+}
+
+@media (max-width: 767px) {
+  .foodu-menu-category {
+    scroll-margin-top: 158px;
+  }
 }
 
 .foodu-menu-product-anchor {
@@ -6434,10 +6453,8 @@ html[lang="ar"] h6 {
 
 @media (max-width: 575px) {
   .foodu-product-grid.foodu-wishlist-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 9px;
   }
-
   .foodu-wishlist-product-card .foodu-product-image {
     aspect-ratio: 0.92;
   }
