@@ -22,15 +22,9 @@ export function CartDrawer() {
 
   useEffect(() => {
     const openDrawer = () => setIsOpen(true);
-    const handleCartAddition = (event: Event) => {
-      const detail = (event as CustomEvent<{ action?: string }>).detail;
-      if (detail?.action === "cart") setIsOpen(true);
-    };
     window.addEventListener("foodu:open-cart-drawer", openDrawer);
-    window.addEventListener("foodu:store-feedback", handleCartAddition);
     return () => {
       window.removeEventListener("foodu:open-cart-drawer", openDrawer);
-      window.removeEventListener("foodu:store-feedback", handleCartAddition);
     };
   }, []);
 

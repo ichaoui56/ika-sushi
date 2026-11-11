@@ -28,7 +28,7 @@ export default function ShopProductDetailContent() {
     });
   };
 
-  const handleAddToCart = async () => {
+  const handleAddToCart = async (sourceElement?: HTMLElement) => {
     if (!ready || isAdding) return;
     setIsAdding(true);
     try {
@@ -38,6 +38,8 @@ export default function ShopProductDetailContent() {
           detail: {
             action: "cart",
             message: translate(`${featuredProduct.name} added to cart`, locale),
+            sourceElement,
+            productImage: featuredProduct.image,
           },
         }),
       );
@@ -108,7 +110,7 @@ export default function ShopProductDetailContent() {
                 type="button"
                 className="foodu-detail-add"
                 disabled={!ready || isAdding}
-                onClick={() => void handleAddToCart()}
+                onClick={(event) => void handleAddToCart(event.currentTarget)}
               >
                 <i className="fas fa-shopping-bag" aria-hidden="true" />
                 <span>{isAdding ? translate("Adding...", locale) : translate("Add to cart", locale)}</span>

@@ -93,6 +93,19 @@ export function StorefrontInteractionBridge() {
       const quantity = Math.max(1, Number.parseInt(quantityInput?.value ?? "1", 10) || 1);
       const product = getProduct(card, quantity);
       if (!product) return;
+      const sourceImage = card.querySelector<HTMLImageElement>(
+        ".product-image img, .thumb img, .single-product-contents img, img",
+      );
+      const sourceImageRect = sourceImage?.getBoundingClientRect();
+      const sourceFallbackRect = sourceImageRect?.width && sourceImageRect.height
+        ? sourceImageRect
+        : card.getBoundingClientRect();
+      const sourceRect = {
+        left: sourceFallbackRect.left,
+        top: sourceFallbackRect.top,
+        width: sourceFallbackRect.width,
+        height: sourceFallbackRect.height,
+      };
 
       if (isWishlist) {
         void toggleWishlist(product).catch(() => undefined);
@@ -104,6 +117,9 @@ export function StorefrontInteractionBridge() {
                 detail: {
                   action: "cart",
                   message: `${product.name} added to cart`,
+                  sourceElement: sourceImage ?? card,
+                  sourceRect,
+                  productImage: product.image,
                 },
               }),
             );

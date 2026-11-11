@@ -13,9 +13,9 @@ const heroSlides = [
     titleLineOne: "SUSHI FAÇONNÉ",
     titleLineTwo: "À LA MAIN",
     description: "Des gestes précis, des produits frais, une histoire de goût.",
-    image: "/assets/img/ika-sushi-platter.jpg",
-    imageAlt: "Assortiment de sushi frais présenté sur un plateau sombre",
-    imagePosition: "center 57%",
+    image: "/assets/img/food/sushi1.PNG",
+    imageAlt: "Assortiment de sushi frais détouré sur fond transparent",
+    imagePosition: "center",
   },
   {
     id: "rolls",
@@ -24,9 +24,9 @@ const heroSlides = [
     titleLineOne: "LA MER",
     titleLineTwo: "EN MAKI",
     description: "Des rouleaux généreux, préparés à la commande avec soin.",
-    image: "/assets/img/ika-sushi-rolls.jpg",
-    imageAlt: "Rouleaux de sushi au saumon sur une assiette sombre",
-    imagePosition: "center 54%",
+    image: "/assets/img/food/sushi-platter.png",
+    imageAlt: "Saumon grillé accompagné de légumes sur fond transparent",
+    imagePosition: "center",
   },
   {
     id: "board",
@@ -35,9 +35,9 @@ const heroSlides = [
     titleLineOne: "UN GOÛT",
     titleLineTwo: "DU JAPON",
     description: "Une sélection de sushi et de fruits de mer à partager.",
-    image: "/assets/img/ika-sushi-board.jpg",
-    imageAlt: "Sushi au saumon servi avec sauce soja",
-    imagePosition: "center 58%",
+    image: "/assets/img/food/sushi-boat.PNG",
+    imageAlt: "Plat de crevettes préparé avec des légumes sur fond transparent",
+    imagePosition: "center",
   },
 ];
 
@@ -62,14 +62,6 @@ export default function HeroSection() {
               <div className="container ika-hero-layout">
                 <div className="ika-hero-copy">
                   <div className="ika-hero-badge">
-                    <img
-                      src="/assets/img/shop/Shushi.png"
-                      alt=""
-                      width="36"
-                      height="36"
-                      loading="lazy"
-                      decoding="async"
-                    />
                     <span>
                       <span>{translate(slide.eyebrow, locale)}</span>
                       <strong>{translate(slide.badgeLine, locale)}</strong>
@@ -111,7 +103,7 @@ export default function HeroSection() {
         </div>
 
         <div className="swiper-pagination ika-hero-pagination" />
-        <div className="swiper-nav-left ika-hero-controls">
+        <div dir="ltr" className="swiper-nav-left ika-hero-controls">
           <button
             className="swiper-button-prev"
             type="button"

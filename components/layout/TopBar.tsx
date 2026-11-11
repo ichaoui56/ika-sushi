@@ -46,7 +46,8 @@ export function TopBar() {
           <div className="foodu-utility-contact">
             <a href="tel:+212632933941">
               <i className="fas fa-phone-alt" aria-hidden="true" />
-              <span>0632933941</span>
+              
+              <span dir="ltr">05 21 47 24 81</span>
             </a>
             <a
               className="foodu-utility-whatsapp"

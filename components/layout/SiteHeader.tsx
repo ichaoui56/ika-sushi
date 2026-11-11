@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useStore } from "../store/StoreProvider";
@@ -14,9 +14,44 @@ const links = [
   { label: "Contact us", href: "/contact" },
 ];
 
-function CountBadge({ count }: { count: number }) {
+function CountBadge({
+  count,
+  ready = true,
+  animateOnIncrease = false,
+}: {
+  count: number;
+  ready?: boolean;
+  animateOnIncrease?: boolean;
+}) {
+  const [isPopping, setIsPopping] = useState(false);
+  const previousCountRef = useRef(count);
+  const hasLoadedRef = useRef(false);
+
+  useEffect(() => {
+    if (!ready) {
+      previousCountRef.current = count;
+      return;
+    }
+    let timer: number | null = null;
+    if (animateOnIncrease && hasLoadedRef.current && count > previousCountRef.current) {
+      setIsPopping(true);
+      timer = window.setTimeout(() => setIsPopping(false), 620);
+    } else if (count <= previousCountRef.current) {
+      setIsPopping(false);
+    }
+    previousCountRef.current = count;
+    hasLoadedRef.current = true;
+    return () => {
+      if (timer !== null) window.clearTimeout(timer);
+    };
+  }, [animateOnIncrease, count, ready]);
+
   if (count === 0) return null;
-  return <span className="foodu-count-badge">{count > 99 ? "99+" : count}</span>;
+  return (
+    <span className={`foodu-count-badge${isPopping ? " is-popping" : ""}`}>
+      {count > 99 ? "99+" : count}
+    </span>
+  );
 }
 
 function ThemeModeToggle() {
@@ -243,9 +278,13 @@ export function SiteHeader() {
           href="/cart"
           aria-label={`Cart, ${cartCount} items`}
           aria-current={pathname === "/cart" ? "page" : undefined}
+          onClick={(event) => {
+            event.preventDefault();
+            window.dispatchEvent(new Event("foodu:open-cart-drawer"));
+          }}
         >
           <i className="fas fa-shopping-bag" aria-hidden="true" />
-          <CountBadge count={cartCount} />
+          <CountBadge count={cartCount} ready={ready} animateOnIncrease />
           <span>Cart</span>
         </Link>
         <Link

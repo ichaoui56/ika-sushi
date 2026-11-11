@@ -597,8 +597,8 @@ Sidebar heading:  22px 'Jost', sans-serif
 .foodu-floating-whatsapp {
   position: fixed;
   z-index: 998;
-  right: 84px;
-  bottom: 24px;
+  left: 15px;
+  bottom: 18px;
   width: 50px;
   height: 50px;
   display: grid;
@@ -631,8 +631,15 @@ Sidebar heading:  22px 'Jost', sans-serif
   }
 
   .foodu-floating-whatsapp {
-    right: 76px;
-    bottom: calc(102px + env(safe-area-inset-bottom));
+    left: 15px;
+    
+  }
+}
+
+@media (max-width: 1200px) {
+
+  .foodu-floating-whatsapp {
+    bottom: 100px;
   }
 }
 
@@ -3074,50 +3081,29 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .ika-hero-visual::before {
-  position: absolute;
-  z-index: 0;
-  inset: 12% 2% 11% 10%;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 50%;
-  background: radial-gradient(ellipse at 55% 56%, #171a1c 0%, #101315 56%, rgba(8, 11, 13, 0) 76%);
-  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.42);
-  content: "";
+  display: none;
 }
 
 .ika-hero-plate-glow {
-  position: absolute;
-  z-index: 0;
-  top: 12%;
-  right: 5%;
-  bottom: 10%;
-  left: 14%;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(242, 11, 69, 0.16), rgba(242, 11, 69, 0.025) 58%, transparent 74%);
-  filter: blur(20px);
+  display: none;
 }
 
 .ika-hero-photo-frame {
   position: absolute;
   z-index: 1;
-  inset: -3% -7% -4% -4%;
-  overflow: hidden;
-  mask-image: radial-gradient(ellipse 82% 78% at 62% 54%, #000 61%, rgba(0, 0, 0, 0.94) 76%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 82% 78% at 62% 54%, #000 61%, rgba(0, 0, 0, 0.94) 76%, transparent 100%);
+  inset: -12% -12% -16%;
+  overflow: visible;
+  mask-image: none;
+  -webkit-mask-image: none;
 }
 
 .ika-hero-photo {
-  object-fit: cover;
-  filter: saturate(1.08) contrast(1.08) brightness(0.94);
+  object-fit: contain;
+  filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.36));
 }
 
 .ika-hero-photo-frame::after {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, var(--ika-black) 0%, rgba(8, 11, 13, 0.42) 16%, transparent 46%),
-    linear-gradient(0deg, rgba(8, 11, 13, 0.46), transparent 32%),
-    linear-gradient(180deg, rgba(8, 11, 13, 0.3), transparent 22%);
-  content: "";
+  display: none;
 }
 
 .ika-hero-decoration {
@@ -3265,6 +3251,11 @@ Sidebar heading:  22px 'Jost', sans-serif
     transform: translateY(-2px);
 }
 
+[dir="rtl"] .ika-hero .ika-hero-controls {
+  right: auto;
+  left: max(24px, calc((100vw - 1200px) / 2));
+}
+
 @media (min-width: 768px) and (max-width: 1199px) {
   .testimonial-style-one-area {
     overflow: hidden;
@@ -3383,18 +3374,20 @@ Sidebar heading:  22px 'Jost', sans-serif
     pointer-events: none;
   }
 
+  [dir="rtl"] .ika-hero-visual {
+    right: auto;
+    left: -5%;
+  }
+
   .ika-hero-photo-frame {
     inset: 0;
-    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.48) 0%, #000 22%, #000 78%, rgba(0, 0, 0, 0.48) 100%);
-    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.48) 0%, #000 22%, #000 78%, rgba(0, 0, 0, 0.48) 100%);
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
   }
 
   .ika-hero-photo {
     object-fit: contain;
-  }
-
-  .ika-hero-photo-frame::after {
-    background: linear-gradient(0deg, rgba(8, 11, 13, 0.32), transparent 28%);
   }
 
   .ika-hero .swiper-pagination {
@@ -3406,6 +3399,11 @@ Sidebar heading:  22px 'Jost', sans-serif
     bottom: 42px;
     display: flex;
     gap: 5px;
+  }
+
+  [dir="rtl"] .ika-hero .ika-hero-controls {
+    right: auto;
+    left: 11px;
   }
 
   .ika-hero .ika-hero-controls .swiper-button-prev,
@@ -4703,23 +4701,254 @@ Sidebar heading:  22px 'Jost', sans-serif
   line-height: 1.6;
 }
 
-.foodu-menu-category-nav {
+.foodu-menu-controls {
   position: sticky;
   top: 109px;
   z-index: 20;
+  display: grid;
+  grid-template-columns: minmax(250px, 0.78fr) minmax(0, 2fr);
+  align-items: center;
+  gap: 12px;
+  margin: 32px auto 58px;
+  padding: 10px;
+  border: 1px solid rgba(23, 56, 59, 0.1);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 28px rgba(23, 56, 59, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.foodu-menu-search {
+  position: relative;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  margin: 0;
+}
+
+.foodu-menu-search-field {
+  position: relative;
+  min-width: 0;
+  height: 50px;
+  margin: 0;
+}
+
+.foodu-menu-search-field > i {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  inset-inline-start: 16px;
+  color: #788785;
+  font-size: 14px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.foodu-menu-search-field input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 16px;
+  padding-inline-start: 44px;
+  border: 1px solid rgba(23, 56, 59, 0.14);
+  border-radius: 13px;
+  outline: 0;
+  color: #17383b;
+  background: #f7f9f7;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: none;
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.foodu-menu-search-field input:focus {
+  border-color: #17383b;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(23, 56, 59, 0.1);
+}
+
+.foodu-menu-search-field input::placeholder {
+  color: #788785;
+  opacity: 1;
+}
+
+.validtheme-shop-area.foodu-full-menu .foodu-menu-search-submit {
+  position: static;
+  z-index: auto;
+  width: 88px;
+  min-width: 88px;
+  height: 50px;
+  min-height: 50px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #17383b;
+  border-radius: 13px;
+  color: #fff;
+  background: #17383b !important;
+  box-shadow: none;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.validtheme-shop-area.foodu-full-menu .foodu-menu-search-submit:hover,
+.validtheme-shop-area.foodu-full-menu .foodu-menu-search-submit:focus-visible {
+  transform: translateY(-1px);
+  border-color: #24545a;
+  color: #fff;
+  background: #24545a !important;
+}
+
+.validtheme-shop-area.foodu-full-menu .foodu-menu-search-submit:focus-visible,
+.validtheme-shop-area.foodu-full-menu .foodu-menu-search-results button:focus-visible {
+  outline: 2px solid #17383b;
+  outline-offset: 2px;
+}
+
+.validtheme-shop-area.foodu-full-menu .foodu-menu-search-submit::after,
+.validtheme-shop-area.foodu-full-menu .foodu-menu-search-results button::after {
+  display: none;
+  content: none;
+}
+
+.foodu-menu-search-results {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 8px);
+  inset-inline: 0;
+  max-height: min(58vh, 380px);
+  overflow: auto;
+  padding: 7px;
+  border: 1px solid rgba(23, 56, 59, 0.12);
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 18px 42px rgba(23, 56, 59, 0.18);
+}
+
+.foodu-menu-search-results ul {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.foodu-menu-search-results li {
+  min-width: 0;
+  border-bottom: 1px solid rgba(23, 56, 59, 0.07);
+}
+
+.foodu-menu-search-results li:last-child {
+  border-bottom: 0;
+}
+
+.validtheme-shop-area.foodu-full-menu .foodu-menu-search-results button {
+  position: static;
+  z-index: auto;
+  width: 100%;
+  min-height: 48px;
+  padding: 9px 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border: 0;
+  border-radius: 10px;
+  color: #17383b;
+  background: transparent !important;
+  text-align: start;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: none;
+  overflow: visible;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.validtheme-shop-area.foodu-full-menu .foodu-menu-search-results button:hover {
+  color: #17383b;
+  background: #edf3f0 !important;
+}
+
+.foodu-menu-search-result-image {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 9px;
+  object-fit: cover;
+  background: #edf3f0;
+}
+
+.foodu-menu-search-result-copy {
+  min-width: 0;
+  flex: 1 1 auto;
+  display: grid;
+  gap: 4px;
+}
+
+.foodu-menu-search-result-name {
+  overflow: hidden;
+  color: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.foodu-menu-search-result-category {
+  color: #788785;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.foodu-menu-search-result-price {
+  flex: 0 0 auto;
+  color: #17383b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.foodu-menu-search-result-arrow {
+  flex: 0 0 auto;
+  color: #788785;
+  font-size: 11px;
+}
+
+.foodu-menu-search-result-category {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #788785;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.foodu-menu-search-results > p {
+  margin: 0;
+  padding: 13px 12px;
+  color: #788785;
+  font-size: 13px;
+  text-align: center;
+}
+
+.foodu-menu-category-nav {
+  position: relative;
+  top: auto;
+  z-index: auto;
   display: flex;
   max-width: 100%;
   justify-content: flex-start;
   gap: 8px;
   overflow-x: auto;
-  margin: 32px auto 58px;
-  padding: 10px 12px;
-  border: 1px solid rgba(23, 56, 59, 0.1);
-  border-radius: 999px;
-  background: rgba(245, 248, 246, 0.96);
-  box-shadow: 0 8px 22px rgba(23, 56, 59, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  margin: 0;
+  padding: 0;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -4815,11 +5044,33 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 @media (max-width: 767px) {
-  .foodu-menu-category-nav {
+  .foodu-menu-controls {
     top: 76px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    margin: 24px 0 42px;
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .foodu-menu-search-field,
+  .foodu-full-menu .foodu-menu-search-submit {
+    height: 44px;
+    min-height: 44px;
+  }
+
+  .foodu-full-menu .foodu-menu-search-submit {
+    min-width: 46px;
+    width: 46px;
+    padding: 0;
+  }
+
+  .foodu-menu-search-submit span {
+    display: none;
+  }
+
+  .foodu-menu-category-nav {
     justify-content: flex-start;
-    margin-right: 0;
-    margin-left: 0;
   }
 }
 
@@ -5192,7 +5443,12 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .foodu-menu-category {
-  scroll-margin-top: 166px;
+  scroll-margin-top: 242px;
+}
+
+.foodu-menu-product-anchor {
+  min-width: 0;
+  scroll-margin-top: 242px;
 }
 
 .foodu-menu-category + .foodu-menu-category {
@@ -5232,6 +5488,7 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .foodu-product-card {
+  position: relative;
   height: 100%;
   overflow: hidden;
   border: 1px solid rgba(24, 61, 43, 0.1);
@@ -5244,6 +5501,130 @@ Sidebar heading:  22px 'Jost', sans-serif
 .foodu-product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 44px rgba(24, 61, 43, 0.14);
+}
+
+.foodu-product-card.is-in-cart {
+  border-color: rgba(36, 110, 82, 0.52);
+  box-shadow: inset 0 0 0 1px rgba(36, 110, 82, 0.18),
+    0 12px 32px rgba(24, 61, 43, 0.1);
+}
+
+.foodu-product-card.is-in-cart > .foodu-product-image,
+.foodu-product-card.is-in-cart > .foodu-product-content {
+  opacity: 0.5;
+  transition: opacity 280ms ease;
+}
+
+.foodu-product-selected-actions {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  width: min(190px, calc(100% - 24px));
+  display: grid;
+  gap: 9px;
+  transform: translate(-50%, -50%);
+  animation: foodu-product-selected-in 260ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.foodu-product-card .foodu-product-selected-actions > button {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  color: #fff;
+  background: #17383b;
+  box-shadow: 0 8px 22px rgba(8, 24, 25, 0.24);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.foodu-product-card .foodu-product-selected-actions > button::after {
+  display: none;
+  content: none;
+}
+
+.foodu-product-card .foodu-product-selected-actions > .foodu-product-selected-state {
+  cursor: default;
+  opacity: 1;
+}
+
+.foodu-product-card .foodu-product-selected-actions > .foodu-product-add-one-more {
+  border-color: #1d644b;
+  background: #1d644b;
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.foodu-product-card .foodu-product-selected-actions > .foodu-product-add-one-more:hover:not(:disabled),
+.foodu-product-card .foodu-product-selected-actions > .foodu-product-add-one-more:focus-visible {
+  color: #fff;
+  background: #164c39;
+  transform: translateY(-1px);
+}
+
+.foodu-product-card .foodu-product-selected-actions > .foodu-product-add-one-more:disabled {
+  cursor: wait;
+  opacity: 0.8;
+}
+
+.foodu-product-card .foodu-product-selected-actions > button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.foodu-cart-flight {
+  position: fixed;
+  z-index: 1500;
+  width: 58px;
+  height: 58px;
+  padding: 4px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(23, 56, 59, 0.12);
+  border-radius: 15px;
+  color: #fff;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(23, 56, 59, 0.24);
+  pointer-events: none;
+  will-change: left, top, transform, opacity;
+}
+
+.foodu-cart-flight > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 11px;
+  object-fit: cover;
+}
+
+.foodu-cart-flight > i {
+  color: #17383b;
+  font-size: 25px;
+}
+
+.foodu-bottom-cart.is-receiving > i,
+.foodu-desktop-cart.is-receiving > i {
+  animation: foodu-cart-receive 560ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
+}
+
+.foodu-bottom-cart.is-receiving {
+  animation: foodu-bottom-cart-arrival 620ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
+}
+
+.foodu-count-badge.is-popping {
+  animation: foodu-cart-badge-pop 520ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
 }
 
 .foodu-home-product-card {
@@ -5684,6 +6065,11 @@ Sidebar heading:  22px 'Jost', sans-serif
   animation: foodu-icon-pop 450ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
+.foodu-cart-flight,
+.foodu-product-added {
+  contain: layout paint;
+}
+
 .foodu-toast.is-error .foodu-toast-icon {
   background: #a33c2d;
 }
@@ -6109,6 +6495,32 @@ Sidebar heading:  22px 'Jost', sans-serif
   to { transform: scale(1.08); }
 }
 
+@keyframes foodu-product-selected-in {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 8px)) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes foodu-cart-receive {
+  0% { transform: translateX(-50%) scale(1) rotate(0); }
+  42% { transform: translateX(-50%) scale(1.12) rotate(-7deg); }
+  72% { transform: translateX(-50%) scale(0.96) rotate(3deg); }
+  100% { transform: translateX(-50%) scale(1) rotate(0); }
+}
+
+@keyframes foodu-bottom-cart-arrival {
+  0% { transform: translateY(0) scale(1) rotate(0); }
+  26% { transform: translateY(-7px) scale(1.07) rotate(-2deg); }
+  52% { transform: translateY(1px) scale(0.98) rotate(1deg); }
+  76% { transform: translateY(-2px) scale(1.02) rotate(0); }
+  100% { transform: translateY(0) scale(1) rotate(0); }
+}
+
+@keyframes foodu-cart-badge-pop {
+  0% { transform: scale(0.75); }
+  55% { transform: scale(1.22); }
+  100% { transform: scale(1); }
+}
+
 @keyframes foodu-toast-in {
   from { opacity: 0; transform: translate(22px, -8px); }
   to { opacity: 1; transform: translate(0, 0); }
@@ -6436,6 +6848,14 @@ Sidebar heading:  22px 'Jost', sans-serif
     flex-basis: 44px;
     font-size: 18px;
   }
+
+  .foodu-cart-flight,
+  .foodu-bottom-cart.is-receiving > i,
+  .foodu-desktop-cart.is-receiving > i,
+  .foodu-count-badge.is-popping,
+  .foodu-product-selected-actions {
+    animation-duration: 0.01ms !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6445,6 +6865,9 @@ Sidebar heading:  22px 'Jost', sans-serif
   .foodu-product-image img,
   .foodu-product-tool,
   .foodu-product-cart,
+  .foodu-bottom-cart.is-receiving,
+  .foodu-bottom-cart.is-receiving > i,
+  .foodu-count-badge.is-popping,
   .foodu-toast,
   .foodu-toast-icon,
   .foodu-product-dialog[open] {
