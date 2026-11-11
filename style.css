@@ -6540,8 +6540,10 @@ html[lang="ar"] h6 {
 }
 
 .foodu-menu-empty-state {
+  width: 50vw;
+  max-width: 100%;
   grid-column: 1 / -1;
-  margin-top: 12px;
+  margin: 12px auto 0;
   padding: 28px 20px;
   border: 1px dashed rgba(23, 56, 59, 0.2);
   border-radius: 18px;

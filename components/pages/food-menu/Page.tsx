@@ -19,8 +19,8 @@ export default function Page() {
       <SiteHeader />
       <BreadcrumbSection />
       <FoodMenuAreaSection />
-      <ReservationStyleTwoAreaSection />
-      <TestimonialsSection />
+      {/* <ReservationStyleTwoAreaSection /> */}
+      {/* <TestimonialsSection /> */}
       <FeatureStyleOneAreaSection />
       <Footer />
     </LegacyPage>

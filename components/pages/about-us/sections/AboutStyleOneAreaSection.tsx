@@ -15,7 +15,7 @@ export default function AboutStyleOneAreaSection() {
                 className="contact-card-one wow fadeInLeft"
                 data-wow-delay="200ms"
               >
-                <a href="tel:+212632933941">
+                <a href="tel:+212521472481">
                   <div className="icon">
                     <i className="fa fa-phone" />
                   </div>
@@ -23,7 +23,7 @@ export default function AboutStyleOneAreaSection() {
                   <div className="info">
                     <span>HOTLINE 24/7</span>
 
-                    <h4>0632933941</h4>
+                    <h4>05 21 47 24 81</h4>
                   </div>
                 </a>
               </div>

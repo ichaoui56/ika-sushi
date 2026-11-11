@@ -317,7 +317,9 @@ export default function FoodMenuAreaSection() {
               </section>
             ))
           ) : (
-            <div className="foodu-menu-empty-state">No dishes match your filters yet.</div>
+            <div className="foodu-menu-empty-state">
+              {translate("No dishes match your filters yet.", locale)}
+            </div>
           )}
         </div>
       </div>
