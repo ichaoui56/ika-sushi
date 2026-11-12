@@ -60,6 +60,17 @@ test("product creation retains uploaded image URLs", () => {
   assert.deepEqual(product.imageUrls, imageUrls);
 });
 
+test("a product can belong to only one category", () => {
+  const result = productInputSchema.safeParse({
+    ...productBase,
+    categoryIds: ["maki", "nigiri"],
+    pricingMode: "SELLING_ONLY",
+    priceMinor: 1525,
+  });
+
+  assert.equal(result.success, false);
+});
+
 test("rejects a selling price above the original price", () => {
   const result = productInputSchema.safeParse({
     ...productBase,

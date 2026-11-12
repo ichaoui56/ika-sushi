@@ -12,9 +12,10 @@ import "./ProductManagement.css";
 type ProductView = "list" | "cards";
 type DrawerState = { product: AdminProductRecord; mode: "details" | "edit" } | null;
 
-function productsHref(page: number, view: ProductView, search: string) {
+function productsHref(page: number, view: ProductView, search: string, categoryId: string) {
   const params = new URLSearchParams({ page: String(page), view });
   if (search) params.set("q", search);
+  if (categoryId) params.set("categoryId", categoryId);
   return `/admin/products?${params.toString()}`;
 }
 
@@ -43,12 +44,14 @@ function ProductImage({ product, className = "" }: { product: AdminProductRecord
 
 function ProductActions({
   product,
+  canManage,
   pending,
   onDetails,
   onEdit,
   onDelete,
 }: {
   product: AdminProductRecord;
+  canManage: boolean;
   pending: boolean;
   onDetails: () => void;
   onEdit: () => void;
@@ -59,12 +62,14 @@ function ProductActions({
       <button type="button" title="Voir les détails" aria-label={`Voir les détails de ${product.name}`} onClick={onDetails}>
         <i className="far fa-eye" aria-hidden="true" />
       </button>
-      <button type="button" title="Modifier" aria-label={`Modifier ${product.name}`} onClick={onEdit}>
-        <i className="fas fa-pen" aria-hidden="true" />
-      </button>
-      <button type="button" title="Supprimer définitivement" aria-label={`Supprimer définitivement ${product.name}`} disabled={pending} onClick={onDelete}>
-        <i className="far fa-trash-alt" aria-hidden="true" />
-      </button>
+      {canManage && <>
+        <button type="button" title="Modifier" aria-label={`Modifier ${product.name}`} onClick={onEdit}>
+          <i className="fas fa-pen" aria-hidden="true" />
+        </button>
+        <button type="button" title="Supprimer définitivement" aria-label={`Supprimer définitivement ${product.name}`} disabled={pending} onClick={onDelete}>
+          <i className="far fa-trash-alt" aria-hidden="true" />
+        </button>
+      </>}
     </div>
   );
 }
@@ -72,6 +77,7 @@ function ProductActions({
 function ProductDrawer({
   drawer,
   categories,
+  canManage,
   pending,
   onClose,
   onEdit,
@@ -80,6 +86,7 @@ function ProductDrawer({
 }: {
   drawer: Exclude<DrawerState, null>;
   categories: AdminCategoryOption[];
+  canManage: boolean;
   pending: boolean;
   onClose: () => void;
   onEdit: () => void;
@@ -118,10 +125,10 @@ function ProductDrawer({
                 <div><dt>Images</dt><dd>{product.images.length}</dd></div>
               </dl>
             </div>
-            <footer className="Ika-product-drawer-footer">
+            {canManage && <footer className="Ika-product-drawer-footer">
               <button type="button" className="Ika-product-delete" disabled={pending} onClick={onDelete}><i className="far fa-trash-alt" aria-hidden="true" />Delete permanently</button>
               <button type="button" className="Ika-product-edit" onClick={onEdit}><i className="fas fa-pen" aria-hidden="true" />Edit product</button>
-            </footer>
+            </footer>}
           </>
         )}
       </aside>
@@ -129,15 +136,15 @@ function ProductDrawer({
   );
 }
 
-function Pagination({ page, pageCount, view, search }: { page: number; pageCount: number; view: ProductView; search: string }) {
+function Pagination({ page, pageCount, view, search, categoryId }: { page: number; pageCount: number; view: ProductView; search: string; categoryId: string }) {
   if (view === "cards") {
     const firstPage = Math.max(1, Math.min(page - 2, pageCount - 4));
     const pages = Array.from({ length: Math.min(5, pageCount) }, (_, index) => firstPage + index);
     return (
       <nav className="Ika-product-pagination is-cards" aria-label="Product pages">
-        <Link aria-label="Previous page" aria-disabled={page <= 1} className={page <= 1 ? "is-disabled" : ""} href={productsHref(Math.max(1, page - 1), view, search)}><i className="fas fa-chevron-left" /></Link>
-        {pages.map((number) => <Link key={number} href={productsHref(number, view, search)} aria-current={page === number ? "page" : undefined} className={page === number ? "is-current" : ""}>{number}</Link>)}
-        <Link aria-label="Next page" aria-disabled={page >= pageCount} className={page >= pageCount ? "is-disabled" : ""} href={productsHref(Math.min(pageCount, page + 1), view, search)}><i className="fas fa-chevron-right" /></Link>
+        <Link aria-label="Previous page" aria-disabled={page <= 1} className={page <= 1 ? "is-disabled" : ""} href={productsHref(Math.max(1, page - 1), view, search, categoryId)}><i className="fas fa-chevron-left" /></Link>
+        {pages.map((number) => <Link key={number} href={productsHref(number, view, search, categoryId)} aria-current={page === number ? "page" : undefined} className={page === number ? "is-current" : ""}>{number}</Link>)}
+        <Link aria-label="Next page" aria-disabled={page >= pageCount} className={page >= pageCount ? "is-disabled" : ""} href={productsHref(Math.min(pageCount, page + 1), view, search, categoryId)}><i className="fas fa-chevron-right" /></Link>
       </nav>
     );
   }
@@ -146,8 +153,8 @@ function Pagination({ page, pageCount, view, search }: { page: number; pageCount
     <nav className="Ika-product-pagination is-list" aria-label="Product pages">
       <span>Page <strong>{page}</strong> of {pageCount}</span>
       <div>
-        <Link aria-label="Previous page" aria-disabled={page <= 1} className={page <= 1 ? "is-disabled" : ""} href={productsHref(Math.max(1, page - 1), view, search)}><i className="fas fa-arrow-left" />Previous</Link>
-        <Link aria-label="Next page" aria-disabled={page >= pageCount} className={page >= pageCount ? "is-disabled" : ""} href={productsHref(Math.min(pageCount, page + 1), view, search)}>Next<i className="fas fa-arrow-right" /></Link>
+        <Link aria-label="Previous page" aria-disabled={page <= 1} className={page <= 1 ? "is-disabled" : ""} href={productsHref(Math.max(1, page - 1), view, search, categoryId)}><i className="fas fa-arrow-left" />Previous</Link>
+        <Link aria-label="Next page" aria-disabled={page >= pageCount} className={page >= pageCount ? "is-disabled" : ""} href={productsHref(Math.min(pageCount, page + 1), view, search, categoryId)}>Next<i className="fas fa-arrow-right" /></Link>
       </div>
     </nav>
   );
@@ -160,6 +167,8 @@ export default function ProductManager({
   pageCount,
   total,
   search,
+  selectedCategoryId,
+  canManage,
   view,
 }: {
   products: AdminProductRecord[];
@@ -168,6 +177,8 @@ export default function ProductManager({
   pageCount: number;
   total: number;
   search: string;
+  selectedCategoryId: string;
+  canManage: boolean;
   view: ProductView;
 }) {
   const router = useRouter();
@@ -198,7 +209,7 @@ export default function ProductManager({
     <section className="Ika-product-manager">
       <header className="Ika-product-page-heading">
         <div><span>CATALOG MANAGEMENT</span><h1>Products</h1><p>Manage your menu, prices, and storefront visibility.</p></div>
-        <Link href="/admin/products/new" className="Ika-product-add-button"><i className="fas fa-plus" aria-hidden="true" />Add product</Link>
+        {canManage && <Link href="/admin/products/new" className="Ika-product-add-button"><i className="fas fa-plus" aria-hidden="true" />Add product</Link>}
       </header>
 
       <div className="Ika-product-toolbar">
@@ -209,26 +220,35 @@ export default function ProductManager({
             event.preventDefault();
             const formData = new FormData(event.currentTarget);
             const query = String(formData.get("q") ?? "").trim();
-            const params = new URLSearchParams({ page: "1", view });
-            if (query) params.set("q", query);
-            startSearch(() => router.replace(`/admin/products?${params.toString()}`));
+            startSearch(() => router.replace(productsHref(1, view, query, selectedCategoryId)));
           }}
         >
           <i className="fas fa-search" aria-hidden="true" />
           <input type="search" name="q" defaultValue={search} placeholder="Search products" aria-label="Search products" />
           <button type="submit" disabled={isSearching}>{isSearching ? "Searching…" : "Search"}</button>
         </form>
+        <label className="Ika-product-category-filter">
+          <i className="fas fa-filter" aria-hidden="true" />
+          <select
+            aria-label="Filter by category"
+            value={selectedCategoryId}
+            onChange={(event) => startSearch(() => router.replace(productsHref(1, view, search, event.target.value)))}
+          >
+            <option value="">All categories</option>
+            {categories.map((category) => <option key={category.id} value={category.id}>{category.name}</option>)}
+          </select>
+        </label>
         <div className="Ika-product-toolbar-meta"><span>{total} {total === 1 ? "product" : "products"}</span>
           <div className="Ika-product-view-toggle" role="group" aria-label="Product layout">
-            <Link href={productsHref(page, "list", search)} aria-label="List view" aria-current={view === "list" ? "page" : undefined} className={view === "list" ? "is-active" : ""}><i className="fas fa-list" aria-hidden="true" /></Link>
-            <Link href={productsHref(page, "cards", search)} aria-label="Card view" aria-current={view === "cards" ? "page" : undefined} className={view === "cards" ? "is-active" : ""}><i className="fas fa-th-large" aria-hidden="true" /></Link>
+            <Link href={productsHref(page, "list", search, selectedCategoryId)} aria-label="List view" aria-current={view === "list" ? "page" : undefined} className={view === "list" ? "is-active" : ""}><i className="fas fa-list" aria-hidden="true" /></Link>
+            <Link href={productsHref(page, "cards", search, selectedCategoryId)} aria-label="Card view" aria-current={view === "cards" ? "page" : undefined} className={view === "cards" ? "is-active" : ""}><i className="fas fa-th-large" aria-hidden="true" /></Link>
           </div>
         </div>
       </div>
 
       {error && <p className="Ika-product-page-error" role="alert">{error}</p>}
       {products.length === 0 ? (
-        <div className="Ika-product-empty"><span><i className="fas fa-box-open" aria-hidden="true" /></span><h2>{search ? "No matching products" : "Your catalog is empty"}</h2><p>{search ? "Try a different product name or slug." : "Add your first product to start building the menu."}</p>{!search && <Link href="/admin/products/new" className="Ika-product-add-button"><i className="fas fa-plus" aria-hidden="true" />Add product</Link>}</div>
+        <div className="Ika-product-empty"><span><i className="fas fa-box-open" aria-hidden="true" /></span><h2>{search || selectedCategoryId ? "No matching products" : "Your catalog is empty"}</h2><p>{search || selectedCategoryId ? "Try another search or category." : "Add your first product to start building the menu."}</p>{canManage && !search && !selectedCategoryId && <Link href="/admin/products/new" className="Ika-product-add-button"><i className="fas fa-plus" aria-hidden="true" />Add product</Link>}</div>
       ) : view === "list" ? (
         <div className="Ika-product-list-scroll">
           <table className="Ika-product-list">
@@ -239,7 +259,7 @@ export default function ProductManager({
                 <td><span className="Ika-product-category-text">{product.categories.map(({ category }) => category.name).join(", ") || "—"}</span></td>
                 <td><span className="Ika-product-list-price">{formatMoney(product.priceMinor)}</span>{product.originalPriceMinor && <del>{formatMoney(product.originalPriceMinor)}</del>}</td>
                 <td><ProductBadges product={product} /></td>
-                <td><ProductActions product={product} pending={pendingId === product.id} onDetails={() => setDrawer({ product, mode: "details" })} onEdit={() => setDrawer({ product, mode: "edit" })} onDelete={() => void permanentlyDelete(product)} /></td>
+                <td><ProductActions product={product} canManage={canManage} pending={pendingId === product.id} onDetails={() => setDrawer({ product, mode: "details" })} onEdit={() => setDrawer({ product, mode: "edit" })} onDelete={() => void permanentlyDelete(product)} /></td>
               </tr>
             ))}</tbody>
           </table>
@@ -255,15 +275,15 @@ export default function ProductManager({
               <div className="Ika-product-card-content">
                 <div><span className="Ika-product-card-categories">{product.categories.map(({ category }) => category.name).join(" · ") || "Uncategorized"}</span><h2>{product.name}</h2><small>/{product.slug}</small></div>
                 <div className="Ika-product-card-price"><strong>{formatMoney(product.priceMinor)}</strong>{product.originalPriceMinor && <del>{formatMoney(product.originalPriceMinor)}</del>}{product.discountPercent && <span>-{product.discountPercent}%</span>}</div>
-                <div className="Ika-product-card-footer"><span>{product.images.length} {product.images.length === 1 ? "image" : "images"}</span><ProductActions product={product} pending={pendingId === product.id} onDetails={() => setDrawer({ product, mode: "details" })} onEdit={() => setDrawer({ product, mode: "edit" })} onDelete={() => void permanentlyDelete(product)} /></div>
+                <div className="Ika-product-card-footer"><span>{product.images.length} {product.images.length === 1 ? "image" : "images"}</span><ProductActions product={product} canManage={canManage} pending={pendingId === product.id} onDetails={() => setDrawer({ product, mode: "details" })} onEdit={() => setDrawer({ product, mode: "edit" })} onDelete={() => void permanentlyDelete(product)} /></div>
               </div>
             </article>
           ))}
         </div>
       )}
 
-      {pageCount > 1 && <Pagination page={page} pageCount={pageCount} view={view} search={search} />}
-      {drawer && <ProductDrawer drawer={drawer} categories={categories} pending={pendingId === drawer.product.id} onClose={() => setDrawer(null)} onEdit={() => setDrawer({ ...drawer, mode: "edit" })} onDelete={() => void permanentlyDelete(drawer.product)} onSaved={() => { setDrawer(null); router.refresh(); }} />}
+      {pageCount > 1 && <Pagination page={page} pageCount={pageCount} view={view} search={search} categoryId={selectedCategoryId} />}
+      {drawer && <ProductDrawer drawer={drawer} categories={categories} canManage={canManage} pending={pendingId === drawer.product.id} onClose={() => setDrawer(null)} onEdit={() => setDrawer({ ...drawer, mode: "edit" })} onDelete={() => void permanentlyDelete(drawer.product)} onSaved={() => { setDrawer(null); router.refresh(); }} />}
     </section>
   );
 }

@@ -1,10 +1,10 @@
 import "server-only";
 import { Prisma } from "@prisma/client";
 import { prisma } from "../../lib/prisma";
-import { requireRole } from "../../lib/auth/permissions";
+import { requireAnyPermission, requirePermission } from "../../lib/auth/permissions";
 
 export async function getStaffUsers(role?: "EMPLOYEE" | "DELIVERY") {
-  await requireRole("ADMIN");
+  await requireAnyPermission("VIEW_EMPLOYEES", "MANAGE_EMPLOYEES");
   return prisma.user.findMany({
     where: role ? { role } : { role: { in: ["EMPLOYEE", "DELIVERY"] } },
     orderBy: { createdAt: "desc" },
@@ -22,6 +22,24 @@ export async function getStaffUsers(role?: "EMPLOYEE" | "DELIVERY") {
   });
 }
 
+export async function getStaffUser(userId: string) {
+  await requirePermission("MANAGE_EMPLOYEES");
+  return prisma.user.findFirst({
+    where: { id: userId, role: { in: ["EMPLOYEE", "DELIVERY"] } },
+    select: {
+      id: true,
+      name: true,
+      phone: true,
+      email: true,
+      role: true,
+      status: true,
+      createdAt: true,
+      permissions: { select: { permission: true } },
+      _count: { select: { deliveryAssignments: true } },
+    },
+  });
+}
+
 export async function getStaffUserPage({
   page = 1,
   pageSize = 12,
@@ -31,7 +49,7 @@ export async function getStaffUserPage({
   pageSize?: number;
   search?: string;
 } = {}) {
-  await requireRole("ADMIN");
+  await requireAnyPermission("VIEW_EMPLOYEES", "MANAGE_EMPLOYEES");
   const searchTerm = search.trim();
   const where: Prisma.UserWhereInput = {
     role: { in: ["EMPLOYEE", "DELIVERY"] },

@@ -3,7 +3,7 @@ import { prisma } from "../../lib/prisma";
 import { requirePermission } from "../../lib/auth/permissions";
 
 export async function getAdminLocations() {
-  await requirePermission("MANAGE_DELIVERY");
+  await requirePermission("VIEW_DELIVERY");
   return prisma.location.findMany({
     orderBy: [{ type: "asc" }, { sortOrder: "asc" }, { name: "asc" }],
     include: {
@@ -22,7 +22,7 @@ export async function getAdminLocationPage({
   pageSize?: number;
   search?: string;
 } = {}) {
-  await requirePermission("MANAGE_DELIVERY");
+  await requirePermission("VIEW_DELIVERY");
   const searchTerm = search.trim();
   const where = searchTerm
     ? {

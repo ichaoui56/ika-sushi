@@ -125,7 +125,7 @@ function createFormValues(product?: AdminProductRecord): FormValues {
     isFeaturedBestSeller: product?.isFeaturedBestSeller ?? false,
     isAvailable: product?.isAvailable ?? true,
     sortOrder: String(product?.sortOrder ?? 0),
-    categoryIds: product?.categories.map(({ category }) => category.id) ?? [],
+    categoryIds: product?.categories.slice(0, 1).map(({ category }) => category.id) ?? [],
   };
 }
 
@@ -247,15 +247,6 @@ export default function ProductEditor({
         isOnPromotion: percent > 0 || current.isOnPromotion,
       };
     });
-  };
-
-  const toggleCategory = (categoryId: string, checked: boolean) => {
-    setValues((current) => ({
-      ...current,
-      categoryIds: checked
-        ? [...current.categoryIds, categoryId]
-        : current.categoryIds.filter((id) => id !== categoryId),
-    }));
   };
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
@@ -496,20 +487,28 @@ export default function ProductEditor({
         </div>
       </section>
 
-      <section className="Ika-product-editor-section">
-        <div className="Ika-product-editor-section-heading"><span>ORGANIZATION</span><strong>Categories</strong></div>
-        <div className="Ika-product-category-grid">
-          {categories.map((category) => {
-            const selected = values.categoryIds.includes(category.id);
-            return (
-              <label key={category.id} className={selected ? "is-selected" : ""}>
-                <input type="checkbox" checked={selected} onChange={(event) => toggleCategory(category.id, event.target.checked)} />
-                <span className="Ika-product-category-check"><i className="fas fa-check" aria-hidden="true" /></span>
-                <span>{category.name}</span>
-              </label>
-            );
-          })}
+      <section className="Ika-product-editor-section Ika-product-organization-section">
+        <div className="Ika-product-organization-heading">
+          <div className="Ika-product-organization-icon"><i className="fas fa-tags" aria-hidden="true" /></div>
+          <div><span>ORGANIZATION</span><strong>Product category</strong></div>
+          <span className="Ika-product-category-single-badge"><i className="fas fa-check" aria-hidden="true" />One category</span>
         </div>
+        <label className="Ika-product-category-select">
+          <span>Category</span>
+          <div className="Ika-product-category-select-control">
+            <i className="fas fa-tag" aria-hidden="true" />
+            <select
+              value={values.categoryIds[0] ?? ""}
+              onChange={(event) => setValues((current) => ({ ...current, categoryIds: event.target.value ? [event.target.value] : [] }))}
+              required
+              disabled={categories.length === 0}
+            >
+              <option value="" disabled>Select category</option>
+              {categories.map((category) => <option key={category.id} value={category.id}>{category.name}</option>)}
+            </select>
+            <i className="fas fa-chevron-down Ika-product-category-select-chevron" aria-hidden="true" />
+          </div>
+        </label>
         {categories.length === 0 && <p className="Ika-product-pricing-hint">Create a category before adding products.</p>}
       </section>
 

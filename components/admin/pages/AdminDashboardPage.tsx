@@ -7,6 +7,8 @@ const formatNumber = (value: number) => new Intl.NumberFormat("fr-MA").format(va
 export default async function AdminDashboardPage() {
   const [stats, user] = await Promise.all([getDashboardSummary(), getCurrentUser()]);
   const firstName = user?.name.split(/\s+/)[0] ?? "équipe";
+  const canManageProducts = user?.role === "ADMIN" || Boolean(user?.permissions.includes("MANAGE_PRODUCTS"));
+  const canViewOrders = user?.role === "ADMIN" || Boolean(user?.permissions.includes("VIEW_ORDERS"));
   const todayLabel = new Intl.DateTimeFormat("fr-MA", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(new Date());
   const comparison = stats.previousWeekRevenueMinor > 0
     ? Math.round(((stats.weeklyRevenueMinor - stats.previousWeekRevenueMinor) / stats.previousWeekRevenueMinor) * 100)
@@ -52,7 +54,7 @@ export default async function AdminDashboardPage() {
           <h1>Bonjour, {firstName}</h1>
           <p>Voici l'activité de votre boutique aujourd'hui.</p>
         </div>
-        <a className="Ika-dashboard-add" href="/admin/products"><i className="fas fa-plus" aria-hidden="true" />Ajouter un produit</a>
+        {canManageProducts && <a className="Ika-dashboard-add" href="/admin/products"><i className="fas fa-plus" aria-hidden="true" />Ajouter un produit</a>}
       </section>
 
       <section className="Ika-dashboard-kpis" aria-label="Indicateurs de la boutique">
@@ -90,13 +92,13 @@ export default async function AdminDashboardPage() {
               <div className="Ika-dashboard-x-labels" aria-hidden="true">{stats.dailyRevenue.map((day) => <span key={day.date.toISOString()}>{day.date.toLocaleDateString("fr-MA", { weekday: "short" }).replace(".", "")}</span>)}</div>
             </div>
           </div>
-          <div className="Ika-dashboard-legend"><span><i className="is-bar" />Chiffre d'affaires</span><span><i className="is-line" />Évolution journalière</span><a href="/admin/orders">Voir les commandes <i className="fas fa-arrow-right" aria-hidden="true" /></a></div>
+          <div className="Ika-dashboard-legend"><span><i className="is-bar" />Chiffre d'affaires</span><span><i className="is-line" />Évolution journalière</span>{canViewOrders && <a href="/admin/orders">Voir les commandes <i className="fas fa-arrow-right" aria-hidden="true" /></a>}</div>
         </section>
 
         <section className="Ika-dashboard-panel Ika-dashboard-activity" aria-labelledby="dashboard-activity-title">
           <div className="Ika-dashboard-panel-heading">
             <div><span className="Ika-dashboard-panel-icon is-lightning"><i className="fas fa-bolt" aria-hidden="true" /></span><div><h2 id="dashboard-activity-title">Activités récentes</h2><p>Les dernières nouvelles de la boutique</p></div></div>
-            <a href="/admin/orders">Tout voir <i className="fas fa-arrow-right" aria-hidden="true" /></a>
+            {canViewOrders && <a href="/admin/orders">Tout voir <i className="fas fa-arrow-right" aria-hidden="true" /></a>}
           </div>
           {stats.activity.length ? (
             <ul className="Ika-dashboard-activity-list">

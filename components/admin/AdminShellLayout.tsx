@@ -76,8 +76,7 @@ export function AdminShellLayout({
         <header className="Ika-admin-topbar">
           <AdminBreadcrumb />
           <div className="Ika-admin-top-actions">
-            <Link href="/" className="Ika-admin-top-button is-primary"><span>Boutique en ligne</span><i className="fas fa-external-link-alt" aria-hidden="true" /></Link>
-            <Link href="/" className="Ika-admin-top-button"><span>Voir la boutique</span><i className="fas fa-external-link-alt" aria-hidden="true" /></Link>
+            <Link href="/" target="_blank" className="Ika-admin-top-button"><span>Voir la boutique</span><i className="fas fa-external-link-alt" aria-hidden="true" /></Link>
             <span className="Ika-admin-avatar is-top" aria-label={name}>{initials}</span>
           </div>
         </header>

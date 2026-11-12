@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
-import { createStaffUser } from "../../features/staff/actions";
-import type { StaffPermission, StaffRole } from "./staff-types";
+import { createStaffUser, updateStaffUser } from "../../features/staff/actions";
+import type { AdminStaffRecord, StaffPermission, StaffRole } from "./staff-types";
 import "./EmployeeManagement.css";
 
 const permissionGroups: Array<{ title: string; description: string; permissions: StaffPermission[] }> = [
@@ -14,7 +14,7 @@ const permissionGroups: Array<{ title: string; description: string; permissions:
   { title: "Customers", description: "Access customer records.", permissions: ["VIEW_CUSTOMERS", "MANAGE_CUSTOMERS"] },
   { title: "Delivery", description: "View or manage deliveries.", permissions: ["VIEW_DELIVERY", "MANAGE_DELIVERY"] },
   { title: "Reports and settings", description: "Access reports, homepage, and settings.", permissions: ["VIEW_REPORTS", "MANAGE_HERO", "MANAGE_SETTINGS"] },
-  { title: "Team access", description: "Manage employee accounts.", permissions: ["MANAGE_EMPLOYEES"] },
+  { title: "Team access", description: "View users or manage team accounts.", permissions: ["VIEW_EMPLOYEES", "MANAGE_EMPLOYEES"] },
 ];
 
 const permissionLabels: Record<StaffPermission, string> = {
@@ -32,19 +32,21 @@ const permissionLabels: Record<StaffPermission, string> = {
   MANAGE_HERO: "Manage homepage slides",
   MANAGE_SETTINGS: "Manage settings",
   MANAGE_EMPLOYEES: "Manage team accounts",
+  VIEW_EMPLOYEES: "View users",
 };
 
-export default function StaffForm() {
+export default function StaffForm({ user }: { user?: AdminStaffRecord }) {
   const router = useRouter();
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState(user?.name ?? "");
+  const [phone, setPhone] = useState(user?.phone ?? "");
+  const [email, setEmail] = useState(user?.email ?? "");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [role, setRole] = useState<StaffRole>("EMPLOYEE");
-  const [permissions, setPermissions] = useState<StaffPermission[]>([]);
+  const [role, setRole] = useState<StaffRole>(user?.role ?? "EMPLOYEE");
+  const [permissions, setPermissions] = useState<StaffPermission[]>(user?.permissions.map(({ permission }) => permission) ?? []);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+  const isEditing = Boolean(user);
 
   const togglePermission = (permission: StaffPermission, checked: boolean) => {
     setPermissions((current) => checked
@@ -57,14 +59,17 @@ export default function StaffForm() {
     setPending(true);
     setError("");
     try {
-      const result = await createStaffUser({
+      const input = {
         name,
         phone,
         email,
-        password,
+        ...(password ? { password } : {}),
         role,
         permissions: role === "EMPLOYEE" ? permissions : [],
-      });
+      };
+      const result = user
+        ? await updateStaffUser({ userId: user.id, isActive: user.status === "ACTIVE", ...input })
+        : await createStaffUser({ ...input, password });
       if (!result.success) {
         setError(result.message);
         return;
@@ -72,7 +77,7 @@ export default function StaffForm() {
       router.push("/admin/employees");
       router.refresh();
     } catch (saveError) {
-      setError(saveError instanceof Error ? saveError.message : "Unable to create the account.");
+      setError(saveError instanceof Error ? saveError.message : "Unable to save the account.");
     } finally {
       setPending(false);
     }
@@ -81,18 +86,18 @@ export default function StaffForm() {
   return (
     <div className="Ika-staff-new-page">
       <header className="Ika-staff-new-heading">
-        <div><span>PEOPLE & ACCESS</span><h1>Add team member</h1><p>Create a secure account and choose the right level of access.</p></div>
+        <div><span>PEOPLE & ACCESS</span><h1>{isEditing ? "Edit team member" : "Add team member"}</h1><p>{isEditing ? "Update account details and access permissions." : "Create a secure account and choose the right level of access."}</p></div>
         <Link href="/admin/employees"><i className="fas fa-arrow-left" aria-hidden="true" />Back to team</Link>
       </header>
 
       <form className="Ika-staff-form" onSubmit={submit}>
         <section className="Ika-staff-form-section">
-          <div className="Ika-staff-section-heading"><span>01 / ACCOUNT</span><div><h2>Personal details</h2><p>Enter the contact details the team member will use to sign in.</p></div></div>
+          <div className="Ika-staff-section-heading"><span>01 / ACCOUNT</span><div><h2>Personal details</h2><p>{isEditing ? "Update the contact details for this account." : "Enter the contact details the team member will use to sign in."}</p></div></div>
           <div className="Ika-staff-form-fields">
             <label className="is-wide">Full name<input autoComplete="name" value={name} onChange={(event) => setName(event.target.value)} required maxLength={120} placeholder="e.g. Samira El Amrani" /></label>
             <label>Phone number<input type="tel" autoComplete="tel" value={phone} onChange={(event) => setPhone(event.target.value)} required minLength={8} maxLength={24} placeholder="+212 6 00 00 00 00" /></label>
             <label>Email<input type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} maxLength={254} placeholder="name@example.com" /></label>
-            <label className="is-wide">Temporary password<div className="Ika-staff-password-field"><input type={showPassword ? "text" : "password"} autoComplete="new-password" value={password} onChange={(event) => setPassword(event.target.value)} required minLength={8} maxLength={128} placeholder="At least 8 characters" /><button type="button" className="Ika-staff-password-toggle" aria-label={showPassword ? "Hide password" : "Show password"} onClick={() => setShowPassword((current) => !current)}><i className={`far ${showPassword ? "fa-eye-slash" : "fa-eye"}`} aria-hidden="true" /></button></div><small className="Ika-staff-field-hint">The password is securely hashed before it is stored.</small></label>
+            <label className="is-wide">{isEditing ? "New password" : "Temporary password"}<div className="Ika-staff-password-field"><input type={showPassword ? "text" : "password"} autoComplete={isEditing ? "new-password" : "new-password"} value={password} onChange={(event) => setPassword(event.target.value)} required={!isEditing} minLength={password ? 8 : undefined} maxLength={128} placeholder={isEditing ? "Leave blank to keep the current password" : "At least 8 characters"} /><button type="button" className="Ika-staff-password-toggle" aria-label={showPassword ? "Hide password" : "Show password"} onClick={() => setShowPassword((current) => !current)}><i className={`far ${showPassword ? "fa-eye-slash" : "fa-eye"}`} aria-hidden="true" /></button></div><small className="Ika-staff-field-hint">The password is securely hashed before it is stored.</small></label>
           </div>
         </section>
 
@@ -139,7 +144,7 @@ export default function StaffForm() {
 
         {error && <p className="Ika-staff-form-error" role="alert">{error}</p>}
         <footer className="Ika-staff-form-footer">
-          <button type="submit" disabled={pending}><i className={`fas ${pending ? "fa-spinner fa-spin" : "fa-user-plus"}`} aria-hidden="true" />{pending ? "Creating account…" : "Create account"}</button>
+          <button type="submit" disabled={pending}><i className={`fas ${pending ? "fa-spinner fa-spin" : isEditing ? "fa-check" : "fa-user-plus"}`} aria-hidden="true" />{pending ? "Saving account…" : isEditing ? "Save changes" : "Create account"}</button>
           <Link href="/admin/employees">Cancel</Link>
         </footer>
       </form>

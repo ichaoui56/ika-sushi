@@ -33,7 +33,7 @@ const productBaseSchema = z.object({
   isFeaturedBestSeller: z.boolean().default(false),
   isAvailable: z.boolean().default(true),
   sortOrder: z.number().int().default(0),
-  categoryIds: z.array(z.string().min(1)).min(1).max(30),
+  categoryIds: z.array(z.string().min(1)).length(1),
 });
 
 type ProductBaseInput = z.infer<typeof productBaseSchema>;

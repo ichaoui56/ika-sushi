@@ -55,6 +55,16 @@
 .Ika-staff-toggle:hover:not(:disabled) { border-color: #cbd9d0; color: #15383f; background: #f4f7f3; }
 .Ika-staff-toggle.is-active { color: #9b4a3f; }
 .Ika-staff-toggle:disabled { opacity: .55; cursor: wait; }
+.Ika-staff-actions { display: flex; align-items: center; justify-content: flex-end; gap: 4px; }
+.Ika-staff-details-button,
+.Ika-staff-edit,
+.Ika-staff-delete { width: 30px; height: 30px; padding: 0; display: grid; place-items: center; border: 1px solid transparent; border-radius: 4px; color: #617579; background: transparent; font-size: 10px; text-decoration: none; cursor: pointer; }
+.Ika-staff-details-button:hover:not(:disabled),
+.Ika-staff-edit:hover { border-color: #e7e5df; color: #0b5059; background: #f4f7f3; }
+.Ika-staff-delete { color: #97655a; }
+.Ika-staff-delete:hover:not(:disabled) { border-color: #f1d8d2; color: #b7463c; background: #fff4f1; }
+.Ika-staff-details-button:disabled,
+.Ika-staff-delete:disabled { opacity: .45; cursor: wait; }
 
 .Ika-staff-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .Ika-staff-card { min-width: 0; padding: 14px; display: grid; align-content: start; gap: 12px; border: 1px solid #e8e5de; border-radius: 7px; background: #fff; transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease; }
@@ -80,6 +90,60 @@
 .Ika-staff-pagination a:hover:not(.is-disabled) { border-color: #b7cbc4; color: #06363d; background: #f3f7f3; }
 .Ika-staff-pagination a.is-current { border-color: #06363d; color: #fff; background: #06363d; }
 .Ika-staff-pagination a.is-disabled { opacity: .4; pointer-events: none; }
+
+.Ika-staff-details-layer { position: fixed; inset: 0; z-index: 1400; display: flex; justify-content: flex-end; }
+.Ika-staff-details-scrim { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; padding: 0; border: 0; border-radius: 0; background: rgba(8,28,31,.42); cursor: pointer; }
+.Ika-staff-details-drawer { position: relative; z-index: 1; width: min(660px, 96vw); height: 100%; display: flex; flex-direction: column; background: #fbfaf7; box-shadow: -14px 0 38px rgba(6,29,34,.18); animation: Ika-staff-drawer-in 220ms cubic-bezier(.2,.75,.25,1) both; }
+@keyframes Ika-staff-drawer-in { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
+.Ika-staff-details-header { min-height: 72px; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; border-bottom: 1px solid #e8e5de; background: #fff; }
+.Ika-staff-details-header > div { min-width: 0; }
+.Ika-staff-details-header span { color: #8a6c4a; font-size: 8px; font-weight: 800; letter-spacing: .1em; }
+.Ika-staff-details-header h2 { margin: 3px 0 0; overflow: hidden; color: #14383f; font-size: 17px; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-staff-details-header > button { width: 34px; min-width: 34px; height: 34px; min-height: 34px; padding: 0; display: grid; place-items: center; border: 1px solid #e7e5df; border-radius: 50%; color: #53696d; background: #fff; font-size: 12px; line-height: 1; cursor: pointer; }
+.Ika-staff-details-content { min-height: 0; flex: 1; padding: 18px 20px 28px; overflow-y: auto; display: grid; align-content: start; gap: 14px; }
+.Ika-staff-details-profile { padding: 14px; display: flex; align-items: center; gap: 12px; border: 1px solid #e5e9e3; border-radius: 6px; background: #fff; }
+.Ika-staff-details-profile .Ika-staff-avatar { width: 48px; height: 48px; font-size: 13px; }
+.Ika-staff-details-profile > div { min-width: 0; display: grid; gap: 4px; }
+.Ika-staff-details-profile strong { color: #193b40; font-size: 14px; }
+.Ika-staff-details-profile > div > span { color: #728184; font-size: 10px; }
+.Ika-staff-details-contact { margin: 0; padding: 12px 14px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; border: 1px solid #e8e5de; border-radius: 6px; background: #fff; }
+.Ika-staff-details-contact > div { min-width: 0; display: grid; gap: 4px; }
+.Ika-staff-details-contact dt { color: #899496; font-size: 9px; }
+.Ika-staff-details-contact dd { margin: 0; overflow-wrap: anywhere; color: #29464b; font-size: 10px; }
+.Ika-staff-details-section { padding: 14px; border: 1px solid #e8e5de; border-radius: 6px; background: #fff; }
+.Ika-staff-details-section-heading { margin-bottom: 12px; display: flex; flex-direction: column; gap: 3px; }
+.Ika-staff-details-section-heading span { color: #8a6c4a; font-size: 8px; font-weight: 800; letter-spacing: .08em; }
+.Ika-staff-details-section-heading strong { color: #17373d; font-size: 12px; }
+.Ika-staff-stats-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.Ika-staff-stats-grid > div { min-height: 68px; padding: 10px; display: grid; align-content: center; gap: 4px; border: 1px solid #e7ece7; border-radius: 5px; background: #fafbf8; }
+.Ika-staff-stats-grid strong { color: #143e43; font-size: 20px; line-height: 1; }
+.Ika-staff-stats-grid span { color: #778588; font-size: 9px; }
+.Ika-staff-details-note { margin: 9px 0 0; color: #7d8a8d; font-size: 9px; }
+.Ika-staff-status-breakdown { margin-top: 9px; display: flex; flex-wrap: wrap; gap: 5px; }
+.Ika-staff-status-breakdown > span { padding: 5px 7px; display: inline-flex; gap: 6px; border-radius: 4px; color: #52686d; background: #f0f3ef; font-size: 8px; }
+.Ika-staff-status-breakdown strong { color: #15383f; }
+.Ika-staff-current-deliveries { display: grid; gap: 7px; }
+.Ika-staff-current-deliveries article { padding: 10px; border: 1px solid #edf0eb; border-radius: 5px; background: #fcfcfa; }
+.Ika-staff-current-deliveries article > div { display: flex; justify-content: space-between; gap: 10px; }
+.Ika-staff-current-deliveries article strong { color: #21454a; font-size: 10px; }
+.Ika-staff-current-deliveries article > div span { color: #0b755b; font-size: 8px; font-weight: 700; }
+.Ika-staff-current-deliveries p { margin: 5px 0 2px; color: #52666a; font-size: 9px; }
+.Ika-staff-current-deliveries small { color: #899496; font-size: 8px; }
+.Ika-staff-details-empty,
+.Ika-staff-details-loading,
+.Ika-staff-details-error { margin: 0; padding: 14px 4px; color: #7d8a8d; font-size: 10px; }
+.Ika-staff-details-loading { display: flex; align-items: center; gap: 8px; }
+.Ika-staff-details-error { color: #a3423b; }
+.Ika-staff-activity-list { margin: 0; padding: 0; list-style: none; }
+.Ika-staff-activity-list li { position: relative; padding: 0 0 15px 19px; display: flex; gap: 9px; }
+.Ika-staff-activity-list li:not(:last-child)::before { position: absolute; top: 8px; bottom: -1px; left: 4px; width: 1px; content: ""; background: #e3e9e3; }
+.Ika-staff-activity-marker { position: absolute; top: 3px; left: 0; width: 9px; height: 9px; border: 2px solid #fff; border-radius: 50%; background: #11795f; box-shadow: 0 0 0 1px #acd0c0; }
+.Ika-staff-activity-marker.is-assignment { background: #aa7a36; box-shadow: 0 0 0 1px #e6d3ad; }
+.Ika-staff-activity-list li > div { min-width: 0; display: grid; gap: 4px; }
+.Ika-staff-activity-list strong { color: #29484d; font-size: 9px; }
+.Ika-staff-activity-list p { margin: 0; color: #728184; font-size: 9px; }
+.Ika-staff-activity-list small { color: #8b9698; font-size: 8px; }
+.Ika-staff-activity-list time { color: #9aa4a4; font-size: 8px; }
 
 .Ika-staff-form { display: grid; gap: 12px; }
 .Ika-staff-form-section { padding: 20px; border: 1px solid #e3e9e3; border-radius: 8px; background: #fff; box-shadow: 0 6px 20px rgba(20,49,57,.035); }
@@ -152,6 +216,8 @@
   .Ika-staff-list th,
   .Ika-staff-list td { padding: 8px; }
   .Ika-staff-new-heading { flex-direction: column; }
+  .Ika-staff-details-header { padding: 12px 14px; }
+  .Ika-staff-details-content { padding: 14px; }
   .Ika-staff-form-section { padding: 14px; }
   .Ika-staff-section-heading { grid-template-columns: 1fr auto; gap: 6px 10px; }
   .Ika-staff-section-heading > span:first-child { grid-column: 1 / -1; }

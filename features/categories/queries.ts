@@ -10,6 +10,13 @@ export async function getAdminCategories() {
   });
 }
 
+export async function getProductCategoryOptions() {
+  await requirePermission("VIEW_PRODUCTS");
+  return prisma.category.findMany({
+    orderBy: [{ sortOrder: "asc" }, { name: "asc" }],
+    select: { id: true, name: true },
+  });
+}
 export async function getAdminCategoryPage({
   page = 1,
   pageSize = 12,

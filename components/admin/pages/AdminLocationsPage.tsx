@@ -1,5 +1,6 @@
 import LocationManager from "../LocationManager";
 import { getAdminLocationPage } from "../../../features/locations/queries";
+import { getCurrentUser } from "../../../lib/auth/session";
 
 interface LocationSearchParams {
   page?: string | string[];
@@ -13,10 +14,14 @@ export default async function AdminLocationsPage({ searchParams }: { searchParam
   const viewValue = Array.isArray(params.view) ? params.view[0] : params.view;
   const searchValue = Array.isArray(params.q) ? params.q[0] : params.q;
   const requestedPage = Number.parseInt(pageValue ?? "1", 10);
-  const locationPage = await getAdminLocationPage({
-    page: Number.isFinite(requestedPage) ? requestedPage : 1,
-    search: searchValue ?? "",
-  });
+  const [locationPage, currentUser] = await Promise.all([
+    getAdminLocationPage({
+      page: Number.isFinite(requestedPage) ? requestedPage : 1,
+      search: searchValue ?? "",
+    }),
+    getCurrentUser(),
+  ]);
+  const canManage = currentUser?.role === "ADMIN" || Boolean(currentUser?.permissions.includes("MANAGE_DELIVERY"));
 
   return (
     <LocationManager
@@ -25,7 +30,8 @@ export default async function AdminLocationsPage({ searchParams }: { searchParam
       pageCount={locationPage.pageCount}
       total={locationPage.total}
       search={locationPage.search}
-      view={viewValue === "cards" ? "cards" : "list"}
+      canManage={canManage}
+      view={viewValue === "list" ? "list" : "cards"}
     />
   );
 }

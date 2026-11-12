@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { AdminPageHeading } from "../AdminShell";
 import ProductEditor from "../ProductEditor";
-import { getAdminCategories } from "../../../features/categories/queries";
+import { getProductCategoryOptions } from "../../../features/categories/queries";
+import { requirePermission } from "../../../lib/auth/permissions";
 
 export default async function AdminNewProductPage() {
-  const categories = await getAdminCategories();
+  await requirePermission("MANAGE_PRODUCTS");
+  const categories = await getProductCategoryOptions();
   return (
     <div className="Ika-product-new-page">
       <header className="Ika-product-new-head">

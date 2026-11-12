@@ -60,6 +60,7 @@ export default function LocationManager({
   pageCount,
   total,
   search,
+  canManage,
   view,
 }: {
   locations: AdminLocationRecord[];
@@ -67,6 +68,7 @@ export default function LocationManager({
   pageCount: number;
   total: number;
   search: string;
+  canManage: boolean;
   view: LocationView;
 }) {
   const router = useRouter();
@@ -93,7 +95,7 @@ export default function LocationManager({
     <section className="Ika-location-manager">
       <header className="Ika-location-page-heading">
         <div><span>DELIVERY ZONES</span><h1>Delivery locations</h1><p>Manage delivery areas, fees, and storefront status.</p></div>
-        <Link href="/admin/locations/new" className="Ika-location-add-button"><i className="fas fa-plus" aria-hidden="true" />Add location</Link>
+        {canManage && <Link href="/admin/locations/new" className="Ika-location-add-button"><i className="fas fa-plus" aria-hidden="true" />Add location</Link>}
       </header>
 
       <div className="Ika-location-toolbar">
@@ -122,12 +124,12 @@ export default function LocationManager({
           <span><i className="fas fa-map-marker-alt" aria-hidden="true" /></span>
           <h2>{search ? "No matching locations" : "No delivery locations yet"}</h2>
           <p>{search ? "Try a different location name or slug." : "Add a location to configure your delivery zones."}</p>
-          {!search && <Link href="/admin/locations/new" className="Ika-location-add-button"><i className="fas fa-plus" aria-hidden="true" />Add location</Link>}
+          {!search && canManage && <Link href="/admin/locations/new" className="Ika-location-add-button"><i className="fas fa-plus" aria-hidden="true" />Add location</Link>}
         </div>
       ) : view === "list" ? (
         <div className="Ika-location-list-scroll">
           <table className="Ika-location-list">
-            <thead><tr><th>Location</th><th>Type</th><th>Delivery fee</th><th>Used by</th><th>Status</th><th aria-label="Actions" /></tr></thead>
+            <thead><tr><th>Location</th><th>Type</th><th>Delivery fee</th><th>Used by</th><th>Status</th>{canManage && <th aria-label="Actions" />}</tr></thead>
             <tbody>{locations.map((location) => (
               <tr key={location.id}>
                 <td><div className="Ika-location-list-identity"><strong>{location.name}</strong><small>/{location.slug}</small></div></td>
@@ -135,7 +137,7 @@ export default function LocationManager({
                 <td className="Ika-location-fee">{formatFee(location.deliveryFeeMinor)}</td>
                 <td>{usedBy(location)}</td>
                 <td><span className={`Ika-location-status${location.isActive ? " is-active" : ""}`}>{location.isActive ? "Active" : "Inactive"}</span></td>
-                <td><LocationActions location={location} pending={pendingId === location.id} onDelete={() => void removeLocation(location)} /></td>
+                {canManage && <td><LocationActions location={location} pending={pendingId === location.id} onDelete={() => void removeLocation(location)} /></td>}
               </tr>
             ))}</tbody>
           </table>
@@ -148,7 +150,7 @@ export default function LocationManager({
               <h2>{location.name}</h2>
               <small>/{location.slug}</small>
               <div className="Ika-location-card-facts"><div><span>Delivery fee</span><strong>{formatFee(location.deliveryFeeMinor)}</strong></div><div><span>Used by</span><strong>{usedBy(location)}</strong></div></div>
-              <footer className="Ika-location-card-footer"><span>Order {location.sortOrder}</span><LocationActions location={location} pending={pendingId === location.id} onDelete={() => void removeLocation(location)} /></footer>
+              <footer className="Ika-location-card-footer"><span>Order {location.sortOrder}</span>{canManage && <LocationActions location={location} pending={pendingId === location.id} onDelete={() => void removeLocation(location)} />}</footer>
             </article>
           ))}
         </div>

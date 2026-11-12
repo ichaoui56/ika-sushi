@@ -58,6 +58,7 @@ export default function CategoryManager({
   pageCount,
   total,
   search,
+  canManage,
   view,
 }: {
   categories: AdminCategoryPage[];
@@ -65,6 +66,7 @@ export default function CategoryManager({
   pageCount: number;
   total: number;
   search: string;
+  canManage: boolean;
   view: CategoryView;
 }) {
   const router = useRouter();
@@ -91,7 +93,7 @@ export default function CategoryManager({
     <section className="Ika-category-manager">
       <header className="Ika-category-page-heading">
         <div><span>MENU ORGANIZATION</span><h1>Categories</h1><p>Organize your menu and control storefront visibility.</p></div>
-        <Link href="/admin/categories/new" className="Ika-category-add-button"><i className="fas fa-plus" aria-hidden="true" />Add category</Link>
+        {canManage && <Link href="/admin/categories/new" className="Ika-category-add-button"><i className="fas fa-plus" aria-hidden="true" />Add category</Link>}
       </header>
 
       <div className="Ika-category-toolbar">
@@ -124,19 +126,19 @@ export default function CategoryManager({
           <span><i className="fas fa-tags" aria-hidden="true" /></span>
           <h2>{search ? "No matching categories" : "Your categories are empty"}</h2>
           <p>{search ? "Try a different category name or slug." : "Add a category to start organizing your menu."}</p>
-          {!search && <Link href="/admin/categories/new" className="Ika-category-add-button"><i className="fas fa-plus" aria-hidden="true" />Add category</Link>}
+          {!search && canManage && <Link href="/admin/categories/new" className="Ika-category-add-button"><i className="fas fa-plus" aria-hidden="true" />Add category</Link>}
         </div>
       ) : view === "list" ? (
         <div className="Ika-category-list-scroll">
           <table className="Ika-category-list">
-            <thead><tr><th>Category</th><th>Products</th><th>Order</th><th>Status</th><th aria-label="Actions" /></tr></thead>
+            <thead><tr><th>Category</th><th>Products</th><th>Order</th><th>Status</th>{canManage && <th aria-label="Actions" />}</tr></thead>
             <tbody>{categories.map((category) => (
               <tr key={category.id}>
                 <td><div className="Ika-category-list-identity"><span><strong>{category.name}</strong><small>/{category.slug}</small></span></div></td>
                 <td>{category._count.products}</td>
                 <td>{category.sortOrder}</td>
                 <td><span className={`Ika-category-status${category.isActive ? " is-active" : ""}`}>{category.isActive ? "Active" : "Hidden"}</span></td>
-                <td><CategoryActions category={category} pending={pendingId === category.id} onDelete={() => void removeCategory(category)} /></td>
+                {canManage && <td><CategoryActions category={category} pending={pendingId === category.id} onDelete={() => void removeCategory(category)} /></td>}
               </tr>
             ))}</tbody>
           </table>
@@ -153,7 +155,7 @@ export default function CategoryManager({
                 <p>{category.description || "No description"}</p>
                 <div className="Ika-category-card-footer">
                   <span>{category._count.products} {category._count.products === 1 ? "product" : "products"} · Order {category.sortOrder}</span>
-                  <CategoryActions category={category} pending={pendingId === category.id} onDelete={() => void removeCategory(category)} />
+                  {canManage && <CategoryActions category={category} pending={pendingId === category.id} onDelete={() => void removeCategory(category)} />}
                 </div>
               </div>
             </article>

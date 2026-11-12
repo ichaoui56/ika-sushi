@@ -1,6 +1,7 @@
 import StaffManager from "../StaffManager";
 import type { StaffRole, StaffStatus } from "../staff-types";
 import { getStaffUserPage } from "../../../features/staff/queries";
+import { getCurrentUser } from "../../../lib/auth/session";
 
 interface StaffSearchParams {
   page?: string | string[];
@@ -14,10 +15,14 @@ export default async function AdminEmployeesPage({ searchParams }: { searchParam
   const viewValue = Array.isArray(params.view) ? params.view[0] : params.view;
   const searchValue = Array.isArray(params.q) ? params.q[0] : params.q;
   const requestedPage = Number.parseInt(pageValue ?? "1", 10);
-  const userPage = await getStaffUserPage({
-    page: Number.isFinite(requestedPage) ? requestedPage : 1,
-    search: searchValue ?? "",
-  });
+  const [userPage, currentUser] = await Promise.all([
+    getStaffUserPage({
+      page: Number.isFinite(requestedPage) ? requestedPage : 1,
+      search: searchValue ?? "",
+    }),
+    getCurrentUser(),
+  ]);
+  const canManage = currentUser?.role === "ADMIN" || Boolean(currentUser?.permissions.includes("MANAGE_EMPLOYEES"));
   const users = userPage.users.map(({ createdAt, permissions, _count, ...user }) => ({
     ...user,
     role: user.role as StaffRole,
@@ -34,7 +39,8 @@ export default async function AdminEmployeesPage({ searchParams }: { searchParam
       pageCount={userPage.pageCount}
       total={userPage.total}
       search={userPage.search}
-      view={viewValue === "cards" ? "cards" : "list"}
+      view={viewValue === "list" ? "list" : "cards"}
+      canManage={canManage}
     />
   );
 }

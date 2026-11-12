@@ -1,5 +1,6 @@
 import CategoryManager from "../CategoryManager";
 import { getAdminCategoryPage } from "../../../features/categories/queries";
+import { getCurrentUser } from "../../../lib/auth/session";
 
 interface CategorySearchParams {
   page?: string | string[];
@@ -13,10 +14,14 @@ export default async function AdminCategoriesPage({ searchParams }: { searchPara
   const viewValue = Array.isArray(params.view) ? params.view[0] : params.view;
   const searchValue = Array.isArray(params.q) ? params.q[0] : params.q;
   const requestedPage = Number.parseInt(pageValue ?? "1", 10);
-  const categoryPage = await getAdminCategoryPage({
-    page: Number.isFinite(requestedPage) ? requestedPage : 1,
-    search: searchValue ?? "",
-  });
+  const [categoryPage, currentUser] = await Promise.all([
+    getAdminCategoryPage({
+      page: Number.isFinite(requestedPage) ? requestedPage : 1,
+      search: searchValue ?? "",
+    }),
+    getCurrentUser(),
+  ]);
+  const canManage = currentUser?.role === "ADMIN" || Boolean(currentUser?.permissions.includes("MANAGE_CATEGORIES"));
 
   return (
     <CategoryManager
@@ -25,7 +30,8 @@ export default async function AdminCategoriesPage({ searchParams }: { searchPara
       pageCount={categoryPage.pageCount}
       total={categoryPage.total}
       search={categoryPage.search}
-      view={viewValue === "cards" ? "cards" : "list"}
+      canManage={canManage}
+      view={viewValue === "list" ? "list" : "cards"}
     />
   );
 }

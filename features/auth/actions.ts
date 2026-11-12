@@ -7,6 +7,7 @@ import { signIn, signOut } from "../../auth";
 import { prisma } from "../../lib/prisma";
 import { clearLoginAttempts, consumeLoginAttempt } from "../../lib/auth/rate-limit";
 import { hashPassword } from "../../lib/auth/password";
+import { getAuthenticatedLandingPath } from "./landing";
 import { loginSchema, normalizePhoneNumber, registerSchema } from "./schemas";
 
 export interface AuthActionState {
@@ -31,14 +32,11 @@ export async function loginAction(
     where: identifier.includes("@")
       ? { email: { equals: identifier, mode: "insensitive" } }
       : { normalizedPhone: normalizePhoneNumber(identifier) },
-    select: { role: true },
+    select: { role: true, permissions: { select: { permission: true } } },
   });
-  const redirectTo =
-    user?.role === UserRole.ADMIN || user?.role === UserRole.EMPLOYEE
-      ? "/admin/dashboard"
-      : user?.role === UserRole.DELIVERY
-        ? "/delivery"
-        : "/orders";
+  const redirectTo = user
+    ? getAuthenticatedLandingPath({ role: user.role, permissions: user.permissions.map(({ permission }) => permission) })
+    : "/orders";
 
   try {
     await signIn("credentials", {
