@@ -17,7 +17,7 @@ export default function ValidthemeShopAreaSection() {
             </div>
           </div>
         </div>
-        <div className="foodu-product-grid">
+        <div className="Ika-product-grid">
           {catalogProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

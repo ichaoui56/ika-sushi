@@ -1,6 +1,6 @@
 /* ----------------------------------
 
-Template Name: Foodu - Food & Restaurant HTML Template
+Template Name: Ika - Food & Restaurant HTML Template
 Author: validtheme
 Description:
 Version: 1.6
@@ -74,20 +74,20 @@ Sidebar heading:  22px 'Jost', sans-serif
 */
 
 :root {
-  --foodu-ink: #202b24;
-  --foodu-green: #183d2b;
-  --foodu-gold: #d6a64f;
-  --foodu-cream: #fbf8f0;
+  --Ika-ink: #202b24;
+  --Ika-green: #183d2b;
+  --Ika-gold: #d6a64f;
+  --Ika-cream: #fbf8f0;
 }
 
-.foodu-utility-bar {
-  --foodu-utility-teal: #072b31;
-  --foodu-utility-rust: #9e2400;
+.Ika-utility-bar {
+  --Ika-utility-teal: #072b31;
+  --Ika-utility-rust: #9e2400;
   color: #fff;
-  background: var(--foodu-utility-teal);
+  background: var(--Ika-utility-teal);
 }
 
-.foodu-utility-inner {
+.Ika-utility-inner {
   position: relative;
   display: flex;
   width: min(1320px, 100%);
@@ -99,18 +99,18 @@ Sidebar heading:  22px 'Jost', sans-serif
   padding: 5px 28px;
 }
 
-.foodu-utility-social,
-.foodu-utility-contact,
-.foodu-utility-contact a {
+.Ika-utility-social,
+.Ika-utility-contact,
+.Ika-utility-contact a {
   display: flex;
   align-items: center;
 }
 
-.foodu-utility-social {
+.Ika-utility-social {
   gap: 7px;
 }
 
-.foodu-utility-social a {
+.Ika-utility-social a {
   display: inline-flex;
   width: 30px;
   height: 30px;
@@ -123,20 +123,20 @@ Sidebar heading:  22px 'Jost', sans-serif
   transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
 }
 
-.foodu-utility-social a:hover,
-.foodu-utility-social a:focus-visible {
-  border-color: var(--foodu-utility-rust);
+.Ika-utility-social a:hover,
+.Ika-utility-social a:focus-visible {
+  border-color: var(--Ika-utility-rust);
   color: #fff;
-  background: var(--foodu-utility-rust);
+  background: var(--Ika-utility-rust);
 }
 
-.foodu-utility-contact {
+.Ika-utility-contact {
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 22px;
 }
 
-.foodu-utility-contact a {
+.Ika-utility-contact a {
   min-width: 0;
   gap: 8px;
   color: #fff;
@@ -144,17 +144,17 @@ Sidebar heading:  22px 'Jost', sans-serif
   line-height: 1.3;
 }
 
-.foodu-utility-contact a > i {
+.Ika-utility-contact a > i {
   flex: 0 0 auto;
   color: #e8a392;
 }
 
-.foodu-utility-contact a:hover,
-.foodu-utility-contact a:focus-visible {
+.Ika-utility-contact a:hover,
+.Ika-utility-contact a:focus-visible {
   color: #f0c2b6;
 }
 
-.foodu-utility-ticker {
+.Ika-utility-ticker {
   position: absolute;
   left: 50%;
   width: min(520px, 42%);
@@ -162,29 +162,29 @@ Sidebar heading:  22px 'Jost', sans-serif
   transform: translateX(-50%);
 }
 
-.foodu-utility-ticker .foodu-header-ticker-group {
+.Ika-utility-ticker .Ika-header-ticker-group {
   gap: 30px;
   padding: 0 16px;
 }
 
-.foodu-utility-ticker .foodu-header-ticker-item {
+.Ika-utility-ticker .Ika-header-ticker-item {
   color: rgba(255, 255, 255, 0.94);
   font-size: 10px;
 }
 
-.foodu-utility-ticker .foodu-header-ticker-item i {
+.Ika-utility-ticker .Ika-header-ticker-item i {
   color: #e8a392;
 }
 
-.foodu-utility-ticker:hover .foodu-header-ticker-track {
+.Ika-utility-ticker:hover .Ika-header-ticker-track {
   animation-play-state: paused;
 }
 
-.foodu-header-ticker {
+.Ika-header-ticker {
   display: none;
 }
 
-.foodu-utility-contact .foodu-utility-whatsapp {
+.Ika-utility-contact .Ika-utility-whatsapp {
   gap: 7px;
   padding: 6px 12px;
   border: 1px solid rgba(255, 255, 255, 0.24);
@@ -196,42 +196,42 @@ Sidebar heading:  22px 'Jost', sans-serif
   transition: background 180ms ease, transform 180ms ease;
 }
 
-.foodu-utility-contact .foodu-utility-whatsapp > i {
+.Ika-utility-contact .Ika-utility-whatsapp > i {
   color: #fff;
   font-size: 15px;
 }
 
-.foodu-utility-contact .foodu-utility-whatsapp:hover,
-.foodu-utility-contact .foodu-utility-whatsapp:focus-visible {
+.Ika-utility-contact .Ika-utility-whatsapp:hover,
+.Ika-utility-contact .Ika-utility-whatsapp:focus-visible {
   color: #fff;
   background: #117744;
   transform: translateY(-1px);
 }
 
-.foodu-header-ticker {
+.Ika-header-ticker {
   overflow: hidden;
   color: #fff;
   background: #9e2400;
 }
 
-.foodu-header-ticker-track,
-.foodu-header-ticker-group {
+.Ika-header-ticker-track,
+.Ika-header-ticker-group {
   display: flex;
   width: max-content;
   align-items: center;
 }
 
-.foodu-header-ticker-track {
-  animation: foodu-header-ticker-right 28s linear infinite;
+.Ika-header-ticker-track {
+  animation: Ika-header-ticker-right 28s linear infinite;
 }
 
-.foodu-header-ticker-group {
+.Ika-header-ticker-group {
   min-height: 32px;
   gap: 48px;
   padding: 0 24px;
 }
 
-.foodu-header-ticker-item {
+.Ika-header-ticker-item {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -242,117 +242,117 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-transform: uppercase;
 }
 
-.foodu-header-ticker-item i {
+.Ika-header-ticker-item i {
   color: #f1c4b8;
   font-size: 9px;
 }
 
-.foodu-header-ticker:hover .foodu-header-ticker-track {
+.Ika-header-ticker:hover .Ika-header-ticker-track {
   animation-play-state: paused;
 }
 
-@keyframes foodu-header-ticker-right {
+@keyframes Ika-header-ticker-right {
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
 }
 
 @media (max-width: 1199px) {
-  .foodu-utility-inner {
+  .Ika-utility-inner {
     padding-right: 19px;
     padding-left: 19px;
   }
 }
 
 @media (max-width: 767px) {
-  .foodu-utility-inner {
+  .Ika-utility-inner {
     min-height: 38px;
     gap: 12px;
     padding: 5px 16px;
   }
 
-  .foodu-utility-social {
+  .Ika-utility-social {
     gap: 5px;
   }
 
-  .foodu-utility-social a {
+  .Ika-utility-social a {
     width: 27px;
     height: 27px;
     font-size: 12px;
   }
 
-  .foodu-utility-contact {
+  .Ika-utility-contact {
     flex-wrap: nowrap;
     gap: 12px;
   }
 
-  .foodu-utility-contact a {
+  .Ika-utility-contact a {
     gap: 5px;
     font-size: 11px;
   }
 
-  .foodu-utility-ticker {
+  .Ika-utility-ticker {
     display: none;
   }
 
-  .foodu-header-ticker {
+  .Ika-header-ticker {
     display: block;
   }
 
-  .foodu-header-ticker-group {
+  .Ika-header-ticker-group {
     min-height: 29px;
     gap: 30px;
     padding: 0 16px;
   }
 
-  .foodu-header-ticker-item {
+  .Ika-header-ticker-item {
     gap: 7px;
     font-size: 10px;
   }
 }
 
 @media (max-width: 420px) {
-  .foodu-utility-inner {
+  .Ika-utility-inner {
     gap: 8px;
     padding-right: 12px;
     padding-left: 12px;
   }
 
-  .foodu-utility-contact {
+  .Ika-utility-contact {
     gap: 8px;
   }
 
-  .foodu-utility-contact a {
+  .Ika-utility-contact a {
     font-size: 10px;
   }
 
-  .foodu-utility-contact .foodu-utility-whatsapp {
+  .Ika-utility-contact .Ika-utility-whatsapp {
     gap: 5px;
     padding: 5px 8px;
     font-size: 10px;
   }
 
-  .foodu-header-ticker-group {
+  .Ika-header-ticker-group {
     gap: 24px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .foodu-header-ticker-track {
+  .Ika-header-ticker-track {
     animation: none;
     transform: none;
   }
 
-  .foodu-header-ticker-group[aria-hidden="true"] {
+  .Ika-header-ticker-group[aria-hidden="true"] {
     display: none;
   }
 }
 
-@keyframes foodu-cart-drawer-in-rtl {
+@keyframes Ika-cart-drawer-in-rtl {
   from { opacity: 0.7; transform: translateX(-24px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
-.foodu-header {
+.Ika-header {
   position: sticky;
   top: 0;
   z-index: 1001;
@@ -368,7 +368,7 @@ Sidebar heading:  22px 'Jost', sans-serif
     box-shadow 260ms ease;
 }
 
-.foodu-header.is-scrolled {
+.Ika-header.is-scrolled {
   top: 10px;
   width: 80%;
   border-radius: 10px;
@@ -378,11 +378,11 @@ Sidebar heading:  22px 'Jost', sans-serif
   -webkit-backdrop-filter: blur(10px);
 }
 
-.foodu-header.is-menu-open {
+.Ika-header.is-menu-open {
   z-index: 1004;
 }
 
-.foodu-header-inner {
+.Ika-header-inner {
   width: min(1320px, 100%);
   min-height: 84px;
   margin: 0 auto;
@@ -393,30 +393,30 @@ Sidebar heading:  22px 'Jost', sans-serif
   gap: 30px;
 }
 
-.foodu-header-primary,
-.foodu-header-controls {
+.Ika-header-primary,
+.Ika-header-controls {
   display: flex;
   align-items: center;
 }
 
-.foodu-header-primary {
+.Ika-header-primary {
   min-width: 0;
   flex: 1 1 auto;
   gap: 24px;
 }
 
-.foodu-header-controls {
+.Ika-header-controls {
   flex: 0 0 auto;
   gap: 12px;
 }
 
-.foodu-brand {
+.Ika-brand {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
 }
 
-.foodu-brand img {
+.Ika-brand img {
   display: block;
   width: auto;
   max-width: 200px;
@@ -426,57 +426,57 @@ Sidebar heading:  22px 'Jost', sans-serif
   background: transparent;
 }
 
-.foodu-desktop-nav,
-.foodu-header-actions {
+.Ika-desktop-nav,
+.Ika-header-actions {
   display: flex;
   align-items: center;
 }
 
-.foodu-desktop-nav {
+.Ika-desktop-nav {
   justify-content: center;
   gap: clamp(20px, 3vw, 46px);
   margin-left: auto;
 }
 
-.foodu-desktop-nav a {
+.Ika-desktop-nav a {
   position: relative;
   padding: 30px 0;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   font-size: 15px;
   font-weight: 600;
   transition: color 180ms ease;
 }
 
-.foodu-desktop-nav a::after {
+.Ika-desktop-nav a::after {
   position: absolute;
   right: 50%;
   bottom: 20px;
   left: 50%;
   height: 2px;
-  background: var(--foodu-gold);
+  background: var(--Ika-gold);
   content: "";
   transition: right 180ms ease, left 180ms ease;
 }
 
-.foodu-desktop-nav a:hover,
-.foodu-desktop-nav a:focus-visible,
-.foodu-desktop-nav a.is-active {
+.Ika-desktop-nav a:hover,
+.Ika-desktop-nav a:focus-visible,
+.Ika-desktop-nav a.is-active {
   font-weight: 700;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
 }
 
-.foodu-desktop-nav a:hover::after,
-.foodu-desktop-nav a:focus-visible::after,
-.foodu-desktop-nav a.is-active::after {
+.Ika-desktop-nav a:hover::after,
+.Ika-desktop-nav a:focus-visible::after,
+.Ika-desktop-nav a.is-active::after {
   right: 0;
   left: 0;
 }
 
-.foodu-header-actions {
+.Ika-header-actions {
   gap: 8px;
 }
 
-.foodu-theme-toggle {
+.Ika-theme-toggle {
   width: 42px;
   height: 42px;
   padding: 0;
@@ -485,26 +485,26 @@ Sidebar heading:  22px 'Jost', sans-serif
   justify-content: center;
   border: 1px solid rgba(24, 61, 43, 0.12);
   border-radius: 50%;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   background: #fbf8f0;
   font-size: 16px;
   cursor: pointer;
   transition: color 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
-.foodu-theme-toggle::after {
+.Ika-theme-toggle::after {
   display: none;
   content: none;
 }
 
-.foodu-theme-toggle:hover,
-.foodu-theme-toggle:focus-visible {
+.Ika-theme-toggle:hover,
+.Ika-theme-toggle:focus-visible {
   transform: translateY(-2px);
   color: #fff;
-  background: var(--foodu-green);
+  background: var(--Ika-green);
 }
 
-.foodu-icon-link {
+.Ika-icon-link {
   position: relative;
   width: 42px;
   height: 42px;
@@ -512,19 +512,19 @@ Sidebar heading:  22px 'Jost', sans-serif
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   font-size: 18px;
   transition: color 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
-.foodu-icon-link:hover,
-.foodu-icon-link:focus-visible {
+.Ika-icon-link:hover,
+.Ika-icon-link:focus-visible {
   transform: translateY(-2px);
   color: white;
-  background: var(--foodu-green);
+  background: var(--Ika-green);
 }
 
-.foodu-count-badge {
+.Ika-count-badge {
   position: absolute;
   top: -3px;
   right: -2px;
@@ -541,14 +541,14 @@ Sidebar heading:  22px 'Jost', sans-serif
   font: 700 10px/1 Arial, sans-serif;
 }
 
-.foodu-menu-toggle,
-.foodu-mobile-menu,
-.foodu-menu-scrim,
-.foodu-bottom-nav {
+.Ika-menu-toggle,
+.Ika-mobile-menu,
+.Ika-menu-scrim,
+.Ika-bottom-nav {
   display: none;
 }
 
-.foodu-store-error {
+.Ika-store-error {
   position: fixed;
   z-index: 1200;
   right: 16px;
@@ -563,7 +563,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-size: 14px;
 }
 
-.foodu-back-to-top {
+.Ika-back-to-top {
   position: fixed;
   z-index: 1000;
   right: 24px;
@@ -584,20 +584,20 @@ Sidebar heading:  22px 'Jost', sans-serif
   cursor: pointer;
 }
 
-.foodu-back-to-top:hover,
-.foodu-back-to-top:focus-visible {
+.Ika-back-to-top:hover,
+.Ika-back-to-top:focus-visible {
   transform: translateY(-3px);
   border-color: #f4c679;
   color: #183d2b;
   background: #f4c679;
 }
 
-.foodu-back-to-top:focus-visible {
+.Ika-back-to-top:focus-visible {
   outline: 3px solid rgba(197, 80, 55, 0.55);
   outline-offset: 3px;
 }
 
-.foodu-floating-whatsapp {
+.Ika-floating-whatsapp {
   position: fixed;
   z-index: 1000;
   left: 15px;
@@ -615,31 +615,31 @@ Sidebar heading:  22px 'Jost', sans-serif
   transition: background 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
-.foodu-floating-whatsapp:hover,
-.foodu-floating-whatsapp:focus-visible {
+.Ika-floating-whatsapp:hover,
+.Ika-floating-whatsapp:focus-visible {
   transform: translateY(-3px);
   color: #fff;
   background: #128c7e;
 }
 
-.foodu-floating-whatsapp:focus-visible {
+.Ika-floating-whatsapp:focus-visible {
   outline: 3px solid rgba(197, 80, 55, 0.55);
   outline-offset: 3px;
 }
 
 @media (max-width: 1199px) {
-  .foodu-back-to-top {
+  .Ika-back-to-top {
     right: 16px;
     bottom: calc(102px + env(safe-area-inset-bottom));
   }
 
-  .foodu-floating-whatsapp {
+  .Ika-floating-whatsapp {
     left: 15px;
     bottom: calc(102px + env(safe-area-inset-bottom));
   }
 }
 
-.foodu-store-loading {
+.Ika-store-loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -649,15 +649,15 @@ Sidebar heading:  22px 'Jost', sans-serif
   clip-path: inset(50%);
 }
 
-.foodu-is-wishlisted a {
+.Ika-is-wishlisted a {
   color: #c55037 !important;
 }
 
-.foodu-is-wishlisted a::before {
+.Ika-is-wishlisted a::before {
   color: #c55037 !important;
 }
 
-.foodu-card-like {
+.Ika-card-like {
   position: absolute;
   z-index: 4;
   top: 12px;
@@ -677,19 +677,19 @@ Sidebar heading:  22px 'Jost', sans-serif
   transition: color 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
-.foodu-card-like:hover,
-.foodu-card-like.foodu-is-wishlisted {
+.Ika-card-like:hover,
+.Ika-card-like.Ika-is-wishlisted {
   color: white;
   background: #c55037;
   transform: scale(1.07);
 }
 
-.product-image .onsale ~ .foodu-card-like {
+.product-image .onsale ~ .Ika-card-like {
   top: 52px;
 }
 
-.foodu-cart-page,
-.foodu-wishlist-page {
+.Ika-cart-page,
+.Ika-wishlist-page {
   min-height: 45vh;
 }
 
@@ -704,33 +704,33 @@ Sidebar heading:  22px 'Jost', sans-serif
   display: none;
 }
 
-.foodu-preloader-logo {
+.Ika-preloader-logo {
   width: 116px;
   height: 116px;
   display: block;
   border-radius: 50%;
   object-fit: contain;
-  animation: foodu-preloader-pulse 1.2s ease-in-out infinite alternate;
+  animation: Ika-preloader-pulse 1.2s ease-in-out infinite alternate;
 }
 
-@keyframes foodu-preloader-pulse {
+@keyframes Ika-preloader-pulse {
   from { transform: scale(0.96); }
   to { transform: scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .foodu-preloader-logo {
+  .Ika-preloader-logo {
     animation: none;
   }
 }
 
-.foodu-cart-page {
+.Ika-cart-page {
   padding-top: 62px;
   padding-bottom: 88px;
   background: #f3f6f3;
 }
 
-.foodu-cart-heading {
+.Ika-cart-heading {
   margin-bottom: 24px;
   display: flex;
   align-items: flex-end;
@@ -738,7 +738,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   gap: 18px;
 }
 
-.foodu-cart-eyebrow {
+.Ika-cart-eyebrow {
   display: block;
   margin-bottom: 8px;
   color: #a33c2d;
@@ -747,8 +747,8 @@ Sidebar heading:  22px 'Jost', sans-serif
   letter-spacing: 0.12em;
 }
 
-.foodu-cart-heading h2,
-.foodu-cart-summary h2 {
+.Ika-cart-heading h2,
+.Ika-cart-summary h2 {
   margin: 0;
   color: #072b31;
   font-family: Belleza, Georgia, serif;
@@ -757,7 +757,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   line-height: 1.2;
 }
 
-.foodu-cart-count {
+.Ika-cart-count {
   padding: 8px 12px;
   border: 1px solid rgba(7, 43, 49, 0.12);
   border-radius: 999px;
@@ -768,20 +768,20 @@ Sidebar heading:  22px 'Jost', sans-serif
   white-space: nowrap;
 }
 
-.foodu-cart-layout {
+.Ika-cart-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
   align-items: start;
   gap: 24px;
 }
 
-.foodu-cart-items {
+.Ika-cart-items {
   min-width: 0;
   display: grid;
   gap: 12px;
 }
 
-.foodu-cart-item {
+.Ika-cart-item {
   min-width: 0;
   padding: 16px;
   display: grid;
@@ -794,7 +794,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   box-shadow: 0 5px 18px rgba(7, 43, 49, 0.045);
 }
 
-.foodu-cart-item-image {
+.Ika-cart-item-image {
   width: 92px;
   aspect-ratio: 1;
   display: block;
@@ -803,20 +803,20 @@ Sidebar heading:  22px 'Jost', sans-serif
   background: #edf2ef;
 }
 
-.foodu-cart-item-image img {
+.Ika-cart-item-image img {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: contain;
 }
 
-.foodu-cart-item-info {
+.Ika-cart-item-info {
   min-width: 0;
 }
 
-.foodu-cart-item-info > span,
-.foodu-cart-quantity-control > span,
-.foodu-cart-item-total > span {
+.Ika-cart-item-info > span,
+.Ika-cart-quantity-control > span,
+.Ika-cart-item-total > span {
   display: block;
   color: #73827d;
   font-size: 10px;
@@ -825,7 +825,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-transform: uppercase;
 }
 
-.foodu-cart-item-info h3 {
+.Ika-cart-item-info h3 {
   margin: 5px 0 4px;
   color: #072b31;
   font-family: Belleza, Georgia, serif;
@@ -834,28 +834,28 @@ Sidebar heading:  22px 'Jost', sans-serif
   line-height: 1.25;
 }
 
-.foodu-cart-item-info h3 a {
+.Ika-cart-item-info h3 a {
   color: inherit;
   text-decoration: none;
 }
 
-.foodu-cart-item-info h3 a:hover {
+.Ika-cart-item-info h3 a:hover {
   color: #a33c2d;
 }
 
-.foodu-cart-item-info p {
+.Ika-cart-item-info p {
   margin: 0;
   color: #78837e;
   font-size: 12px;
 }
 
-.foodu-cart-quantity-block {
+.Ika-cart-quantity-block {
   display: grid;
   justify-items: start;
   gap: 7px;
 }
 
-.foodu-cart-quantity-block > span {
+.Ika-cart-quantity-block > span {
   color: #73827d;
   font-size: 10px;
   font-weight: 700;
@@ -863,7 +863,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-transform: uppercase;
 }
 
-.foodu-cart-quantity-stepper {
+.Ika-cart-quantity-stepper {
   min-height: 40px;
   display: inline-flex;
   align-items: center;
@@ -872,7 +872,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   background: #fbfcfb;
 }
 
-.foodu-cart-quantity-stepper button {
+.Ika-cart-quantity-stepper button {
   width: 38px;
   height: 38px;
   padding: 0;
@@ -887,18 +887,18 @@ Sidebar heading:  22px 'Jost', sans-serif
   transition: color 150ms ease, background 150ms ease;
 }
 
-.foodu-cart-quantity-stepper button:hover:not(:disabled),
-.foodu-cart-quantity-stepper button:focus-visible {
+.Ika-cart-quantity-stepper button:hover:not(:disabled),
+.Ika-cart-quantity-stepper button:focus-visible {
   color: #fff;
   background: #072b31;
 }
 
-.foodu-cart-quantity-stepper button:disabled {
+.Ika-cart-quantity-stepper button:disabled {
   color: #aeb8b3;
   cursor: not-allowed;
 }
 
-.foodu-cart-quantity-stepper output {
+.Ika-cart-quantity-stepper output {
   min-width: 32px;
   color: #072b31;
   font-size: 13px;
@@ -906,12 +906,12 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-align: center;
 }
 
-.foodu-cart-quantity-stepper button:focus-visible {
+.Ika-cart-quantity-stepper button:focus-visible {
   outline: 2px solid #a33c2d;
   outline-offset: 1px;
 }
 
-.foodu-cart-quantity {
+.Ika-cart-quantity {
   width: 84px;
   min-height: 38px;
   padding: 0 9px;
@@ -923,7 +923,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-size: 14px;
 }
 
-.foodu-cart-item-total {
+.Ika-cart-item-total {
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -931,13 +931,13 @@ Sidebar heading:  22px 'Jost', sans-serif
   gap: 6px;
 }
 
-.foodu-cart-item-total > strong {
+.Ika-cart-item-total > strong {
   color: #a33c2d;
   font-size: 16px;
   white-space: nowrap;
 }
 
-.foodu-cart-remove {
+.Ika-cart-remove {
   width: 32px;
   height: 32px;
   padding: 0;
@@ -953,23 +953,23 @@ Sidebar heading:  22px 'Jost', sans-serif
   transition: color 150ms ease, background 150ms ease, border-color 150ms ease;
 }
 
-.foodu-cart-remove span {
+.Ika-cart-remove span {
   display: none;
 }
 
-.foodu-cart-remove:hover,
-.foodu-cart-remove:focus-visible {
+.Ika-cart-remove:hover,
+.Ika-cart-remove:focus-visible {
   border-color: #a33c2d;
   color: #fff;
   background: #a33c2d;
 }
 
-.foodu-cart-remove:focus-visible {
+.Ika-cart-remove:focus-visible {
   outline: 3px solid rgba(163, 60, 45, 0.25);
   outline-offset: 2px;
 }
 
-.foodu-cart-continue {
+.Ika-cart-continue {
   width: fit-content;
   min-height: 42px;
   margin-top: 5px;
@@ -982,11 +982,11 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-decoration: none;
 }
 
-.foodu-cart-continue:hover {
+.Ika-cart-continue:hover {
   color: #a33c2d;
 }
 
-.foodu-cart-summary {
+.Ika-cart-summary {
   position: sticky;
   top: 108px;
   padding: 24px;
@@ -996,12 +996,12 @@ Sidebar heading:  22px 'Jost', sans-serif
   box-shadow: 0 10px 28px rgba(7, 43, 49, 0.07);
 }
 
-.foodu-cart-summary h2 {
+.Ika-cart-summary h2 {
   margin-bottom: 20px;
   font-size: 25px;
 }
 
-.foodu-cart-summary-row {
+.Ika-cart-summary-row {
   min-height: 46px;
   display: flex;
   align-items: center;
@@ -1012,19 +1012,19 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-size: 13px;
 }
 
-.foodu-cart-summary-row strong {
+.Ika-cart-summary-row strong {
   color: #072b31;
   font-size: 14px;
 }
 
-.foodu-cart-shipping > span:last-child {
+.Ika-cart-shipping > span:last-child {
   max-width: 150px;
   color: #79857f;
   font-size: 11px;
   text-align: right;
 }
 
-.foodu-cart-grand-total {
+.Ika-cart-grand-total {
   min-height: 60px;
   margin-top: 6px;
   border-bottom: 0;
@@ -1033,19 +1033,19 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-weight: 800;
 }
 
-.foodu-cart-grand-total strong:last-child {
+.Ika-cart-grand-total strong:last-child {
   color: #a33c2d;
   font-size: 20px;
 }
 
-.foodu-cart-summary-note {
+.Ika-cart-summary-note {
   margin: 0 0 18px;
   color: #7a8580;
   font-size: 11px;
   line-height: 1.5;
 }
 
-.foodu-cart-checkout {
+.Ika-cart-checkout {
   width: 100%;
   min-height: 50px;
   padding: 0 16px;
@@ -1062,14 +1062,14 @@ Sidebar heading:  22px 'Jost', sans-serif
   transition: background 160ms ease, transform 160ms ease;
 }
 
-.foodu-cart-checkout:hover,
-.foodu-cart-checkout:focus-visible {
+.Ika-cart-checkout:hover,
+.Ika-cart-checkout:focus-visible {
   transform: translateY(-1px);
   color: #fff;
   background: #0c424a;
 }
 
-.foodu-cart-secure-note {
+.Ika-cart-secure-note {
   margin-top: 14px;
   display: flex;
   align-items: center;
@@ -1079,11 +1079,11 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-size: 11px;
 }
 
-.foodu-cart-secure-note i {
+.Ika-cart-secure-note i {
   color: #a33c2d;
 }
 
-.foodu-cart-empty {
+.Ika-cart-empty {
   max-width: 620px;
   margin: 0 auto;
   padding: 58px 24px;
@@ -1093,7 +1093,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   box-shadow: 0 12px 32px rgba(7, 43, 49, 0.06);
 }
 
-.foodu-cart-empty > i {
+.Ika-cart-empty > i {
   width: 62px;
   height: 62px;
   margin-bottom: 17px;
@@ -1106,22 +1106,22 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-size: 24px;
 }
 
-.foodu-cart-empty .foodu-cart-checkout {
+.Ika-cart-empty .Ika-cart-checkout {
   width: fit-content;
   margin: 20px auto 0;
 }
 
-.foodu-checkout-page {
+.Ika-checkout-page {
   min-height: 55vh;
   padding: 52px 0 84px;
   background: #f3f6f3;
 }
 
-.foodu-checkout-heading {
+.Ika-checkout-heading {
   margin-bottom: 24px;
 }
 
-.foodu-checkout-eyebrow {
+.Ika-checkout-eyebrow {
   display: block;
   margin-bottom: 8px;
   color: #a33c2d;
@@ -1130,7 +1130,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   letter-spacing: 0.12em;
 }
 
-.foodu-checkout-heading h2 {
+.Ika-checkout-heading h2 {
   margin: 0;
   color: #072b31;
   font-family: Belleza, Georgia, serif;
@@ -1138,21 +1138,21 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-weight: 400;
 }
 
-.foodu-checkout-heading p {
+.Ika-checkout-heading p {
   margin: 8px 0 0;
   color: #65756f;
   font-size: 14px;
 }
 
-.foodu-checkout-layout {
+.Ika-checkout-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
   align-items: start;
   gap: 22px;
 }
 
-.foodu-checkout-form-panel,
-.foodu-checkout-summary {
+.Ika-checkout-form-panel,
+.Ika-checkout-summary {
   min-width: 0;
   padding: 26px;
   border: 1px solid rgba(7, 43, 49, 0.1);
@@ -1161,14 +1161,14 @@ Sidebar heading:  22px 'Jost', sans-serif
   box-shadow: 0 10px 28px rgba(7, 43, 49, 0.06);
 }
 
-.foodu-checkout-panel-heading {
+.Ika-checkout-panel-heading {
   margin-bottom: 24px;
   display: flex;
   align-items: flex-start;
   gap: 13px;
 }
 
-.foodu-checkout-step {
+.Ika-checkout-step {
   width: 34px;
   height: 34px;
   flex: 0 0 34px;
@@ -1181,8 +1181,8 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-weight: 800;
 }
 
-.foodu-checkout-panel-heading h3,
-.foodu-checkout-summary-heading h3 {
+.Ika-checkout-panel-heading h3,
+.Ika-checkout-summary-heading h3 {
   margin: 0;
   color: #072b31;
   font-family: Belleza, Georgia, serif;
@@ -1190,39 +1190,39 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-weight: 400;
 }
 
-.foodu-checkout-panel-heading p {
+.Ika-checkout-panel-heading p {
   margin: 5px 0 0;
   color: #74817b;
   font-size: 12px;
   line-height: 1.5;
 }
 
-.foodu-checkout-fields {
+.Ika-checkout-fields {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 17px 14px;
 }
 
-.foodu-checkout-field {
+.Ika-checkout-field {
   min-width: 0;
   display: grid;
   align-content: start;
   gap: 8px;
 }
 
-.foodu-checkout-location-field {
+.Ika-checkout-location-field {
   grid-column: 1 / -1;
 }
 
-.foodu-checkout-field label {
+.Ika-checkout-field label {
   color: #26454a;
   font-size: 12px;
   font-weight: 700;
 }
 
-.foodu-checkout-field input,
-.foodu-checkout-field select,
-.foodu-checkout-field textarea {
+.Ika-checkout-field input,
+.Ika-checkout-field select,
+.Ika-checkout-field textarea {
   width: 100%;
   min-width: 0;
   min-height: 48px;
@@ -1238,49 +1238,49 @@ Sidebar heading:  22px 'Jost', sans-serif
   transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
 }
 
-.foodu-checkout-field select {
+.Ika-checkout-field select {
   min-height: 50px;
   padding-inline: 13px 38px;
   cursor: pointer;
 }
 
-.foodu-checkout-field select:invalid {
+.Ika-checkout-field select:invalid {
   color: #788785;
 }
 
-.foodu-checkout-field select option {
+.Ika-checkout-field select option {
   color: #072b31;
 }
 
-.foodu-checkout-field textarea {
+.Ika-checkout-field textarea {
   min-height: 92px;
   resize: vertical;
   line-height: 1.5;
 }
 
-.foodu-checkout-field input:focus,
-.foodu-checkout-field select:focus,
-.foodu-checkout-field textarea:focus {
+.Ika-checkout-field input:focus,
+.Ika-checkout-field select:focus,
+.Ika-checkout-field textarea:focus {
   border-color: #072b31;
   background: #fff;
   box-shadow: 0 0 0 3px rgba(7, 43, 49, 0.1);
 }
 
-.foodu-checkout-field-hint {
+.Ika-checkout-field-hint {
   margin: -1px 0 0;
   color: #788785;
   font-size: 11px;
   line-height: 1.4;
 }
 
-.foodu-checkout-location-heading {
+.Ika-checkout-location-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 
-.foodu-use-location {
+.Ika-use-location {
   min-height: 34px;
   padding: 0 10px;
   display: inline-flex;
@@ -1298,26 +1298,26 @@ Sidebar heading:  22px 'Jost', sans-serif
   transition: color 150ms ease, background 150ms ease, border-color 150ms ease;
 }
 
-.foodu-use-location:hover:not(:disabled),
-.foodu-use-location:focus-visible {
+.Ika-use-location:hover:not(:disabled),
+.Ika-use-location:focus-visible {
   border-color: #072b31;
   color: #fff;
   background: #072b31;
 }
 
-.foodu-use-location:disabled {
+.Ika-use-location:disabled {
   cursor: wait;
   opacity: 0.68;
 }
 
-.foodu-checkout-location-status {
+.Ika-checkout-location-status {
   margin: 0;
   color: #526a60;
   font-size: 11px;
   line-height: 1.45;
 }
 
-.foodu-checkout-map-link {
+.Ika-checkout-map-link {
   width: fit-content;
   display: inline-flex;
   align-items: center;
@@ -1328,7 +1328,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-decoration: none;
 }
 
-.foodu-checkout-submit {
+.Ika-checkout-submit {
   width: 100%;
   min-height: 50px;
   margin-top: 21px;
@@ -1349,14 +1349,14 @@ Sidebar heading:  22px 'Jost', sans-serif
   transition: background 150ms ease, transform 150ms ease;
 }
 
-.foodu-checkout-submit:hover,
-.foodu-checkout-submit:focus-visible {
+.Ika-checkout-submit:hover,
+.Ika-checkout-submit:focus-visible {
   transform: translateY(-1px);
   color: #fff;
   background: #0c424a;
 }
 
-.foodu-checkout-notice {
+.Ika-checkout-notice {
   margin: 12px 0 0;
   padding: 10px 12px;
   border-radius: 6px;
@@ -1366,7 +1366,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   line-height: 1.5;
 }
 
-.foodu-checkout-privacy {
+.Ika-checkout-privacy {
   margin: 14px 0 0;
   display: flex;
   align-items: flex-start;
@@ -1376,17 +1376,17 @@ Sidebar heading:  22px 'Jost', sans-serif
   line-height: 1.5;
 }
 
-.foodu-checkout-privacy i {
+.Ika-checkout-privacy i {
   margin-top: 2px;
   color: #a33c2d;
 }
 
-.foodu-checkout-summary {
+.Ika-checkout-summary {
   position: sticky;
   top: 108px;
 }
 
-.foodu-checkout-summary-heading {
+.Ika-checkout-summary-heading {
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -1394,12 +1394,12 @@ Sidebar heading:  22px 'Jost', sans-serif
   gap: 12px;
 }
 
-.foodu-checkout-summary-heading .foodu-checkout-eyebrow {
+.Ika-checkout-summary-heading .Ika-checkout-eyebrow {
   margin-bottom: 5px;
   font-size: 10px;
 }
 
-.foodu-checkout-summary-heading > span {
+.Ika-checkout-summary-heading > span {
   padding: 6px 9px;
   border-radius: 999px;
   color: #49645a;
@@ -1409,12 +1409,12 @@ Sidebar heading:  22px 'Jost', sans-serif
   white-space: nowrap;
 }
 
-.foodu-checkout-order-items {
+.Ika-checkout-order-items {
   display: grid;
   gap: 12px;
 }
 
-.foodu-checkout-order-item {
+.Ika-checkout-order-item {
   min-width: 0;
   display: grid;
   grid-template-columns: 54px minmax(0, 1fr) auto;
@@ -1422,7 +1422,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   gap: 10px;
 }
 
-.foodu-checkout-order-item img {
+.Ika-checkout-order-item img {
   width: 54px;
   height: 54px;
   border-radius: 7px;
@@ -1430,7 +1430,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   background: #f0f4f1;
 }
 
-.foodu-checkout-order-item h4 {
+.Ika-checkout-order-item h4 {
   margin: 0 0 4px;
   overflow: hidden;
   color: #173a3e;
@@ -1440,24 +1440,24 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-overflow: ellipsis;
 }
 
-.foodu-checkout-order-item div > span {
+.Ika-checkout-order-item div > span {
   color: #7b8782;
   font-size: 10px;
 }
 
-.foodu-checkout-order-item > strong {
+.Ika-checkout-order-item > strong {
   color: #a33c2d;
   font-size: 12px;
   white-space: nowrap;
 }
 
-.foodu-checkout-totals {
+.Ika-checkout-totals {
   margin-top: 18px;
   padding-top: 10px;
   border-top: 1px solid #e8eeea;
 }
 
-.foodu-checkout-totals > div {
+.Ika-checkout-totals > div {
   min-height: 40px;
   display: flex;
   align-items: center;
@@ -1467,12 +1467,12 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-size: 12px;
 }
 
-.foodu-checkout-totals strong {
+.Ika-checkout-totals strong {
   color: #072b31;
   font-size: 13px;
 }
 
-.foodu-checkout-totals .foodu-checkout-total {
+.Ika-checkout-totals .Ika-checkout-total {
   min-height: 50px;
   margin-top: 4px;
   border-top: 1px solid #e8eeea;
@@ -1481,12 +1481,12 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-weight: 800;
 }
 
-.foodu-checkout-totals .foodu-checkout-total strong:last-child {
+.Ika-checkout-totals .Ika-checkout-total strong:last-child {
   color: #a33c2d;
   font-size: 19px;
 }
 
-.foodu-checkout-edit-cart {
+.Ika-checkout-edit-cart {
   margin-top: 10px;
   display: inline-flex;
   align-items: center;
@@ -1497,11 +1497,11 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-decoration: none;
 }
 
-.foodu-checkout-edit-cart:hover {
+.Ika-checkout-edit-cart:hover {
   color: #a33c2d;
 }
 
-.foodu-checkout-empty {
+.Ika-checkout-empty {
   max-width: 560px;
   margin: 24px auto;
   padding: 40px 24px;
@@ -1512,7 +1512,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-align: center;
 }
 
-.foodu-checkout-empty h2 {
+.Ika-checkout-empty h2 {
   margin: 0;
   color: #072b31;
   font-family: Belleza, Georgia, serif;
@@ -1520,13 +1520,13 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-weight: 400;
 }
 
-.foodu-checkout-empty p {
+.Ika-checkout-empty p {
   margin: 8px 0 0;
   color: #718079;
   font-size: 13px;
 }
 
-.foodu-order-success {
+.Ika-order-success {
   width: min(940px, 100%);
   margin: 12px auto;
   display: grid;
@@ -1536,14 +1536,14 @@ Sidebar heading:  22px 'Jost', sans-serif
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 16px 42px rgba(7, 43, 49, 0.09);
-  animation: foodu-checkout-success-in 520ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  animation: Ika-checkout-success-in 520ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
-.foodu-order-success-main {
+.Ika-order-success-main {
   padding: 34px;
 }
 
-.foodu-order-success-icon {
+.Ika-order-success-icon {
   width: 52px;
   height: 52px;
   margin-bottom: 20px;
@@ -1555,10 +1555,10 @@ Sidebar heading:  22px 'Jost', sans-serif
   background: #072b31;
   box-shadow: 0 8px 20px rgba(7, 43, 49, 0.16);
   font-size: 20px;
-  animation: foodu-checkout-success-mark 620ms 120ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  animation: Ika-checkout-success-mark 620ms 120ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
-.foodu-order-success-main h2 {
+.Ika-order-success-main h2 {
   margin: 0;
   color: #072b31;
   font-family: Belleza, Georgia, serif;
@@ -1567,13 +1567,13 @@ Sidebar heading:  22px 'Jost', sans-serif
   line-height: 1.15;
 }
 
-.foodu-order-success-lead {
+.Ika-order-success-lead {
   margin: 8px 0 0;
   color: #64746d;
   font-size: 14px;
 }
 
-.foodu-order-reference {
+.Ika-order-reference {
   margin: 18px 0;
   padding: 11px 13px;
   display: flex;
@@ -1587,17 +1587,17 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-size: 12px;
 }
 
-.foodu-order-reference strong {
+.Ika-order-reference strong {
   color: #072b31;
   font-size: 13px;
 }
 
-.foodu-order-success-contact {
+.Ika-order-success-contact {
   display: grid;
   gap: 5px;
 }
 
-.foodu-order-success-contact > span {
+.Ika-order-success-contact > span {
   margin-top: 8px;
   color: #74837c;
   font-size: 10px;
@@ -1605,13 +1605,13 @@ Sidebar heading:  22px 'Jost', sans-serif
   letter-spacing: 0.08em;
 }
 
-.foodu-order-success-contact > strong {
+.Ika-order-success-contact > strong {
   color: #173a3e;
   font-size: 13px;
   overflow-wrap: anywhere;
 }
 
-.foodu-order-success-contact > a {
+.Ika-order-success-contact > a {
   width: fit-content;
   margin-top: 3px;
   display: inline-flex;
@@ -1623,11 +1623,11 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-decoration: none;
 }
 
-.foodu-order-success-contact > a:hover {
+.Ika-order-success-contact > a:hover {
   text-decoration: underline;
 }
 
-.foodu-order-demo-note {
+.Ika-order-demo-note {
   margin: 20px 0 0;
   padding: 10px 12px;
   border-left: 3px solid #d6a64f;
@@ -1637,13 +1637,13 @@ Sidebar heading:  22px 'Jost', sans-serif
   line-height: 1.5;
 }
 
-.foodu-order-success-summary {
+.Ika-order-success-summary {
   padding: 30px 24px;
   border-left: 1px solid #e8eeea;
   background: #f8faf8;
 }
 
-.foodu-order-success-summary h3 {
+.Ika-order-success-summary h3 {
   margin: 0 0 16px;
   color: #072b31;
   font-family: Belleza, Georgia, serif;
@@ -1651,7 +1651,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-weight: 400;
 }
 
-.foodu-order-success-item {
+.Ika-order-success-item {
   min-width: 0;
   padding: 10px 0;
   display: grid;
@@ -1661,7 +1661,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   border-bottom: 1px solid #e5ebe7;
 }
 
-.foodu-order-success-item img {
+.Ika-order-success-item img {
   width: 46px;
   height: 46px;
   border-radius: 6px;
@@ -1669,13 +1669,13 @@ Sidebar heading:  22px 'Jost', sans-serif
   background: #edf2ef;
 }
 
-.foodu-order-success-item div {
+.Ika-order-success-item div {
   min-width: 0;
   display: grid;
   gap: 4px;
 }
 
-.foodu-order-success-item div strong {
+.Ika-order-success-item div strong {
   overflow: hidden;
   color: #173a3e;
   font-size: 12px;
@@ -1683,18 +1683,18 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-overflow: ellipsis;
 }
 
-.foodu-order-success-item div span {
+.Ika-order-success-item div span {
   color: #74817b;
   font-size: 10px;
 }
 
-.foodu-order-success-item > strong {
+.Ika-order-success-item > strong {
   color: #a33c2d;
   font-size: 12px;
   white-space: nowrap;
 }
 
-.foodu-order-success-total {
+.Ika-order-success-total {
   min-height: 54px;
   margin-bottom: 8px;
   display: flex;
@@ -1706,18 +1706,18 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-weight: 800;
 }
 
-.foodu-order-success-total.is-subtotal {
+.Ika-order-success-total.is-subtotal {
   min-height: 36px;
   margin-top: 12px;
   border-top: 1px solid #e5ebe7;
 }
 
-.foodu-order-success-total strong {
+.Ika-order-success-total strong {
   color: #a33c2d;
   font-size: 19px;
 }
 
-.foodu-order-edit {
+.Ika-order-edit {
   width: 100%;
   min-height: 40px;
   margin-top: 9px;
@@ -1731,27 +1731,27 @@ Sidebar heading:  22px 'Jost', sans-serif
   cursor: pointer;
 }
 
-.foodu-order-edit:hover,
-.foodu-order-edit:focus-visible {
+.Ika-order-edit:hover,
+.Ika-order-edit:focus-visible {
   border-color: #072b31;
   color: #fff;
   background: #072b31;
 }
 
 @media (max-width: 767px) {
-  .foodu-order-success {
+  .Ika-order-success {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .foodu-order-success-main {
+  .Ika-order-success-main {
     padding: 25px 20px;
   }
 
-  .foodu-order-success-main h2 {
+  .Ika-order-success-main h2 {
     font-size: 29px;
   }
 
-  .foodu-order-success-summary {
+  .Ika-order-success-summary {
     padding: 23px 20px;
     border-top: 1px solid #e8eeea;
     border-left: 0;
@@ -1759,50 +1759,50 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 @media (max-width: 991px) {
-  .foodu-checkout-layout {
+  .Ika-checkout-layout {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .foodu-checkout-summary {
+  .Ika-checkout-summary {
     position: static;
   }
 }
 
 @media (max-width: 575px) {
-  .foodu-checkout-page {
+  .Ika-checkout-page {
     padding: 34px 0 58px;
   }
 
-  .foodu-checkout-heading h2 {
+  .Ika-checkout-heading h2 {
     font-size: 30px;
   }
 
-  .foodu-checkout-form-panel,
-  .foodu-checkout-summary {
+  .Ika-checkout-form-panel,
+  .Ika-checkout-summary {
     padding: 19px 16px;
   }
 
-  .foodu-checkout-fields {
+  .Ika-checkout-fields {
     grid-template-columns: minmax(0, 1fr);
     gap: 15px;
   }
 
-  .foodu-checkout-location-field {
+  .Ika-checkout-location-field {
     grid-column: auto;
   }
 
-  .foodu-checkout-location-heading {
+  .Ika-checkout-location-heading {
     align-items: flex-start;
     flex-direction: column;
     gap: 8px;
   }
 
-  .foodu-checkout-order-item {
+  .Ika-checkout-order-item {
     grid-template-columns: 48px minmax(0, 1fr) auto;
     gap: 8px;
   }
 
-  .foodu-checkout-order-item img {
+  .Ika-checkout-order-item img {
     width: 48px;
     height: 48px;
   }
@@ -1817,39 +1817,39 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 @media (max-width: 991px) {
-  .foodu-cart-layout {
+  .Ika-cart-layout {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .foodu-cart-summary {
+  .Ika-cart-summary {
     position: static;
   }
 }
 
 @media (max-width: 575px) {
-  .foodu-cart-page {
+  .Ika-cart-page {
     padding: 38px 0 62px;
   }
 
-  .foodu-cart-heading {
+  .Ika-cart-heading {
     margin-bottom: 16px;
     align-items: center;
   }
 
-  .foodu-cart-heading h2 {
+  .Ika-cart-heading h2 {
     font-size: 25px;
   }
 
-  .foodu-cart-count {
+  .Ika-cart-count {
     padding: 7px 9px;
     font-size: 11px;
   }
 
-  .foodu-cart-items {
+  .Ika-cart-items {
     gap: 9px;
   }
 
-  .foodu-cart-item {
+  .Ika-cart-item {
     grid-template-columns: 68px minmax(0, 1fr) 74px;
     grid-template-areas:
       "image info total"
@@ -1859,30 +1859,30 @@ Sidebar heading:  22px 'Jost', sans-serif
     border-radius: 9px;
   }
 
-  .foodu-cart-item-image {
+  .Ika-cart-item-image {
     grid-area: image;
     width: 68px;
   }
 
-  .foodu-cart-item-info {
+  .Ika-cart-item-info {
     grid-area: info;
   }
 
-  .foodu-cart-item-info > span,
-  .foodu-cart-item-total > span {
+  .Ika-cart-item-info > span,
+  .Ika-cart-item-total > span {
     font-size: 9px;
   }
 
-  .foodu-cart-item-info h3 {
+  .Ika-cart-item-info h3 {
     margin: 3px 0;
     font-size: 15px;
   }
 
-  .foodu-cart-item-info p {
+  .Ika-cart-item-info p {
     font-size: 11px;
   }
 
-  .foodu-cart-quantity-block {
+  .Ika-cart-quantity-block {
     grid-area: quantity;
     display: grid;
     grid-template-columns: auto auto;
@@ -1891,67 +1891,67 @@ Sidebar heading:  22px 'Jost', sans-serif
     gap: 8px;
   }
 
-  .foodu-cart-quantity-block > span {
+  .Ika-cart-quantity-block > span {
     font-size: 9px;
   }
 
-  .foodu-cart-quantity-stepper {
+  .Ika-cart-quantity-stepper {
     min-height: 36px;
   }
 
-  .foodu-cart-quantity-stepper button {
+  .Ika-cart-quantity-stepper button {
     width: 34px;
     height: 34px;
   }
 
-  .foodu-cart-quantity-stepper output {
+  .Ika-cart-quantity-stepper output {
     min-width: 24px;
   }
 
-  .foodu-cart-item-total {
+  .Ika-cart-item-total {
     grid-area: total;
     align-self: stretch;
     justify-content: space-between;
   }
 
-  .foodu-cart-item-total > strong {
+  .Ika-cart-item-total > strong {
     font-size: 13px;
   }
 
-  .foodu-cart-remove {
+  .Ika-cart-remove {
     width: 32px;
     height: 32px;
     align-self: flex-end;
   }
 
-  .foodu-cart-remove span {
+  .Ika-cart-remove span {
     display: none;
   }
 
-  .foodu-cart-summary {
+  .Ika-cart-summary {
     padding: 19px 16px;
   }
 
-  .foodu-cart-summary h2 {
+  .Ika-cart-summary h2 {
     font-size: 23px;
   }
 
-  .foodu-cart-empty {
+  .Ika-cart-empty {
     padding: 42px 18px;
   }
 
-  .foodu-cart-empty h2 {
+  .Ika-cart-empty h2 {
     font-size: 22px;
   }
 }
 
-.foodu-cart-drawer-layer {
+.Ika-cart-drawer-layer {
   position: fixed;
   z-index: 1300;
   inset: 0;
 }
 
-.foodu-cart-drawer-scrim {
+.Ika-cart-drawer-scrim {
   position: absolute;
   z-index: 0;
   inset: 0;
@@ -1962,15 +1962,15 @@ Sidebar heading:  22px 'Jost', sans-serif
   border-radius: 0;
   background: rgba(13, 25, 18, 0.48);
   cursor: default;
-  animation: foodu-cart-scrim-in 180ms ease both;
+  animation: Ika-cart-scrim-in 180ms ease both;
 }
 
-.foodu-cart-drawer-scrim::after {
+.Ika-cart-drawer-scrim::after {
   display: none;
   content: none;
 }
 
-.foodu-cart-drawer {
+.Ika-cart-drawer {
   position: absolute;
   z-index: 1;
   inset-block: 0;
@@ -1980,13 +1980,13 @@ Sidebar heading:  22px 'Jost', sans-serif
   padding: 30px;
   display: flex;
   flex-direction: column;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   background: #fff;
   box-shadow: 0 0 45px rgba(10, 25, 16, 0.2);
-  animation: foodu-cart-drawer-in 280ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  animation: Ika-cart-drawer-in 280ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
-.foodu-cart-drawer-header {
+.Ika-cart-drawer-header {
   padding-bottom: 23px;
   display: flex;
   align-items: flex-start;
@@ -1995,7 +1995,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   border-bottom: 1px solid #eeeae2;
 }
 
-.foodu-cart-drawer-eyebrow {
+.Ika-cart-drawer-eyebrow {
   color: #a4762d;
   font-size: 11px;
   font-weight: 800;
@@ -2003,20 +2003,20 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-transform: uppercase;
 }
 
-.foodu-cart-drawer-header h2 {
+.Ika-cart-drawer-header h2 {
   margin: 6px 0;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   font-size: 27px;
 }
 
-.foodu-cart-drawer-header p {
+.Ika-cart-drawer-header p {
   margin: 0;
   color: #777d75;
   font-size: 13px;
 }
 
-.foodu-cart-drawer-close,
-.foodu-cart-drawer-remove {
+.Ika-cart-drawer-close,
+.Ika-cart-drawer-remove {
   position: relative;
   width: 40px;
   height: 40px;
@@ -2027,29 +2027,29 @@ Sidebar heading:  22px 'Jost', sans-serif
   justify-content: center;
   border: 1px solid #eeece6;
   border-radius: 50%;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   background: #f8f7f3;
   cursor: pointer;
 }
 
-.foodu-cart-drawer-close::after,
-.foodu-cart-drawer-remove::after {
+.Ika-cart-drawer-close::after,
+.Ika-cart-drawer-remove::after {
   display: none;
   content: none;
 }
 
-.foodu-cart-drawer-close:hover,
-.foodu-cart-drawer-remove:hover {
-  color: var(--foodu-green);
+.Ika-cart-drawer-close:hover,
+.Ika-cart-drawer-remove:hover {
+  color: var(--Ika-green);
   background: #eaf0eb;
 }
 
-.foodu-cart-drawer-items {
+.Ika-cart-drawer-items {
   flex: 1;
   overflow-y: auto;
 }
 
-.foodu-cart-drawer-empty {
+.Ika-cart-drawer-empty {
   margin: 28px 0;
   padding: 22px;
   border-radius: 14px;
@@ -2058,7 +2058,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-align: center;
 }
 
-.foodu-cart-drawer-item {
+.Ika-cart-drawer-item {
   padding: 20px 0;
   display: flex;
   align-items: center;
@@ -2066,7 +2066,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   border-bottom: 1px solid #f0eee8;
 }
 
-.foodu-cart-drawer-item > img {
+.Ika-cart-drawer-item > img {
   width: 82px;
   height: 82px;
   flex: 0 0 82px;
@@ -2075,40 +2075,40 @@ Sidebar heading:  22px 'Jost', sans-serif
   object-fit: cover;
 }
 
-.foodu-cart-drawer-item-info {
+.Ika-cart-drawer-item-info {
   min-width: 0;
   flex: 1;
 }
 
-.foodu-cart-drawer-item-info h3 {
+.Ika-cart-drawer-item-info h3 {
   overflow: hidden;
   margin: 0 0 5px;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   font-size: 15px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.foodu-cart-drawer-item-info p {
+.Ika-cart-drawer-item-info p {
   margin: 0 0 7px;
   color: #777d75;
   font-size: 12px;
 }
 
-.foodu-cart-drawer-item-meta {
+.Ika-cart-drawer-item-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
 }
 
-.foodu-cart-quantity-control {
+.Ika-cart-quantity-control {
   display: flex;
   align-items: center;
   gap: 7px;
 }
 
-.foodu-cart-quantity-control button {
+.Ika-cart-quantity-control button {
   position: relative;
   width: 27px;
   height: 27px;
@@ -2118,42 +2118,42 @@ Sidebar heading:  22px 'Jost', sans-serif
   justify-content: center;
   border: 1px solid #e6e9e4;
   border-radius: 50%;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   background: #f7f8f5;
   font-size: 10px;
   cursor: pointer;
 }
 
-.foodu-cart-quantity-control button::after {
+.Ika-cart-quantity-control button::after {
   display: none;
   content: none;
 }
 
-.foodu-cart-quantity-control button:hover:not(:disabled) {
+.Ika-cart-quantity-control button:hover:not(:disabled) {
   color: #fff;
-  background: var(--foodu-green);
+  background: var(--Ika-green);
 }
 
-.foodu-cart-quantity-control button:disabled {
+.Ika-cart-quantity-control button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
 
-.foodu-cart-quantity-control > span {
+.Ika-cart-quantity-control > span {
   min-width: 16px;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   font-size: 13px;
   font-weight: 700;
   text-align: center;
 }
 
-.foodu-cart-drawer-item-info strong {
+.Ika-cart-drawer-item-info strong {
   flex: 0 0 auto;
   color: #a33c2d;
   font-size: 14px;
 }
 
-.foodu-cart-drawer-remove {
+.Ika-cart-drawer-remove {
   width: 34px;
   height: 34px;
   flex-basis: 34px;
@@ -2161,26 +2161,26 @@ Sidebar heading:  22px 'Jost', sans-serif
   background: #fff;
 }
 
-.foodu-cart-drawer-footer {
+.Ika-cart-drawer-footer {
   padding-top: 20px;
   border-top: 1px solid #eeeae2;
 }
 
-.foodu-cart-drawer-subtotal {
+.Ika-cart-drawer-subtotal {
   margin-bottom: 17px;
   display: flex;
   justify-content: space-between;
   gap: 15px;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   font-size: 15px;
 }
 
-.foodu-cart-drawer-subtotal strong {
-  color: var(--foodu-green);
+.Ika-cart-drawer-subtotal strong {
+  color: var(--Ika-green);
   font-size: 18px;
 }
 
-.foodu-cart-drawer-action {
+.Ika-cart-drawer-action {
   min-height: 49px;
   margin-top: 10px;
   padding: 0 18px;
@@ -2188,84 +2188,84 @@ Sidebar heading:  22px 'Jost', sans-serif
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border: 1px solid var(--foodu-green);
+  border: 1px solid var(--Ika-green);
   border-radius: 12px;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   font-size: 14px;
   font-weight: 700;
   transition: color 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
-.foodu-cart-drawer-action:hover,
-.foodu-cart-drawer-action:focus-visible {
+.Ika-cart-drawer-action:hover,
+.Ika-cart-drawer-action:focus-visible {
   transform: translateY(-1px);
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   background: #edf2ed;
 }
 
-.foodu-cart-drawer-checkout {
-  border-color: var(--foodu-green);
+.Ika-cart-drawer-checkout {
+  border-color: var(--Ika-green);
   color: #fff;
-  background: var(--foodu-green);
+  background: var(--Ika-green);
 }
 
-.foodu-cart-drawer-checkout:hover,
-.foodu-cart-drawer-checkout:focus-visible {
+.Ika-cart-drawer-checkout:hover,
+.Ika-cart-drawer-checkout:focus-visible {
   color: #fff;
   background: #24573a;
 }
 
-[dir="rtl"] .foodu-cart-drawer-checkout > i {
+[dir="rtl"] .Ika-cart-drawer-checkout > i {
   transform: rotate(180deg);
 }
 
-@keyframes foodu-cart-scrim-in {
+@keyframes Ika-cart-scrim-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@keyframes foodu-cart-drawer-in {
+@keyframes Ika-cart-drawer-in {
   from { opacity: 0.7; transform: translateX(24px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
-.foodu-cart-row-image {
+.Ika-cart-row-image {
   width: 76px;
   height: 76px;
   border-radius: 12px;
   object-fit: cover;
 }
 
-.foodu-cart-remove,
-.foodu-wishlist-remove {
+.Ika-cart-remove,
+.Ika-wishlist-remove {
   border: 0;
   color: #a33c2d;
   background: transparent;
   cursor: pointer;
 }
 
-.foodu-cart-quantity {
+.Ika-cart-quantity {
   width: 76px;
   padding: 8px;
   border: 1px solid #dedbd2;
   border-radius: 8px;
 }
 
-.foodu-empty-state {
+.Ika-empty-state {
   padding: 48px 20px;
   border: 1px solid rgba(24, 61, 43, 0.1);
   border-radius: 18px;
-  background: var(--foodu-cream);
+  background: var(--Ika-cream);
   text-align: center;
 }
 
-.foodu-wishlist-grid {
+.Ika-wishlist-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 22px;
 }
 
-.foodu-wishlist-card {
+.Ika-wishlist-card {
   overflow: hidden;
   border: 1px solid rgba(24, 61, 43, 0.1);
   border-radius: 16px;
@@ -2273,31 +2273,31 @@ Sidebar heading:  22px 'Jost', sans-serif
   box-shadow: 0 12px 35px rgba(24, 61, 43, 0.06);
 }
 
-.foodu-wishlist-card img {
+.Ika-wishlist-card img {
   width: 100%;
   aspect-ratio: 1.2;
   object-fit: cover;
 }
 
-.foodu-wishlist-card-content {
+.Ika-wishlist-card-content {
   padding: 18px;
 }
 
-.foodu-wishlist-card-content h3 {
+.Ika-wishlist-card-content h3 {
   margin: 0 0 8px;
   font-size: 20px;
 }
 
-.foodu-wishlist-card-content button {
+.Ika-wishlist-card-content button {
   margin: 8px 12px 0 0;
 }
 
 @media (max-width: 1199px) {
-  body.foodu-menu-open {
+  body.Ika-menu-open {
     overflow: hidden;
   }
 
-  .foodu-header.is-scrolled {
+  .Ika-header.is-scrolled {
     top: 0;
     width: 100%;
     border-radius: 0;
@@ -2311,62 +2311,62 @@ Sidebar heading:  22px 'Jost', sans-serif
     padding-bottom: calc(78px + env(safe-area-inset-bottom));
   }
 
-  .foodu-header-inner {
+  .Ika-header-inner {
     min-height: 70px;
     padding: 0 19px;
     justify-content: space-between;
     gap: 12px;
   }
 
-  .foodu-header-primary {
+  .Ika-header-primary {
     flex: 0 1 auto;
     gap: 0;
   }
 
-  .foodu-header-controls {
+  .Ika-header-controls {
     margin-left: auto;
     gap: 8px;
   }
 
-  .foodu-brand img {
+  .Ika-brand img {
     max-width: 136px;
     max-height: 49px;
   }
 
-  .foodu-desktop-nav {
+  .Ika-desktop-nav {
     display: none;
   }
 
-  .foodu-header-actions {
+  .Ika-header-actions {
     margin: 0;
     gap: 6px;
   }
 
-  .foodu-header-actions .foodu-icon-link {
+  .Ika-header-actions .Ika-icon-link {
     width: 38px;
     height: 38px;
     font-size: 16px;
   }
 
-  .foodu-header-actions .foodu-theme-toggle {
+  .Ika-header-actions .Ika-theme-toggle {
     width: 38px;
     height: 38px;
     font-size: 15px;
   }
 
-  .foodu-header-actions > .foodu-icon-link:not(.foodu-desktop-cart) {
+  .Ika-header-actions > .Ika-icon-link:not(.Ika-desktop-cart) {
     display: none;
   }
 
-  .foodu-header-actions > .foodu-icon-link.foodu-header-wishlist {
+  .Ika-header-actions > .Ika-icon-link.Ika-header-wishlist {
     display: inline-flex;
   }
 
-  .foodu-header-actions .foodu-language-switcher {
+  .Ika-header-actions .Ika-language-switcher {
     display: inline-flex;
   }
 
-  .foodu-desktop-cart {
+  .Ika-desktop-cart {
     display: inline-flex;
   }
 
@@ -2380,7 +2380,7 @@ Sidebar heading:  22px 'Jost', sans-serif
     display: none;
   }
 
-  .foodu-menu-toggle {
+  .Ika-menu-toggle {
     position: relative;
     z-index: 1004;
     width: 46px;
@@ -2393,12 +2393,12 @@ Sidebar heading:  22px 'Jost', sans-serif
     gap: 5px;
     border: 1px solid rgba(24, 61, 43, 0.12);
     border-radius: 50%;
-    color: var(--foodu-green);
+    color: var(--Ika-green);
     background: white;
     cursor: pointer;
   }
 
-  .foodu-menu-toggle span {
+  .Ika-menu-toggle span {
     width: 19px;
     height: 2px;
     border-radius: 3px;
@@ -2406,40 +2406,40 @@ Sidebar heading:  22px 'Jost', sans-serif
     transition: transform 260ms ease, opacity 180ms ease;
   }
 
-  .foodu-menu-toggle.is-open span:first-child {
+  .Ika-menu-toggle.is-open span:first-child {
     transform: translateY(7px) rotate(45deg);
   }
 
-  .foodu-menu-toggle.is-open span:nth-child(2) {
+  .Ika-menu-toggle.is-open span:nth-child(2) {
     opacity: 0;
   }
 
-  .foodu-menu-toggle.is-open span:last-child {
+  .Ika-menu-toggle.is-open span:last-child {
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  .foodu-header.is-menu-open {
+  .Ika-header.is-menu-open {
     background: transparent;
     box-shadow: none;
   }
 
-  .foodu-header.is-menu-open .foodu-header-inner {
+  .Ika-header.is-menu-open .Ika-header-inner {
     justify-content: flex-end;
   }
 
-  .foodu-header.is-menu-open .foodu-brand,
-  .foodu-header.is-menu-open .foodu-desktop-nav,
-  .foodu-header.is-menu-open .foodu-header-actions {
+  .Ika-header.is-menu-open .Ika-brand,
+  .Ika-header.is-menu-open .Ika-desktop-nav,
+  .Ika-header.is-menu-open .Ika-header-actions {
     display: none;
   }
 
-  .foodu-header.is-menu-open .foodu-menu-toggle {
+  .Ika-header.is-menu-open .Ika-menu-toggle {
     color: #072b31;
     background: #fff;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
   }
 
-  .foodu-mobile-menu {
+  .Ika-mobile-menu {
     position: fixed;
     z-index: 1003;
     inset: 0;
@@ -2461,21 +2461,21 @@ Sidebar heading:  22px 'Jost', sans-serif
     visibility: hidden;
   }
 
-  .foodu-mobile-menu.is-open {
+  .Ika-mobile-menu.is-open {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0) scale(1);
     visibility: visible;
   }
 
-  .foodu-mobile-menu-top {
+  .Ika-mobile-menu-top {
     margin: 0 0 20px;
     display: flex;
     flex-direction: column;
     gap: 6px;
   }
 
-  .foodu-mobile-eyebrow {
+  .Ika-mobile-eyebrow {
     align-self: flex-start;
     padding: 5px 9px;
     border-radius: 999px;
@@ -2486,18 +2486,18 @@ Sidebar heading:  22px 'Jost', sans-serif
     text-transform: uppercase;
   }
 
-  .foodu-mobile-mark {
+  .Ika-mobile-mark {
     color: white;
     font-family: Georgia, serif;
     font-size: 34px;
     letter-spacing: 0.1em;
   }
 
-  .foodu-mobile-menu nav {
+  .Ika-mobile-menu nav {
     border-top: 1px solid rgba(255, 255, 255, 0.17);
   }
 
-  .foodu-mobile-menu nav > a {
+  .Ika-mobile-menu nav > a {
     min-height: 61px;
     display: grid;
     grid-template-columns: 36px 1fr 20px;
@@ -2512,43 +2512,43 @@ Sidebar heading:  22px 'Jost', sans-serif
     transition-delay: calc(var(--menu-index, 0) * 45ms);
   }
 
-  .foodu-mobile-menu.is-open nav > a {
+  .Ika-mobile-menu.is-open nav > a {
     opacity: 1;
     transform: translateX(0);
   }
 
-  .foodu-mobile-menu nav > a:hover {
+  .Ika-mobile-menu nav > a:hover {
     color: #fff;
     background: rgba(158, 36, 0, 0.2);
   }
 
-  .foodu-mobile-menu nav > a.is-active {
+  .Ika-mobile-menu nav > a.is-active {
     color: #f4c679;
     background: rgba(158, 36, 0, 0.12);
   }
 
-  .foodu-mobile-menu nav > a.is-active .foodu-mobile-link-number {
+  .Ika-mobile-menu nav > a.is-active .Ika-mobile-link-number {
     color: #fff;
   }
 
-  .foodu-mobile-link-number {
+  .Ika-mobile-link-number {
     color: #e8a392;
     font: 600 11px/1 Arial, sans-serif;
     letter-spacing: 0.1em;
   }
 
-  .foodu-mobile-menu nav > a i {
+  .Ika-mobile-menu nav > a i {
     font-size: 13px;
   }
 
-  .foodu-mobile-shortcuts {
+  .Ika-mobile-shortcuts {
     margin-top: 25px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
   }
 
-  .foodu-mobile-shortcuts a {
+  .Ika-mobile-shortcuts a {
     position: relative;
     min-height: 43px;
     padding: 0 13px;
@@ -2561,21 +2561,21 @@ Sidebar heading:  22px 'Jost', sans-serif
     font-size: 13px;
   }
 
-  .foodu-mobile-shortcuts .foodu-count-badge {
+  .Ika-mobile-shortcuts .Ika-count-badge {
     position: static;
     margin-left: -5px;
     border-color: #072b31;
     background: #9e2400;
   }
 
-  .foodu-mobile-tagline {
+  .Ika-mobile-tagline {
     margin: 25px 0 0;
     color: rgba(255, 255, 255, 0.72);
     font-size: 13px;
     letter-spacing: 0.05em;
   }
 
-  .foodu-menu-scrim {
+  .Ika-menu-scrim {
     position: fixed;
     z-index: 1002;
     inset: 0;
@@ -2584,7 +2584,7 @@ Sidebar heading:  22px 'Jost', sans-serif
     background: rgba(8, 19, 13, 0.42);
   }
 
-  .foodu-bottom-nav {
+  .Ika-bottom-nav {
     position: fixed;
     z-index: 999;
     right: 10px;
@@ -2606,7 +2606,7 @@ Sidebar heading:  22px 'Jost', sans-serif
     -webkit-backdrop-filter: blur(18px);
   }
 
-  .foodu-bottom-nav > a {
+  .Ika-bottom-nav > a {
     position: relative;
     flex: 1 1 20%;
     min-width: 0;
@@ -2624,26 +2624,26 @@ Sidebar heading:  22px 'Jost', sans-serif
     transition: color 180ms ease, background 180ms ease, transform 180ms ease;
   }
 
-  .foodu-bottom-nav > a.is-active {
-    color: var(--foodu-green);
+  .Ika-bottom-nav > a.is-active {
+    color: var(--Ika-green);
     background: rgba(24, 61, 43, 0.1);
   }
 
-  .foodu-bottom-nav > a:not(.foodu-bottom-cart).is-active > i {
+  .Ika-bottom-nav > a:not(.Ika-bottom-cart).is-active > i {
     color: #a33c2d;
   }
 
-  .foodu-bottom-nav > a > i {
+  .Ika-bottom-nav > a > i {
     font-size: 17px;
   }
 
-  .foodu-bottom-nav > .foodu-bottom-cart {
+  .Ika-bottom-nav > .Ika-bottom-cart {
     min-height: 62px;
     justify-content: center;
-    color: var(--foodu-green);
+    color: var(--Ika-green);
   }
 
-  .foodu-bottom-nav > .foodu-bottom-cart > i {
+  .Ika-bottom-nav > .Ika-bottom-cart > i {
     position: absolute;
     top: -19px;
     left: 50%;
@@ -2661,27 +2661,27 @@ Sidebar heading:  22px 'Jost', sans-serif
     transform: translateX(-50%);
   }
 
-  .foodu-bottom-nav > .foodu-bottom-cart.is-active {
+  .Ika-bottom-nav > .Ika-bottom-cart.is-active {
     background: rgba(24, 61, 43, 0.1);
   }
 
-  .foodu-bottom-cart .foodu-count-badge {
+  .Ika-bottom-cart .Ika-count-badge {
     z-index: 1;
     top: 0;
     right: calc(50% - 32px);
     border-color: rgba(255, 255, 255, 0.96);
   }
 
-  .foodu-bottom-nav > .foodu-bottom-cart > span:last-child {
+  .Ika-bottom-nav > .Ika-bottom-cart > span:last-child {
     margin-top: 27px;
     margin-bottom: 0;
   }
 
-  .foodu-bottom-nav > .foodu-bottom-cart > .foodu-count-badge + span {
+  .Ika-bottom-nav > .Ika-bottom-cart > .Ika-count-badge + span {
     margin-top: 27px;
   }
 
-  .foodu-store-error {
+  .Ika-store-error {
     right: 12px;
     bottom: calc(106px + env(safe-area-inset-bottom));
     left: 12px;
@@ -2690,36 +2690,36 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 @media (max-width: 400px) {
-  [dir="rtl"] .foodu-header-actions {
+  [dir="rtl"] .Ika-header-actions {
     margin: 0;
   }
 
-  .foodu-header-inner {
+  .Ika-header-inner {
     padding: 0 13px;
   }
 
-  .foodu-brand img {
+  .Ika-brand img {
     max-width: 112px;
   }
 
-  .foodu-header-actions {
+  .Ika-header-actions {
     gap: 0;
   }
 
-  .foodu-header-controls {
+  .Ika-header-controls {
     gap: 5px;
   }
 
-  .foodu-header-actions .foodu-icon-link {
+  .Ika-header-actions .Ika-icon-link {
     width: 34px;
   }
 
-  .foodu-header-actions .foodu-theme-toggle {
+  .Ika-header-actions .Ika-theme-toggle {
     width: 34px;
     height: 34px;
   }
 
-  .foodu-menu-toggle {
+  .Ika-menu-toggle {
     width: 42px;
     height: 42px;
   }
@@ -2727,21 +2727,21 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .foodu-menu-toggle span,
-  .foodu-mobile-menu,
-  .foodu-mobile-menu nav > a,
-  .foodu-desktop-nav a,
-  .foodu-desktop-nav a::after {
+  .Ika-menu-toggle span,
+  .Ika-mobile-menu,
+  .Ika-mobile-menu nav > a,
+  .Ika-desktop-nav a,
+  .Ika-desktop-nav a::after {
     transition-duration: 0.01ms !important;
   }
 }
 
-.foodu-language-switcher {
+.Ika-language-switcher {
   position: relative;
   display: inline-flex;
 }
 
-.foodu-language-trigger {
+.Ika-language-trigger {
   min-width: 58px;
   min-height: 40px;
   padding: 0 5px;
@@ -2753,7 +2753,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   gap: 7px;
   border: 1px solid rgba(24, 61, 43, 0.12);
   border-radius: 999px;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   background: linear-gradient(135deg, #fff 0%, #fbf8f0 100%);
   box-shadow: 0 5px 16px rgba(24, 61, 43, 0.08);
   font: inherit;
@@ -2761,43 +2761,43 @@ Sidebar heading:  22px 'Jost', sans-serif
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
-.foodu-language-trigger:hover,
-.foodu-language-trigger:focus-visible,
-.foodu-language-trigger[aria-expanded="true"] {
+.Ika-language-trigger:hover,
+.Ika-language-trigger:focus-visible,
+.Ika-language-trigger[aria-expanded="true"] {
   transform: translateY(-1px);
   border-color: rgba(214, 166, 79, 0.65);
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   background: linear-gradient(135deg, #fff 0%, #fbf8f0 100%);
   box-shadow: 0 8px 20px rgba(24, 61, 43, 0.13);
 }
 
-.foodu-language-trigger::after,
-.foodu-language-option::after {
+.Ika-language-trigger::after,
+.Ika-language-option::after {
   display: none;
   content: none;
 }
 
-.foodu-language-flag {
+.Ika-language-flag {
   font-size: 17px;
   line-height: 1;
 }
 
-.foodu-language-current {
+.Ika-language-current {
   display: none;
 }
 
-.foodu-language-chevron {
+.Ika-language-chevron {
   color: rgba(24, 61, 43, 0.65);
   font-size: 10px;
   pointer-events: none;
   transition: transform 180ms ease;
 }
 
-.foodu-language-chevron.is-open {
+.Ika-language-chevron.is-open {
   transform: rotate(180deg);
 }
 
-.foodu-language-menu {
+.Ika-language-menu {
   position: absolute;
   z-index: 1100;
   top: calc(100% + 9px);
@@ -2808,10 +2808,10 @@ Sidebar heading:  22px 'Jost', sans-serif
   border-radius: 15px;
   background: #fff;
   box-shadow: 0 16px 36px rgba(24, 43, 32, 0.18);
-  animation: foodu-language-menu-in 160ms ease-out;
+  animation: Ika-language-menu-in 160ms ease-out;
 }
 
-.foodu-language-option {
+.Ika-language-option {
   width: 100%;
   min-height: 46px;
   padding: 0 12px;
@@ -2820,7 +2820,7 @@ Sidebar heading:  22px 'Jost', sans-serif
   gap: 11px;
   border: 0;
   border-radius: 10px;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   background: transparent;
   font: inherit;
   font-size: 14px;
@@ -2829,38 +2829,38 @@ Sidebar heading:  22px 'Jost', sans-serif
   transition: color 160ms ease, background 160ms ease;
 }
 
-.foodu-language-option:hover,
-.foodu-language-option:focus-visible {
+.Ika-language-option:hover,
+.Ika-language-option:focus-visible {
   outline: 0;
-  color: var(--foodu-green);
-  background: var(--foodu-cream);
+  color: var(--Ika-green);
+  background: var(--Ika-cream);
 }
 
-.foodu-language-option.is-selected {
-  color: var(--foodu-green);
+.Ika-language-option.is-selected {
+  color: var(--Ika-green);
   background: rgba(214, 166, 79, 0.12);
   font-weight: 700;
 }
 
-.foodu-language-option-flag {
+.Ika-language-option-flag {
   font-size: 19px;
   line-height: 1;
 }
 
-.foodu-language-option-name {
+.Ika-language-option-name {
   flex: 1;
 }
 
-.foodu-language-option[lang="ar"] .foodu-language-option-name {
+.Ika-language-option[lang="ar"] .Ika-language-option-name {
   text-align: right;
 }
 
-.foodu-language-option-check {
-  color: var(--foodu-gold);
+.Ika-language-option-check {
+  color: var(--Ika-gold);
   font-size: 12px;
 }
 
-@keyframes foodu-language-menu-in {
+@keyframes Ika-language-menu-in {
   from {
     opacity: 0;
     transform: translateY(-4px);
@@ -2871,22 +2871,22 @@ Sidebar heading:  22px 'Jost', sans-serif
   }
 }
 
-.foodu-mobile-language {
+.Ika-mobile-language {
   display: flex;
   justify-content: center;
   margin-top: 24px;
 }
 
-.foodu-mobile-language .foodu-language-switcher {
+.Ika-mobile-language .Ika-language-switcher {
   width: min(100%, 240px);
 }
 
-.foodu-mobile-language .foodu-language-trigger {
+.Ika-mobile-language .Ika-language-trigger {
   width: 100%;
   justify-content: center;
 }
 
-.foodu-mobile-language .foodu-language-menu {
+.Ika-mobile-language .Ika-language-menu {
   right: 0;
   left: 0;
 }
@@ -2896,27 +2896,27 @@ Sidebar heading:  22px 'Jost', sans-serif
   text-align: right;
 }
 
-[dir="rtl"] .foodu-desktop-nav,
-[dir="rtl"] .foodu-header-actions,
-[dir="rtl"] .foodu-mobile-shortcuts,
-[dir="rtl"] .foodu-bottom-nav {
+[dir="rtl"] .Ika-desktop-nav,
+[dir="rtl"] .Ika-header-actions,
+[dir="rtl"] .Ika-mobile-shortcuts,
+[dir="rtl"] .Ika-bottom-nav {
   direction: rtl;
 }
 
-[dir="rtl"] .foodu-mobile-menu nav a {
+[dir="rtl"] .Ika-mobile-menu nav a {
   flex-direction: row-reverse;
 }
 
-[dir="rtl"] .foodu-mobile-menu nav a > i {
+[dir="rtl"] .Ika-mobile-menu nav a > i {
   transform: rotate(180deg);
 }
 
-[dir="rtl"] .foodu-product-footer,
-[dir="rtl"] .foodu-product-tools {
+[dir="rtl"] .Ika-product-footer,
+[dir="rtl"] .Ika-product-tools {
   direction: rtl;
 }
 
-[dir="rtl"] .foodu-language-menu {
+[dir="rtl"] .Ika-language-menu {
   right: auto;
   left: 0;
 }
@@ -3492,32 +3492,32 @@ html[lang="ar"] h6 {
   .ika-hero-petal-three { top: 11%; right: 12%; }
   .ika-hero-petal-four { right: 5%; bottom: 22%; }
 
-  .foodu-top-picks {
+  .Ika-top-picks {
     padding: 54px 0 68px !important;
   }
 
-  .foodu-top-picks .foodu-picks-heading {
+  .Ika-top-picks .Ika-picks-heading {
     align-items: center;
     gap: 12px;
     text-align: center;
   }
 
-  .foodu-picks-heading h4 {
+  .Ika-picks-heading h4 {
     gap: 9px;
     font-size: 10px;
     letter-spacing: 0.13em;
   }
 
-  .foodu-picks-heading h4::before,
-  .foodu-picks-heading h4::after {
+  .Ika-picks-heading h4::before,
+  .Ika-picks-heading h4::after {
     width: 30px;
   }
 
-  .foodu-top-picks .foodu-picks-heading h2 {
+  .Ika-top-picks .Ika-picks-heading h2 {
     font-size: 34px;
   }
 
-  .foodu-top-picks .foodu-picks-heading p {
+  .Ika-top-picks .Ika-picks-heading p {
     max-width: 350px;
     font-size: 14px;
   }
@@ -3535,7 +3535,7 @@ html[lang="ar"] h6 {
     height: 38px;
   }
 
-  .foodu-picks-marquee {
+  .Ika-picks-marquee {
     margin-top: 40px;
   }
 }
@@ -3562,7 +3562,7 @@ html[lang="ar"] h6 {
   }
 }
 
-.foodu-top-picks {
+.Ika-top-picks {
   position: relative;
   isolation: isolate;
   overflow-x: clip;
@@ -3579,7 +3579,7 @@ html[lang="ar"] h6 {
   background-size: 32px 16px;
 }
 
-.foodu-top-picks::before {
+.Ika-top-picks::before {
   position: absolute;
   z-index: 0;
   top: 10%;
@@ -3596,7 +3596,7 @@ html[lang="ar"] h6 {
   pointer-events: none;
 }
 
-.foodu-top-picks::after {
+.Ika-top-picks::after {
   position: absolute;
   z-index: 0;
   right: 4%;
@@ -3612,16 +3612,16 @@ html[lang="ar"] h6 {
   pointer-events: none;
 }
 
-.foodu-top-picks .container {
+.Ika-top-picks .container {
   position: relative;
   z-index: 1;
 }
 
-.foodu-top-picks.default-padding {
+.Ika-top-picks.default-padding {
   padding: 72px 0 88px !important;
 }
 
-.foodu-picks-heading {
+.Ika-picks-heading {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -3630,7 +3630,7 @@ html[lang="ar"] h6 {
   text-align: center;
 }
 
-.foodu-picks-heading h4 {
+.Ika-picks-heading h4 {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -3641,15 +3641,15 @@ html[lang="ar"] h6 {
   letter-spacing: 0.16em;
 }
 
-.foodu-picks-heading h4::before,
-.foodu-picks-heading h4::after {
+.Ika-picks-heading h4::before,
+.Ika-picks-heading h4::after {
   width: 58px;
   height: 1px;
   background: #f20b45;
   content: "";
 }
 
-.foodu-picks-heading h2 {
+.Ika-picks-heading h2 {
   margin: 0;
   color: #111016;
   font-family: var(--font-default), sans-serif;
@@ -3658,7 +3658,7 @@ html[lang="ar"] h6 {
   line-height: 1.1;
 }
 
-.foodu-picks-heading p {
+.Ika-picks-heading p {
   max-width: 600px;
   margin: 0;
   color: #777;
@@ -3703,7 +3703,7 @@ html[lang="ar"] h6 {
   font-size: 15px;
 }
 
-.foodu-picks-marquee {
+.Ika-picks-marquee {
   overflow-x: clip;
   overflow-y: visible;
   margin-top: 28px;
@@ -3713,34 +3713,34 @@ html[lang="ar"] h6 {
   user-select: none;
 }
 
-.foodu-picks-marquee.is-pointer-down .foodu-picks-track {
+.Ika-picks-marquee.is-pointer-down .Ika-picks-track {
   animation-play-state: paused;
 }
 
-.foodu-picks-marquee.is-dragging {
+.Ika-picks-marquee.is-dragging {
   cursor: grabbing;
 }
 
-.foodu-picks-track {
+.Ika-picks-track {
   display: flex;
   width: max-content;
-  animation: foodu-picks-loop 42s linear infinite;
+  animation: Ika-picks-loop 42s linear infinite;
 }
 
-[dir="rtl"] .foodu-picks-marquee {
+[dir="rtl"] .Ika-picks-marquee {
   direction: ltr;
 }
 
-[dir="rtl"] .foodu-picks-track {
+[dir="rtl"] .Ika-picks-track {
   direction: ltr;
-  animation-name: foodu-picks-loop-rtl;
+  animation-name: Ika-picks-loop-rtl;
 }
 
-[dir="rtl"] .foodu-picks-group {
+[dir="rtl"] .Ika-picks-group {
   direction: rtl;
 }
 
-.foodu-picks-group {
+.Ika-picks-group {
   display: flex;
   flex: 0 0 auto;
   gap: 20px;
@@ -3749,13 +3749,13 @@ html[lang="ar"] h6 {
   list-style: none;
 }
 
-.foodu-pick-item {
+.Ika-pick-item {
   position: relative;
   width: 276px;
   flex: 0 0 276px;
 }
 
-.foodu-pick-card {
+.Ika-pick-card {
   width: 100%;
   display: flex;
   height: 392px;
@@ -3768,16 +3768,16 @@ html[lang="ar"] h6 {
   transition: box-shadow 220ms ease, transform 220ms ease;
 }
 
-.foodu-top-picks .foodu-pick-card {
+.Ika-top-picks .Ika-pick-card {
   height: 392px;
 }
 
-.foodu-pick-card:hover {
+.Ika-pick-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 34px rgba(32, 43, 36, 0.14);
 }
 
-.foodu-pick-item .foodu-pick-rank {
+.Ika-pick-item .Ika-pick-rank {
   position: absolute;
   z-index: 3;
   top: 12px;
@@ -3793,7 +3793,7 @@ html[lang="ar"] h6 {
   font-weight: 700;
 }
 
-.foodu-pick-card .foodu-product-image {
+.Ika-pick-card .Ika-product-image {
   position: relative;
   height: 236px;
   flex: 0 0 236px;
@@ -3801,12 +3801,12 @@ html[lang="ar"] h6 {
   background: #f4f0e9;
 }
 
-.foodu-pick-card .foodu-product-image img {
+.Ika-pick-card .Ika-product-image img {
   padding: 0;
   object-fit: contain;
 }
 
-.foodu-pick-card .foodu-product-content {
+.Ika-pick-card .Ika-product-content {
   display: flex;
   min-height: 0;
   flex: 1 1 auto;
@@ -3814,12 +3814,12 @@ html[lang="ar"] h6 {
   padding: 12px 16px;
 }
 
-.foodu-pick-card .foodu-product-tags {
+.Ika-pick-card .Ika-product-tags {
   min-height: 16px;
   margin-bottom: 5px;
 }
 
-.foodu-pick-card .foodu-product-tags span {
+.Ika-pick-card .Ika-product-tags span {
   color: #a12a42;
   background: #fff0f2;
   font-size: 10px;
@@ -3828,28 +3828,28 @@ html[lang="ar"] h6 {
   text-transform: uppercase;
 }
 
-.foodu-pick-card .foodu-product-content h3 {
+.Ika-pick-card .Ika-product-content h3 {
   margin: 0;
   font-size: 17px;
   line-height: 1.25;
 }
 
-.foodu-pick-card .foodu-product-description {
+.Ika-pick-card .Ika-product-description {
   display: none;
 }
 
-.foodu-pick-card .foodu-product-footer {
+.Ika-pick-card .Ika-product-footer {
   gap: 10px;
   flex-wrap: wrap;
   margin: auto 0 0 !important;
 }
 
-.foodu-pick-card .foodu-product-footer > strong {
+.Ika-pick-card .Ika-product-footer > strong {
   color: #111016;
   font-size: 17px;
 }
 
-.foodu-product-promo-badge {
+.Ika-product-promo-badge {
   position: absolute;
   z-index: 2;
   top: 12px;
@@ -3866,12 +3866,12 @@ html[lang="ar"] h6 {
   font-weight: 800;
 }
 
-.foodu-pick-card .foodu-product-old-price {
+.Ika-pick-card .Ika-product-old-price {
   color: #888;
   font-size: 13px;
 }
 
-.foodu-pick-card .foodu-product-cart {
+.Ika-pick-card .Ika-product-cart {
   width: 100%;
   min-height: 36px;
   justify-content: center;
@@ -3879,139 +3879,139 @@ html[lang="ar"] h6 {
   padding: 7px 12px;
 }
 
-.foodu-pick-card button.foodu-product-cart {
+.Ika-pick-card button.Ika-product-cart {
   min-height: 36px;
   padding: 7px 12px;
   border-radius: 999px;
   background: #f20b45;
 }
 
-.foodu-pick-card button.foodu-product-cart:hover:not(:disabled) {
+.Ika-pick-card button.Ika-product-cart:hover:not(:disabled) {
   background: #d9003a;
 }
 
-.foodu-picks-marquee:hover .foodu-picks-track,
-.foodu-picks-marquee:focus-within .foodu-picks-track {
+.Ika-picks-marquee:hover .Ika-picks-track,
+.Ika-picks-marquee:focus-within .Ika-picks-track {
   animation-play-state: paused;
 }
 
-@keyframes foodu-picks-loop {
+@keyframes Ika-picks-loop {
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
 }
 
-@keyframes foodu-picks-loop-rtl {
+@keyframes Ika-picks-loop-rtl {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
-.foodu-best-sellers {
+.Ika-best-sellers {
   overflow-x: clip;
   overflow-y: visible;
   background-color: #072b31;
 }
 
-.foodu-best-sellers .container {
+.Ika-best-sellers .container {
   position: relative;
   z-index: 1;
 }
 
-.foodu-best-sellers .foodu-picks-heading h4 {
+.Ika-best-sellers .Ika-picks-heading h4 {
   color: #f4c679;
 }
 
-.foodu-best-sellers .foodu-picks-heading h4::before,
-.foodu-best-sellers .foodu-picks-heading h4::after {
+.Ika-best-sellers .Ika-picks-heading h4::before,
+.Ika-best-sellers .Ika-picks-heading h4::after {
   background: #f4c679;
 }
 
-.foodu-best-sellers .foodu-picks-heading h2 {
+.Ika-best-sellers .Ika-picks-heading h2 {
   color: #f7fbf9;
   font-size: 46px;
 }
 
-.foodu-best-sellers .foodu-picks-heading p {
+.Ika-best-sellers .Ika-picks-heading p {
   color: rgba(247, 251, 249, 0.72);
 }
 
-.foodu-best-sellers .foodu-pick-card {
+.Ika-best-sellers .Ika-pick-card {
   border-color: rgba(223, 242, 235, 0.14);
   background: #0b3b42;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
 
-.foodu-best-sellers .foodu-pick-card .foodu-product-image {
+.Ika-best-sellers .Ika-pick-card .Ika-product-image {
   background: #10474e;
 }
 
-.foodu-best-sellers .foodu-pick-card .foodu-product-content h3 a,
-.foodu-best-sellers .foodu-pick-card .foodu-product-footer > strong {
+.Ika-best-sellers .Ika-pick-card .Ika-product-content h3 a,
+.Ika-best-sellers .Ika-pick-card .Ika-product-footer > strong {
   color: #f7fbf9;
 }
 
-.foodu-best-sellers .foodu-pick-card .foodu-product-tags span {
+.Ika-best-sellers .Ika-pick-card .Ika-product-tags span {
   color: #f4c679;
   background: rgba(244, 198, 121, 0.12);
 }
 
-.foodu-best-sellers .foodu-pick-card .foodu-product-old-price {
+.Ika-best-sellers .Ika-pick-card .Ika-product-old-price {
   color: rgba(247, 251, 249, 0.55);
 }
 
-.foodu-best-sellers .foodu-product-dialog {
+.Ika-best-sellers .Ika-product-dialog {
   color: #17383b;
   background: #fff;
 }
 
-.foodu-best-sellers .foodu-product-dialog .foodu-dialog-eyebrow {
+.Ika-best-sellers .Ika-product-dialog .Ika-dialog-eyebrow {
   color: #a33c2d;
 }
 
-.foodu-best-sellers .foodu-product-dialog .foodu-dialog-content h2 {
+.Ika-best-sellers .Ika-product-dialog .Ika-dialog-content h2 {
   color: #17383b;
 }
 
-.foodu-best-sellers .foodu-product-dialog .foodu-dialog-content p {
+.Ika-best-sellers .Ika-product-dialog .Ika-dialog-content p {
   color: #4a5b5c;
 }
 
-.foodu-best-sellers .foodu-product-dialog .foodu-dialog-details {
+.Ika-best-sellers .Ika-product-dialog .Ika-dialog-details {
   color: #17383b !important;
   -webkit-text-fill-color: #17383b;
 }
 
-.foodu-best-sellers .foodu-product-dialog .foodu-dialog-details:hover,
-.foodu-best-sellers .foodu-product-dialog .foodu-dialog-details:focus-visible {
+.Ika-best-sellers .Ika-product-dialog .Ika-dialog-details:hover,
+.Ika-best-sellers .Ika-product-dialog .Ika-dialog-details:focus-visible {
   color: #fff !important;
   -webkit-text-fill-color: #fff;
   background: #17383b;
   border-color: #17383b;
 }
 
-.foodu-best-sellers .foodu-pick-card button.foodu-product-cart {
+.Ika-best-sellers .Ika-pick-card button.Ika-product-cart {
   color: #000;
   background: #fff;
 }
 
-.foodu-best-sellers .foodu-pick-card button.foodu-product-cart span {
+.Ika-best-sellers .Ika-pick-card button.Ika-product-cart span {
   color: #000;
 }
 
-.foodu-best-sellers .foodu-pick-card button.foodu-product-cart:hover:not(:disabled) {
+.Ika-best-sellers .Ika-pick-card button.Ika-product-cart:hover:not(:disabled) {
   color: #000;
   background: #e9f1ef;
 }
 
-.foodu-best-sellers .foodu-pick-card button.foodu-product-cart:hover:not(:disabled) span {
+.Ika-best-sellers .Ika-pick-card button.Ika-product-cart:hover:not(:disabled) span {
   color: #000;
 }
 
-.foodu-best-sellers .foodu-pick-card:hover {
+.Ika-best-sellers .Ika-pick-card:hover {
   border-color: rgba(244, 198, 121, 0.5);
   box-shadow: 0 18px 38px rgba(0, 0, 0, 0.3);
 }
 
-.foodu-product-detail {
+.Ika-product-detail {
   display: grid;
   max-width: 1160px;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
@@ -4020,11 +4020,11 @@ html[lang="ar"] h6 {
   margin: 0 auto;
 }
 
-.foodu-detail-gallery {
+.Ika-detail-gallery {
   min-width: 0;
 }
 
-.foodu-detail-image {
+.Ika-detail-image {
   position: relative;
   display: grid;
   min-height: 460px;
@@ -4034,8 +4034,8 @@ html[lang="ar"] h6 {
   background: #f4eee3;
 }
 
-.foodu-detail-image::before,
-.foodu-detail-image::after {
+.Ika-detail-image::before,
+.Ika-detail-image::after {
   position: absolute;
   border: 1px solid rgba(24, 61, 43, 0.1);
   border-radius: 50%;
@@ -4043,17 +4043,17 @@ html[lang="ar"] h6 {
   pointer-events: none;
 }
 
-.foodu-detail-image::before {
+.Ika-detail-image::before {
   width: 74%;
   aspect-ratio: 1;
 }
 
-.foodu-detail-image::after {
+.Ika-detail-image::after {
   width: 58%;
   aspect-ratio: 1;
 }
 
-.foodu-detail-image > img {
+.Ika-detail-image > img {
   position: relative;
   z-index: 1;
   width: 86%;
@@ -4062,8 +4062,8 @@ html[lang="ar"] h6 {
   filter: drop-shadow(0 18px 22px rgba(32, 43, 36, 0.14));
 }
 
-.foodu-detail-badge,
-.foodu-detail-image-caption {
+.Ika-detail-badge,
+.Ika-detail-image-caption {
   position: absolute;
   z-index: 2;
   border-radius: 30px;
@@ -4071,23 +4071,23 @@ html[lang="ar"] h6 {
   font-weight: 700;
 }
 
-.foodu-detail-badge {
+.Ika-detail-badge {
   top: 22px;
   left: 22px;
   padding: 9px 14px;
   color: #fff;
-  background: var(--foodu-green);
+  background: var(--Ika-green);
 }
 
-.foodu-detail-image-caption {
+.Ika-detail-image-caption {
   right: 20px;
   bottom: 20px;
   padding: 9px 13px;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   background: rgba(255, 255, 255, 0.85);
 }
 
-.foodu-detail-gallery-note {
+.Ika-detail-gallery-note {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -4096,15 +4096,15 @@ html[lang="ar"] h6 {
   font-size: 13px;
 }
 
-.foodu-detail-gallery-note i {
+.Ika-detail-gallery-note i {
   color: #a76f13;
 }
 
-.foodu-detail-info {
+.Ika-detail-info {
   min-width: 0;
 }
 
-.foodu-detail-eyebrow {
+.Ika-detail-eyebrow {
   color: #a76f13;
   font-size: 12px;
   font-weight: 700;
@@ -4112,32 +4112,32 @@ html[lang="ar"] h6 {
   text-transform: uppercase;
 }
 
-.foodu-detail-info h1 {
+.Ika-detail-info h1 {
   margin: 12px 0;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   font-size: 42px;
   line-height: 1.12;
 }
 
-.foodu-detail-rating {
+.Ika-detail-rating {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-.foodu-detail-rating > span {
+.Ika-detail-rating > span {
   color: #bc861e;
   font-size: 15px;
   letter-spacing: 0.08em;
 }
 
-.foodu-detail-rating small {
+.Ika-detail-rating small {
   color: #68716b;
   font-size: 12px;
 }
 
-.foodu-detail-description {
+.Ika-detail-description {
   max-width: 470px;
   margin: 0 0 18px;
   color: #68716b;
@@ -4145,35 +4145,35 @@ html[lang="ar"] h6 {
   line-height: 1.7;
 }
 
-.foodu-detail-price {
+.Ika-detail-price {
   display: block;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   font-size: 28px;
 }
 
-.foodu-detail-tags {
+.Ika-detail-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin: 18px 0 24px;
 }
 
-.foodu-detail-tags span {
+.Ika-detail-tags span {
   padding: 7px 12px;
   border: 1px solid rgba(24, 61, 43, 0.16);
   border-radius: 30px;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   font-size: 12px;
   font-weight: 600;
 }
 
-.foodu-detail-order-row {
+.Ika-detail-order-row {
   display: flex;
   align-items: stretch;
   gap: 12px;
 }
 
-.foodu-detail-quantity {
+.Ika-detail-quantity {
   display: inline-flex;
   min-width: 126px;
   height: 54px;
@@ -4184,7 +4184,7 @@ html[lang="ar"] h6 {
   background: #fff;
 }
 
-.foodu-detail-quantity button {
+.Ika-detail-quantity button {
   display: inline-flex !important;
   width: 38px !important;
   min-width: 38px !important;
@@ -4195,24 +4195,24 @@ html[lang="ar"] h6 {
   justify-content: center;
   padding: 0 !important;
   border: 0;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   background: transparent;
   cursor: pointer;
 }
 
-.foodu-detail-quantity button:disabled {
+.Ika-detail-quantity button:disabled {
   color: #a9b0aa;
   cursor: not-allowed;
 }
 
-.foodu-detail-quantity span {
+.Ika-detail-quantity span {
   min-width: 28px;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   text-align: center;
   font-weight: 700;
 }
 
-.foodu-detail-add {
+.Ika-detail-add {
   display: inline-flex;
   min-height: 54px;
   flex: 1 1 auto;
@@ -4223,28 +4223,28 @@ html[lang="ar"] h6 {
   border: 0;
   border-radius: 5px;
   color: #fff;
-  background: var(--foodu-green);
+  background: var(--Ika-green);
   font-weight: 700;
   cursor: pointer;
   transition: background 180ms ease, transform 180ms ease;
 }
 
-.foodu-detail-add:hover:not(:disabled) {
+.Ika-detail-add:hover:not(:disabled) {
   transform: translateY(-2px);
   background: #24573b;
 }
 
-.foodu-detail-add:disabled {
+.Ika-detail-add:disabled {
   opacity: 0.65;
   cursor: wait;
 }
 
-.foodu-detail-add strong {
+.Ika-detail-add strong {
   margin-left: auto;
   white-space: nowrap;
 }
 
-.foodu-detail-service {
+.Ika-detail-service {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -4253,37 +4253,37 @@ html[lang="ar"] h6 {
   font-size: 13px;
 }
 
-.foodu-detail-service i {
-  color: var(--foodu-green);
+.Ika-detail-service i {
+  color: var(--Ika-green);
 }
 
 @media (min-width: 768px) {
-  .banner-area.banner-style-four.foodu-mobile-hero {
+  .banner-area.banner-style-four.Ika-mobile-hero {
     height: auto;
     min-height: 0;
     background-position: center;
   }
 
-  .foodu-mobile-hero .banner-fade {
+  .Ika-mobile-hero .banner-fade {
     position: relative;
     z-index: 1;
   }
 
-  .banner-area.banner-style-four.foodu-mobile-hero .content {
+  .banner-area.banner-style-four.Ika-mobile-hero .content {
     padding: 54px 0 42px;
   }
 
-  .foodu-mobile-hero .row {
+  .Ika-mobile-hero .row {
     align-items: center;
   }
 
-  .foodu-mobile-hero-copy {
+  .Ika-mobile-hero-copy {
     position: relative;
     z-index: 2;
     max-width: 570px;
   }
 
-  .foodu-mobile-hero-copy h4 {
+  .Ika-mobile-hero-copy h4 {
     margin-bottom: 18px;
     padding: 8px 16px 5px;
     border-color: rgba(255, 255, 255, 0.4);
@@ -4291,29 +4291,29 @@ html[lang="ar"] h6 {
     font-size: 14px;
   }
 
-  .banner-area.banner-style-four.foodu-mobile-hero .foodu-mobile-hero-copy h2 {
+  .banner-area.banner-style-four.Ika-mobile-hero .Ika-mobile-hero-copy h2 {
     max-width: 580px;
     margin: 0 0 16px;
     font-size: 64px !important;
     line-height: 1.02;
   }
 
-  .foodu-mobile-hero-copy p {
+  .Ika-mobile-hero-copy p {
     max-width: 460px;
     margin: 0;
     font-size: 17px;
     line-height: 1.5;
   }
 
-  .foodu-mobile-hero-copy .button.mt-40 {
+  .Ika-mobile-hero-copy .button.mt-40 {
     margin-top: 24px !important;
   }
 
-  .foodu-mobile-hero .foodu-mobile-hero-art .thumb {
+  .Ika-mobile-hero .Ika-mobile-hero-art .thumb {
     padding: 18px 8px 24px;
   }
 
-  .foodu-mobile-hero .foodu-mobile-hero-art .thumb::after {
+  .Ika-mobile-hero .Ika-mobile-hero-art .thumb::after {
     bottom: -24%;
     width: 78%;
     height: 145%;
@@ -4321,7 +4321,7 @@ html[lang="ar"] h6 {
     background: linear-gradient(145deg, #ef4657, #bd1535);
   }
 
-  .foodu-mobile-hero .foodu-mobile-hero-image > img:first-child {
+  .Ika-mobile-hero .Ika-mobile-hero-image > img:first-child {
     width: auto;
     max-width: 100%;
     max-height: 370px;
@@ -4329,13 +4329,13 @@ html[lang="ar"] h6 {
     filter: drop-shadow(0 20px 26px rgba(20, 5, 6, 0.3));
   }
 
-  .foodu-mobile-hero .foodu-mobile-hero-image img:nth-child(2) {
+  .Ika-mobile-hero .Ika-mobile-hero-image img:nth-child(2) {
     top: 8%;
     left: -4%;
     width: 140px;
   }
 
-  .foodu-mobile-hero .swiper-nav-left {
+  .Ika-mobile-hero .swiper-nav-left {
     position: absolute;
     z-index: 3;
     right: max(32px, calc((100vw - 1200px) / 2));
@@ -4344,8 +4344,8 @@ html[lang="ar"] h6 {
     gap: 10px;
   }
 
-  .foodu-mobile-hero .swiper-nav-left .swiper-button-prev,
-  .foodu-mobile-hero .swiper-nav-left .swiper-button-next {
+  .Ika-mobile-hero .swiper-nav-left .swiper-button-prev,
+  .Ika-mobile-hero .swiper-nav-left .swiper-button-next {
     position: relative;
     inset: auto;
     width: 42px;
@@ -4359,38 +4359,38 @@ html[lang="ar"] h6 {
     transition: background 180ms ease, transform 180ms ease;
   }
 
-  .foodu-mobile-hero .swiper-nav-left .swiper-button-prev::after,
-  .foodu-mobile-hero .swiper-nav-left .swiper-button-next::after {
+  .Ika-mobile-hero .swiper-nav-left .swiper-button-prev::after,
+  .Ika-mobile-hero .swiper-nav-left .swiper-button-next::after {
     font-size: 14px;
     font-weight: 700;
   }
 
-  .foodu-mobile-hero .swiper-nav-left .swiper-button-prev:hover,
-  .foodu-mobile-hero .swiper-nav-left .swiper-button-next:hover {
+  .Ika-mobile-hero .swiper-nav-left .swiper-button-prev:hover,
+  .Ika-mobile-hero .swiper-nav-left .swiper-button-next:hover {
     transform: translateY(-2px);
     background: rgba(255, 255, 255, 0.2);
   }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-  .banner-area.banner-style-four.foodu-mobile-hero .content {
+  .banner-area.banner-style-four.Ika-mobile-hero .content {
     padding: 44px 0 48px;
   }
 
-  .banner-area.banner-style-four.foodu-mobile-hero .foodu-mobile-hero-copy h2 {
+  .banner-area.banner-style-four.Ika-mobile-hero .Ika-mobile-hero-copy h2 {
     font-size: 48px !important;
   }
 
-  .foodu-mobile-hero .foodu-mobile-hero-image > img:first-child {
+  .Ika-mobile-hero .Ika-mobile-hero-image > img:first-child {
     max-height: 320px;
   }
 }
 
-.foodu-related-section {
+.Ika-related-section {
   margin-top: 68px;
 }
 
-.foodu-related-heading {
+.Ika-related-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -4398,18 +4398,18 @@ html[lang="ar"] h6 {
   margin-bottom: 24px;
 }
 
-.foodu-related-heading h2 {
+.Ika-related-heading h2 {
   margin: 0;
   font-size: 30px;
 }
 
-.foodu-related-controls {
+.Ika-related-controls {
   display: flex;
   flex: 0 0 auto;
   gap: 8px;
 }
 
-.foodu-related-controls button {
+.Ika-related-controls button {
   display: inline-flex !important;
   width: 44px !important;
   min-width: 44px !important;
@@ -4420,20 +4420,20 @@ html[lang="ar"] h6 {
   padding: 0 !important;
   border: 1px solid rgba(24, 61, 43, 0.2) !important;
   border-radius: 50%;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   background: #fff;
   cursor: pointer;
   transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
 }
 
-.foodu-related-controls button:hover,
-.foodu-related-controls button:focus-visible {
-  border-color: var(--foodu-green) !important;
+.Ika-related-controls button:hover,
+.Ika-related-controls button:focus-visible {
+  border-color: var(--Ika-green) !important;
   color: #fff;
-  background: var(--foodu-green);
+  background: var(--Ika-green);
 }
 
-.foodu-related-viewport {
+.Ika-related-viewport {
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-behavior: smooth;
@@ -4442,11 +4442,11 @@ html[lang="ar"] h6 {
   -webkit-overflow-scrolling: touch;
 }
 
-.foodu-related-viewport::-webkit-scrollbar {
+.Ika-related-viewport::-webkit-scrollbar {
   display: none;
 }
 
-.foodu-related-track {
+.Ika-related-track {
   display: flex;
   width: 100%;
   align-items: stretch;
@@ -4454,93 +4454,93 @@ html[lang="ar"] h6 {
   padding: 2px 2px 14px;
 }
 
-.foodu-related-card {
+.Ika-related-card {
   min-width: 0;
   flex: 0 0 calc(33.333% - 14px);
   scroll-snap-align: start;
 }
 
-.foodu-related-card .foodu-product-card {
+.Ika-related-card .Ika-product-card {
   display: flex;
   height: 470px;
   flex-direction: column;
 }
 
-.foodu-related-card .foodu-product-image {
+.Ika-related-card .Ika-product-image {
   flex: 0 0 220px;
   aspect-ratio: auto;
 }
 
-.foodu-related-card .foodu-product-content {
+.Ika-related-card .Ika-product-content {
   display: flex;
   min-height: 0;
   flex: 1 1 auto;
   flex-direction: column;
 }
 
-.foodu-related-card .foodu-product-description {
+.Ika-related-card .Ika-product-description {
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 
-.foodu-related-card .foodu-product-footer {
+.Ika-related-card .Ika-product-footer {
   margin-top: auto;
 }
 
 @media (max-width: 767px) {
-  .banner-area.banner-style-four.foodu-mobile-hero {
+  .banner-area.banner-style-four.Ika-mobile-hero {
     height: auto !important;
     min-height: 0 !important;
   }
 
-  .banner-area.banner-style-four.foodu-mobile-hero .content {
+  .banner-area.banner-style-four.Ika-mobile-hero .content {
     padding: 16px 0 22px !important;
   }
 
-  .foodu-mobile-hero .row {
+  .Ika-mobile-hero .row {
     position: relative;
     display: block;
     margin: 0;
   }
 
-  .banner-area.banner-style-four.foodu-mobile-hero h4 {
+  .banner-area.banner-style-four.Ika-mobile-hero h4 {
     max-width: 100%;
     margin-bottom: 10px;
     padding: 5px 11px 3px;
     font-size: 11px;
   }
 
-  .banner-area.banner-style-four.foodu-mobile-hero h2 {
+  .banner-area.banner-style-four.Ika-mobile-hero h2 {
     max-width: 100%;
     margin-bottom: 0;
     font-size: 23px;
     line-height: 1.08;
   }
 
-  .banner-area.banner-style-four.foodu-mobile-hero p {
+  .banner-area.banner-style-four.Ika-mobile-hero p {
     display: none;
   }
 
-  .foodu-mobile-hero-copy {
+  .Ika-mobile-hero-copy {
     position: relative;
     z-index: 2;
     width: 56%;
   }
 
-  .foodu-mobile-hero .button.mt-40 {
+  .Ika-mobile-hero .button.mt-40 {
     margin-top: 12px !important;
   }
 
-  .foodu-mobile-hero-copy .button .btn {
+  .Ika-mobile-hero-copy .button .btn {
     width: auto;
     min-width: 0;
     padding: 11px 15px;
     font-size: 12px;
   }
 
-  .foodu-mobile-hero .foodu-mobile-hero-art {
+  .Ika-mobile-hero .Ika-mobile-hero-art {
     position: absolute;
     z-index: 1;
     top: 50%;
@@ -4551,13 +4551,13 @@ html[lang="ar"] h6 {
     pointer-events: none;
   }
 
-  .foodu-mobile-hero .foodu-mobile-hero-image {
+  .Ika-mobile-hero .Ika-mobile-hero-image {
     margin: 0;
     text-align: right;
     mask-image: linear-gradient(90deg, transparent, #000 18%);
   }
 
-  .foodu-mobile-hero .foodu-mobile-hero-image::before {
+  .Ika-mobile-hero .Ika-mobile-hero-image::before {
     position: absolute;
     top: 9%;
     right: 0;
@@ -4568,7 +4568,7 @@ html[lang="ar"] h6 {
     content: "";
   }
 
-  .foodu-mobile-hero .foodu-mobile-hero-image > img:first-child {
+  .Ika-mobile-hero .Ika-mobile-hero-image > img:first-child {
     position: relative;
     z-index: 1;
     width: 100%;
@@ -4578,125 +4578,125 @@ html[lang="ar"] h6 {
     filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.2));
   }
 
-  .foodu-mobile-hero .foodu-mobile-hero-image img:nth-child(2) {
+  .Ika-mobile-hero .Ika-mobile-hero-image img:nth-child(2) {
     display: none;
   }
 
-  .foodu-picks-heading {
+  .Ika-picks-heading {
     align-items: flex-start;
     flex-direction: column;
     gap: 18px;
   }
 
-  .foodu-top-picks.default-padding {
+  .Ika-top-picks.default-padding {
     padding: 54px 0 68px !important;
   }
 
-  .foodu-top-picks .foodu-picks-heading {
+  .Ika-top-picks .Ika-picks-heading {
     align-items: center;
     gap: 12px;
     text-align: center;
   }
 
-  .foodu-top-picks .foodu-picks-heading h4 {
+  .Ika-top-picks .Ika-picks-heading h4 {
     gap: 9px;
     font-size: 10px;
     letter-spacing: 0.13em;
   }
 
-  .foodu-top-picks .foodu-picks-heading h4::before,
-  .foodu-top-picks .foodu-picks-heading h4::after {
+  .Ika-top-picks .Ika-picks-heading h4::before,
+  .Ika-top-picks .Ika-picks-heading h4::after {
     width: 30px;
   }
 
-  .foodu-top-picks .foodu-picks-heading h2 {
+  .Ika-top-picks .Ika-picks-heading h2 {
     font-size: 34px;
   }
 
-  .foodu-top-picks .foodu-picks-heading p {
+  .Ika-top-picks .Ika-picks-heading p {
     max-width: 350px;
     font-size: 14px;
   }
 
-  .foodu-picks-marquee {
+  .Ika-picks-marquee {
     margin-top: 28px;
     mask-image: none;
   }
 
-  .foodu-picks-track {
+  .Ika-picks-track {
     animation-duration: 34s;
   }
 
-  .foodu-pick-card {
+  .Ika-pick-card {
     width: 100%;
   }
 
-  .foodu-pick-item {
+  .Ika-pick-item {
     width: 248px;
     flex-basis: 248px;
   }
 
-  .foodu-pick-card .foodu-product-image {
+  .Ika-pick-card .Ika-product-image {
     height: 210px;
     flex-basis: 210px;
   }
 
-  .foodu-pick-card .foodu-product-content {
+  .Ika-pick-card .Ika-product-content {
     min-height: 0;
     padding: 11px 14px;
   }
 
-  .foodu-top-picks .foodu-pick-card {
+  .Ika-top-picks .Ika-pick-card {
     height: 378px;
   }
 
-  .foodu-pick-card .foodu-product-content h3 {
+  .Ika-pick-card .Ika-product-content h3 {
     font-size: 16px;
   }
 
-  .foodu-pick-card .foodu-product-description {
+  .Ika-pick-card .Ika-product-description {
     margin-bottom: 6px;
   }
 
-  .foodu-product-detail {
+  .Ika-product-detail {
     grid-template-columns: minmax(0, 1fr);
     gap: 30px;
   }
 
-  .foodu-detail-image {
+  .Ika-detail-image {
     min-height: 320px;
   }
 
-  .foodu-detail-image > img {
+  .Ika-detail-image > img {
     max-height: 270px;
   }
 
-  .foodu-detail-info h1 {
+  .Ika-detail-info h1 {
     font-size: 32px;
   }
 
-  .foodu-detail-order-row {
+  .Ika-detail-order-row {
     gap: 8px;
   }
 
-  .foodu-detail-quantity {
+  .Ika-detail-quantity {
     min-width: 110px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .foodu-picks-track {
+  .Ika-picks-track {
     animation: none;
     transform: none;
   }
 
-  .foodu-picks-group[aria-hidden="true"] {
+  .Ika-picks-group[aria-hidden="true"] {
     display: none;
   }
 }
 
 @media (max-width: 991px) {
-  .foodu-header-actions .foodu-language-switcher {
+  .Ika-header-actions .Ika-language-switcher {
     display: inline-flex;
   }
 }
@@ -4705,29 +4705,29 @@ html[lang="ar"] h6 {
 ** General Styles for HTML tags
 */
 
-.foodu-header-actions .foodu-icon-link:nth-last-child(2) {
+.Ika-header-actions .Ika-icon-link:nth-last-child(2) {
   margin-right: 2px;
 }
 
-.foodu-product-grid {
+.Ika-product-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
   text-align: left;
 }
 
-.foodu-full-menu {
+.Ika-full-menu {
   overflow-x: clip;
   overflow-y: visible;
   background: #f5f8f6;
 }
 
-.foodu-full-menu-heading {
+.Ika-full-menu-heading {
   max-width: 720px;
   margin: 0 auto;
 }
 
-.foodu-full-menu-kicker {
+.Ika-full-menu-kicker {
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -4737,15 +4737,15 @@ html[lang="ar"] h6 {
   letter-spacing: 0.12em;
 }
 
-.foodu-full-menu-kicker::before,
-.foodu-full-menu-kicker::after {
+.Ika-full-menu-kicker::before,
+.Ika-full-menu-kicker::after {
   width: 30px;
   height: 1px;
   background: currentColor;
   content: "";
 }
 
-.foodu-full-menu-heading h2 {
+.Ika-full-menu-heading h2 {
   margin: 12px 0 10px;
   color: #17383b;
   font-size: 44px;
@@ -4753,7 +4753,7 @@ html[lang="ar"] h6 {
   line-height: 1.12;
 }
 
-.foodu-full-menu-heading p {
+.Ika-full-menu-heading p {
   max-width: 520px;
   margin: 0 auto;
   color: #647274;
@@ -4761,7 +4761,7 @@ html[lang="ar"] h6 {
   line-height: 1.6;
 }
 
-.foodu-menu-controls {
+.Ika-menu-controls {
   position: relative;
   width: min(100%, 520px);
   display: grid;
@@ -4778,11 +4778,11 @@ html[lang="ar"] h6 {
   -webkit-backdrop-filter: blur(14px);
 }
 
-.foodu-menu-controls:focus-within {
+.Ika-menu-controls:focus-within {
   z-index: 21;
 }
 
-.foodu-menu-search {
+.Ika-menu-search {
   position: relative;
   min-width: 0;
   display: grid;
@@ -4791,14 +4791,14 @@ html[lang="ar"] h6 {
   margin: 0;
 }
 
-.foodu-menu-search-field {
+.Ika-menu-search-field {
   position: relative;
   min-width: 0;
   height: 50px;
   margin: 0;
 }
 
-.foodu-menu-search-field > i {
+.Ika-menu-search-field > i {
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -4809,7 +4809,7 @@ html[lang="ar"] h6 {
   pointer-events: none;
 }
 
-.foodu-menu-search-field input {
+.Ika-menu-search-field input {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -4826,18 +4826,18 @@ html[lang="ar"] h6 {
   transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
-.foodu-menu-search-field input:focus {
+.Ika-menu-search-field input:focus {
   border-color: #17383b;
   background: #fff;
   box-shadow: 0 0 0 3px rgba(23, 56, 59, 0.1);
 }
 
-.foodu-menu-search-field input::placeholder {
+.Ika-menu-search-field input::placeholder {
   color: #788785;
   opacity: 1;
 }
 
-.validtheme-shop-area.foodu-full-menu .foodu-menu-search-submit {
+.validtheme-shop-area.Ika-full-menu .Ika-menu-search-submit {
   position: static;
   z-index: auto;
   width: 88px;
@@ -4861,27 +4861,27 @@ html[lang="ar"] h6 {
   transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
-.validtheme-shop-area.foodu-full-menu .foodu-menu-search-submit:hover,
-.validtheme-shop-area.foodu-full-menu .foodu-menu-search-submit:focus-visible {
+.validtheme-shop-area.Ika-full-menu .Ika-menu-search-submit:hover,
+.validtheme-shop-area.Ika-full-menu .Ika-menu-search-submit:focus-visible {
   transform: translateY(-1px);
   border-color: #24545a;
   color: #fff;
   background: #24545a !important;
 }
 
-.validtheme-shop-area.foodu-full-menu .foodu-menu-search-submit:focus-visible,
-.validtheme-shop-area.foodu-full-menu .foodu-menu-search-results button:focus-visible {
+.validtheme-shop-area.Ika-full-menu .Ika-menu-search-submit:focus-visible,
+.validtheme-shop-area.Ika-full-menu .Ika-menu-search-results button:focus-visible {
   outline: 2px solid #17383b;
   outline-offset: 2px;
 }
 
-.validtheme-shop-area.foodu-full-menu .foodu-menu-search-submit::after,
-.validtheme-shop-area.foodu-full-menu .foodu-menu-search-results button::after {
+.validtheme-shop-area.Ika-full-menu .Ika-menu-search-submit::after,
+.validtheme-shop-area.Ika-full-menu .Ika-menu-search-results button::after {
   display: none;
   content: none;
 }
 
-.foodu-menu-search-results {
+.Ika-menu-search-results {
   position: absolute;
   z-index: 30;
   top: calc(100% + 8px);
@@ -4895,7 +4895,7 @@ html[lang="ar"] h6 {
   box-shadow: 0 18px 42px rgba(23, 56, 59, 0.18);
 }
 
-.foodu-menu-search-results ul {
+.Ika-menu-search-results ul {
   display: grid;
   gap: 3px;
   margin: 0;
@@ -4903,16 +4903,16 @@ html[lang="ar"] h6 {
   list-style: none;
 }
 
-.foodu-menu-search-results li {
+.Ika-menu-search-results li {
   min-width: 0;
   border-bottom: 1px solid rgba(23, 56, 59, 0.07);
 }
 
-.foodu-menu-search-results li:last-child {
+.Ika-menu-search-results li:last-child {
   border-bottom: 0;
 }
 
-.validtheme-shop-area.foodu-full-menu .foodu-menu-search-results button {
+.validtheme-shop-area.Ika-full-menu .Ika-menu-search-results button {
   position: static;
   z-index: auto;
   width: 100%;
@@ -4936,12 +4936,12 @@ html[lang="ar"] h6 {
   transition: color 160ms ease, background 160ms ease;
 }
 
-.validtheme-shop-area.foodu-full-menu .foodu-menu-search-results button:hover {
+.validtheme-shop-area.Ika-full-menu .Ika-menu-search-results button:hover {
   color: #17383b;
   background: #edf3f0 !important;
 }
 
-.foodu-menu-search-result-image {
+.Ika-menu-search-result-image {
   width: 42px;
   height: 42px;
   flex: 0 0 42px;
@@ -4950,40 +4950,40 @@ html[lang="ar"] h6 {
   background: #edf3f0;
 }
 
-.foodu-menu-search-result-copy {
+.Ika-menu-search-result-copy {
   min-width: 0;
   flex: 1 1 auto;
   display: grid;
   gap: 4px;
 }
 
-.foodu-menu-search-result-name {
+.Ika-menu-search-result-name {
   overflow: hidden;
   color: inherit;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.foodu-menu-search-result-category {
+.Ika-menu-search-result-category {
   color: #788785;
   font-size: 11px;
   font-weight: 600;
 }
 
-.foodu-menu-search-result-price {
+.Ika-menu-search-result-price {
   flex: 0 0 auto;
   color: #17383b;
   font-size: 12px;
   font-weight: 800;
 }
 
-.foodu-menu-search-result-arrow {
+.Ika-menu-search-result-arrow {
   flex: 0 0 auto;
   color: #788785;
   font-size: 11px;
 }
 
-.foodu-menu-search-result-category {
+.Ika-menu-search-result-category {
   flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
@@ -4993,7 +4993,7 @@ html[lang="ar"] h6 {
   font-weight: 600;
 }
 
-.foodu-menu-search-results > p {
+.Ika-menu-search-results > p {
   margin: 0;
   padding: 13px 12px;
   color: #788785;
@@ -5001,7 +5001,7 @@ html[lang="ar"] h6 {
   text-align: center;
 }
 
-.foodu-menu-category-nav {
+.Ika-menu-category-nav {
   position: sticky;
   top: 109px;
   z-index: 20;
@@ -5018,11 +5018,11 @@ html[lang="ar"] h6 {
   -ms-overflow-style: none;
 }
 
-.foodu-menu-category-nav::-webkit-scrollbar {
+.Ika-menu-category-nav::-webkit-scrollbar {
   display: none;
 }
 
-.foodu-menu-category-nav a {
+.Ika-menu-category-nav a {
   display: inline-flex;
   min-height: 46px;
   flex: 0 0 auto;
@@ -5040,28 +5040,28 @@ html[lang="ar"] h6 {
   transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
-.foodu-menu-category-nav a:hover,
-.foodu-menu-category-nav a:focus-visible,
-.foodu-menu-category-nav a.is-active {
+.Ika-menu-category-nav a:hover,
+.Ika-menu-category-nav a:focus-visible,
+.Ika-menu-category-nav a.is-active {
   transform: translateY(-2px);
   border-color: #17383b;
   color: #fff;
   background: #17383b;
 }
 
-.foodu-menu-tab-index {
+.Ika-menu-tab-index {
   color: #c55037;
   font-size: 10px;
   font-weight: 800;
 }
 
-.foodu-menu-category-nav a:hover .foodu-menu-tab-index,
-.foodu-menu-category-nav a:focus-visible .foodu-menu-tab-index,
-.foodu-menu-category-nav a.is-active .foodu-menu-tab-index {
+.Ika-menu-category-nav a:hover .Ika-menu-tab-index,
+.Ika-menu-category-nav a:focus-visible .Ika-menu-tab-index,
+.Ika-menu-category-nav a.is-active .Ika-menu-tab-index {
   color: #f4c679;
 }
 
-.foodu-menu-category-hint {
+.Ika-menu-category-hint {
   display: flex;
   width: fit-content;
   align-items: center;
@@ -5079,36 +5079,36 @@ html[lang="ar"] h6 {
   line-height: 1.2;
 }
 
-.foodu-menu-category-hint i {
+.Ika-menu-category-hint i {
   flex: 0 0 auto;
   font-size: 11px;
 }
 
-.foodu-menu-hint-left {
-  animation: foodu-menu-hint-left 850ms ease-in-out infinite alternate;
+.Ika-menu-hint-left {
+  animation: Ika-menu-hint-left 850ms ease-in-out infinite alternate;
 }
 
-.foodu-menu-hint-right {
-  animation: foodu-menu-hint-right 850ms ease-in-out infinite alternate;
+.Ika-menu-hint-right {
+  animation: Ika-menu-hint-right 850ms ease-in-out infinite alternate;
 }
 
-@keyframes foodu-menu-hint-left {
+@keyframes Ika-menu-hint-left {
   to { transform: translateX(-4px); }
 }
 
-@keyframes foodu-menu-hint-right {
+@keyframes Ika-menu-hint-right {
   to { transform: translateX(4px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .foodu-menu-hint-left,
-  .foodu-menu-hint-right {
+  .Ika-menu-hint-left,
+  .Ika-menu-hint-right {
     animation: none;
   }
 }
 
 @media (max-width: 767px) {
-  .foodu-menu-controls {
+  .Ika-menu-controls {
     width: 100%;
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
@@ -5117,34 +5117,34 @@ html[lang="ar"] h6 {
     border-radius: 16px;
   }
 
-  .foodu-menu-category-nav {
+  .Ika-menu-category-nav {
     top: 76px;
     margin-bottom: 30px;
     padding: 8px 0;
   }
 
-  .foodu-menu-search-field,
-  .foodu-full-menu .foodu-menu-search-submit {
+  .Ika-menu-search-field,
+  .Ika-full-menu .Ika-menu-search-submit {
     height: 44px;
     min-height: 44px;
   }
 
-  .foodu-full-menu .foodu-menu-search-submit {
+  .Ika-full-menu .Ika-menu-search-submit {
     min-width: 46px;
     width: 46px;
     padding: 0;
   }
 
-  .foodu-menu-search-submit span {
+  .Ika-menu-search-submit span {
     display: none;
   }
 
-  .foodu-menu-category-nav {
+  .Ika-menu-category-nav {
     justify-content: flex-start;
   }
 }
 
-.foodu-full-menu .foodu-menu-category-heading {
+.Ika-full-menu .Ika-menu-category-heading {
   display: grid;
   grid-template-columns: 42px minmax(0, 1fr) auto;
   align-items: center;
@@ -5159,7 +5159,7 @@ html[lang="ar"] h6 {
   box-shadow: 0 8px 22px rgba(23, 56, 59, 0.05);
 }
 
-.foodu-full-menu .foodu-menu-category-heading > span {
+.Ika-full-menu .Ika-menu-category-heading > span {
   display: grid;
   width: 38px;
   height: 38px;
@@ -5171,7 +5171,7 @@ html[lang="ar"] h6 {
   font-weight: 800;
 }
 
-.foodu-full-menu .foodu-menu-category-heading h3 {
+.Ika-full-menu .Ika-menu-category-heading h3 {
   margin: 0;
   color: #17383b;
   font-size: 24px;
@@ -5179,7 +5179,7 @@ html[lang="ar"] h6 {
   line-height: 1.15;
 }
 
-.foodu-full-menu .foodu-menu-category-heading p {
+.Ika-full-menu .Ika-menu-category-heading p {
   margin: 0;
   padding: 7px 11px;
   border-radius: 999px;
@@ -5190,11 +5190,11 @@ html[lang="ar"] h6 {
   white-space: nowrap;
 }
 
-.foodu-full-menu .foodu-category-product-grid {
+.Ika-full-menu .Ika-category-product-grid {
   gap: 20px;
 }
 
-.foodu-full-menu .foodu-menu-product-card {
+.Ika-full-menu .Ika-menu-product-card {
   display: flex;
   min-width: 0;
   height: 100%;
@@ -5207,23 +5207,23 @@ html[lang="ar"] h6 {
   transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
 }
 
-.foodu-full-menu .foodu-menu-product-card:hover {
+.Ika-full-menu .Ika-menu-product-card:hover {
   transform: translateY(-4px);
   border-color: rgba(197, 80, 55, 0.28);
   box-shadow: 0 16px 32px rgba(23, 56, 59, 0.12);
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-image {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-image {
   aspect-ratio: 1.08;
   background: #edf3f0;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-image img {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-image img {
   padding: 14px;
   object-fit: contain;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-content {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-content {
   display: flex;
   min-height: 0;
   flex: 1 1 auto;
@@ -5231,12 +5231,12 @@ html[lang="ar"] h6 {
   padding: 16px;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-tags {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-tags {
   min-height: 20px;
   margin-bottom: 8px;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-tags span {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-tags span {
   padding: 5px 8px;
   border-radius: 999px;
   color: #a33c2d;
@@ -5245,7 +5245,7 @@ html[lang="ar"] h6 {
   font-weight: 700;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-content h3 {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-content h3 {
   min-height: 2.5em;
   margin: 0 0 12px;
   color: #17383b;
@@ -5254,11 +5254,11 @@ html[lang="ar"] h6 {
   line-height: 1.25;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-description {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-description {
   display: none;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-footer {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-footer {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
@@ -5266,18 +5266,18 @@ html[lang="ar"] h6 {
   margin-top: auto;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-footer > strong {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-footer > strong {
   color: #a33c2d;
   font-size: 17px;
   font-weight: 800;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-old-price {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-old-price {
   color: #8a9694;
   font-size: 12px;
 }
 
-.foodu-full-menu .foodu-menu-product-card button.foodu-product-cart {
+.Ika-full-menu .Ika-menu-product-card button.Ika-product-cart {
   display: inline-flex;
   width: 100%;
   min-height: 44px;
@@ -5295,17 +5295,17 @@ html[lang="ar"] h6 {
   white-space: nowrap;
 }
 
-.foodu-full-menu .foodu-menu-product-card button.foodu-product-cart span {
+.Ika-full-menu .Ika-menu-product-card button.Ika-product-cart span {
   display: inline;
   color: inherit;
 }
 
-.foodu-full-menu .foodu-menu-product-card button.foodu-product-cart:hover:not(:disabled) {
+.Ika-full-menu .Ika-menu-product-card button.Ika-product-cart:hover:not(:disabled) {
   color: #fff;
   background: #a33c2d;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-dialog {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-dialog {
   width: min(820px, calc(100vw - 32px));
   max-height: min(680px, calc(100dvh - 32px));
   border: 1px solid rgba(23, 56, 59, 0.1);
@@ -5314,49 +5314,49 @@ html[lang="ar"] h6 {
   background: #fff;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-dialog[open] {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-dialog[open] {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   grid-template-rows: minmax(0, 1fr);
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-product-dialog > img {
+.Ika-full-menu .Ika-menu-product-card .Ika-product-dialog > img {
   min-height: 320px;
   padding: 24px;
   background: #edf3f0;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-dialog-content {
+.Ika-full-menu .Ika-menu-product-card .Ika-dialog-content {
   align-self: center;
   padding: clamp(22px, 4vw, 40px);
   color: #263d3f;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-dialog-eyebrow {
+.Ika-full-menu .Ika-menu-product-card .Ika-dialog-eyebrow {
   color: #a33c2d;
   font-size: 10px;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-dialog-content h2 {
+.Ika-full-menu .Ika-menu-product-card .Ika-dialog-content h2 {
   margin: 10px 0 12px;
   color: #17383b;
   font-size: 30px;
   line-height: 1.12;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-dialog-content p {
+.Ika-full-menu .Ika-menu-product-card .Ika-dialog-content p {
   margin-bottom: 20px;
   color: #536669;
   font-size: 14px;
   line-height: 1.6;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-dialog-content > strong {
+.Ika-full-menu .Ika-menu-product-card .Ika-dialog-content > strong {
   color: #a33c2d;
   font-size: 22px;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-dialog-content .foodu-product-cart {
+.Ika-full-menu .Ika-menu-product-card .Ika-dialog-content .Ika-product-cart {
   width: 100%;
   min-height: 46px;
   justify-content: center;
@@ -5366,7 +5366,7 @@ html[lang="ar"] h6 {
   background: #17383b;
 }
 
-.foodu-full-menu .foodu-menu-product-card .foodu-dialog-details {
+.Ika-full-menu .Ika-menu-product-card .Ika-dialog-details {
   min-height: 44px;
   border-color: rgba(23, 56, 59, 0.18);
   border-radius: 7px;
@@ -5375,20 +5375,20 @@ html[lang="ar"] h6 {
 }
 
 @media (max-width: 767px) {
-  .foodu-full-menu .foodu-full-menu-heading h2 {
+  .Ika-full-menu .Ika-full-menu-heading h2 {
     font-size: 34px;
     line-height: 1.1;
   }
 
-  .foodu-full-menu .foodu-menu-category-list {
+  .Ika-full-menu .Ika-menu-category-list {
     gap: 32px;
   }
 
-  .foodu-full-menu .foodu-menu-category + .foodu-menu-category {
+  .Ika-full-menu .Ika-menu-category + .Ika-menu-category {
     padding-top: 26px;
   }
 
-  .foodu-full-menu .foodu-menu-category-heading {
+  .Ika-full-menu .Ika-menu-category-heading {
     grid-template-columns: 34px minmax(0, 1fr) auto;
     gap: 9px;
     min-height: 58px;
@@ -5396,66 +5396,66 @@ html[lang="ar"] h6 {
     padding: 9px 10px;
   }
 
-  .foodu-full-menu .foodu-menu-category-heading > span {
+  .Ika-full-menu .Ika-menu-category-heading > span {
     width: 32px;
     height: 32px;
     font-size: 10px;
   }
 
-  .foodu-full-menu .foodu-menu-category-heading h3 {
+  .Ika-full-menu .Ika-menu-category-heading h3 {
     font-size: 19px;
   }
 
-  .foodu-full-menu .foodu-menu-category-heading p {
+  .Ika-full-menu .Ika-menu-category-heading p {
     padding: 6px 8px;
     font-size: 10px;
   }
 
-  .foodu-full-menu .foodu-category-product-grid {
+  .Ika-full-menu .Ika-category-product-grid {
     gap: 12px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-product-image {
+  .Ika-full-menu .Ika-menu-product-card .Ika-product-image {
     aspect-ratio: 1.05;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-product-image img {
+  .Ika-full-menu .Ika-menu-product-card .Ika-product-image img {
     padding: 6px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-product-content {
+  .Ika-full-menu .Ika-menu-product-card .Ika-product-content {
     padding: 11px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-product-tags {
+  .Ika-full-menu .Ika-menu-product-card .Ika-product-tags {
     min-height: 18px;
     margin-bottom: 6px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-product-tags span {
+  .Ika-full-menu .Ika-menu-product-card .Ika-product-tags span {
     padding: 4px 6px;
     font-size: 9px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-product-content h3 {
+  .Ika-full-menu .Ika-menu-product-card .Ika-product-content h3 {
     min-height: 2.5em;
     margin-bottom: 10px;
     font-size: 15px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-product-footer {
+  .Ika-full-menu .Ika-menu-product-card .Ika-product-footer {
     gap: 9px 5px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-product-footer > strong {
+  .Ika-full-menu .Ika-menu-product-card .Ika-product-footer > strong {
     font-size: 14px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-product-old-price {
+  .Ika-full-menu .Ika-menu-product-card .Ika-product-old-price {
     font-size: 10px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card button.foodu-product-cart {
+  .Ika-full-menu .Ika-menu-product-card button.Ika-product-cart {
     min-height: 40px;
     padding: 8px 6px;
     gap: 6px;
@@ -5463,107 +5463,107 @@ html[lang="ar"] h6 {
     font-size: 11px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-product-dialog {
+  .Ika-full-menu .Ika-menu-product-card .Ika-product-dialog {
     width: calc(100vw - 24px);
     max-height: calc(100dvh - 24px);
     border-radius: 10px;
     overflow-y: auto;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-product-dialog[open] {
+  .Ika-full-menu .Ika-menu-product-card .Ika-product-dialog[open] {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: minmax(150px, 28dvh) auto;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-product-dialog > img {
+  .Ika-full-menu .Ika-menu-product-card .Ika-product-dialog > img {
     height: 100%;
     min-height: 0;
     padding: 14px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-dialog-content {
+  .Ika-full-menu .Ika-menu-product-card .Ika-dialog-content {
     padding: 18px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-dialog-content h2 {
+  .Ika-full-menu .Ika-menu-product-card .Ika-dialog-content h2 {
     margin: 8px 0;
     font-size: 23px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-dialog-content p {
+  .Ika-full-menu .Ika-menu-product-card .Ika-dialog-content p {
     margin-bottom: 12px;
     font-size: 13px;
   }
 
-  .foodu-full-menu .foodu-menu-product-card .foodu-dialog-content .foodu-product-cart {
+  .Ika-full-menu .Ika-menu-product-card .Ika-dialog-content .Ika-product-cart {
     margin-top: 12px;
   }
 }
 
 @media (max-width: 360px) {
-  .foodu-full-menu .foodu-menu-product-card button.foodu-product-cart i {
+  .Ika-full-menu .Ika-menu-product-card button.Ika-product-cart i {
     display: none;
   }
 }
 
-.foodu-menu-category-list {
+.Ika-menu-category-list {
   display: grid;
   gap: 48px;
   text-align: left;
 }
 
-.foodu-menu-category {
+.Ika-menu-category {
   scroll-margin-top: 195px;
 }
 
 @media (max-width: 767px) {
-  .foodu-menu-category {
+  .Ika-menu-category {
     scroll-margin-top: 158px;
   }
 }
 
-.foodu-menu-product-anchor {
+.Ika-menu-product-anchor {
   min-width: 0;
   scroll-margin-top: 242px;
 }
 
-.foodu-menu-category + .foodu-menu-category {
+.Ika-menu-category + .Ika-menu-category {
   padding-top: 38px;
   border-top: 1px solid rgba(23, 56, 59, 0.12);
 }
 
-.foodu-menu-category-heading {
+.Ika-menu-category-heading {
   display: flex;
   align-items: baseline;
   gap: 14px;
   margin-bottom: 22px;
 }
 
-.foodu-menu-category-heading > span {
+.Ika-menu-category-heading > span {
   color: #c55037;
   font-size: 12px;
   font-weight: 800;
 }
 
-.foodu-menu-category-heading h3 {
+.Ika-menu-category-heading h3 {
   margin: 0;
   color: #17383b;
   font-size: 26px;
   font-weight: 800;
 }
 
-.foodu-menu-category-heading p {
+.Ika-menu-category-heading p {
   margin: 0 0 0 auto;
   color: #748183;
   font-size: 12px;
   font-weight: 700;
 }
 
-.foodu-category-product-grid {
+.Ika-category-product-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.foodu-product-card {
+.Ika-product-card {
   position: relative;
   height: 100%;
   overflow: hidden;
@@ -5574,24 +5574,24 @@ html[lang="ar"] h6 {
   transition: box-shadow 220ms ease, transform 220ms ease;
 }
 
-.foodu-product-card:hover {
+.Ika-product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 44px rgba(24, 61, 43, 0.14);
 }
 
-.foodu-product-card.is-in-cart {
+.Ika-product-card.is-in-cart {
   border-color: rgba(36, 110, 82, 0.52);
   box-shadow: inset 0 0 0 1px rgba(36, 110, 82, 0.18),
     0 12px 32px rgba(24, 61, 43, 0.1);
 }
 
-.foodu-product-card.is-in-cart > .foodu-product-image,
-.foodu-product-card.is-in-cart > .foodu-product-content {
+.Ika-product-card.is-in-cart > .Ika-product-image,
+.Ika-product-card.is-in-cart > .Ika-product-content {
   opacity: 0.5;
   transition: opacity 280ms ease;
 }
 
-.foodu-product-selected-actions {
+.Ika-product-selected-actions {
   position: absolute;
   z-index: 5;
   top: 50%;
@@ -5600,10 +5600,10 @@ html[lang="ar"] h6 {
   display: grid;
   gap: 9px;
   transform: translate(-50%, -50%);
-  animation: foodu-product-selected-in 260ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  animation: Ika-product-selected-in 260ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
-.foodu-product-card .foodu-product-selected-actions > button {
+.Ika-product-card .Ika-product-selected-actions > button {
   position: relative;
   z-index: 0;
   width: 100%;
@@ -5626,41 +5626,41 @@ html[lang="ar"] h6 {
   text-transform: none;
 }
 
-.foodu-product-card .foodu-product-selected-actions > button::after {
+.Ika-product-card .Ika-product-selected-actions > button::after {
   display: none;
   content: none;
 }
 
-.foodu-product-card .foodu-product-selected-actions > .foodu-product-selected-state {
+.Ika-product-card .Ika-product-selected-actions > .Ika-product-selected-state {
   cursor: default;
   opacity: 1;
 }
 
-.foodu-product-card .foodu-product-selected-actions > .foodu-product-add-one-more {
+.Ika-product-card .Ika-product-selected-actions > .Ika-product-add-one-more {
   border-color: #1d644b;
   background: #1d644b;
   cursor: pointer;
   transition: background 180ms ease, transform 180ms ease;
 }
 
-.foodu-product-card .foodu-product-selected-actions > .foodu-product-add-one-more:hover:not(:disabled),
-.foodu-product-card .foodu-product-selected-actions > .foodu-product-add-one-more:focus-visible {
+.Ika-product-card .Ika-product-selected-actions > .Ika-product-add-one-more:hover:not(:disabled),
+.Ika-product-card .Ika-product-selected-actions > .Ika-product-add-one-more:focus-visible {
   color: #fff;
   background: #164c39;
   transform: translateY(-1px);
 }
 
-.foodu-product-card .foodu-product-selected-actions > .foodu-product-add-one-more:disabled {
+.Ika-product-card .Ika-product-selected-actions > .Ika-product-add-one-more:disabled {
   cursor: wait;
   opacity: 0.8;
 }
 
-.foodu-product-card .foodu-product-selected-actions > button:focus-visible {
+.Ika-product-card .Ika-product-selected-actions > button:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 3px;
 }
 
-.foodu-cart-flight {
+.Ika-cart-flight {
   position: fixed;
   z-index: 1500;
   width: 58px;
@@ -5678,32 +5678,32 @@ html[lang="ar"] h6 {
   will-change: left, top, transform, opacity;
 }
 
-.foodu-cart-flight > img {
+.Ika-cart-flight > img {
   width: 100%;
   height: 100%;
   border-radius: 11px;
   object-fit: cover;
 }
 
-.foodu-cart-flight > i {
+.Ika-cart-flight > i {
   color: #17383b;
   font-size: 25px;
 }
 
-.foodu-bottom-cart.is-receiving > i,
-.foodu-desktop-cart.is-receiving > i {
-  animation: foodu-cart-receive 560ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
+.Ika-bottom-cart.is-receiving > i,
+.Ika-desktop-cart.is-receiving > i {
+  animation: Ika-cart-receive 560ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
 }
 
-.foodu-bottom-cart.is-receiving {
-  animation: foodu-bottom-cart-arrival 620ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
+.Ika-bottom-cart.is-receiving {
+  animation: Ika-bottom-cart-arrival 620ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
 }
 
-.foodu-count-badge.is-popping {
-  animation: foodu-cart-badge-pop 520ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
+.Ika-count-badge.is-popping {
+  animation: Ika-cart-badge-pop 520ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
 }
 
-.foodu-home-product-card {
+.Ika-home-product-card {
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(24, 61, 43, 0.12);
@@ -5711,12 +5711,12 @@ html[lang="ar"] h6 {
   box-shadow: 0 10px 28px rgba(32, 43, 36, 0.08);
 }
 
-.foodu-home-product-card .foodu-product-image {
+.Ika-home-product-card .Ika-product-image {
   aspect-ratio: 1;
   background: #f3efe5;
 }
 
-.foodu-home-product-card .foodu-product-image::before {
+.Ika-home-product-card .Ika-product-image::before {
   position: absolute;
   inset: 9% 12%;
   border-radius: 50%;
@@ -5724,18 +5724,18 @@ html[lang="ar"] h6 {
   content: "";
 }
 
-.foodu-home-product-card .foodu-product-image > a {
+.Ika-home-product-card .Ika-product-image > a {
   position: relative;
   z-index: 1;
 }
 
-.foodu-home-product-card .foodu-product-image img {
+.Ika-home-product-card .Ika-product-image img {
   padding: 8px;
   object-fit: contain;
   filter: drop-shadow(0 10px 12px rgba(32, 43, 36, 0.16));
 }
 
-.foodu-home-product-card .foodu-product-content {
+.Ika-home-product-card .Ika-product-content {
   display: flex;
   min-height: 0;
   flex: 1 1 auto;
@@ -5743,39 +5743,39 @@ html[lang="ar"] h6 {
   padding: 16px 18px 18px;
 }
 
-.foodu-home-product-card .foodu-product-content h3 {
+.Ika-home-product-card .Ika-product-content h3 {
   min-height: 2.6em;
   font-size: 18px;
 }
 
-.foodu-home-product-card .foodu-product-footer {
+.Ika-home-product-card .Ika-product-footer {
   margin-top: auto;
 }
 
-.foodu-product-image {
+.Ika-product-image {
   position: relative;
   overflow: hidden;
   aspect-ratio: 1.25;
   background: #f6f1e8;
 }
 
-.foodu-product-image > a,
-.foodu-product-image img {
+.Ika-product-image > a,
+.Ika-product-image img {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.foodu-product-image img {
+.Ika-product-image img {
   object-fit: cover;
   transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.foodu-product-card:hover .foodu-product-image img {
+.Ika-product-card:hover .Ika-product-image img {
   transform: scale(1.06);
 }
 
-.foodu-product-tools {
+.Ika-product-tools {
   position: absolute;
   z-index: 2;
   top: 14px;
@@ -5785,7 +5785,7 @@ html[lang="ar"] h6 {
   gap: 9px;
 }
 
-.foodu-product-tool {
+.Ika-product-tool {
   position: relative;
   width: 42px;
   height: 42px;
@@ -5794,7 +5794,7 @@ html[lang="ar"] h6 {
   justify-content: center;
   border: 0;
   border-radius: 50%;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 5px 16px rgba(20, 38, 28, 0.14);
   cursor: pointer;
@@ -5802,9 +5802,9 @@ html[lang="ar"] h6 {
   transition: color 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
-.foodu-product-card button.foodu-product-tool,
-.foodu-product-card button.foodu-product-cart,
-.foodu-product-card button.foodu-dialog-close {
+.Ika-product-card button.Ika-product-tool,
+.Ika-product-card button.Ika-product-cart,
+.Ika-product-card button.Ika-dialog-close {
   display: inline-flex;
   overflow: visible;
   padding: 0;
@@ -5815,59 +5815,64 @@ html[lang="ar"] h6 {
   text-transform: none;
 }
 
-.foodu-product-card button.foodu-product-tool {
+.Ika-product-card button.Ika-product-tool {
   width: 42px;
   height: 42px;
   position: relative;
   z-index: 2;
   border-radius: 50%;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   background: rgba(255, 255, 255, 0.96);
   font-size: 17px;
 }
 
-.foodu-product-card button.foodu-product-tool::after,
-.foodu-product-card button.foodu-product-cart::after,
-.foodu-product-card button.foodu-dialog-close::after {
+.Ika-product-card button.Ika-product-tool::after,
+.Ika-product-card button.Ika-product-cart::after,
+.Ika-product-card button.Ika-dialog-close::after {
   display: none;
   content: none;
 }
 
-.foodu-product-card button.foodu-product-cart {
+.Ika-product-card button.Ika-product-cart {
   min-height: 40px;
   padding: 9px 13px;
   border-radius: 24px;
   color: #fff;
-  background: var(--foodu-green);
+  background: var(--Ika-green);
   font-size: 12px;
   font-weight: 700;
 }
 
-.foodu-product-card button.foodu-dialog-close {
+.Ika-product-card button.Ika-dialog-close {
   position: absolute;
   z-index: 2;
   top: 13px;
   right: 13px;
   width: 38px;
   height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0;
+  display: grid;
+  place-items: center;
   border-radius: 50%;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   background: #fff;
 }
 
-.foodu-product-tool:hover,
-.foodu-product-tool:focus-visible,
-.foodu-product-tool.is-liked {
+.Ika-product-tool:hover,
+.Ika-product-tool:focus-visible,
+.Ika-product-tool.is-liked {
   color: #fff;
   background: #c55037;
   transform: scale(1.07);
 }
 
-.foodu-product-tool.is-busy {
-  animation: foodu-action-pulse 650ms ease-in-out infinite alternate;
+.Ika-product-tool.is-busy {
+  animation: Ika-action-pulse 650ms ease-in-out infinite alternate;
 }
 
-.foodu-product-tooltip {
+.Ika-product-tooltip {
   position: absolute;
   top: 50%;
   right: calc(100% + 9px);
@@ -5876,7 +5881,7 @@ html[lang="ar"] h6 {
   padding: 7px 10px;
   border-radius: 7px;
   color: #fff;
-  background: var(--foodu-ink);
+  background: var(--Ika-ink);
   font: 600 12px/1.2 Arial, sans-serif;
   opacity: 0;
   pointer-events: none;
@@ -5884,17 +5889,17 @@ html[lang="ar"] h6 {
   transition: opacity 150ms ease, transform 150ms ease;
 }
 
-.foodu-product-tool:hover .foodu-product-tooltip,
-.foodu-product-tool:focus-visible .foodu-product-tooltip {
+.Ika-product-tool:hover .Ika-product-tooltip,
+.Ika-product-tool:focus-visible .Ika-product-tooltip {
   opacity: 1;
   transform: translate(0, -50%);
 }
 
-.foodu-product-content {
+.Ika-product-content {
   padding: 18px 19px 20px;
 }
 
-.foodu-product-tags {
+.Ika-product-tags {
   min-height: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -5902,7 +5907,7 @@ html[lang="ar"] h6 {
   margin-bottom: 7px;
 }
 
-.foodu-product-tags span {
+.Ika-product-tags span {
   padding: 4px 8px;
   border-radius: 20px;
   color: #6d674e;
@@ -5912,22 +5917,22 @@ html[lang="ar"] h6 {
   line-height: 1;
 }
 
-.foodu-product-content h3 {
+.Ika-product-content h3 {
   margin: 0 0 7px;
   font-size: 19px;
   line-height: 1.3;
   text-align: start;
 }
 
-.foodu-product-content h3 a {
-  color: var(--foodu-ink);
+.Ika-product-content h3 a {
+  color: var(--Ika-ink);
 }
 
-.foodu-product-content h3 a:hover {
+.Ika-product-content h3 a:hover {
   color: #a33c2d;
 }
 
-.foodu-product-description {
+.Ika-product-description {
   text-align: start;
   min-height: 42px;
   margin: 0 0 15px;
@@ -5936,21 +5941,21 @@ html[lang="ar"] h6 {
   line-height: 1.55;
 }
 
-.foodu-product-footer {
+.Ika-product-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
 }
 
-.foodu-product-footer > strong,
-.foodu-dialog-content > strong {
+.Ika-product-footer > strong,
+.Ika-dialog-content > strong {
   color: #a33c2d;
   font-size: 18px;
   white-space: nowrap;
 }
 
-.foodu-product-cart {
+.Ika-product-cart {
   min-height: 40px;
   padding: 9px 13px;
   display: inline-flex;
@@ -5960,7 +5965,7 @@ html[lang="ar"] h6 {
   border: 0;
   border-radius: 24px;
   color: #fff;
-  background: var(--foodu-green);
+  background: var(--Ika-green);
   cursor: pointer;
   font-size: 12px;
   font-weight: 700;
@@ -5968,28 +5973,28 @@ html[lang="ar"] h6 {
   transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
-.foodu-product-cart:hover:not(:disabled) {
+.Ika-product-cart:hover:not(:disabled) {
   background: #a33c2d;
   box-shadow: 0 7px 18px rgba(163, 60, 45, 0.22);
   transform: translateY(-2px);
 }
 
-.foodu-product-card button.foodu-product-cart:hover:not(:disabled) {
+.Ika-product-card button.Ika-product-cart:hover:not(:disabled) {
   color: #fff;
   background: #a33c2d;
 }
 
-.foodu-product-cart:disabled,
-.foodu-product-tool:disabled {
+.Ika-product-cart:disabled,
+.Ika-product-tool:disabled {
   cursor: wait;
   opacity: 0.72;
 }
 
-.foodu-product-cart.is-busy {
-  animation: foodu-action-pulse 650ms ease-in-out infinite alternate;
+.Ika-product-cart.is-busy {
+  animation: Ika-action-pulse 650ms ease-in-out infinite alternate;
 }
 
-.foodu-product-remove {
+.Ika-product-remove {
   padding: 6px 0;
   border: 0;
   color: #a33c2d;
@@ -5999,7 +6004,7 @@ html[lang="ar"] h6 {
   font-weight: 700;
 }
 
-.foodu-product-dialog {
+.Ika-product-dialog {
   position: fixed;
   inset: 0;
   width: min(820px, calc(100vw - 32px));
@@ -6014,19 +6019,19 @@ html[lang="ar"] h6 {
   box-shadow: 0 28px 100px rgba(0, 0, 0, 0.34);
 }
 
-.foodu-product-dialog[open] {
+.Ika-product-dialog[open] {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-  animation: foodu-dialog-in 220ms ease both;
+  animation: Ika-dialog-in 220ms ease both;
 }
 
-.foodu-product-dialog::backdrop {
+.Ika-product-dialog::backdrop {
   background: rgba(12, 24, 17, 0.56);
   backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(9px);
 }
 
-.foodu-product-dialog > img {
+.Ika-product-dialog > img {
   width: 100%;
   height: 100%;
   min-width: 0;
@@ -6036,13 +6041,13 @@ html[lang="ar"] h6 {
   background: #f4eee3;
 }
 
-.foodu-dialog-content {
+.Ika-dialog-content {
   align-self: center;
   min-width: 0;
   padding: 38px;
 }
 
-.foodu-dialog-eyebrow {
+.Ika-dialog-eyebrow {
   color: #a33c2d;
   font-size: 11px;
   font-weight: 800;
@@ -6050,26 +6055,26 @@ html[lang="ar"] h6 {
   text-transform: uppercase;
 }
 
-.foodu-dialog-content h2 {
+.Ika-dialog-content h2 {
   margin: 10px 0;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   font-size: 30px;
   line-height: 1.15;
 }
 
-.foodu-dialog-content p {
+.Ika-dialog-content p {
   margin: 0 0 18px;
   color: #74766f;
   line-height: 1.6;
 }
 
-.foodu-dialog-content .foodu-product-cart {
+.Ika-dialog-content .Ika-product-cart {
   width: 100%;
   margin-top: 20px;
   border-radius: 5px;
 }
 
-.foodu-dialog-details {
+.Ika-dialog-details {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6078,35 +6083,44 @@ html[lang="ar"] h6 {
   margin-top: 10px;
   border: 1px solid rgba(24, 61, 43, 0.18);
   border-radius: 5px;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   font-size: 13px;
   font-weight: 700;
   transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
 }
 
-.foodu-dialog-details:hover,
-.foodu-dialog-details:focus-visible {
-  border-color: var(--foodu-green);
+.Ika-dialog-details:hover,
+.Ika-dialog-details:focus-visible {
+  border-color: var(--Ika-green);
   color: #fff;
-  background: var(--foodu-green);
+  background: var(--Ika-green);
 }
 
-.foodu-dialog-close {
+.Ika-dialog-close {
   position: absolute;
   z-index: 2;
   top: 13px;
   right: 13px;
   width: 38px;
+  min-width: 38px;
   height: 38px;
+  min-height: 38px;
+  padding: 0;
+  display: grid;
+  place-items: center;
   border: 0;
   border-radius: 50%;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   background: #fff;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
 
-.foodu-toast {
+.Ika-dialog-close i {
+  margin: 0;
+}
+
+.Ika-toast {
   position: fixed;
   z-index: 1300;
   top: 24px;
@@ -6118,20 +6132,20 @@ html[lang="ar"] h6 {
   gap: 13px;
   border: 1px solid rgba(24, 61, 43, 0.1);
   border-radius: 15px;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   background: #fff;
   box-shadow: 0 14px 40px rgba(24, 61, 43, 0.18);
   font-size: 14px;
   font-weight: 700;
-  animation: foodu-toast-in 300ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation: Ika-toast-in 300ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-.foodu-toast.is-error {
+.Ika-toast.is-error {
   border-color: rgba(163, 60, 45, 0.22);
   color: #a33c2d;
 }
 
-.foodu-toast-icon {
+.Ika-toast-icon {
   width: 40px;
   height: 40px;
   display: inline-flex;
@@ -6139,50 +6153,50 @@ html[lang="ar"] h6 {
   justify-content: center;
   border-radius: 50%;
   color: #fff;
-  background: var(--foodu-green);
-  animation: foodu-icon-pop 450ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  background: var(--Ika-green);
+  animation: Ika-icon-pop 450ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-.foodu-cart-flight,
-.foodu-product-added {
+.Ika-cart-flight,
+.Ika-product-added {
   contain: layout paint;
 }
 
-.foodu-toast.is-error .foodu-toast-icon {
+.Ika-toast.is-error .Ika-toast-icon {
   background: #a33c2d;
 }
 
-.foodu-menu-product-grid {
+.Ika-menu-product-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
 }
 
-.foodu-menu-categories {
+.Ika-menu-categories {
   scroll-margin-top: 190px;
 }
 
-.foodu-menu-category-section {
+.Ika-menu-category-section {
   padding: 30px 0 8px;
   border-top: 1px solid rgba(23, 56, 59, 0.14);
   scroll-margin-top: 190px;
 }
 
-.foodu-menu-category-header {
+.Ika-menu-category-header {
   display: flex;
   align-items: center;
   gap: 18px;
   margin-bottom: 22px;
 }
 
-.foodu-menu-category-title-row {
+.Ika-menu-category-title-row {
   min-width: 0;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.foodu-menu-category-index {
+.Ika-menu-category-index {
   width: 40px;
   height: 40px;
   flex: 0 0 auto;
@@ -6195,7 +6209,7 @@ html[lang="ar"] h6 {
   font-weight: 800;
 }
 
-.foodu-menu-category-title-row h2 {
+.Ika-menu-category-title-row h2 {
   margin: 0;
   color: #171c19;
   font-size: 25px;
@@ -6204,13 +6218,13 @@ html[lang="ar"] h6 {
   text-transform: uppercase;
 }
 
-.foodu-menu-category-rule {
+.Ika-menu-category-rule {
   height: 1px;
   flex: 1 1 auto;
   background: rgba(23, 56, 59, 0.14);
 }
 
-.foodu-menu-category-count {
+.Ika-menu-category-count {
   flex: 0 0 auto;
   color: #657168;
   font-size: 11px;
@@ -6219,35 +6233,35 @@ html[lang="ar"] h6 {
   white-space: nowrap;
 }
 
-.foodu-menu-product-item {
+.Ika-menu-product-item {
   min-width: 0;
-  animation: foodu-menu-product-in 420ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  animation: Ika-menu-product-in 420ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
   scroll-margin-top: 190px;
 }
 
-.foodu-menu-product-item:nth-child(4n + 2) {
+.Ika-menu-product-item:nth-child(4n + 2) {
   animation-delay: 45ms;
 }
 
-.foodu-menu-product-item:nth-child(4n + 3) {
+.Ika-menu-product-item:nth-child(4n + 3) {
   animation-delay: 90ms;
 }
 
-.foodu-menu-product-item:nth-child(4n + 4) {
+.Ika-menu-product-item:nth-child(4n + 4) {
   animation-delay: 135ms;
 }
 
-.foodu-menu-product-grid .foodu-product-card {
+.Ika-menu-product-grid .Ika-product-card {
   text-align: left;
 }
 
-.foodu-menu-page-tools {
+.Ika-menu-page-tools {
   position: relative;
   width: min(100%, 560px);
   margin: 0 auto 28px;
 }
 
-.foodu-menu-page-search {
+.Ika-menu-page-search {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -6259,7 +6273,7 @@ html[lang="ar"] h6 {
   box-shadow: 0 12px 28px rgba(23, 56, 59, 0.08);
 }
 
-.foodu-menu-page-search-field {
+.Ika-menu-page-search-field {
   position: relative;
   min-width: 0;
   display: grid;
@@ -6267,7 +6281,7 @@ html[lang="ar"] h6 {
   height: 52px;
 }
 
-.foodu-menu-page-search-field i {
+.Ika-menu-page-search-field i {
   position: absolute;
   left: 16px;
   color: #788785;
@@ -6275,7 +6289,7 @@ html[lang="ar"] h6 {
   pointer-events: none;
 }
 
-.foodu-menu-page-search-field input {
+.Ika-menu-page-search-field input {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -6288,14 +6302,14 @@ html[lang="ar"] h6 {
   font-weight: 600;
 }
 
-.foodu-menu-page-search-field input:focus {
+.Ika-menu-page-search-field input:focus {
   border-color: #17383b;
   background: #fff;
   box-shadow: 0 0 0 3px rgba(23, 56, 59, 0.08);
   outline: none;
 }
 
-.foodu-menu-page-search-submit {
+.Ika-menu-page-search-submit {
   min-width: 110px;
   height: 52px;
   padding: 0 18px;
@@ -6307,7 +6321,7 @@ html[lang="ar"] h6 {
   font-weight: 700;
 }
 
-.foodu-menu-page-search-results {
+.Ika-menu-page-search-results {
   position: absolute;
   z-index: 25;
   top: calc(100% + 10px);
@@ -6322,7 +6336,7 @@ html[lang="ar"] h6 {
   box-shadow: 0 18px 42px rgba(23, 56, 59, 0.18);
 }
 
-.foodu-menu-page-search-results ul {
+.Ika-menu-page-search-results ul {
   display: grid;
   gap: 3px;
   margin: 0;
@@ -6330,16 +6344,16 @@ html[lang="ar"] h6 {
   list-style: none;
 }
 
-.foodu-menu-page-search-results li {
+.Ika-menu-page-search-results li {
   min-width: 0;
   border-bottom: 1px solid rgba(23, 56, 59, 0.08);
 }
 
-.foodu-menu-page-search-results li:last-child {
+.Ika-menu-page-search-results li:last-child {
   border-bottom: 0;
 }
 
-.foodu-menu-page-search-results button {
+.Ika-menu-page-search-results button {
   width: 100%;
   display: flex;
   align-items: center;
@@ -6352,12 +6366,12 @@ html[lang="ar"] h6 {
   text-align: left;
 }
 
-.foodu-menu-page-search-results button:hover,
-.foodu-menu-page-search-results button:focus-visible {
+.Ika-menu-page-search-results button:hover,
+.Ika-menu-page-search-results button:focus-visible {
   background: #edf3f0;
 }
 
-.foodu-menu-page-search-result-image {
+.Ika-menu-page-search-result-image {
   width: 42px;
   height: 42px;
   flex: 0 0 42px;
@@ -6365,14 +6379,14 @@ html[lang="ar"] h6 {
   object-fit: cover;
 }
 
-.foodu-menu-page-search-result-copy {
+.Ika-menu-page-search-result-copy {
   min-width: 0;
   flex: 1 1 auto;
   display: grid;
   gap: 4px;
 }
 
-.foodu-menu-page-search-result-name {
+.Ika-menu-page-search-result-name {
   font-size: 13px;
   font-weight: 700;
   overflow: hidden;
@@ -6380,7 +6394,7 @@ html[lang="ar"] h6 {
   white-space: nowrap;
 }
 
-.foodu-menu-page-search-result-category {
+.Ika-menu-page-search-result-category {
   color: #788785;
   font-size: 11px;
   font-weight: 600;
@@ -6389,13 +6403,13 @@ html[lang="ar"] h6 {
   white-space: nowrap;
 }
 
-.foodu-menu-page-search-result-price {
+.Ika-menu-page-search-result-price {
   color: #17383b;
   font-size: 12px;
   font-weight: 800;
 }
 
-.foodu-menu-page-search-results > p {
+.Ika-menu-page-search-results > p {
   margin: 0;
   padding: 12px 10px;
   color: #788785;
@@ -6403,14 +6417,14 @@ html[lang="ar"] h6 {
   font-size: 13px;
 }
 
-.foodu-menu-filters-wrap {
+.Ika-menu-filters-wrap {
   position: sticky;
   top: 109px;
   z-index: 20;
   margin: 0 0 42px;
 }
 
-.foodu-menu-filters-hint {
+.Ika-menu-filters-hint {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6428,7 +6442,7 @@ html[lang="ar"] h6 {
   text-transform: uppercase;
 }
 
-.mix-item-menu.foodu-menu-filters {
+.mix-item-menu.Ika-menu-filters {
   width: 100%;
   margin: 0;
   padding: 9px 18px;
@@ -6447,24 +6461,24 @@ html[lang="ar"] h6 {
   user-select: none;
 }
 
-.foodu-menu-filters:active {
+.Ika-menu-filters:active {
   cursor: grabbing;
 }
 
-.foodu-menu-filters::-webkit-scrollbar {
+.Ika-menu-filters::-webkit-scrollbar {
   display: none;
 }
 
-.foodu-menu-filters-track {
+.Ika-menu-filters-track {
   width: max-content;
   min-width: 100%;
   display: flex;
   gap: 8px;
-  animation: foodu-menu-filters-drag-hint 1.5s ease-in-out 1.1s 2;
+  animation: Ika-menu-filters-drag-hint 1.5s ease-in-out 1.1s 2;
   will-change: transform;
 }
 
-.foodu-menu-filters button {
+.Ika-menu-filters button {
   position: relative;
   min-width: max-content;
   min-height: 54px;
@@ -6489,31 +6503,31 @@ html[lang="ar"] h6 {
     transform 200ms ease;
 }
 
-.foodu-menu-filters button::before,
-.foodu-menu-filters button::after {
+.Ika-menu-filters button::before,
+.Ika-menu-filters button::after {
   display: none;
   content: none;
 }
 
-.mix-item-menu.foodu-menu-filters button {
+.mix-item-menu.Ika-menu-filters button {
   margin: 0;
 }
 
-.foodu-menu-filters button:hover,
-.foodu-menu-filters button:focus-visible {
-  color: var(--foodu-green);
+.Ika-menu-filters button:hover,
+.Ika-menu-filters button:focus-visible {
+  color: var(--Ika-green);
   background: #f1f4ef;
   transform: translateY(-1px);
 }
 
-.foodu-menu-filters button.active {
+.Ika-menu-filters button.active {
   color: #183d2b;
   background: #e8efe9;
   box-shadow: inset 0 0 0 1px rgba(24, 61, 43, 0.13),
     0 5px 14px rgba(24, 61, 43, 0.08);
 }
 
-.foodu-menu-filter-count {
+.Ika-menu-filter-count {
   min-width: 23px;
   height: 23px;
   padding: 0 6px;
@@ -6529,17 +6543,17 @@ html[lang="ar"] h6 {
   transition: color 200ms ease, background 200ms ease;
 }
 
-.foodu-menu-filters button.active .foodu-menu-filter-count {
+.Ika-menu-filters button.active .Ika-menu-filter-count {
   color: #fff;
-  background: var(--foodu-green);
+  background: var(--Ika-green);
 }
 
-.foodu-menu-filters button:focus-visible {
-  outline: 2px solid var(--foodu-gold);
+.Ika-menu-filters button:focus-visible {
+  outline: 2px solid var(--Ika-gold);
   outline-offset: 2px;
 }
 
-.foodu-menu-empty-state {
+.Ika-menu-empty-state {
   width: 50vw;
   max-width: 100%;
   grid-column: 1 / -1;
@@ -6554,7 +6568,7 @@ html[lang="ar"] h6 {
   font-weight: 600;
 }
 
-@keyframes foodu-menu-filters-drag-hint {
+@keyframes Ika-menu-filters-drag-hint {
   0%,
   100% {
     transform: translateX(0);
@@ -6570,7 +6584,7 @@ html[lang="ar"] h6 {
   }
 }
 
-.foodu-menu-filters::before {
+.Ika-menu-filters::before {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -6578,16 +6592,16 @@ html[lang="ar"] h6 {
   background: linear-gradient(90deg, rgba(251, 249, 244, 0.96) 0%, rgba(251, 249, 244, 0) 18%, rgba(251, 249, 244, 0) 82%, rgba(251, 249, 244, 0.96) 100%);
 }
 
-.foodu-orders-page {
+.Ika-orders-page {
   min-height: 48vh;
 }
 
-.foodu-orders-content {
+.Ika-orders-content {
   width: min(880px, 100%);
   margin: 0 auto;
 }
 
-.foodu-orders-intro {
+.Ika-orders-intro {
   margin-bottom: 24px;
   padding: 24px 28px;
   display: flex;
@@ -6600,7 +6614,7 @@ html[lang="ar"] h6 {
   box-shadow: 0 12px 35px rgba(24, 61, 43, 0.06);
 }
 
-.foodu-orders-eyebrow {
+.Ika-orders-eyebrow {
   color: #a33c2d;
   font-size: 11px;
   font-weight: 800;
@@ -6608,19 +6622,19 @@ html[lang="ar"] h6 {
   text-transform: uppercase;
 }
 
-.foodu-orders-intro h3 {
+.Ika-orders-intro h3 {
   margin: 5px 0 4px;
-  color: var(--foodu-ink);
+  color: var(--Ika-ink);
   font-size: clamp(19px, 3vw, 24px);
 }
 
-.foodu-orders-intro p {
+.Ika-orders-intro p {
   margin: 0;
   color: #74766f;
   font-size: 14px;
 }
 
-.foodu-orders-intro > i {
+.Ika-orders-intro > i {
   width: 54px;
   height: 54px;
   flex: 0 0 54px;
@@ -6628,16 +6642,16 @@ html[lang="ar"] h6 {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  color: var(--foodu-green);
+  color: var(--Ika-green);
   background: rgba(24, 61, 43, 0.09);
   font-size: 22px;
 }
 
-.foodu-orders-empty {
+.Ika-orders-empty {
   padding: 52px 24px;
 }
 
-.foodu-orders-empty-icon {
+.Ika-orders-empty-icon {
   width: 66px;
   height: 66px;
   margin: 0 auto 18px;
@@ -6651,22 +6665,22 @@ html[lang="ar"] h6 {
   font-size: 25px;
 }
 
-.foodu-orders-empty h2 {
+.Ika-orders-empty h2 {
   margin-bottom: 8px;
 }
 
-.foodu-orders-empty p {
+.Ika-orders-empty p {
   max-width: 440px;
   margin: 0 auto 20px;
   color: #74766f;
 }
 
-.foodu-wishlist-grid {
+.Ika-wishlist-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
-.foodu-wishlist-product-card {
+.Ika-wishlist-product-card {
   display: flex;
   min-width: 0;
   flex-direction: column;
@@ -6677,23 +6691,23 @@ html[lang="ar"] h6 {
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
-.foodu-wishlist-product-card:hover {
+.Ika-wishlist-product-card:hover {
   transform: translateY(-3px);
   border-color: rgba(7, 43, 49, 0.2);
   box-shadow: 0 14px 30px rgba(7, 43, 49, 0.12);
 }
 
-.foodu-wishlist-product-card .foodu-product-image {
+.Ika-wishlist-product-card .Ika-product-image {
   aspect-ratio: 1.15;
   background: linear-gradient(145deg, #f3f6f3, #e7eeea);
 }
 
-.foodu-wishlist-product-card .foodu-product-image img {
+.Ika-wishlist-product-card .Ika-product-image img {
   padding: 10px;
   object-fit: contain;
 }
 
-.foodu-wishlist-product-card .foodu-product-content {
+.Ika-wishlist-product-card .Ika-product-content {
   min-width: 0;
   flex: 1 1 auto;
   display: flex;
@@ -6701,24 +6715,24 @@ html[lang="ar"] h6 {
   padding: 15px;
 }
 
-.foodu-wishlist-product-card .foodu-product-content h3 {
+.Ika-wishlist-product-card .Ika-product-content h3 {
   color: #072b31;
   font-size: 17px;
   line-height: 1.3;
 }
 
-.foodu-wishlist-product-card .foodu-product-description {
+.Ika-wishlist-product-card .Ika-product-description {
   display: none;
 }
 
-.foodu-wishlist-product-card .foodu-product-footer {
+.Ika-wishlist-product-card .Ika-product-footer {
   margin-top: auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 8px;
 }
 
-.foodu-wishlist-product-card .foodu-product-price {
+.Ika-wishlist-product-card .Ika-product-price {
   min-width: 0;
   display: flex;
   align-items: baseline;
@@ -6726,22 +6740,22 @@ html[lang="ar"] h6 {
   gap: 5px;
 }
 
-.foodu-wishlist-product-card .foodu-product-price > strong {
+.Ika-wishlist-product-card .Ika-product-price > strong {
   color: #a33c2d;
 }
 
-.foodu-wishlist-product-card .foodu-product-remove {
+.Ika-wishlist-product-card .Ika-product-remove {
   grid-column: 2;
   grid-row: 1;
 }
 
-.foodu-wishlist-product-card .foodu-product-cart {
+.Ika-wishlist-product-card .Ika-product-cart {
   width: 100%;
   grid-column: 1 / -1;
   grid-row: 2;
 }
 
-.foodu-wishlist-product-card .foodu-product-remove {
+.Ika-wishlist-product-card .Ika-product-remove {
   display: inline-flex;
   min-height: 38px;
   padding: 0 12px;
@@ -6757,27 +6771,27 @@ html[lang="ar"] h6 {
   transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
 }
 
-.foodu-wishlist-product-card .foodu-product-remove:hover:not(:disabled),
-.foodu-wishlist-product-card .foodu-product-remove:focus-visible {
+.Ika-wishlist-product-card .Ika-product-remove:hover:not(:disabled),
+.Ika-wishlist-product-card .Ika-product-remove:focus-visible {
   border-color: #a33c2d;
   color: #fff;
   background: #a33c2d;
 }
 
-.foodu-wishlist-product-card .foodu-product-remove:focus-visible {
+.Ika-wishlist-product-card .Ika-product-remove:focus-visible {
   outline: 3px solid rgba(163, 60, 45, 0.24);
   outline-offset: 2px;
 }
 
 @media (max-width: 575px) {
-  .foodu-product-grid.foodu-wishlist-grid {
+  .Ika-product-grid.Ika-wishlist-grid {
     gap: 9px;
   }
-  .foodu-wishlist-product-card .foodu-product-image {
+  .Ika-wishlist-product-card .Ika-product-image {
     aspect-ratio: 0.92;
   }
 
-  .foodu-wishlist-product-card .foodu-product-tools {
+  .Ika-wishlist-product-card .Ika-product-tools {
     top: 5px;
     right: 5px;
     left: 5px;
@@ -6786,50 +6800,50 @@ html[lang="ar"] h6 {
     gap: 4px;
   }
 
-  .foodu-wishlist-product-card button.foodu-product-tool {
+  .Ika-wishlist-product-card button.Ika-product-tool {
     width: 25px;
     height: 25px;
     flex: 0 0 25px;
     font-size: 11px;
   }
 
-  .foodu-wishlist-product-card .foodu-product-tooltip,
-  .foodu-wishlist-product-card .foodu-product-tags {
+  .Ika-wishlist-product-card .Ika-product-tooltip,
+  .Ika-wishlist-product-card .Ika-product-tags {
     display: none;
   }
 
-  .foodu-wishlist-product-card .foodu-product-content {
+  .Ika-wishlist-product-card .Ika-product-content {
     padding: 8px 7px 9px;
   }
 
-  .foodu-wishlist-product-card .foodu-product-content h3 {
+  .Ika-wishlist-product-card .Ika-product-content h3 {
     min-height: 31px;
     margin-bottom: 8px;
     font-size: 12px;
     line-height: 1.3;
   }
 
-  .foodu-wishlist-product-card .foodu-product-footer {
+  .Ika-wishlist-product-card .Ika-product-footer {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 5px;
   }
 
-  .foodu-wishlist-product-card .foodu-product-price {
+  .Ika-wishlist-product-card .Ika-product-price {
     grid-column: 1;
     grid-row: 1;
     margin: 0;
   }
 
-  .foodu-wishlist-product-card .foodu-product-price > strong {
+  .Ika-wishlist-product-card .Ika-product-price > strong {
     font-size: 12px;
   }
 
-  .foodu-wishlist-product-card .foodu-product-price .foodu-product-old-price {
+  .Ika-wishlist-product-card .Ika-product-price .Ika-product-old-price {
     display: none;
   }
 
-  .foodu-wishlist-product-card .foodu-product-remove {
+  .Ika-wishlist-product-card .Ika-product-remove {
     grid-column: 2;
     grid-row: 1;
     width: 36px;
@@ -6840,8 +6854,8 @@ html[lang="ar"] h6 {
     justify-self: end;
   }
 
-  .foodu-wishlist-product-card .foodu-product-remove,
-  .foodu-wishlist-product-card .foodu-product-cart {
+  .Ika-wishlist-product-card .Ika-product-remove,
+  .Ika-wishlist-product-card .Ika-product-cart {
     width: 100%;
     min-width: 0;
     min-height: 30px;
@@ -6854,17 +6868,17 @@ html[lang="ar"] h6 {
     font-size: 12px;
   }
 
-  .foodu-wishlist-product-card .foodu-product-remove {
+  .Ika-wishlist-product-card .Ika-product-remove {
     width: 36px;
     color: #a33c2d;
     background: #fff6f3;
   }
 
-  .foodu-wishlist-product-card .foodu-product-remove span {
+  .Ika-wishlist-product-card .Ika-product-remove span {
     display: none;
   }
 
-  .foodu-wishlist-product-card .foodu-product-cart {
+  .Ika-wishlist-product-card .Ika-product-cart {
     grid-column: 1 / -1;
     grid-row: 2;
     min-height: 38px;
@@ -6876,30 +6890,30 @@ html[lang="ar"] h6 {
     white-space: nowrap;
   }
 
-  .foodu-wishlist-product-card .foodu-product-cart span {
+  .Ika-wishlist-product-card .Ika-product-cart span {
     display: inline;
     white-space: nowrap;
   }
 }
 
-@keyframes foodu-action-pulse {
+@keyframes Ika-action-pulse {
   from { transform: scale(1); }
   to { transform: scale(1.08); }
 }
 
-@keyframes foodu-product-selected-in {
+@keyframes Ika-product-selected-in {
   from { opacity: 0; transform: translate(-50%, calc(-50% + 8px)) scale(0.96); }
   to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
-@keyframes foodu-cart-receive {
+@keyframes Ika-cart-receive {
   0% { transform: translateX(-50%) scale(1) rotate(0); }
   42% { transform: translateX(-50%) scale(1.12) rotate(-7deg); }
   72% { transform: translateX(-50%) scale(0.96) rotate(3deg); }
   100% { transform: translateX(-50%) scale(1) rotate(0); }
 }
 
-@keyframes foodu-bottom-cart-arrival {
+@keyframes Ika-bottom-cart-arrival {
   0% { transform: translateY(0) scale(1) rotate(0); }
   26% { transform: translateY(-7px) scale(1.07) rotate(-2deg); }
   52% { transform: translateY(1px) scale(0.98) rotate(1deg); }
@@ -6907,40 +6921,40 @@ html[lang="ar"] h6 {
   100% { transform: translateY(0) scale(1) rotate(0); }
 }
 
-@keyframes foodu-cart-badge-pop {
+@keyframes Ika-cart-badge-pop {
   0% { transform: scale(0.75); }
   55% { transform: scale(1.22); }
   100% { transform: scale(1); }
 }
 
-@keyframes foodu-toast-in {
+@keyframes Ika-toast-in {
   from { opacity: 0; transform: translate(22px, -8px); }
   to { opacity: 1; transform: translate(0, 0); }
 }
 
-@keyframes foodu-icon-pop {
+@keyframes Ika-icon-pop {
   0% { transform: scale(0.5) rotate(-18deg); }
   70% { transform: scale(1.14) rotate(4deg); }
   100% { transform: scale(1) rotate(0); }
 }
 
-@keyframes foodu-dialog-in {
+@keyframes Ika-dialog-in {
   from { opacity: 0; transform: translateY(12px) scale(0.98); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-@keyframes foodu-checkout-success-in {
+@keyframes Ika-checkout-success-in {
   from { opacity: 0; transform: translateY(14px) scale(0.985); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-@keyframes foodu-checkout-success-mark {
+@keyframes Ika-checkout-success-mark {
   0% { opacity: 0; transform: scale(0.55) rotate(-12deg); }
   72% { opacity: 1; transform: scale(1.08) rotate(3deg); }
   100% { opacity: 1; transform: scale(1) rotate(0); }
 }
 
-@keyframes foodu-menu-product-in {
+@keyframes Ika-menu-product-in {
   from {
     opacity: 0;
     transform: translateY(14px) scale(0.985);
@@ -6952,160 +6966,160 @@ html[lang="ar"] h6 {
 }
 
 @media (max-width: 1199px) {
-  .foodu-product-grid {
+  .Ika-product-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .foodu-menu-product-grid {
+  .Ika-menu-product-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 991px) {
-  .foodu-product-grid {
+  .Ika-product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .foodu-menu-product-grid {
+  .Ika-menu-product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .foodu-menu-page-tools {
+  .Ika-menu-page-tools {
     width: 100%;
   }
 }
 
 @media (max-width: 575px) {
-  .foodu-product-grid {
+  .Ika-product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 
-  .foodu-product-image {
+  .Ika-product-image {
     aspect-ratio: 1.05;
   }
 
-  .foodu-menu-product-grid {
+  .Ika-menu-product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 
-  .foodu-menu-category-section {
+  .Ika-menu-category-section {
     padding-top: 24px;
   }
 
-  .foodu-menu-category-header {
+  .Ika-menu-category-header {
     gap: 10px;
     margin-bottom: 16px;
   }
 
-  .foodu-menu-category-title-row {
+  .Ika-menu-category-title-row {
     gap: 8px;
   }
 
-  .foodu-menu-category-index {
+  .Ika-menu-category-index {
     width: 34px;
     height: 34px;
     border-radius: 7px;
     font-size: 10px;
   }
 
-  .foodu-menu-category-title-row h2 {
+  .Ika-menu-category-title-row h2 {
     font-size: 19px;
   }
 
-  .foodu-menu-category-rule {
+  .Ika-menu-category-rule {
     display: none;
   }
 
-  .foodu-menu-category-count {
+  .Ika-menu-category-count {
     margin-left: auto;
     font-size: 10px;
   }
 
-  .foodu-menu-page-search {
+  .Ika-menu-page-search {
     grid-template-columns: 1fr;
     gap: 8px;
   }
 
-  .foodu-menu-page-search-submit {
+  .Ika-menu-page-search-submit {
     width: 100%;
     min-width: 0;
   }
 
-  .foodu-menu-filters-wrap {
+  .Ika-menu-filters-wrap {
     margin-bottom: 28px;
     top: 75px;
   }
 
-  .foodu-menu-filters {
+  .Ika-menu-filters {
     padding: 7px 18px;
     border-radius: 16px;
   }
 
-  .foodu-menu-filters-track {
+  .Ika-menu-filters-track {
     gap: 6px;
   }
 
-  .foodu-menu-filters button {
+  .Ika-menu-filters button {
     min-height: 46px;
     gap: 6px;
     padding: 8px 10px;
     font-size: 12px;
   }
 
-  .foodu-product-content {
+  .Ika-product-content {
     padding: 12px;
   }
 
-  .foodu-product-content h3 {
+  .Ika-product-content h3 {
     font-size: 16px;
   }
 
-  .foodu-product-description {
+  .Ika-product-description {
     display: none;
   }
 
-  .foodu-product-footer {
+  .Ika-product-footer {
     flex-wrap: wrap;
   }
 
-  .foodu-home-product-grid {
+  .Ika-home-product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .foodu-home-product-card .foodu-product-content {
+  .Ika-home-product-card .Ika-product-content {
     padding: 12px;
   }
 
-  .foodu-home-product-card .foodu-product-tags {
+  .Ika-home-product-card .Ika-product-tags {
     display: none;
   }
 
-  .foodu-home-product-card .foodu-product-content h3 {
+  .Ika-home-product-card .Ika-product-content h3 {
     min-height: 38px;
     margin-bottom: 8px;
     font-size: 15px;
     line-height: 1.35;
   }
 
-  .foodu-home-product-card .foodu-product-image {
+  .Ika-home-product-card .Ika-product-image {
     aspect-ratio: 0.9;
   }
 
-  .foodu-home-product-card .foodu-product-image img {
+  .Ika-home-product-card .Ika-product-image img {
     padding: 4px;
   }
 
-  .foodu-home-product-card .foodu-product-footer {
+  .Ika-home-product-card .Ika-product-footer {
     align-items: center;
     gap: 7px;
   }
 
-  .foodu-home-product-card .foodu-product-footer > strong {
+  .Ika-home-product-card .Ika-product-footer > strong {
     font-size: 14px;
   }
 
-  .foodu-home-product-card button.foodu-product-cart {
+  .Ika-home-product-card button.Ika-product-cart {
     width: 38px;
     min-height: 38px;
     padding: 0;
@@ -7113,276 +7127,276 @@ html[lang="ar"] h6 {
     border-radius: 50%;
   }
 
-  .foodu-home-product-card .foodu-product-cart span {
+  .Ika-home-product-card .Ika-product-cart span {
     display: none;
   }
 
-  .foodu-product-tools {
+  .Ika-product-tools {
     top: 8px;
     right: 8px;
     gap: 6px;
   }
 
-  .foodu-product-card button.foodu-product-tool {
+  .Ika-product-card button.Ika-product-tool {
     width: 34px;
     height: 34px;
     font-size: 14px;
   }
 
-  .foodu-wishlist-grid {
+  .Ika-wishlist-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 
-  .foodu-wishlist-grid .foodu-product-content {
+  .Ika-wishlist-grid .Ika-product-content {
     padding: 11px;
   }
 
-  .foodu-wishlist-grid .foodu-product-content h3 {
+  .Ika-wishlist-grid .Ika-product-content h3 {
     font-size: 15px;
   }
 
-  .foodu-wishlist-grid .foodu-product-footer {
+  .Ika-wishlist-grid .Ika-product-footer {
     gap: 8px;
   }
 
-  .foodu-wishlist-grid .foodu-product-cart {
+  .Ika-wishlist-grid .Ika-product-cart {
     width: 100%;
     padding: 8px;
     font-size: 11px;
   }
 
-  .foodu-product-dialog[open] {
+  .Ika-product-dialog[open] {
     grid-template-columns: 1fr;
     grid-template-rows: minmax(160px, 30vh) auto;
   }
 
-  .foodu-product-dialog {
+  .Ika-product-dialog {
     width: calc(100vw - 24px);
     max-height: calc(100dvh - 24px);
     border-radius: 8px;
     overflow-y: auto;
   }
 
-  .foodu-product-dialog > img {
+  .Ika-product-dialog > img {
     width: 100%;
     height: 100%;
     min-height: 0;
     padding: 18px;
   }
 
-  .foodu-dialog-content {
+  .Ika-dialog-content {
     padding: 20px;
   }
 
-  .foodu-dialog-content h2 {
+  .Ika-dialog-content h2 {
     font-size: 25px;
   }
 
-  .foodu-dialog-content .foodu-product-cart {
+  .Ika-dialog-content .Ika-product-cart {
     margin-top: 14px;
   }
 
-  .foodu-toast {
+  .Ika-toast {
     top: 12px;
     right: 12px;
     left: 12px;
     padding-right: 14px;
   }
 
-  .foodu-cart-drawer {
+  .Ika-cart-drawer {
     padding: 23px 18px;
   }
 
-  .foodu-product-detail {
+  .Ika-product-detail {
     gap: 22px;
   }
 
-  .foodu-detail-image {
+  .Ika-detail-image {
     min-height: 280px;
   }
 
-  .foodu-detail-image > img {
+  .Ika-detail-image > img {
     max-height: 240px;
   }
 
-  .foodu-detail-info h1 {
+  .Ika-detail-info h1 {
     font-size: 28px;
   }
 
-  .foodu-detail-order-row {
+  .Ika-detail-order-row {
     display: grid;
     grid-template-columns: 106px minmax(0, 1fr);
     align-items: stretch;
     gap: 8px;
   }
 
-  .foodu-detail-quantity {
+  .Ika-detail-quantity {
     width: 106px;
     min-width: 0;
   }
 
-  .foodu-detail-quantity button {
+  .Ika-detail-quantity button {
     width: 34px !important;
     min-width: 34px !important;
     max-width: 34px !important;
     flex-basis: 34px;
   }
 
-  .foodu-detail-quantity span {
+  .Ika-detail-quantity span {
     min-width: 28px;
   }
 
-  .foodu-detail-add {
+  .Ika-detail-add {
     gap: 6px;
     padding: 0 10px;
     font-size: 12px;
   }
 
-  .foodu-detail-add strong {
+  .Ika-detail-add strong {
     font-size: 12px;
   }
 
-  .foodu-related-section {
+  .Ika-related-section {
     margin-top: 48px;
   }
 
-  .foodu-related-heading {
+  .Ika-related-heading {
     align-items: flex-start;
     gap: 12px;
     margin-bottom: 16px;
   }
 
-  .foodu-related-heading h2 {
+  .Ika-related-heading h2 {
     max-width: 220px;
     font-size: 22px;
     line-height: 1.2;
   }
 
-  .foodu-related-controls {
+  .Ika-related-controls {
     gap: 6px;
   }
 
-  .foodu-related-controls button {
+  .Ika-related-controls button {
     width: 36px !important;
     min-width: 36px !important;
     height: 36px !important;
     min-height: 36px !important;
   }
 
-  .foodu-related-track {
+  .Ika-related-track {
     gap: 14px;
     padding-right: 20px;
   }
 
-  .foodu-related-card {
+  .Ika-related-card {
     flex-basis: 68.5%;
   }
 
-  .foodu-related-card .foodu-product-card {
+  .Ika-related-card .Ika-product-card {
     height: 420px;
   }
 
-  .foodu-related-card .foodu-product-image {
+  .Ika-related-card .Ika-product-image {
     flex-basis: 178px;
   }
 
-  [dir="rtl"] .foodu-cart-drawer {
-    animation-name: foodu-cart-drawer-in-rtl;
+  [dir="rtl"] .Ika-cart-drawer {
+    animation-name: Ika-cart-drawer-in-rtl;
   }
 
-  .foodu-orders-intro {
+  .Ika-orders-intro {
     padding: 18px;
   }
 
-  .foodu-orders-intro > i {
+  .Ika-orders-intro > i {
     width: 44px;
     height: 44px;
     flex-basis: 44px;
     font-size: 18px;
   }
 
-  .foodu-cart-flight,
-  .foodu-bottom-cart.is-receiving > i,
-  .foodu-desktop-cart.is-receiving > i,
-  .foodu-count-badge.is-popping,
-  .foodu-product-selected-actions {
+  .Ika-cart-flight,
+  .Ika-bottom-cart.is-receiving > i,
+  .Ika-desktop-cart.is-receiving > i,
+  .Ika-count-badge.is-popping,
+  .Ika-product-selected-actions {
     animation-duration: 0.01ms !important;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .foodu-product-card,
-  .foodu-menu-product-item,
-  .foodu-cart-drawer,
-  .foodu-product-image img,
-  .foodu-product-tool,
-  .foodu-product-cart,
-  .foodu-bottom-cart.is-receiving,
-  .foodu-bottom-cart.is-receiving > i,
-  .foodu-count-badge.is-popping,
-  .foodu-toast,
-  .foodu-toast-icon,
-  .foodu-order-success,
-  .foodu-order-success-icon,
-  .foodu-product-dialog[open] {
+  .Ika-product-card,
+  .Ika-menu-product-item,
+  .Ika-cart-drawer,
+  .Ika-product-image img,
+  .Ika-product-tool,
+  .Ika-product-cart,
+  .Ika-bottom-cart.is-receiving,
+  .Ika-bottom-cart.is-receiving > i,
+  .Ika-count-badge.is-popping,
+  .Ika-toast,
+  .Ika-toast-icon,
+  .Ika-order-success,
+  .Ika-order-success-icon,
+  .Ika-product-dialog[open] {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
 }
 
 @media (max-width: 1199px) {
-  [dir="rtl"] .foodu-header-inner {
+  [dir="rtl"] .Ika-header-inner {
     direction: rtl;
   }
 
-  [dir="rtl"] .foodu-header-primary {
+  [dir="rtl"] .Ika-header-primary {
     margin-inline-start: 0;
     margin-inline-end: auto;
   }
 
-  [dir="rtl"] .foodu-header-controls {
+  [dir="rtl"] .Ika-header-controls {
     direction: rtl;
     margin-right: 0;
     margin-left: 0;
   }
 
-  [dir="rtl"] .foodu-header-actions {
+  [dir="rtl"] .Ika-header-actions {
     direction: rtl;
     margin: 0;
   }
 
-  [dir="rtl"] .foodu-header-controls {
+  [dir="rtl"] .Ika-header-controls {
     margin-inline-start: auto;
   }
 
-  [dir="rtl"] .foodu-menu-toggle {
+  [dir="rtl"] .Ika-menu-toggle {
     flex: 0 0 46px;
   }
 
-  [dir="rtl"] .foodu-mobile-menu {
+  [dir="rtl"] .Ika-mobile-menu {
     text-align: right;
   }
 
-  [dir="rtl"] .foodu-mobile-menu-top {
+  [dir="rtl"] .Ika-mobile-menu-top {
     align-items: flex-start;
   }
 
-  [dir="rtl"] .foodu-mobile-menu nav > a {
+  [dir="rtl"] .Ika-mobile-menu nav > a {
     direction: rtl;
     grid-template-columns: 20px 1fr 36px;
     text-align: right;
   }
 
-  [dir="rtl"] .foodu-mobile-menu nav > a > i {
+  [dir="rtl"] .Ika-mobile-menu nav > a > i {
     justify-self: start;
   }
 
-  [dir="rtl"] .foodu-mobile-shortcuts {
+  [dir="rtl"] .Ika-mobile-shortcuts {
     justify-content: flex-start;
   }
 
-  .foodu-header.is-menu-open {
+  .Ika-header.is-menu-open {
     position: sticky;
     top: 0;
     z-index: 1004;
@@ -7392,25 +7406,25 @@ html[lang="ar"] h6 {
     box-shadow: none;
   }
 
-  .foodu-header.is-menu-open .foodu-header-inner {
+  .Ika-header.is-menu-open .Ika-header-inner {
     min-height: 70px;
     justify-content: flex-end;
   }
 
-  .foodu-header.is-menu-open .foodu-brand,
-  .foodu-header.is-menu-open .foodu-desktop-nav,
-  .foodu-header.is-menu-open .foodu-header-actions {
+  .Ika-header.is-menu-open .Ika-brand,
+  .Ika-header.is-menu-open .Ika-desktop-nav,
+  .Ika-header.is-menu-open .Ika-header-actions {
     display: none !important;
   }
 
-  .foodu-header.is-menu-open .foodu-menu-toggle {
+  .Ika-header.is-menu-open .Ika-menu-toggle {
     position: relative;
     z-index: 1005;
     display: flex;
     visibility: visible;
   }
 
-  .foodu-mobile-menu {
+  .Ika-mobile-menu {
     z-index: 1003;
   }
 }

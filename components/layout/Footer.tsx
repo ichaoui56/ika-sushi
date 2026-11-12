@@ -153,7 +153,7 @@ export function Footer() {
         <div className="footer-bottom">
           <div className="row align-center">
             <div className="col-lg-6">
-              <p>{" © Copyright 2025 Foodu. All Rights Reserved "}</p>
+              <p>{" © Copyright 2025 Ika. All Rights Reserved "}</p>
             </div>
           </div>
         </div>

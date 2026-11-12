@@ -3,3 +3,5 @@ node_modules/
 out/
 *.tsbuildinfo
 npm-debug.log*
+.env*
+!.env.example

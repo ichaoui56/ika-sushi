@@ -1,5 +1,6 @@
 "use client";
 
+import type { ProductTranslations } from "../../features/products/translations";
 import {
   createContext,
   useCallback,
@@ -14,6 +15,7 @@ import {
 export interface StoreProduct {
   id: string;
   name: string;
+  translations?: ProductTranslations;
   price: number;
   image: string;
   quantity: number;
@@ -42,8 +44,8 @@ interface StoreContextValue extends StoreData {
   setCartQuantity: (id: string, quantity: number) => Promise<void>;
 }
 
-const STORE_KEY = "foodu-encrypted-store-v1";
-const DATABASE_NAME = "foodu-encryption";
+const STORE_KEY = "Ika-encrypted-store-v1";
+const DATABASE_NAME = "Ika-encryption";
 const KEY_NAME = "store-key-v1";
 const EMPTY_STORE: StoreData = { cart: [], wishlist: [] };
 const StoreContext = createContext<StoreContextValue | null>(null);

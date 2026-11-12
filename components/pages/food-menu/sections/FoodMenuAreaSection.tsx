@@ -2,29 +2,31 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ProductCard } from "../../../store/ProductCard";
-import { catalogProducts, menuCategories } from "../../../store/products";
+import { catalogProducts, menuCategories, type CatalogProduct } from "../../../store/products";
+import { useLocale } from "../../../i18n/LocaleProvider";
+import { translate } from "../../../i18n/translations";
+import { getProductDescription, getProductName } from "../../../store/product-locale";
+import { toLocalImageUrl } from "../../../../lib/image-url";
 
-const filters: { label: string; value: string[] | null }[] = [
-  { label: "All", value: null },
-  ...menuCategories.map((category) => ({
-    label: category.name,
-    value: [category.id],
-  })),
-];
+type MenuCategory = { id: string; name: string };
 
 const matchesMenuQuery = (
-  product: (typeof catalogProducts)[number],
+  product: CatalogProduct,
+  categories: readonly MenuCategory[],
   query: string,
+  locale: "fr" | "en" | "ar",
 ) => {
   if (!query) return true;
 
   const categoryNames = product.categories
-    .map((categoryId) => menuCategories.find((category) => category.id === categoryId))
-    .filter((category): category is (typeof menuCategories)[number] => category !== undefined)
+    .map((categoryId) => categories.find((category) => category.id === categoryId))
+    .filter((category): category is MenuCategory => category !== undefined)
     .map((category) => category.name);
   const searchableText = [
     product.name,
+    getProductName(product, locale),
     product.description,
+    getProductDescription(product, locale),
     product.tags.join(" "),
     ...categoryNames,
   ]
@@ -34,9 +36,18 @@ const matchesMenuQuery = (
   return searchableText.includes(query);
 };
 
-import { useLocale } from "../../../i18n/LocaleProvider";
-import { translate } from "../../../i18n/translations";
-export default function FoodMenuAreaSection() {
+export default function FoodMenuAreaSection({
+  products = catalogProducts,
+  categories = menuCategories,
+}: {
+  products?: CatalogProduct[];
+  categories?: readonly MenuCategory[];
+}) {
+  const { locale } = useLocale();
+  const filters = [
+    { label: "All", value: null as string[] | null },
+    ...categories.map((category) => ({ label: category.name, value: [category.id] })),
+  ];
   const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
@@ -50,24 +61,24 @@ export default function FoodMenuAreaSection() {
   const searchResults = useMemo(() => {
     if (!normalizedQuery) return [];
 
-    return catalogProducts
-      .filter((product) => matchesMenuQuery(product, normalizedQuery))
+    return products
+      .filter((product) => matchesMenuQuery(product, categories, normalizedQuery, locale))
       .slice(0, 6);
-  }, [normalizedQuery]);
+  }, [categories, normalizedQuery, products]);
 
   const categorySections = useMemo(
     () =>
-      menuCategories
+      categories
         .map((category) => ({
           category,
-          products: catalogProducts.filter(
+          products: products.filter(
             (product) =>
               product.categories.includes(category.id) &&
-              matchesMenuQuery(product, normalizedQuery),
+              matchesMenuQuery(product, categories, normalizedQuery, locale),
           ),
         }))
         .filter(({ products }) => products.length > 0),
-    [normalizedQuery],
+    [categories, locale, normalizedQuery, products],
   );
 
   useEffect(() => {
@@ -76,7 +87,7 @@ export default function FoodMenuAreaSection() {
     const updateActiveCategory = () => {
       let nextCategory: string | null = null;
       for (const { category } of categorySections) {
-        const heading = document.getElementById(`foodu-menu-category-title-${category.id}`);
+        const heading = document.getElementById(`Ika-menu-category-title-${category.id}`);
         if (!heading) continue;
         if (heading.getBoundingClientRect().top > marker) break;
         nextCategory = category.id;
@@ -91,7 +102,7 @@ export default function FoodMenuAreaSection() {
       threshold: 0,
     });
     categorySections.forEach(({ category }) => {
-      const heading = document.getElementById(`foodu-menu-category-title-${category.id}`);
+      const heading = document.getElementById(`Ika-menu-category-title-${category.id}`);
       if (heading) observer.observe(heading);
     });
     updateActiveCategory();
@@ -128,8 +139,8 @@ export default function FoodMenuAreaSection() {
     setSearchOpen(false);
 
     const targetId = categoryId
-      ? `foodu-menu-category-${categoryId}`
-      : "foodu-menu-categories";
+      ? `Ika-menu-category-${categoryId}`
+      : "Ika-menu-categories";
     window.requestAnimationFrame(() => {
       document.getElementById(targetId)?.scrollIntoView({
         behavior: "smooth",
@@ -139,7 +150,7 @@ export default function FoodMenuAreaSection() {
   };
 
   const handleSearchSelection = (productId: string) => {
-    const selectedProduct = catalogProducts.find((product) => product.id === productId);
+    const selectedProduct = products.find((product) => product.id === productId);
     if (!selectedProduct) return;
 
     setSearchQuery("");
@@ -149,7 +160,7 @@ export default function FoodMenuAreaSection() {
     setActiveCategoryId(categoryId ?? null);
 
     const productElement = categoryId
-      ? document.getElementById(`foodu-product-${categoryId}-${productId}`)
+      ? document.getElementById(`Ika-product-${categoryId}-${productId}`)
       : null;
     productElement?.scrollIntoView({
       behavior: "smooth",
@@ -157,14 +168,13 @@ export default function FoodMenuAreaSection() {
     });
   };
 
-  const { locale } = useLocale();
   return (
     <section className="food-menu-area bg-gray default-padding">
       <div className="container">
-        <div className="foodu-menu-page-tools">
+        <div className="Ika-menu-page-tools">
           <form
             ref={searchFormRef}
-            className="foodu-menu-page-search"
+            className="Ika-menu-page-search"
             role="search"
             aria-label="Search menu products"
             onSubmit={(event) => {
@@ -181,7 +191,7 @@ export default function FoodMenuAreaSection() {
               }
             }}
           >
-            <label className="foodu-menu-page-search-field">
+            <label className="Ika-menu-page-search-field">
               <i className="fas fa-search" aria-hidden="true" />
               <input
                 ref={searchInputRef}
@@ -190,7 +200,7 @@ export default function FoodMenuAreaSection() {
                 placeholder="Search dishes, ingredients, or categories"
                 aria-label="Search menu products"
                 aria-expanded={Boolean(searchOpen && normalizedQuery.length > 0)}
-                aria-controls="foodu-menu-page-search-results"
+                aria-controls="Ika-menu-page-search-results"
                 onChange={(event) => {
                   setSearchQuery(event.target.value);
                   setSearchOpen(Boolean(event.target.value.trim()));
@@ -201,27 +211,27 @@ export default function FoodMenuAreaSection() {
                 }}
               />
             </label>
-            <button type="submit" className="foodu-menu-page-search-submit" aria-label="Search menu">
+            <button type="submit" className="Ika-menu-page-search-submit" aria-label="Search menu">
               Search
             </button>
             {searchOpen && normalizedQuery.length > 0 && (
-              <div className="foodu-menu-page-search-results" id="foodu-menu-page-search-results">
+              <div className="Ika-menu-page-search-results" id="Ika-menu-page-search-results">
                 {searchResults.length > 0 ? (
                   <ul>
                     {searchResults.map((product) => (
                       <li key={product.id}>
                         <button type="button" onClick={() => handleSearchSelection(product.id)}>
-                          <img src={product.image} alt="" className="foodu-menu-page-search-result-image" />
-                          <span className="foodu-menu-page-search-result-copy">
-                            <span className="foodu-menu-page-search-result-name">{product.name}</span>
-                            <span className="foodu-menu-page-search-result-category">
+                          <img src={toLocalImageUrl(product.image)} alt="" className="Ika-menu-page-search-result-image" />
+                          <span className="Ika-menu-page-search-result-copy">
+                            <span className="Ika-menu-page-search-result-name">{getProductName(product, locale)}</span>
+                            <span className="Ika-menu-page-search-result-category">
                               {product.categories
                                 .map((categoryId) => menuCategories.find((category) => category.id === categoryId)?.name)
                                 .filter(Boolean)
                                 .join(", ")}
                             </span>
                           </span>
-                          <strong className="foodu-menu-page-search-result-price">${product.price.toFixed(2)}</strong>
+                          <strong className="Ika-menu-page-search-result-price">${product.price.toFixed(2)}</strong>
                         </button>
                       </li>
                     ))}
@@ -235,27 +245,27 @@ export default function FoodMenuAreaSection() {
         </div>
 
         <p
-          className="foodu-menu-filters-hint"
+          className="Ika-menu-filters-hint"
           aria-label={translate("Drag left or right", locale)}
         >
           <i className="fas fa-arrows-alt-h" aria-hidden="true" />
           <span>{translate("Drag left or right", locale)}</span>
         </p>
-        <div className="foodu-menu-filters-wrap">
+        <div className="Ika-menu-filters-wrap">
           <div
             ref={filterRailRef}
-            className="mix-item-menu foodu-menu-filters"
+            className="mix-item-menu Ika-menu-filters"
             role="group"
             aria-label="Filter menu by category"
           >
-            <div className="foodu-menu-filters-track">
+            <div className="Ika-menu-filters-track">
               {filters.map((filter) => {
                 const categoryId = filter.value?.[0] ?? null;
                 const isActive = activeCategoryId === categoryId;
                 const productCount =
                   filter.value === null
-                    ? catalogProducts.length
-                    : catalogProducts.filter((product) =>
+                    ? products.length
+                    : products.filter((product) =>
                         filter.value?.some((category) =>
                           product.categories.includes(category),
                         ),
@@ -271,7 +281,7 @@ export default function FoodMenuAreaSection() {
                     onClick={() => handleCategorySelection(filter.value?.[0] ?? null)}
                   >
                     {filter.label}
-                    <span className="foodu-menu-filter-count" aria-hidden="true">
+                    <span className="Ika-menu-filter-count" aria-hidden="true">
                       {productCount}
                     </span>
                   </button>
@@ -281,33 +291,33 @@ export default function FoodMenuAreaSection() {
           </div>
         </div>
 
-        <div className="foodu-menu-categories" id="foodu-menu-categories" aria-live="polite">
+        <div className="Ika-menu-categories" id="Ika-menu-categories" aria-live="polite">
           {categorySections.length > 0 ? (
             categorySections.map(({ category, products }, index) => (
               <section
                 key={category.id}
-                id={`foodu-menu-category-${category.id}`}
-                className="foodu-menu-category-section"
-                aria-labelledby={`foodu-menu-category-title-${category.id}`}
+                id={`Ika-menu-category-${category.id}`}
+                className="Ika-menu-category-section"
+                aria-labelledby={`Ika-menu-category-title-${category.id}`}
               >
-                <header className="foodu-menu-category-header">
-                  <div className="foodu-menu-category-title-row">
-                    <span className="foodu-menu-category-index" aria-hidden="true">
+                <header className="Ika-menu-category-header">
+                  <div className="Ika-menu-category-title-row">
+                    <span className="Ika-menu-category-index" aria-hidden="true">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <h2 id={`foodu-menu-category-title-${category.id}`}>{category.name}</h2>
+                    <h2 id={`Ika-menu-category-title-${category.id}`}>{category.name}</h2>
                   </div>
-                  <span className="foodu-menu-category-rule" aria-hidden="true" />
-                  <span className="foodu-menu-category-count">
+                  <span className="Ika-menu-category-rule" aria-hidden="true" />
+                  <span className="Ika-menu-category-count">
                     {products.length} {products.length === 1 ? "dish" : "dishes"}
                   </span>
                 </header>
-                <div className="foodu-menu-product-grid">
+                <div className="Ika-menu-product-grid">
                   {products.map((product) => (
                     <div
                       key={product.id}
-                      id={`foodu-product-${category.id}-${product.id}`}
-                      className="foodu-menu-product-item"
+                      id={`Ika-product-${category.id}-${product.id}`}
+                      className="Ika-menu-product-item"
                       data-product-id={product.id}
                     >
                       <ProductCard product={product} />
@@ -317,7 +327,7 @@ export default function FoodMenuAreaSection() {
               </section>
             ))
           ) : (
-            <div className="foodu-menu-empty-state">
+            <div className="Ika-menu-empty-state">
               {translate("No dishes match your filters yet.", locale)}
             </div>
           )}

@@ -11,7 +11,7 @@ export default function WishlistContent() {
 
   if (wishlist.length === 0) {
     return (
-      <div className="foodu-empty-state">
+      <div className="Ika-empty-state">
         <i className="far fa-heart" aria-hidden="true" />
         <h2>No favorites just yet</h2>
         <p>Tap the heart on a dish to save it here.</p>
@@ -21,12 +21,12 @@ export default function WishlistContent() {
   }
 
   return (
-    <div className="foodu-product-grid foodu-wishlist-grid">
+    <div className="Ika-product-grid Ika-wishlist-grid">
       {wishlist.map((item) => (
         <ProductCard
           key={item.id}
           product={item}
-          className="foodu-wishlist-product-card"
+          className="Ika-wishlist-product-card"
           cartLabel="Ajouter au panier"
           removable
         />

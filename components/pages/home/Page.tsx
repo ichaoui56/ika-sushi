@@ -6,16 +6,16 @@ import { SiteHeader } from "../../layout/SiteHeader";
 import { TestimonialsSection } from "../../sections/TestimonialsSection";
 import { HomeBlogSection } from "../../sections/HomeBlogSection";
 import { Footer } from "../../layout/Footer";
-import HeroSection from "./sections/HeroSection";
+import HeroSection from "./sections/HeroServerSection";
 import MenuStyleFiveAreaSection from "./sections/MenuStyleFiveAreaSection";
 import FeatureStyleTwoAreaSection from "./sections/FeatureStyleTwoAreaSection";
-import ValidthemeShopAreaSection from "./sections/ValidthemeShopAreaSection";
-import DiscountAreaSection from "./sections/DiscountAreaSection";
+import ValidthemeShopAreaSection from "./sections/HomeMenuServerSection";
+import DiscountAreaSection from "./sections/PromotionsServerSection";
 import ChefStyleOneAreaSection from "./sections/ChefStyleOneAreaSection";
 import GalleryStyleTwoAreaSection from "./sections/GalleryStyleTwoAreaSection";
 import BrandAreaSection from "./sections/BrandAreaSection";
 import FeatureStyleOneAreaSection from "./sections/FeatureStyleOneAreaSection";
-import MostSelledProducts from "./sections/MostSelledProducts";
+import MostSelledProducts from "./sections/BestSellersServerSection";
 
 export default function Page() {
   return (

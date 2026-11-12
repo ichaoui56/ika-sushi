@@ -1,6 +1,9 @@
 "use client";
 
 import { useStore } from "../../../store/StoreProvider";
+import { useLocale } from "../../../i18n/LocaleProvider";
+import { getProductName } from "../../../store/product-locale";
+import { toLocalImageUrl } from "../../../../lib/image-url";
 import Link from "next/link";
 
 const formatPrice = (price: number) =>
@@ -8,11 +11,12 @@ const formatPrice = (price: number) =>
 
 export default function CartPageSection() {
   const { cart, ready, removeFromCart, setCartQuantity } = useStore();
+  const { locale } = useLocale();
   const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   if (!ready) {
     return (
-      <div className="cart-page default-padding foodu-cart-page">
+      <div className="cart-page default-padding Ika-cart-page">
         <div className="container" aria-live="polite">Loading your cart…</div>
       </div>
     );
@@ -20,13 +24,13 @@ export default function CartPageSection() {
 
   if (cart.length === 0) {
     return (
-      <div className="cart-page default-padding foodu-cart-page">
+      <div className="cart-page default-padding Ika-cart-page">
         <div className="container">
-          <div className="foodu-empty-state foodu-cart-empty">
+          <div className="Ika-empty-state Ika-cart-empty">
             <i className="fas fa-shopping-bag" aria-hidden="true" />
             <h2>Your cart is waiting for something delicious</h2>
             <p>Explore the menu and add your favorites here.</p>
-            <Link className="foodu-cart-checkout" href="/shop">
+            <Link className="Ika-cart-checkout" href="/shop">
               Explore the shop <i className="fas fa-arrow-right" aria-hidden="true" />
             </Link>
           </div>
@@ -36,40 +40,41 @@ export default function CartPageSection() {
   }
 
   return (
-    <div className="cart-page default-padding foodu-cart-page">
+    <div className="cart-page default-padding Ika-cart-page">
       <div className="container">
-        <div className="foodu-cart-heading">
+        <div className="Ika-cart-heading">
           <div>
-            <span className="foodu-cart-eyebrow">YOUR ORDER</span>
+            <span className="Ika-cart-eyebrow">YOUR ORDER</span>
             <h2>Items in your basket</h2>
           </div>
-          <span className="foodu-cart-count">
+          <span className="Ika-cart-count">
             {cart.length} {cart.length === 1 ? "item" : "items"}
           </span>
         </div>
 
-        <div className="foodu-cart-layout">
-          <section className="foodu-cart-items" aria-label="Cart items">
-            {cart.map((item) => (
-              <article className="foodu-cart-item" key={item.id}>
-                <Link className="foodu-cart-item-image" href="/shop-single" aria-label={`View ${item.name}`}>
-                  <img src={item.image} alt={item.name} />
+        <div className="Ika-cart-layout">
+          <section className="Ika-cart-items" aria-label="Cart items">
+            {cart.map((item) => {
+              const productName = getProductName(item, locale);
+              return <article className="Ika-cart-item" key={item.id}>
+                <Link className="Ika-cart-item-image" href="/shop-single" aria-label={`View ${productName}`}>
+                  <img src={toLocalImageUrl(item.image)} alt={productName} />
                 </Link>
-                <div className="foodu-cart-item-info">
+                <div className="Ika-cart-item-info">
                   <span>IKA SUSHI</span>
-                  <h3><Link href="/shop-single">{item.name}</Link></h3>
+                  <h3><Link href="/shop-single">{productName}</Link></h3>
                   <p>{formatPrice(item.price)} each</p>
                 </div>
-                <div className="foodu-cart-quantity-block">
+                <div className="Ika-cart-quantity-block">
                   <span>Quantity</span>
                   <div
-                    className="foodu-cart-quantity-stepper"
+                    className="Ika-cart-quantity-stepper"
                     role="group"
-                    aria-label={`Quantity for ${item.name}`}
+                    aria-label={`Quantity for ${productName}`}
                   >
                     <button
                       type="button"
-                      aria-label={`Decrease quantity for ${item.name}`}
+                      aria-label={`Decrease quantity for ${productName}`}
                       disabled={item.quantity <= 1}
                       onClick={() =>
                         void setCartQuantity(item.id, item.quantity - 1).catch(() => undefined)
@@ -80,7 +85,7 @@ export default function CartPageSection() {
                     <output aria-live="polite">{item.quantity}</output>
                     <button
                       type="button"
-                      aria-label={`Increase quantity for ${item.name}`}
+                      aria-label={`Increase quantity for ${productName}`}
                       onClick={() =>
                         void setCartQuantity(item.id, item.quantity + 1).catch(() => undefined)
                       }
@@ -89,48 +94,48 @@ export default function CartPageSection() {
                     </button>
                   </div>
                 </div>
-                <div className="foodu-cart-item-total">
+                <div className="Ika-cart-item-total">
                   <span>Item total</span>
                   <strong>{formatPrice(item.price * item.quantity)}</strong>
                   <button
-                    className="foodu-cart-remove"
+                    className="Ika-cart-remove"
                     type="button"
-                    aria-label={`Remove ${item.name} from cart`}
-                    title={`Remove ${item.name} from cart`}
+                    aria-label={`Remove ${productName} from cart`}
+                    title={`Remove ${productName} from cart`}
                     onClick={() => void removeFromCart(item.id).catch(() => undefined)}
                   >
                     <i className="fas fa-trash-alt" aria-hidden="true" />
                     <span>Remove</span>
                   </button>
                 </div>
-              </article>
-            ))}
-            <Link className="foodu-cart-continue" href="/shop">
+              </article>;
+            })}
+            <Link className="Ika-cart-continue" href="/shop">
               <i className="fas fa-arrow-left" aria-hidden="true" />
               Continue shopping
             </Link>
           </section>
 
-          <aside className="foodu-cart-summary" aria-labelledby="foodu-cart-summary-title">
-            <span className="foodu-cart-eyebrow">ORDER SUMMARY</span>
-            <h2 id="foodu-cart-summary-title">Cart totals</h2>
-            <div className="foodu-cart-summary-row">
+          <aside className="Ika-cart-summary" aria-labelledby="Ika-cart-summary-title">
+            <span className="Ika-cart-eyebrow">ORDER SUMMARY</span>
+            <h2 id="Ika-cart-summary-title">Cart totals</h2>
+            <div className="Ika-cart-summary-row">
               <span>Subtotal</span>
               <strong>{formatPrice(subtotal)}</strong>
             </div>
-            <div className="foodu-cart-summary-row foodu-cart-shipping">
+            <div className="Ika-cart-summary-row Ika-cart-shipping">
               <span>Shipping</span>
               <span>Calculated at checkout</span>
             </div>
-            <div className="foodu-cart-summary-row foodu-cart-grand-total">
+            <div className="Ika-cart-summary-row Ika-cart-grand-total">
               <strong>Total</strong>
               <strong>{formatPrice(subtotal)}</strong>
             </div>
-            <p className="foodu-cart-summary-note">Taxes and delivery are confirmed at checkout.</p>
-            <Link className="foodu-cart-checkout" href="/checkout">
+            <p className="Ika-cart-summary-note">Taxes and delivery are confirmed at checkout.</p>
+            <Link className="Ika-cart-checkout" href="/checkout">
               Continue to checkout <i className="fas fa-arrow-right" aria-hidden="true" />
             </Link>
-            <span className="foodu-cart-secure-note">
+            <span className="Ika-cart-secure-note">
               <i className="fas fa-lock" aria-hidden="true" /> Secure checkout
             </span>
           </aside>

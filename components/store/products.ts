@@ -2,6 +2,7 @@ import type { StoreProduct } from "./StoreProvider";
 
 export interface CatalogProduct extends StoreProduct {
   description: string;
+  shortDescription?: string;
   tags: string[];
   categories: string[];
   isBestSeller?: boolean;

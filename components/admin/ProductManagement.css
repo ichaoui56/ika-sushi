@@ -1,0 +1,248 @@
+.Ika-product-manager,
+.Ika-product-new-page { display: grid; gap: 18px; color: #143139; }
+.Ika-product-manager button,
+.Ika-product-editor button,
+.Ika-product-drawer button { font-family: inherit; letter-spacing: 0; text-transform: none; }
+.Ika-product-manager button::after,
+.Ika-product-editor button::after,
+.Ika-product-drawer button::after { display: none !important; content: none !important; }
+
+.Ika-product-page-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.Ika-product-page-heading > div > span,
+.Ika-product-new-kicker { color: #8a6c4a; font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+.Ika-product-page-heading h1 { margin: 3px 0 0; color: #10363e; font-size: 27px; font-weight: 800; }
+.Ika-product-page-heading p { margin: 3px 0 0; color: #78878a; font-size: 12px; }
+.Ika-product-add-button { min-height: 40px; padding: 10px 15px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; border-radius: 6px; color: #fff; background: #06363d; box-shadow: 0 4px 12px rgba(6,54,61,.12); font-size: 11px; font-weight: 700; text-decoration: none; transition: background-color 160ms ease, transform 160ms ease; }
+.Ika-product-add-button:hover { color: #fff; background: #0c4d55; transform: translateY(-1px); }
+
+.Ika-product-toolbar { min-height: 55px; padding: 9px 12px; display: flex; align-items: center; justify-content: space-between; gap: 15px; border: 1px solid #e8e5de; border-radius: 7px; background: #fff; }
+.Ika-product-search { width: min(440px, 100%); min-height: 46px; padding: 4px; display: flex; align-items: center; gap: 7px; border: 1px solid #dce5df; border-radius: 6px; background: #fff; box-shadow: 0 2px 6px rgba(20,49,57,.035); transition: border-color 150ms ease, box-shadow 150ms ease; }
+.Ika-product-search:focus-within { border-color: #78a99c; box-shadow: 0 0 0 3px rgba(23,104,115,.1), 0 3px 9px rgba(20,49,57,.05); }
+.Ika-product-search > i { width: 34px; flex: 0 0 auto; display: grid; place-items: center; color: #758b89; font-size: 13px; }
+.Ika-product-search input { width: 100%; min-width: 0; height: 36px; padding: 7px 3px; border: 0; outline: 0; color: #16343a; background: transparent; font: inherit; font-size: 11px; }
+.Ika-product-search input::placeholder { color: #9aa6a5; }
+.Ika-product-search input::-webkit-search-cancel-button { cursor: pointer; }
+.Ika-product-search button { min-width: 86px; min-height: 36px; padding: 7px 15px; flex: 0 0 auto; border: 0; border-radius: 4px; color: #fff; background: #0c4d55; box-shadow: 0 2px 5px rgba(6,54,61,.12); font-size: 10px; font-weight: 700; white-space: nowrap; cursor: pointer; transition: background-color 140ms ease, box-shadow 140ms ease, transform 140ms ease; }
+.Ika-product-search button:hover:not(:disabled) { background: #06363d; box-shadow: 0 4px 9px rgba(6,54,61,.18); transform: translateY(-1px); }
+.Ika-product-search button:focus-visible { outline: 2px solid #70a59b; outline-offset: 2px; }
+.Ika-product-search button:disabled { opacity: .7; cursor: wait; }
+.Ika-product-toolbar-meta { display: flex; align-items: center; gap: 14px; color: #718084; font-size: 10px; white-space: nowrap; }
+.Ika-product-view-toggle { padding: 3px; display: flex; gap: 2px; border: 1px solid #e9e7e1; border-radius: 5px; background: #faf9f6; }
+.Ika-product-view-toggle a { width: 29px; height: 27px; display: grid; place-items: center; border-radius: 3px; color: #748287; font-size: 11px; text-decoration: none; }
+.Ika-product-view-toggle a:hover { color: #0c4d55; background: #edf3f0; }
+.Ika-product-view-toggle a.is-active { color: #fff; background: #06363d; }
+.Ika-product-page-error { margin: 0; padding: 10px 12px; border: 1px solid #f0d1cc; border-radius: 5px; color: #a3423b; background: #fff7f5; font-size: 11px; }
+
+.Ika-product-list-scroll { overflow-x: auto; border: 1px solid #e8e5de; border-radius: 7px; background: #fff; }
+.Ika-product-list { width: 100%; border-collapse: collapse; text-align: left; }
+.Ika-product-list th { padding: 11px 14px; border-bottom: 1px solid #e9e7e1; color: #78878a; background: #fbfaf7; font-size: 9px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.Ika-product-list td { padding: 10px 14px; border-bottom: 1px solid #f0efeb; color: #30494e; font-size: 11px; vertical-align: middle; }
+.Ika-product-list tr:last-child td { border-bottom: 0; }
+.Ika-product-list tr:hover td { background: #fcfbf8; }
+.Ika-product-list-identity { min-width: 230px; padding: 0; display: flex; align-items: center; gap: 10px; border: 0; color: inherit; background: none; text-align: left; cursor: pointer; }
+.Ika-product-list-identity > span:last-child { min-width: 0; display: grid; gap: 3px; }
+.Ika-product-list-identity strong { overflow: hidden; color: #17373d; font-size: 11px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-product-list-identity small { overflow: hidden; color: #889497; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-product-admin-image { width: 43px; height: 43px; flex: 0 0 auto; display: grid; place-items: center; overflow: hidden; border: 1px solid #ece9e2; border-radius: 5px; color: #6f8586; background: #f3f5f1; }
+.Ika-product-admin-image img { width: 100%; height: 100%; object-fit: cover; }
+.Ika-product-admin-image > span { font-size: 15px; }
+.Ika-product-admin-image.is-card { width: 100%; height: 178px; border: 0; border-radius: 7px 7px 0 0; }
+.Ika-product-admin-image.is-detail { width: 100%; height: 240px; border-radius: 7px; }
+.Ika-product-category-text { display: block; max-width: 170px; overflow: hidden; color: #607176; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-product-list-price { color: #17373d; font-size: 11px; font-weight: 800; white-space: nowrap; }
+.Ika-product-list td del { margin-top: 3px; display: block; color: #9aa4a5; font-size: 9px; }
+.Ika-product-badges { display: flex; flex-wrap: wrap; gap: 4px; }
+.Ika-product-badges > span { padding: 4px 7px; border-radius: 12px; color: #4c6868; background: #edf3ef; font-size: 8px; font-weight: 700; white-space: nowrap; }
+.Ika-product-badges > .is-available { color: #087c5a; background: #e8f4ec; }
+.Ika-product-badges > .is-unavailable { color: #717d80; background: #eff0ed; }
+.Ika-product-badges > .is-promotion { color: #9d5e18; background: #fff0dc; }
+.Ika-product-badges > .is-featured { color: #726030; background: #f6f0dc; }
+.Ika-product-actions { display: flex; align-items: center; justify-content: flex-end; gap: 4px; }
+.Ika-product-actions button { width: 30px; height: 30px; padding: 0; display: grid; place-items: center; border: 1px solid transparent; border-radius: 4px; color: #617579; background: transparent; font-size: 11px; cursor: pointer; transition: color 140ms ease, background 140ms ease, border-color 140ms ease; }
+.Ika-product-actions button:hover { border-color: #e7e5df; color: #0b5059; background: #f4f7f3; }
+.Ika-product-actions button:last-child:hover { border-color: #f1d8d2; color: #b7463c; background: #fff4f1; }
+.Ika-product-actions button:disabled { opacity: .45; cursor: wait; }
+
+.Ika-product-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.Ika-product-admin-card { min-width: 0; overflow: hidden; border: 1px solid #e8e5de; border-radius: 7px; background: #fff; transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
+.Ika-product-admin-card:hover { border-color: #d7e1dc; box-shadow: 0 8px 22px rgba(21,51,53,.08); transform: translateY(-2px); }
+.Ika-product-card-open { position: relative; width: 100%; padding: 0; display: block; border: 0; background: none; cursor: pointer; }
+.Ika-product-card-badge { position: absolute; top: 10px; left: 10px; }
+.Ika-product-card-badge .Ika-product-badges { max-width: 210px; }
+.Ika-product-card-content { padding: 12px; display: grid; gap: 12px; }
+.Ika-product-card-categories { display: block; overflow: hidden; color: #8a6c4a; font-size: 8px; font-weight: 800; letter-spacing: .06em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.Ika-product-card-content h2 { margin: 3px 0 0; overflow: hidden; color: #16363d; font-size: 14px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-product-card-content > div:first-child > small { display: block; margin-top: 3px; overflow: hidden; color: #8b9698; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-product-card-price { display: flex; align-items: baseline; gap: 8px; }
+.Ika-product-card-price strong { color: #15383f; font-size: 16px; }
+.Ika-product-card-price del { color: #98a1a1; font-size: 10px; }
+.Ika-product-card-price > span { margin-left: auto; color: #a45431; font-size: 10px; font-weight: 800; }
+.Ika-product-card-footer { padding-top: 9px; display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px solid #f0efeb; color: #849094; font-size: 9px; }
+
+.Ika-product-pagination { min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 5px; color: #718084; font-size: 10px; }
+.Ika-product-pagination a { min-width: 31px; height: 31px; padding: 0 8px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #e8e5de; border-radius: 4px; color: #476064; background: #fff; font-size: 10px; font-weight: 700; text-decoration: none; }
+.Ika-product-pagination a:hover:not(.is-disabled) { border-color: #b7cbc4; color: #06363d; background: #f3f7f3; }
+.Ika-product-pagination a.is-current { border-color: #06363d; color: #fff; background: #06363d; }
+.Ika-product-pagination a.is-disabled { opacity: .4; pointer-events: none; }
+.Ika-product-pagination.is-list { justify-content: space-between; padding: 0 3px; }
+.Ika-product-pagination.is-list strong { color: #16363d; }
+.Ika-product-pagination.is-list > div { display: flex; gap: 6px; }
+.Ika-product-empty { min-height: 290px; padding: 36px 20px; display: grid; justify-items: center; align-content: center; text-align: center; border: 1px dashed #d8ded8; border-radius: 7px; background: rgba(255,255,255,.62); }
+.Ika-product-empty > span { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; color: #0c4d55; background: #e8f0eb; font-size: 17px; }
+.Ika-product-empty h2 { margin: 12px 0 2px; color: #15383f; font-size: 17px; }
+.Ika-product-empty p { margin: 0 0 14px; color: #7d8a8d; font-size: 11px; }
+
+.Ika-product-drawer-layer { position: fixed; inset: 0; z-index: 1400; display: flex; justify-content: flex-end; }
+.Ika-product-drawer-scrim { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; padding: 0; border: 0; background: rgba(8,28,31,.38); cursor: pointer; }
+.Ika-product-drawer { position: relative; z-index: 1; width: min(540px, 94vw); height: 100%; display: flex; flex-direction: column; background: #fbfaf7; box-shadow: -14px 0 38px rgba(6,29,34,.18); animation: Ika-product-drawer-in 220ms cubic-bezier(.2,.75,.25,1) both; }
+@keyframes Ika-product-drawer-in { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
+.Ika-product-drawer-header { min-height: 70px; padding: 13px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; border-bottom: 1px solid #e8e5de; background: #fff; }
+.Ika-product-drawer-header > div { min-width: 0; }
+.Ika-product-drawer-header span { color: #8a6c4a; font-size: 8px; font-weight: 800; letter-spacing: .1em; }
+.Ika-product-drawer-header h2 { margin: 2px 0 0; overflow: hidden; color: #14383f; font-size: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-product-drawer-header > button { width: 32px; min-width: 32px; height: 32px; min-height: 32px; padding: 0; flex: 0 0 32px; display: grid; place-items: center; border: 1px solid #e7e5df; border-radius: 50%; color: #53696d; background: #fff; font-size: 12px; line-height: 1; cursor: pointer; }
+.Ika-product-drawer-header > button:hover { color: #15383f; background: #f2f4ef; }
+.Ika-product-drawer-content { min-height: 0; flex: 1; padding: 18px 20px; overflow-y: auto; }
+.Ika-product-drawer-content .Ika-product-badges { margin: 13px 0; }
+.Ika-product-detail-prices { display: flex; align-items: baseline; gap: 10px; }
+.Ika-product-detail-prices strong { color: #12363e; font-size: 24px; }
+.Ika-product-detail-prices del { color: #8b9798; font-size: 12px; }
+.Ika-product-detail-prices span { color: #a45431; font-size: 11px; font-weight: 800; }
+.Ika-product-detail-list { margin: 18px 0 0; display: grid; gap: 0; }
+.Ika-product-detail-list > div { padding: 11px 0; display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 10px; border-top: 1px solid #e9e7e1; }
+.Ika-product-detail-list dt { color: #78878a; font-size: 10px; font-weight: 700; }
+.Ika-product-detail-list dd { margin: 0; overflow-wrap: anywhere; color: #29464b; font-size: 11px; line-height: 1.6; }
+.Ika-product-drawer-footer { padding: 13px 20px; display: flex; justify-content: space-between; gap: 8px; border-top: 1px solid #e8e5de; background: #fff; }
+.Ika-product-drawer-footer button { min-height: 38px; padding: 8px 12px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid #e7e5df; border-radius: 5px; background: #fff; font-size: 10px; font-weight: 700; cursor: pointer; }
+.Ika-product-drawer-footer .Ika-product-delete { color: #a3423b; }
+.Ika-product-drawer-footer .Ika-product-delete:hover { border-color: #f0d1cc; background: #fff6f3; }
+.Ika-product-drawer-footer .Ika-product-edit { margin-left: auto; border-color: #06363d; color: #fff; background: #06363d; }
+.Ika-product-drawer-footer .Ika-product-edit:hover { background: #0c4d55; }
+
+.Ika-product-new-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; }
+.Ika-product-new-head a { display: inline-flex; align-items: center; gap: 7px; color: #536a6e; font-size: 10px; font-weight: 700; text-decoration: none; }
+.Ika-product-new-head a:hover { color: #06363d; }
+.Ika-product-new-page .Ika-admin-heading { margin: 0; }
+
+
+.Ika-product-editor { display: grid; gap: 12px; }
+.Ika-product-editor-section { padding: 16px; border: 1px solid #e8e5de; border-radius: 7px; background: #fff; }
+.Ika-product-content-section { padding: 0; overflow: hidden; border-color: #e1e9e3; }
+.Ika-product-content-heading { padding: 16px 16px 12px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.Ika-product-content-heading > div { display: grid; gap: 4px; }
+.Ika-product-content-heading span { color: #8a6c4a; font-size: 8px; font-weight: 800; letter-spacing: .1em; }
+.Ika-product-content-heading strong { color: #17373d; font-size: 15px; }
+.Ika-product-content-heading p { max-width: 230px; margin: 0; color: #849195; font-size: 9px; text-align: right; }
+.Ika-product-editor-section-heading { margin-bottom: 13px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.Ika-product-editor-section-heading span { color: #8a6c4a; font-size: 8px; font-weight: 800; letter-spacing: .1em; }
+.Ika-product-editor-section-heading strong { color: #17373d; font-size: 12px; }
+.Ika-product-language-tabs { margin: 0 16px 15px; padding: 4px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; border: 1px solid #e9eee9; border-radius: 7px; background: #f6f7f4; }
+.Ika-product-language-tabs button { min-width: 0; min-height: 48px; padding: 6px 9px; display: flex; align-items: center; justify-content: flex-start; gap: 8px; border: 1px solid transparent; border-radius: 5px; color: #68787b; background: transparent; text-align: left; font-size: 10px; font-weight: 700; cursor: pointer; transition: background 140ms ease, border-color 140ms ease, color 140ms ease, box-shadow 140ms ease; }
+.Ika-product-language-tabs button:hover:not(.is-active) { border-color: #e1e8e1; color: #23484a; background: #fff; }
+.Ika-product-language-code { width: 27px; height: 27px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid #e2e8e2; border-radius: 4px; color: #657b7a; background: #fff; font-size: 8px; font-weight: 800; }
+.Ika-product-language-name { min-width: 0; display: grid; gap: 2px; }
+.Ika-product-language-tabs button small { color: #9aa4a4; font-size: 8px; font-weight: 500; }
+.Ika-product-language-tabs button.is-active { border-color: #06363d; color: #fff; background: #06363d; box-shadow: 0 3px 8px rgba(6,54,61,.16); }
+.Ika-product-language-tabs button.is-active .Ika-product-language-code { border-color: rgba(255,255,255,.2); color: #fff; background: rgba(255,255,255,.12); }
+.Ika-product-language-tabs button.is-active small { color: #c4d7d4; }
+.Ika-product-content-section .Ika-product-editor-fields { padding: 0 16px 16px; }
+.Ika-product-editor-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.Ika-product-editor-fields > label { min-width: 0; display: grid; align-content: start; gap: 5px; color: #50656a; font-size: 10px; font-weight: 700; }
+.Ika-product-editor-fields > label.Ika-product-editor-wide { grid-column: 1 / -1; }
+.Ika-product-editor-fields input, .Ika-product-editor-fields textarea { width: 100%; min-height: 39px; padding: 9px 10px; border: 1px solid #dfe4df; border-radius: 4px; outline: none; color: #19383e; background: #fff; font: inherit; font-size: 11px; font-weight: 500; transition: border-color 140ms ease, box-shadow 140ms ease; }
+.Ika-product-editor-fields textarea { min-height: 88px; resize: vertical; }
+.Ika-product-editor-fields input:focus, .Ika-product-editor-fields textarea:focus { border-color: #70a59b; box-shadow: 0 0 0 3px rgba(23,104,115,.1); }
+.Ika-product-editor-fields[dir="rtl"] > label { text-align: right; }
+.Ika-product-editor-fields[dir="rtl"] input, .Ika-product-editor-fields[dir="rtl"] textarea { text-align: right; }
+.Ika-product-required, .Ika-product-field-hint { color: #889598; font-size: 8px; font-weight: 500; }
+.Ika-product-slug-field { display: flex; gap: 6px; }
+.Ika-product-slug-field button { min-width: 56px; padding: 0 9px; border: 1px solid #dce5df; border-radius: 4px; color: #365d5f; background: #f5f7f3; font-size: 9px; font-weight: 700; cursor: pointer; }
+.Ika-product-slug-field button:hover { background: #eaf0eb; }
+.Ika-product-price-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.Ika-product-price-fields label { display: grid; gap: 5px; color: #50656a; font-size: 10px; font-weight: 700; }
+.Ika-product-price-fields input { min-width: 0; height: 39px; padding: 8px 10px; border: 1px solid #dfe4df; border-radius: 4px; color: #19383e; background: #fff; font: inherit; font-size: 11px; }
+.Ika-product-price-fields input:focus { border-color: #70a59b; outline: 0; box-shadow: 0 0 0 3px rgba(23,104,115,.1); }
+.Ika-product-pricing-hint { margin: 8px 0 0; color: #849195; font-size: 9px; }
+.Ika-product-form-error, .Ika-product-form-success { margin: 8px 0 0; color: #a3423b; font-size: 10px; }
+.Ika-product-form-success { color: #087c5a; }
+.Ika-product-flag-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.Ika-product-flag { position: relative; min-width: 0; min-height: 64px; padding: 10px; display: flex; align-items: center; gap: 8px; border: 1px solid #e8e8e1; border-radius: 5px; background: #fbfbf8; cursor: pointer; transition: border-color 140ms ease, background 140ms ease; }
+.Ika-product-flag.is-on { border-color: #b6d2c8; background: #f1f7f2; }
+.Ika-product-flag input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.Ika-product-flag:has(input:focus-visible) { outline: 2px solid #176873; outline-offset: 2px; }
+.Ika-product-flag-icon { width: 28px; height: 28px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; color: #0c6870; background: #e7f2ed; font-size: 10px; }
+.Ika-product-flag-icon.is-promotion { color: #ad6b1f; background: #fff0db; }
+.Ika-product-flag-icon.is-best { color: #907637; background: #f8f0d8; }
+.Ika-product-flag > span:nth-of-type(2) { min-width: 0; display: grid; gap: 2px; }
+.Ika-product-flag strong { color: #2b484d; font-size: 9px; }
+.Ika-product-flag small { color: #899496; font-size: 8px; }
+.Ika-product-switch { width: 24px; height: 14px; flex: 0 0 auto; margin-left: auto; border-radius: 9px; background: #d5dad5; transition: background 140ms ease; }
+.Ika-product-switch::after { content: ""; width: 10px; height: 10px; margin: 2px; display: block; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.18); transition: transform 140ms ease; }
+.Ika-product-flag.is-on .Ika-product-switch { background: #138b69; }
+.Ika-product-flag.is-on .Ika-product-switch::after { transform: translateX(10px); }
+.Ika-product-category-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+.Ika-product-category-grid label { min-width: 0; min-height: 38px; padding: 7px 9px; display: flex; align-items: center; gap: 8px; border: 1px solid #e7e8e2; border-radius: 4px; color: #627377; background: #fff; font-size: 9px; cursor: pointer; transition: border-color 130ms ease, background 130ms ease, color 130ms ease; }
+.Ika-product-category-grid label.is-selected { border-color: #9abfb3; color: #174e4f; background: #f1f7f2; }
+.Ika-product-category-grid input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.Ika-product-category-grid label:has(input:focus-visible) { outline: 2px solid #176873; outline-offset: 2px; }
+.Ika-product-category-check { width: 16px; height: 16px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid #d4dcd5; border-radius: 3px; color: transparent; background: #fff; font-size: 8px; }
+.is-selected .Ika-product-category-check { border-color: #0c6861; color: #fff; background: #0c6861; }
+.Ika-product-image-manager { display: flex; flex-wrap: wrap; gap: 9px; }
+.Ika-product-image-manager-item, .Ika-product-image-add { position: relative; width: 82px; height: 82px; overflow: hidden; border: 1px solid #e7e5df; border-radius: 5px; background: #f5f6f2; }
+.Ika-product-image-manager-item.is-primary { border-color: #c3d8d3; box-shadow: inset 0 0 0 1px #dfeae4; }
+.Ika-product-image-manager-item img { width: 100%; height: 100%; object-fit: cover; }
+.Ika-product-image-cover-tag { position: absolute; bottom: 4px; left: 4px; padding: 3px 5px; border-radius: 3px; color: #fff; background: rgba(6,54,61,.82); font-size: 7px; }
+.Ika-product-image-primary-toggle {
+  position: absolute; left: 4px; right: 4px; bottom: 4px; min-height: 20px; padding: 3px 5px; border: 0; border-radius: 3px;
+  color: #0d4d55; background: rgba(255,255,255,.9); font-size: 7px; font-weight: 700; cursor: pointer;
+}
+.Ika-product-image-manager-item button { position: absolute; top: 4px; right: 4px; width: 20px; height: 20px; padding: 0; display: grid; place-items: center; border: 0; border-radius: 50%; color: #fff; background: rgba(40,52,54,.76); font-size: 9px; cursor: pointer; }
+.Ika-product-image-delete { z-index: 2; }
+.Ika-product-image-add { display: grid; align-content: center; justify-items: center; gap: 5px; border-style: dashed; color: #567276; font-size: 9px; cursor: pointer; }
+.Ika-product-image-add input { display: none; }
+.Ika-product-image-add:hover { border-color: #83b1a3; color: #0b555e; background: #f4f8f3; }
+.Ika-product-image-manager > .Ika-product-pricing-hint { flex-basis: 100%; margin: 2px 0 0; }
+.Ika-product-editor-footer { position: sticky; bottom: 0; margin: 0 -20px -18px; padding: 12px 20px; display: flex; align-items: center; gap: 8px; border-top: 1px solid #e8e5de; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); }
+.Ika-product-save, .Ika-product-cancel { min-height: 38px; padding: 8px 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid #06363d; border-radius: 4px; color: #fff; background: #06363d; font-size: 10px; font-weight: 800; cursor: pointer; }
+.Ika-product-save:hover { background: #0c4d55; }
+.Ika-product-save:disabled { opacity: .55; cursor: wait; }
+.Ika-product-cancel { border-color: #e4e6df; color: #52686d; background: #fff; }
+.Ika-product-cancel:hover { background: #f4f5f0; }
+
+@media (max-width: 1050px) {
+  .Ika-product-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .Ika-product-flag-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 680px) {
+  .Ika-product-page-heading { align-items: flex-start; }
+  .Ika-product-page-heading h1 { font-size: 23px; }
+  .Ika-product-page-heading p { max-width: 250px; font-size: 10px; }
+  .Ika-product-add-button { min-height: 36px; padding: 8px 10px; font-size: 9px; white-space: nowrap; }
+  .Ika-product-toolbar { align-items: flex-start; flex-direction: column; }
+  .Ika-product-search { width: 100%; }
+  .Ika-product-search button { min-width: 96px; padding-right: 12px; padding-left: 12px; }
+  .Ika-product-toolbar-meta { width: 100%; justify-content: space-between; }
+  .Ika-product-card-grid { grid-template-columns: 1fr; }
+  .Ika-product-admin-image.is-card { height: 210px; }
+  .Ika-product-list { min-width: 710px; }
+  .Ika-product-list th, .Ika-product-list td { padding: 9px; }
+  .Ika-product-list td:nth-child(2) { display: none; }
+  .Ika-product-editor-section { padding: 12px; }
+  .Ika-product-content-section { padding: 0; }
+  .Ika-product-content-heading { padding: 13px 12px 10px; align-items: flex-start; flex-direction: column; }
+  .Ika-product-content-heading p { text-align: left; }
+  .Ika-product-language-tabs { margin: 0 12px 12px; gap: 3px; }
+  .Ika-product-language-tabs button { min-height: 42px; justify-content: center; padding: 5px 4px; gap: 5px; }
+  .Ika-product-language-code { width: 23px; height: 23px; }
+  .Ika-product-content-section .Ika-product-editor-fields { padding: 0 12px 12px; }
+  .Ika-product-editor-fields { grid-template-columns: 1fr; }
+  .Ika-product-editor-fields > label.Ika-product-editor-wide { grid-column: auto; }
+  .Ika-product-price-fields { grid-template-columns: 1fr; }
+  .Ika-product-category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .Ika-product-language-tabs button small { display: none; }
+  .Ika-product-drawer-header { padding: 12px 14px; }
+  .Ika-product-drawer-content { padding: 14px; }
+  .Ika-product-drawer-footer { padding: 11px 14px; }
+  .Ika-product-new-head { align-items: flex-start; flex-direction: column; }
+}

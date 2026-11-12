@@ -48,7 +48,7 @@ function CountBadge({
 
   if (count === 0) return null;
   return (
-    <span className={`foodu-count-badge${isPopping ? " is-popping" : ""}`}>
+    <span className={`Ika-count-badge${isPopping ? " is-popping" : ""}`}>
       {count > 99 ? "99+" : count}
     </span>
   );
@@ -59,7 +59,7 @@ function ThemeModeToggle() {
 
   useEffect(() => {
     try {
-      const savedMode = window.localStorage.getItem("foodu-color-mode");
+      const savedMode = window.localStorage.getItem("Ika-color-mode");
       const isDark = savedMode
         ? savedMode === "dark"
         : document.body.classList.contains("bg-dark-secondary");
@@ -76,7 +76,7 @@ function ThemeModeToggle() {
     document.body.classList.toggle("bg-dark-secondary", nextDarkMode);
     setDarkMode(nextDarkMode);
     try {
-      window.localStorage.setItem("foodu-color-mode", nextDarkMode ? "dark" : "light");
+      window.localStorage.setItem("Ika-color-mode", nextDarkMode ? "dark" : "light");
     } catch (error) {
       console.error("Could not save the selected color mode.", error);
     }
@@ -84,7 +84,7 @@ function ThemeModeToggle() {
 
   return (
     <button
-      className="foodu-theme-toggle"
+      className="Ika-theme-toggle"
       type="button"
       aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
       aria-pressed={darkMode}
@@ -109,8 +109,8 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    document.body.classList.toggle("foodu-menu-open", menuOpen);
-    return () => document.body.classList.remove("foodu-menu-open");
+    document.body.classList.toggle("Ika-menu-open", menuOpen);
+    return () => document.body.classList.remove("Ika-menu-open");
   }, [menuOpen]);
 
   useEffect(() => {
@@ -131,16 +131,16 @@ export function SiteHeader() {
   return (
     <>
       <header
-        className={`foodu-header${scrolled ? " is-scrolled" : ""}${
+        className={`Ika-header${scrolled ? " is-scrolled" : ""}${
           menuOpen ? " is-menu-open" : ""
         }`}
       >
-        <div className="foodu-header-inner">
-          <div className="foodu-header-primary">
-            <Link className="foodu-brand" href="/" aria-label="IKA SUSHI home">
+        <div className="Ika-header-inner">
+          <div className="Ika-header-primary">
+            <Link className="Ika-brand" href="/" aria-label="IKA SUSHI home">
               <img src="/logo.png" alt="IKA SUSHI" />
             </Link>
-            <nav className="foodu-desktop-nav" aria-label="Main navigation">
+            <nav className="Ika-desktop-nav" aria-label="Main navigation">
               {links.map((link) => {
                 const active = isPrimaryLinkActive(link.href);
                 return (
@@ -157,12 +157,12 @@ export function SiteHeader() {
             </nav>
           </div>
 
-          <div className="foodu-header-controls">
-            <div className="foodu-header-actions">
+          <div className="Ika-header-controls">
+            <div className="Ika-header-actions">
               <LanguageSwitcher />
 
               <Link
-                className="foodu-icon-link"
+                className="Ika-icon-link"
                 href="/login"
                 aria-label="Account"
                 title="Account"
@@ -170,20 +170,20 @@ export function SiteHeader() {
                 <i className="far fa-user" aria-hidden="true" />
               </Link>
               <Link
-                className="foodu-icon-link foodu-desktop-cart"
+                className="Ika-icon-link Ika-desktop-cart"
                 href="/cart"
                 aria-label={`Cart, ${cartCount} items`}
                 title="Cart"
                 onClick={(event) => {
                   event.preventDefault();
-                  window.dispatchEvent(new Event("foodu:open-cart-drawer"));
+                  window.dispatchEvent(new Event("Ika:open-cart-drawer"));
                 }}
               >
                 <i className="far fa-shopping-bag" aria-hidden="true" />
                 <CountBadge count={cartCount} />
               </Link>
               <Link
-                className="foodu-icon-link foodu-header-wishlist"
+                className="Ika-icon-link Ika-header-wishlist"
                 href="/wishlist"
                 aria-label={`Wishlist, ${wishlistCount} items`}
                 title="Wishlist"
@@ -193,11 +193,11 @@ export function SiteHeader() {
               </Link>
             </div>
             <button
-              className={`foodu-menu-toggle${menuOpen ? " is-open" : ""}`}
+              className={`Ika-menu-toggle${menuOpen ? " is-open" : ""}`}
               type="button"
               aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={menuOpen}
-              aria-controls="foodu-mobile-menu"
+              aria-controls="Ika-mobile-menu"
               onClick={() => setMenuOpen((open) => !open)}
             >
               <span />
@@ -209,13 +209,13 @@ export function SiteHeader() {
       </header>
 
       <div
-        className={`foodu-mobile-menu${menuOpen ? " is-open" : ""}`}
-        id="foodu-mobile-menu"
+        className={`Ika-mobile-menu${menuOpen ? " is-open" : ""}`}
+        id="Ika-mobile-menu"
         aria-hidden={!menuOpen}
       >
-        <div className="foodu-mobile-menu-top">
-          <span className="foodu-mobile-eyebrow">Good food, good mood</span>
-          <span className="foodu-mobile-mark">FOODU</span>
+        <div className="Ika-mobile-menu-top">
+          <span className="Ika-mobile-eyebrow">Good food, good mood</span>
+          <span className="Ika-mobile-mark">Ika</span>
         </div>
         <nav aria-label="Mobile navigation">
           {links.map((link, index) => {
@@ -230,7 +230,7 @@ export function SiteHeader() {
                 tabIndex={menuOpen ? 0 : -1}
                 style={{ "--menu-index": index } as CSSProperties}
               >
-                <span className="foodu-mobile-link-number">
+                <span className="Ika-mobile-link-number">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span>{link.label}</span>
@@ -239,7 +239,7 @@ export function SiteHeader() {
             );
           })}
         </nav>
-        <div className="foodu-mobile-shortcuts">
+        <div className="Ika-mobile-shortcuts">
           <Link
             href="/wishlist"
             onClick={closeMenu}
@@ -257,21 +257,21 @@ export function SiteHeader() {
             Cart <CountBadge count={cartCount} />
           </Link>
         </div>
-        <div className="foodu-mobile-language">
+        <div className="Ika-mobile-language">
           <LanguageSwitcher />
         </div>
-        <p className="foodu-mobile-tagline">Made fresh. Shared with love.</p>
+        <p className="Ika-mobile-tagline">Made fresh. Shared with love.</p>
       </div>
       {menuOpen && (
         <button
           type="button"
-          className="foodu-menu-scrim"
+          className="Ika-menu-scrim"
           aria-label="Close navigation menu"
           onClick={closeMenu}
         />
       )}
 
-      <nav className="foodu-bottom-nav" aria-label="Quick navigation">
+      <nav className="Ika-bottom-nav" aria-label="Quick navigation">
         <Link
           href="/"
           aria-label="Home"
@@ -291,13 +291,13 @@ export function SiteHeader() {
           <span>Menu</span>
         </Link>
         <Link
-          className={`foodu-bottom-cart${pathname === "/cart" ? " is-active" : ""}`}
+          className={`Ika-bottom-cart${pathname === "/cart" ? " is-active" : ""}`}
           href="/cart"
           aria-label={`Cart, ${cartCount} items`}
           aria-current={pathname === "/cart" ? "page" : undefined}
           onClick={(event) => {
             event.preventDefault();
-            window.dispatchEvent(new Event("foodu:open-cart-drawer"));
+            window.dispatchEvent(new Event("Ika:open-cart-drawer"));
           }}
         >
           <i className="fas fa-shopping-bag" aria-hidden="true" />
@@ -326,7 +326,7 @@ export function SiteHeader() {
 
       {!menuOpen && (
         <a
-          className="foodu-floating-whatsapp"
+          className="Ika-floating-whatsapp"
           href="https://wa.me/212632933941"
           aria-label="Message us on WhatsApp"
           title="Message us on WhatsApp"
@@ -339,7 +339,7 @@ export function SiteHeader() {
 
       {scrolled && !menuOpen && (
         <button
-          className="foodu-back-to-top"
+          className="Ika-back-to-top"
           type="button"
           aria-label="Back to top"
           title="Back to top"
@@ -355,12 +355,12 @@ export function SiteHeader() {
       )}
 
       {error && (
-        <div className="foodu-store-error" role="alert">
+        <div className="Ika-store-error" role="alert">
           Saved cart unavailable: {error}
         </div>
       )}
       {!ready && (
-        <span className="foodu-store-loading" aria-live="polite">
+        <span className="Ika-store-loading" aria-live="polite">
           Loading saved items…
         </span>
       )}

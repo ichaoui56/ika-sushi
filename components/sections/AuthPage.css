@@ -1,4 +1,4 @@
-.foodu-auth-page {
+.Ika-auth-page {
   --auth-green: #072B31;
   --auth-green-deep: #041d21;
   --auth-rust: #a33c2d;
@@ -14,12 +14,12 @@
   font-family: Jost, sans-serif;
 }
 
-.foodu-auth-shell {
+.Ika-auth-shell {
   width: min(1120px, 100%);
   margin: 0 auto;
 }
 
-.foodu-auth-home {
+.Ika-auth-home {
   width: fit-content;
   min-height: 42px;
   margin: 0 0 18px 4px;
@@ -31,26 +31,26 @@
   font-weight: 700;
   text-decoration: none;
   transition: color 160ms ease, transform 160ms ease;
-  animation: foodu-auth-fade-in 420ms ease both;
+  animation: Ika-auth-fade-in 420ms ease both;
 }
 
-.foodu-auth-home:hover,
-.foodu-auth-home:focus-visible {
+.Ika-auth-home:hover,
+.Ika-auth-home:focus-visible {
   transform: translateX(-2px);
   color: var(--auth-rust);
 }
 
-.foodu-auth-home:focus-visible,
-.foodu-auth-form a:focus-visible,
-.foodu-auth-form button:focus-visible,
-.foodu-auth-form input:focus-visible,
-.foodu-auth-switch a:focus-visible,
-.foodu-auth-logo:focus-visible {
+.Ika-auth-home:focus-visible,
+.Ika-auth-form a:focus-visible,
+.Ika-auth-form button:focus-visible,
+.Ika-auth-form input:focus-visible,
+.Ika-auth-switch a:focus-visible,
+.Ika-auth-logo:focus-visible {
   outline: 3px solid rgba(163, 60, 45, 0.38);
   outline-offset: 3px;
 }
 
-.foodu-auth-layout {
+.Ika-auth-layout {
   min-height: 650px;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
@@ -59,10 +59,10 @@
   border-radius: 20px;
   background: #fff;
   box-shadow: 0 24px 70px rgba(7, 43, 49, 0.11);
-  animation: foodu-auth-rise-in 620ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  animation: Ika-auth-rise-in 620ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
-.foodu-auth-brand {
+.Ika-auth-brand {
   position: relative;
   min-width: 0;
   padding: 50px 48px;
@@ -80,7 +80,7 @@
   background-size: 36px 36px, 36px 36px, auto;
 }
 
-.foodu-auth-brand::after {
+.Ika-auth-brand::after {
   position: absolute;
   right: -88px;
   bottom: 56px;
@@ -93,7 +93,7 @@
   pointer-events: none;
 }
 
-.foodu-auth-logo {
+.Ika-auth-logo {
   position: relative;
   z-index: 1;
   min-height: 58px;
@@ -104,23 +104,23 @@
   background: transparent;
 }
 
-.foodu-auth-logo img {
+.Ika-auth-logo img {
   display: block;
   width: 148px;
   height: auto;
 }
 
-.foodu-auth-brand-copy {
+.Ika-auth-brand-copy {
   position: relative;
   z-index: 1;
   max-width: 390px;
   margin: 100px 0 auto;
   padding: 54px 0 42px;
-  animation: foodu-auth-fade-in 700ms 100ms ease both;
+  animation: Ika-auth-fade-in 700ms 100ms ease both;
 }
 
-.foodu-auth-eyebrow,
-.foodu-auth-step {
+.Ika-auth-eyebrow,
+.Ika-auth-step {
   display: block;
   color: var(--auth-gold);
   font-size: 11px;
@@ -128,7 +128,7 @@
   letter-spacing: 0.12em;
 }
 
-.foodu-auth-brand-copy h1 {
+.Ika-auth-brand-copy h1 {
   margin: 18px 0 14px;
   color: #fff;
   font-family: Belleza, Georgia, serif;
@@ -137,13 +137,13 @@
   line-height: 1.08;
 }
 
-.foodu-auth-brand-copy p {
+.Ika-auth-brand-copy p {
   margin: 0;
   color: rgba(255, 255, 255, 0.72);
   font-size: 15px;
 }
 
-.foodu-auth-brand-number {
+.Ika-auth-brand-number {
   position: relative;
   z-index: 1;
   color: rgba(255, 255, 255, 0.55);
@@ -152,7 +152,7 @@
   letter-spacing: 0.14em;
 }
 
-.foodu-auth-form-panel {
+.Ika-auth-form-panel {
   min-width: 0;
   padding: 62px clamp(32px, 6vw, 78px);
   display: flex;
@@ -160,15 +160,15 @@
   justify-content: center;
 }
 
-.foodu-auth-heading {
+.Ika-auth-heading {
   margin-bottom: 30px;
 }
 
-.foodu-auth-step {
+.Ika-auth-step {
   color: var(--auth-rust);
 }
 
-.foodu-auth-heading h2 {
+.Ika-auth-heading h2 {
   margin: 12px 0 9px;
   color: var(--auth-ink);
   font-family: Belleza, Georgia, serif;
@@ -177,7 +177,7 @@
   line-height: 1.12;
 }
 
-.foodu-auth-heading p {
+.Ika-auth-heading p {
   max-width: 390px;
   margin: 0;
   color: var(--auth-muted);
@@ -185,23 +185,23 @@
   line-height: 1.65;
 }
 
-.foodu-auth-form {
+.Ika-auth-form {
   display: grid;
   gap: 19px;
 }
 
-.foodu-auth-field {
+.Ika-auth-field {
   display: grid;
   gap: 8px;
 }
 
-.foodu-auth-field label {
+.Ika-auth-field label {
   color: #28464a;
   font-size: 12px;
   font-weight: 700;
 }
 
-.foodu-auth-field input {
+.Ika-auth-field input {
   width: 100%;
   min-height: 50px;
   padding: 0 15px;
@@ -215,15 +215,15 @@
   transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
-.foodu-auth-password-wrap {
+.Ika-auth-password-wrap {
   position: relative;
 }
 
-.foodu-auth-password-wrap input {
+.Ika-auth-password-wrap input {
   padding-right: 52px;
 }
 
-.foodu-auth-password-toggle {
+.Ika-auth-password-toggle {
   position: absolute;
   top: 50%;
   right: 7px;
@@ -241,26 +241,26 @@
   transition: color 160ms ease, background 160ms ease;
 }
 
-.foodu-auth-password-toggle:hover {
+.Ika-auth-password-toggle:hover {
   color: var(--auth-green);
   background: rgba(7, 43, 49, 0.07);
 }
 
-.foodu-auth-field input::placeholder {
+.Ika-auth-field input::placeholder {
   color: #a2aaa4;
 }
 
-.foodu-auth-field input:hover:not(:focus) {
+.Ika-auth-field input:hover:not(:focus) {
   border-color: #bdcbc5;
 }
 
-.foodu-auth-field input:focus {
+.Ika-auth-field input:focus {
   border-color: var(--auth-green);
   background: #fff;
   box-shadow: 0 0 0 3px rgba(7, 43, 49, 0.12);
 }
 
-.foodu-auth-submit {
+.Ika-auth-submit {
   min-height: 52px;
   margin-top: 5px;
   padding: 0 18px 0 22px;
@@ -279,136 +279,136 @@
   transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
 }
 
-.foodu-auth-submit i {
+.Ika-auth-submit i {
   color: var(--auth-gold);
   transition: transform 160ms ease;
 }
 
-.foodu-auth-submit:hover {
+.Ika-auth-submit:hover {
   transform: translateY(-1px);
   background: #0b424a;
   box-shadow: 0 8px 18px rgba(7, 43, 49, 0.2);
 }
 
-.foodu-auth-submit:hover i {
+.Ika-auth-submit:hover i {
   transform: translateX(3px);
 }
 
-.foodu-auth-submit:active {
+.Ika-auth-submit:active {
   transform: scale(0.99);
 }
 
-.foodu-auth-switch {
+.Ika-auth-switch {
   margin: 26px 0 0;
   color: var(--auth-muted);
   font-size: 13px;
   text-align: center;
 }
 
-.foodu-auth-switch a {
+.Ika-auth-switch a {
   color: var(--auth-rust);
   font-weight: 800;
   text-decoration: none;
 }
 
-.foodu-auth-switch a:hover {
+.Ika-auth-switch a:hover {
   text-decoration: underline;
 }
 
-@keyframes foodu-auth-fade-in {
+@keyframes Ika-auth-fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@keyframes foodu-auth-rise-in {
+@keyframes Ika-auth-rise-in {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 767px) {
-  .foodu-auth-page {
+  .Ika-auth-page {
     min-height: 100svh;
     padding: 12px 12px 28px;
   }
 
-  .foodu-auth-home {
+  .Ika-auth-home {
     min-height: 40px;
     margin: 0 0 10px 4px;
   }
 
-  .foodu-auth-layout {
+  .Ika-auth-layout {
     min-height: 0;
     grid-template-columns: minmax(0, 1fr);
     border-radius: 16px;
   }
 
-  .foodu-auth-brand {
+  .Ika-auth-brand {
     min-height: 192px;
     padding: 24px;
     gap: 20px;
   }
 
-  .foodu-auth-brand::after {
+  .Ika-auth-brand::after {
     right: -120px;
     bottom: -156px;
     width: 260px;
     height: 260px;
   }
 
-  .foodu-auth-logo {
+  .Ika-auth-logo {
     min-height: 46px;
     padding: 9px 12px;
   }
 
-  .foodu-auth-logo img {
+  .Ika-auth-logo img {
     width: 122px;
   }
 
-  .foodu-auth-brand-copy {
+  .Ika-auth-brand-copy {
     margin: 0;
     padding: 0;
   }
 
-  .foodu-auth-brand-copy h1 {
+  .Ika-auth-brand-copy h1 {
     max-width: 330px;
     margin: 9px 0 0;
     font-size: 29px;
   }
 
-  .foodu-auth-brand-copy p,
-  .foodu-auth-brand-number {
+  .Ika-auth-brand-copy p,
+  .Ika-auth-brand-number {
     display: none;
   }
 
-  .foodu-auth-form-panel {
+  .Ika-auth-form-panel {
     padding: 30px 24px 28px;
   }
 
-  .foodu-auth-heading {
+  .Ika-auth-heading {
     margin-bottom: 24px;
   }
 
-  .foodu-auth-heading h2 {
+  .Ika-auth-heading h2 {
     font-size: 32px;
   }
 }
 
 @media (max-width: 380px) {
-  .foodu-auth-form-panel {
+  .Ika-auth-form-panel {
     padding-right: 18px;
     padding-left: 18px;
   }
 
-  .foodu-auth-brand {
+  .Ika-auth-brand {
     min-height: 178px;
     padding: 20px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .foodu-auth-page *,
-  .foodu-auth-page *::before,
-  .foodu-auth-page *::after {
+  .Ika-auth-page *,
+  .Ika-auth-page *::before,
+  .Ika-auth-page *::after {
     animation: none !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;

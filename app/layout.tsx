@@ -5,6 +5,7 @@ import { StorefrontInteractionBridge } from "../components/store/StorefrontInter
 import { StoreFeedback } from "../components/store/StoreFeedback";
 import { CartDrawer } from "../components/store/CartDrawer";
 import { LocaleProvider } from "../components/i18n/LocaleProvider";
+import { ServiceWorkerRegistration } from "../components/layout/ServiceWorkerRegistration";
 
 const stylesheets = [
   "bootstrap.min.css",
@@ -22,8 +23,8 @@ const stylesheets = [
 ];
 
 export const metadata: Metadata = {
-  title: "Foodu Sushi & Seafood",
-  description: "Fresh sushi and seafood, prepared with care at Foodu.",
+  title: "Ika Sushi & Seafood",
+  description: "Fresh sushi and seafood, prepared with care at Ika.",
   icons: { icon: "/adventure-bay.webp" },
 };
 
@@ -55,6 +56,7 @@ export default function RootLayout({
           <StoreProvider>
             {children}
             <StorefrontInteractionBridge />
+            <ServiceWorkerRegistration />
             <StoreFeedback />
             <CartDrawer />
           </StoreProvider>

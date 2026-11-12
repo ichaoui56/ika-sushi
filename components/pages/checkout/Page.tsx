@@ -5,7 +5,7 @@ import { TopBar } from "../../layout/TopBar";
 import { SiteHeader } from "../../layout/SiteHeader";
 import { Footer } from "../../layout/Footer";
 import BreadcrumbSection from "./sections/BreadcrumbSection";
-import CheckoutAreaSection from "./sections/CheckoutAreaSection";
+import CheckoutAreaSection from "./sections/CheckoutServerSection";
 
 export default function Page() {
   return (

@@ -15,7 +15,7 @@ export function ProductCarouselControls({ label, children }: ProductCarouselCont
   useEffect(() => () => cleanupRef.current?.(), []);
 
   const getCarouselMetrics = () => {
-    const track = marqueeRef.current?.querySelector<HTMLElement>(".foodu-picks-track");
+    const track = marqueeRef.current?.querySelector<HTMLElement>(".Ika-picks-track");
     const animation = track?.getAnimations()[0];
     const duration = Number(animation?.effect?.getTiming().duration);
     const distance = (track?.scrollWidth ?? 0) / 2;
@@ -99,7 +99,7 @@ export function ProductCarouselControls({ label, children }: ProductCarouselCont
   return (
     <div
       ref={marqueeRef}
-      className="foodu-picks-marquee"
+      className="Ika-picks-marquee"
       role="region"
       aria-roledescription="carousel"
       aria-label={label}

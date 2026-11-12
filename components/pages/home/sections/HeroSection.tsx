@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "../../../i18n/LocaleProvider";
 import { translate } from "../../../i18n/translations";
+import { toLocalImageUrl } from "../../../../lib/image-url";
 
-const heroSlides = [
+const fallbackHeroSlides = [
   {
     id: "platter",
     eyebrow: "TOUT DROIT VENU DE LA MER",
@@ -16,6 +17,8 @@ const heroSlides = [
     image: "/assets/img/food/sushi1.PNG",
     imageAlt: "Assortiment de sushi frais détouré sur fond transparent",
     imagePosition: "center",
+    ctaText: "COMMANDER",
+    ctaDestination: "/shop",
   },
   {
     id: "rolls",
@@ -27,6 +30,8 @@ const heroSlides = [
     image: "/assets/img/food/sushi-platter.png",
     imageAlt: "Saumon grillé accompagné de légumes sur fond transparent",
     imagePosition: "center",
+    ctaText: "COMMANDER",
+    ctaDestination: "/shop",
   },
   {
     id: "board",
@@ -38,11 +43,28 @@ const heroSlides = [
     image: "/assets/img/food/sushi-boat.PNG",
     imageAlt: "Plat de crevettes préparé avec des légumes sur fond transparent",
     imagePosition: "center",
+    ctaText: "COMMANDER",
+    ctaDestination: "/shop",
   },
 ];
 
-export default function HeroSection() {
+export interface HeroSlideContent {
+  id: string;
+  eyebrow: string;
+  badgeLine: string;
+  titleLineOne: string;
+  titleLineTwo: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  imagePosition: string;
+  ctaText: string;
+  ctaDestination: string;
+}
+
+export default function HeroSection({ slides = [] }: { slides?: HeroSlideContent[] }) {
   const { locale } = useLocale();
+  const heroSlides = slides.length ? slides : fallbackHeroSlides;
 
   return (
     <section className="ika-hero" aria-label={translate("IKA Sushi", locale)}>
@@ -75,8 +97,8 @@ export default function HeroSection() {
 
                   <p className="ika-hero-description">{translate(slide.description, locale)}</p>
 
-                  <Link className="ika-hero-cta" href="/shop">
-                    <span>{translate("COMMANDER", locale)}</span>
+                  <Link className="ika-hero-cta" href={slide.ctaDestination}>
+                    <span>{translate(slide.ctaText, locale)}</span>
                     <span className="ika-hero-cta-arrow" aria-hidden="true">
                       <i className="fas fa-arrow-right" />
                     </span>
@@ -88,10 +110,11 @@ export default function HeroSection() {
                   <div className="ika-hero-photo-frame">
                     <Image
                       className="ika-hero-photo"
-                      src={slide.image}
+                      src={toLocalImageUrl(slide.image)}
                       alt={slide.imageAlt}
                       fill
                       priority={index === 0}
+                      unoptimized={toLocalImageUrl(slide.image).startsWith("/api/images/")}
                       sizes="(max-width: 767px) 48vw, (max-width: 1199px) 50vw, 55vw"
                       style={{ objectPosition: slide.imagePosition }}
                     />

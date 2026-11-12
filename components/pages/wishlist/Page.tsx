@@ -13,7 +13,7 @@ export default function Page() {
       <Preloader />
       <TopBar />
       <SiteHeader />
-      <main className="default-padding foodu-wishlist-page">
+      <main className="default-padding Ika-wishlist-page">
         <div className="container">
           <div className="site-heading text-center">
             <h4 className="sub-title">Your favorites</h4>

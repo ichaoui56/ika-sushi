@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import RoutePage from "../../components/pages/blog-single/Page";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Foodu Sushi & Seafood",
+  title: "Ika Sushi & Seafood",
 };
 
 export default function Page() {
-  return <RoutePage />;
+  redirect("/blog-standard");
 }

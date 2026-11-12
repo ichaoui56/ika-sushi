@@ -1,4 +1,4 @@
-.foodu-home-blog {
+.Ika-home-blog {
   --blog-teal: #072b31;
   --blog-rust: #a33c2d;
   --blog-gold: #d6a64f;
@@ -6,17 +6,17 @@
   background: #f3f6f3;
 }
 
-.foodu-home-blog-inner {
+.Ika-home-blog-inner {
   width: min(1240px, 100%);
   margin: 0 auto;
 }
 
-.foodu-home-blog-heading {
+.Ika-home-blog-heading {
   margin-bottom: 30px;
   text-align: center;
 }
 
-.foodu-home-blog-kicker {
+.Ika-home-blog-kicker {
   display: block;
   margin-bottom: 10px;
   color: var(--blog-rust);
@@ -25,7 +25,7 @@
   letter-spacing: 0.12em;
 }
 
-.foodu-home-blog-heading h2 {
+.Ika-home-blog-heading h2 {
   margin: 0;
   color: var(--blog-teal);
   font-family: Belleza, Georgia, serif;
@@ -34,7 +34,7 @@
   line-height: 1.12;
 }
 
-.foodu-home-blog-heading p {
+.Ika-home-blog-heading p {
   margin: 10px 0 0;
   color: #647274;
   font-size: 14px;
@@ -42,14 +42,14 @@
   text-align: center;
 }
 
-.foodu-home-blog-controls {
+.Ika-home-blog-controls {
   display: flex;
   justify-content: center;
   gap: 8px;
   margin-top: 12px;
 }
 
-.foodu-home-blog-controls button {
+.Ika-home-blog-controls button {
   width: 44px;
   height: 44px;
   padding: 0;
@@ -63,22 +63,22 @@
   transition: color 160ms ease, background 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
-.foodu-home-blog-controls button:hover,
-.foodu-home-blog-controls button:focus-visible {
+.Ika-home-blog-controls button:hover,
+.Ika-home-blog-controls button:focus-visible {
   transform: translateY(-2px);
   border-color: var(--blog-teal);
   color: #fff;
   background: var(--blog-teal);
 }
 
-.foodu-home-blog-controls button:focus-visible,
-.foodu-home-blog-track:focus-visible,
-.foodu-blog-card a:focus-visible {
+.Ika-home-blog-controls button:focus-visible,
+.Ika-home-blog-track:focus-visible,
+.Ika-blog-card a:focus-visible {
   outline: 3px solid rgba(163, 60, 45, 0.42);
   outline-offset: 3px;
 }
 
-.foodu-home-blog-track {
+.Ika-home-blog-track {
   display: flex;
   gap: 18px;
   overflow-x: auto;
@@ -95,16 +95,16 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.foodu-home-blog-track::-webkit-scrollbar {
+.Ika-home-blog-track::-webkit-scrollbar {
   display: none;
 }
 
-.foodu-home-blog-track.is-dragging {
+.Ika-home-blog-track.is-dragging {
   cursor: grabbing;
   scroll-snap-type: none;
 }
 
-.foodu-blog-card {
+.Ika-blog-card {
   min-width: 0;
   flex: 0 0 calc((100% - 36px) / 3);
   overflow: hidden;
@@ -116,12 +116,12 @@
   transition: box-shadow 180ms ease, border-color 180ms ease;
 }
 
-.foodu-blog-card:hover {
+.Ika-blog-card:hover {
   border-color: rgba(7, 43, 49, 0.22);
   box-shadow: 0 14px 32px rgba(7, 43, 49, 0.12);
 }
 
-.foodu-blog-card-image {
+.Ika-blog-card-image {
   position: relative;
   display: block;
   overflow: hidden;
@@ -129,7 +129,7 @@
   background: #e7eeea;
 }
 
-.foodu-blog-card-image img {
+.Ika-blog-card-image img {
   width: 100%;
   height: 100%;
   display: block;
@@ -137,11 +137,11 @@
   transition: transform 280ms ease;
 }
 
-.foodu-blog-card:hover .foodu-blog-card-image img {
+.Ika-blog-card:hover .Ika-blog-card-image img {
   transform: scale(1.035);
 }
 
-.foodu-blog-card-image > span {
+.Ika-blog-card-image > span {
   position: absolute;
   left: 14px;
   bottom: 14px;
@@ -156,14 +156,14 @@
   text-transform: uppercase;
 }
 
-.foodu-blog-card-content {
+.Ika-blog-card-content {
   min-height: 205px;
   padding: 20px 21px 18px;
   display: flex;
   flex-direction: column;
 }
 
-.foodu-blog-card-meta {
+.Ika-blog-card-meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -174,11 +174,11 @@
   font-weight: 600;
 }
 
-.foodu-blog-card-meta span {
+.Ika-blog-card-meta span {
   color: var(--blog-rust);
 }
 
-.foodu-blog-card h3 {
+.Ika-blog-card h3 {
   margin: 13px 0 18px;
   color: var(--blog-teal);
   font-family: Belleza, Georgia, serif;
@@ -187,16 +187,16 @@
   line-height: 1.25;
 }
 
-.foodu-blog-card h3 a {
+.Ika-blog-card h3 a {
   color: inherit;
   text-decoration: none;
 }
 
-.foodu-blog-card h3 a:hover {
+.Ika-blog-card h3 a:hover {
   color: var(--blog-rust);
 }
 
-.foodu-blog-read-more {
+.Ika-blog-read-more {
   width: fit-content;
   margin-top: auto;
   display: inline-flex;
@@ -208,38 +208,38 @@
   text-decoration: none;
 }
 
-.foodu-blog-read-more i {
+.Ika-blog-read-more i {
   color: var(--blog-rust);
   transition: transform 160ms ease;
 }
 
-.foodu-blog-read-more:hover i {
+.Ika-blog-read-more:hover i {
   transform: translateX(3px);
 }
 
 @media (max-width: 991px) {
-  .foodu-blog-card {
+  .Ika-blog-card {
     flex-basis: calc((100% - 18px) / 2);
   }
 }
 
 @media (max-width: 600px) {
-  .foodu-home-blog {
+  .Ika-home-blog {
     padding: 58px 16px 68px;
   }
 
-  .foodu-home-blog-heading {
+  .Ika-home-blog-heading {
     margin-bottom: 22px;
   }
 
-  .foodu-home-blog-heading h2 {
+  .Ika-home-blog-heading h2 {
     max-width: 250px;
     margin-right: auto;
     margin-left: auto;
     font-size: 32px;
   }
 
-  .foodu-home-blog-heading p {
+  .Ika-home-blog-heading p {
     max-width: 300px;
     margin-right: auto;
     margin-left: auto;
@@ -247,44 +247,44 @@
     text-align: center;
   }
 
-  .foodu-home-blog-controls {
+  .Ika-home-blog-controls {
     gap: 6px;
     margin-top: 8px;
   }
 
-  .foodu-home-blog-controls button {
+  .Ika-home-blog-controls button {
     width: 38px;
     height: 38px;
   }
 
-  .foodu-home-blog-track {
+  .Ika-home-blog-track {
     gap: 12px;
     margin-right: -16px;
     padding-right: 16px;
   }
 
-  .foodu-blog-card {
+  .Ika-blog-card {
     flex-basis: 86%;
   }
 
-  .foodu-blog-card-image {
+  .Ika-blog-card-image {
     aspect-ratio: 1.6;
   }
 
-  .foodu-blog-card-content {
+  .Ika-blog-card-content {
     min-height: 192px;
     padding: 17px 17px 16px;
   }
 
-  .foodu-blog-card h3 {
+  .Ika-blog-card h3 {
     font-size: 21px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .foodu-home-blog *,
-  .foodu-home-blog *::before,
-  .foodu-home-blog *::after {
+  .Ika-home-blog *,
+  .Ika-home-blog *::before,
+  .Ika-home-blog *::after {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }

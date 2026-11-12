@@ -1,4 +1,8 @@
-export default function DiscountAreaSection() {
+import { ProductCard } from "../../../store/ProductCard";
+import type { CatalogProduct } from "../../../store/products";
+import styles from "./DiscountArea.module.css";
+
+export default function DiscountAreaSection({ products = [] }: { products?: CatalogProduct[] }) {
   return (
     <div
       className="discount-area default-padding bg-theme bg-cover text-light overflow-hidden"
@@ -24,70 +28,34 @@ export default function DiscountAreaSection() {
         <div className="row align-items-center">
           <div className="col-lg-5">
             <div className="discount-content">
-              <h4>Limited Offer</h4>
+              <h4>{products.length ? "Limited Offer" : "Fresh selection"}</h4>
 
               <h2
                 style={{
                   backgroundImage: "url(/assets/img/shape/27.png)",
                 }}
               >
-                Sushi &amp; Seafood Feast
+                {products.length ? "Sushi & Seafood Feast" : "Prepared fresh, every day"}
               </h2>
 
               <p>
-                {"A beautiful selection of fresh sushi and seafood, made for sharing."}
+                {products.length
+                  ? "A beautiful selection of fresh sushi and seafood, made for sharing."
+                  : "Explore our full menu and discover what is ready to order today."}
               </p>
-
-              <div className="counter-class" data-date="2025-8-24 23:59:59">
-                <div className="item-list">
-                  <div className="counter-item">
-                    <div className="item">
-                      <h5>
-                        <span className="counter-days" />
-                        {" Days"}
-                      </h5>
-                    </div>
-                  </div>
-
-                  <div className="counter-item">
-                    <div className="item">
-                      <h5>
-                        <span className="counter-hours" />
-                        {" Hours"}
-                      </h5>
-                    </div>
-                  </div>
-
-                  <div className="counter-item">
-                    <div className="item">
-                      <h5>
-                        <span className="counter-minutes" />
-                        {" Minutes"}
-                      </h5>
-                    </div>
-                  </div>
-
-                  <div className="counter-item">
-                    <div className="item">
-                      <h5>
-                        <span className="counter-seconds" />
-                        {" Seconds"}
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
           <div className="col-lg-6 offset-lg-1">
-            <div className="offer-item-thumb">
-              <img
-                src="/assets/img/shop/Crustaceans-such-as-lobsters.png"
-                alt="Fresh lobster and seafood"
-              />
-
-            </div>
+            {products.length ? (
+              <div className={styles.products}>
+                {products.slice(0, 2).map((product) => <ProductCard key={product.id} product={product} />)}
+              </div>
+            ) : (
+              <div className="offer-item-thumb">
+                <img src="/assets/img/shop/Crustaceans-such-as-lobsters.png" alt="Fresh lobster and seafood" />
+              </div>
+            )}
           </div>
         </div>
       </div>

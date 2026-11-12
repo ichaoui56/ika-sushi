@@ -1,0 +1,162 @@
+.Ika-staff-manager,
+.Ika-staff-new-page { display: grid; gap: 18px; color: #143139; }
+.Ika-staff-manager button,
+.Ika-staff-form button { font-family: inherit; letter-spacing: 0; text-transform: none; }
+.Ika-staff-manager button::after,
+.Ika-staff-form button::after { display: none !important; content: none !important; }
+
+.Ika-staff-page-heading,
+.Ika-staff-new-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+.Ika-staff-page-heading > div > span,
+.Ika-staff-new-heading > div > span { color: #8a6c4a; font-size: 9px; font-weight: 800; letter-spacing: .1em; }
+.Ika-staff-page-heading h1,
+.Ika-staff-new-heading h1 { margin: 3px 0 0; color: #10363e; font-size: 27px; font-weight: 800; }
+.Ika-staff-page-heading p,
+.Ika-staff-new-heading p { margin: 3px 0 0; color: #78878a; font-size: 11px; }
+.Ika-staff-add-button { min-height: 40px; padding: 9px 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 5px; color: #fff; background: #06363d; box-shadow: 0 4px 12px rgba(6,54,61,.12); font-size: 10px; font-weight: 700; text-decoration: none; transition: background-color 140ms ease, transform 140ms ease; }
+.Ika-staff-add-button:hover { color: #fff; background: #0c4d55; transform: translateY(-1px); }
+.Ika-staff-new-heading > a { min-height: 34px; display: inline-flex; align-items: center; gap: 7px; color: #536a6e; font-size: 10px; font-weight: 700; text-decoration: none; }
+.Ika-staff-new-heading > a:hover { color: #06363d; }
+
+.Ika-staff-toolbar { min-height: 60px; padding: 8px 11px; display: flex; align-items: center; justify-content: space-between; gap: 14px; border: 1px solid #e8e5de; border-radius: 7px; background: #fff; }
+.Ika-staff-search { width: min(460px, 100%); min-height: 46px; padding: 4px; display: flex; align-items: center; gap: 7px; border: 1px solid #dce5df; border-radius: 6px; background: #fff; box-shadow: 0 2px 6px rgba(20,49,57,.035); transition: border-color 150ms ease, box-shadow 150ms ease; }
+.Ika-staff-search:focus-within { border-color: #78a99c; box-shadow: 0 0 0 3px rgba(23,104,115,.1); }
+.Ika-staff-search > i { width: 34px; flex: 0 0 auto; display: grid; place-items: center; color: #758b89; font-size: 13px; }
+.Ika-staff-search input { width: 100%; min-width: 0; height: 36px; padding: 7px 3px; border: 0; outline: 0; color: #16343a; background: transparent; font: inherit; font-size: 11px; }
+.Ika-staff-search input::placeholder { color: #9aa6a5; }
+.Ika-staff-search button { min-width: 86px; min-height: 36px; padding: 7px 15px; flex: 0 0 auto; border: 0; border-radius: 4px; color: #fff; background: #0c4d55; box-shadow: 0 2px 5px rgba(6,54,61,.12); font-size: 10px; font-weight: 700; white-space: nowrap; cursor: pointer; }
+.Ika-staff-search button:hover:not(:disabled) { background: #06363d; }
+.Ika-staff-search button:disabled { opacity: .7; cursor: wait; }
+.Ika-staff-toolbar-meta { display: flex; align-items: center; gap: 13px; color: #718084; font-size: 10px; white-space: nowrap; }
+.Ika-staff-view-toggle { padding: 3px; display: flex; gap: 2px; border: 1px solid #e9e7e1; border-radius: 5px; background: #faf9f6; }
+.Ika-staff-view-toggle a { width: 29px; height: 27px; display: grid; place-items: center; border-radius: 3px; color: #748287; font-size: 11px; text-decoration: none; }
+.Ika-staff-view-toggle a:hover { color: #0c4d55; background: #edf3f0; }
+.Ika-staff-view-toggle a.is-active { color: #fff; background: #06363d; }
+.Ika-staff-error { margin: 0; padding: 10px 12px; border: 1px solid #f0d1cc; border-radius: 5px; color: #a3423b; background: #fff7f5; font-size: 10px; }
+
+.Ika-staff-list-scroll { overflow-x: auto; border: 1px solid #e8e5de; border-radius: 7px; background: #fff; }
+.Ika-staff-list { width: 100%; border-collapse: collapse; text-align: left; }
+.Ika-staff-list th { padding: 11px 13px; border-bottom: 1px solid #e9e7e1; color: #78878a; background: #fbfaf7; font-size: 9px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.Ika-staff-list td { padding: 9px 13px; border-bottom: 1px solid #f0efeb; color: #52666a; font-size: 10px; vertical-align: middle; }
+.Ika-staff-list tr:last-child td { border-bottom: 0; }
+.Ika-staff-list tr:hover td { background: #fcfbf8; }
+.Ika-staff-identity { min-width: 190px; display: flex; align-items: center; gap: 9px; }
+.Ika-staff-identity > span:last-child { min-width: 0; display: grid; gap: 3px; }
+.Ika-staff-identity strong { overflow: hidden; color: #17373d; font-size: 10px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-staff-identity small { overflow: hidden; color: #889497; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-staff-avatar { width: 37px; height: 37px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid #dce9e2; border-radius: 50%; color: #0b5b54; background: #eaf3ed; font-size: 10px; font-weight: 800; }
+.Ika-staff-avatar.is-delivery { border-color: #f0dfc5; color: #94632c; background: #fbf1e2; }
+.Ika-staff-role,
+.Ika-staff-status { padding: 4px 7px; display: inline-flex; align-items: center; border-radius: 20px; color: #687578; background: #eff0ed; font-size: 8px; font-weight: 700; white-space: nowrap; }
+.Ika-staff-role.is-employee { color: #0d6155; background: #e8f4ec; }
+.Ika-staff-role.is-delivery { color: #95642c; background: #fbf1e2; }
+.Ika-staff-status.is-active { color: #087c5a; background: #e8f4ec; }
+.Ika-staff-toggle { min-height: 31px; padding: 5px 8px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #e1e8e2; border-radius: 4px; color: #52686d; background: #fff; font-size: 9px; font-weight: 700; white-space: nowrap; cursor: pointer; }
+.Ika-staff-toggle:hover:not(:disabled) { border-color: #cbd9d0; color: #15383f; background: #f4f7f3; }
+.Ika-staff-toggle.is-active { color: #9b4a3f; }
+.Ika-staff-toggle:disabled { opacity: .55; cursor: wait; }
+
+.Ika-staff-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.Ika-staff-card { min-width: 0; padding: 14px; display: grid; align-content: start; gap: 12px; border: 1px solid #e8e5de; border-radius: 7px; background: #fff; transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease; }
+.Ika-staff-card:hover { border-color: #d7e1dc; box-shadow: 0 8px 22px rgba(21,51,53,.08); transform: translateY(-2px); }
+.Ika-staff-card-header { display: flex; align-items: center; justify-content: space-between; }
+.Ika-staff-card-header .Ika-staff-avatar { width: 44px; height: 44px; font-size: 12px; }
+.Ika-staff-card-identity h2 { margin: 0; overflow: hidden; color: #16363d; font-size: 14px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-staff-card-identity > span { margin-top: 3px; display: inline-block; color: #7d8b8d; font-size: 9px; }
+.Ika-staff-card-details { margin: 0; display: grid; gap: 7px; }
+.Ika-staff-card-details > div { min-width: 0; display: flex; justify-content: space-between; gap: 10px; }
+.Ika-staff-card-details dt { color: #889497; font-size: 9px; }
+.Ika-staff-card-details dd { max-width: 65%; margin: 0; overflow: hidden; color: #385256; font-size: 9px; text-align: right; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-staff-permission-list { display: flex; flex-wrap: wrap; gap: 4px; }
+.Ika-staff-permission-list span { padding: 4px 6px; border-radius: 3px; color: #406763; background: #edf4ef; font-size: 8px; font-weight: 600; }
+.Ika-staff-card-footer { padding-top: 9px; display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px solid #f0efeb; }
+.Ika-staff-card-footer > small { color: #879294; font-size: 8px; }
+.Ika-staff-empty { min-height: 270px; padding: 34px 20px; display: grid; justify-items: center; align-content: center; text-align: center; border: 1px dashed #d8ded8; border-radius: 7px; background: rgba(255,255,255,.62); }
+.Ika-staff-empty > span { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; color: #0c4d55; background: #e8f0eb; font-size: 16px; }
+.Ika-staff-empty h2 { margin: 11px 0 3px; color: #15383f; font-size: 16px; }
+.Ika-staff-empty p { margin: 0 0 13px; color: #7d8a8d; font-size: 10px; }
+.Ika-staff-pagination { min-height: 42px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+.Ika-staff-pagination a { min-width: 31px; height: 31px; padding: 0 8px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #e8e5de; border-radius: 4px; color: #476064; background: #fff; font-size: 10px; font-weight: 700; text-decoration: none; }
+.Ika-staff-pagination a:hover:not(.is-disabled) { border-color: #b7cbc4; color: #06363d; background: #f3f7f3; }
+.Ika-staff-pagination a.is-current { border-color: #06363d; color: #fff; background: #06363d; }
+.Ika-staff-pagination a.is-disabled { opacity: .4; pointer-events: none; }
+
+.Ika-staff-form { display: grid; gap: 12px; }
+.Ika-staff-form-section { padding: 20px; border: 1px solid #e3e9e3; border-radius: 8px; background: #fff; box-shadow: 0 6px 20px rgba(20,49,57,.035); }
+.Ika-staff-section-heading { margin-bottom: 16px; display: grid; grid-template-columns: 90px minmax(0, 1fr) auto; align-items: start; gap: 12px; }
+.Ika-staff-section-heading > span:first-child { padding-top: 3px; color: #9a7951; font-size: 8px; font-weight: 800; letter-spacing: .08em; }
+.Ika-staff-section-heading h2 { margin: 0; color: #17373d; font-size: 16px; font-weight: 800; }
+.Ika-staff-section-heading p { margin: 4px 0 0; color: #819092; font-size: 10px; }
+.Ika-staff-permission-count { padding: 5px 8px; border-radius: 12px; color: #0d6155; background: #e8f4ec; font-size: 8px; font-weight: 700; white-space: nowrap; }
+.Ika-staff-form-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+.Ika-staff-form-fields > label { min-width: 0; display: grid; align-content: start; gap: 5px; color: #50656a; font-size: 10px; font-weight: 700; }
+.Ika-staff-form-fields > label.is-wide { grid-column: 1 / -1; }
+.Ika-staff-optional { margin-left: 4px; color: #919b9c; font-size: 8px; font-weight: 500; }
+.Ika-staff-form-fields input { width: 100%; min-height: 42px; padding: 10px 11px; border: 1px solid #dfe5df; border-radius: 5px; outline: none; color: #19383e; background: #fff; font: inherit; font-size: 11px; font-weight: 500; transition: border-color 140ms ease, box-shadow 140ms ease; }
+.Ika-staff-form-fields input:focus { border-color: #70a59b; box-shadow: 0 0 0 3px rgba(23,104,115,.1); }
+.Ika-staff-password-field { position: relative; }
+.Ika-staff-password-field input { padding-right: 44px; }
+.Ika-staff-password-toggle { position: absolute; top: 4px; right: 4px; width: 34px; height: 34px; padding: 0; display: grid; place-items: center; border: 0; border-radius: 4px; color: #667b7c; background: transparent; cursor: pointer; }
+.Ika-staff-password-toggle:hover { color: #0c4d55; background: #f1f5f1; }
+.Ika-staff-field-hint { color: #889598; font-size: 8px; font-weight: 500; }
+.Ika-staff-role-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.Ika-staff-role-option { position: relative; min-width: 0; min-height: 80px; padding: 13px; display: flex !important; align-items: center; gap: 11px !important; border: 1px solid #e2e8e2; border-radius: 6px; background: #fcfcfa; cursor: pointer; transition: border-color 140ms ease, background 140ms ease, box-shadow 140ms ease; }
+.Ika-staff-role-option.is-selected { border-color: #8db9aa; background: #f1f7f2; box-shadow: inset 0 0 0 1px #dcebe1; }
+.Ika-staff-role-option > input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.Ika-staff-role-option:has(input:focus-visible) { outline: 2px solid #176873; outline-offset: 2px; }
+.Ika-staff-role-icon { width: 38px; height: 38px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; color: #0d6155; background: #e3f0e8; font-size: 14px; }
+.Ika-staff-role-icon.is-delivery { color: #99652b; background: #fbf0df; }
+.Ika-staff-role-option > span:nth-of-type(2) { min-width: 0; display: grid; gap: 3px; }
+.Ika-staff-role-option strong { color: #26474c; font-size: 11px; }
+.Ika-staff-role-option small { color: #819092; font-size: 9px; line-height: 1.4; }
+.Ika-staff-radio-mark { width: 17px; height: 17px; flex: 0 0 auto; margin-left: auto; border: 1px solid #cbd7d0; border-radius: 50%; background: #fff; }
+.Ika-staff-role-option.is-selected .Ika-staff-radio-mark { border: 5px solid #0c6861; }
+.Ika-staff-permission-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.Ika-staff-permission-group { min-width: 0; margin: 0; padding: 12px; border: 1px solid #e7eae4; border-radius: 5px; background: #fcfcfa; }
+.Ika-staff-permission-group legend { padding: 0 5px; color: #28494d; font-size: 10px; font-weight: 800; }
+.Ika-staff-permission-group > p { margin: 0 0 9px; color: #899496; font-size: 8px; }
+.Ika-staff-permission-group > div { display: grid; gap: 5px; }
+.Ika-staff-permission-option { position: relative; min-height: 32px; padding: 6px 8px; display: flex !important; align-items: center; gap: 8px !important; border: 1px solid transparent; border-radius: 4px; color: #627377; background: transparent; font-size: 9px; cursor: pointer; }
+.Ika-staff-permission-option.is-checked { border-color: #dce9df; color: #315e58; background: #f0f7f1; }
+.Ika-staff-permission-option input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.Ika-staff-permission-option:has(input:focus-visible) { outline: 2px solid #176873; outline-offset: 1px; }
+.Ika-staff-checkbox { width: 16px; height: 16px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid #ccd7d0; border-radius: 3px; color: transparent; background: #fff; font-size: 8px; }
+.Ika-staff-permission-option.is-checked .Ika-staff-checkbox { border-color: #0c6861; color: #fff; background: #0c6861; }
+.Ika-staff-delivery-note { max-width: 980px; padding: 15px; display: flex; align-items: flex-start; gap: 11px; border: 1px solid #ecdcc1; border-radius: 6px; background: #fbf4e8; }
+.Ika-staff-delivery-note > span { width: 32px; height: 32px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; color: #95642c; background: #f5e5c7; }
+.Ika-staff-delivery-note strong { color: #684f32; font-size: 10px; }
+.Ika-staff-delivery-note p { margin: 3px 0 0; color: #82745e; font-size: 9px; }
+.Ika-staff-form-error { margin: 0; color: #a3423b; font-size: 10px; }
+.Ika-staff-form-footer { position: sticky; bottom: 0; padding: 12px 0; display: flex; align-items: center; gap: 8px; background: rgba(248,246,241,.96); backdrop-filter: blur(8px); }
+.Ika-staff-form-footer button,
+.Ika-staff-form-footer a { min-height: 40px; padding: 9px 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid #06363d; border-radius: 5px; color: #fff; background: #06363d; font-size: 10px; font-weight: 800; text-decoration: none; cursor: pointer; }
+.Ika-staff-form-footer button:hover { background: #0c4d55; }
+.Ika-staff-form-footer button:disabled { opacity: .55; cursor: wait; }
+.Ika-staff-form-footer a { border-color: #e4e6df; color: #52686d; background: #fff; }
+
+@media (max-width: 1050px) {
+  .Ika-staff-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 680px) {
+  .Ika-staff-page-heading { align-items: flex-start; }
+  .Ika-staff-page-heading h1,
+  .Ika-staff-new-heading h1 { font-size: 23px; }
+  .Ika-staff-add-button { min-height: 36px; padding: 8px 10px; font-size: 9px; white-space: nowrap; }
+  .Ika-staff-toolbar { align-items: flex-start; flex-direction: column; }
+  .Ika-staff-search { width: 100%; }
+  .Ika-staff-search button { min-width: 90px; padding-right: 12px; padding-left: 12px; }
+  .Ika-staff-toolbar-meta { width: 100%; justify-content: space-between; }
+  .Ika-staff-card-grid { grid-template-columns: 1fr; }
+  .Ika-staff-list { min-width: 810px; }
+  .Ika-staff-list th,
+  .Ika-staff-list td { padding: 8px; }
+  .Ika-staff-new-heading { flex-direction: column; }
+  .Ika-staff-form-section { padding: 14px; }
+  .Ika-staff-section-heading { grid-template-columns: 1fr auto; gap: 6px 10px; }
+  .Ika-staff-section-heading > span:first-child { grid-column: 1 / -1; }
+  .Ika-staff-form-fields,
+  .Ika-staff-role-options,
+  .Ika-staff-permission-groups { grid-template-columns: 1fr; }
+  .Ika-staff-form-fields > label.is-wide { grid-column: auto; }
+}

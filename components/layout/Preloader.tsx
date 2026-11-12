@@ -25,7 +25,7 @@ export function Preloader() {
     <div id="preloader">
       <div id="restan-preloader" className="restan-preloader">
         <div className="animation-preloader">
-          <img className="foodu-preloader-logo" src="/adventure-bay.webp" alt="" />
+          <img className="Ika-preloader-logo" src="/adventure-bay.webp" alt="" />
         </div>
 
         <div className="loader">

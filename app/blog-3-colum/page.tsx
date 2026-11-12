@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import RoutePage from "../../components/pages/blog-3-colum/Page";
 
 export const metadata: Metadata = {
-  title: "Foodu Sushi & Seafood",
+  title: "Ika Sushi & Seafood",
 };
 
 export default function Page() {

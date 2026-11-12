@@ -1,0 +1,129 @@
+.Ika-location-manager,
+.Ika-location-new-page { display: grid; gap: 18px; color: #143139; }
+.Ika-location-manager button,
+.Ika-location-editor button { font-family: inherit; letter-spacing: 0; text-transform: none; }
+.Ika-location-manager button::after,
+.Ika-location-editor button::after { display: none !important; content: none !important; }
+
+.Ika-location-page-heading,
+.Ika-location-new-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+.Ika-location-page-heading > div > span,
+.Ika-location-new-head > div > span { color: #8a6c4a; font-size: 9px; font-weight: 800; letter-spacing: .1em; }
+.Ika-location-page-heading h1,
+.Ika-location-new-head h1 { margin: 3px 0 0; color: #10363e; font-size: 27px; font-weight: 800; }
+.Ika-location-page-heading p,
+.Ika-location-new-head p { margin: 3px 0 0; color: #78878a; font-size: 11px; }
+.Ika-location-add-button { min-height: 40px; padding: 9px 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 5px; color: #fff; background: #06363d; box-shadow: 0 4px 12px rgba(6,54,61,.12); font-size: 10px; font-weight: 700; text-decoration: none; transition: background-color 140ms ease, transform 140ms ease; }
+.Ika-location-add-button:hover { color: #fff; background: #0c4d55; transform: translateY(-1px); }
+.Ika-location-new-head > a { min-height: 34px; display: inline-flex; align-items: center; gap: 7px; color: #536a6e; font-size: 10px; font-weight: 700; text-decoration: none; }
+.Ika-location-new-head > a:hover { color: #06363d; }
+
+.Ika-location-toolbar { min-height: 60px; padding: 8px 11px; display: flex; align-items: center; justify-content: space-between; gap: 14px; border: 1px solid #e8e5de; border-radius: 7px; background: #fff; }
+.Ika-location-search { width: min(440px, 100%); min-height: 46px; padding: 4px; display: flex; align-items: center; gap: 7px; border: 1px solid #dce5df; border-radius: 6px; background: #fff; box-shadow: 0 2px 6px rgba(20,49,57,.035); transition: border-color 150ms ease, box-shadow 150ms ease; }
+.Ika-location-search:focus-within { border-color: #78a99c; box-shadow: 0 0 0 3px rgba(23,104,115,.1); }
+.Ika-location-search > i { width: 34px; flex: 0 0 auto; display: grid; place-items: center; color: #758b89; font-size: 13px; }
+.Ika-location-search input { width: 100%; min-width: 0; height: 36px; padding: 7px 3px; border: 0; outline: 0; color: #16343a; background: transparent; font: inherit; font-size: 11px; }
+.Ika-location-search input::placeholder { color: #9aa6a5; }
+.Ika-location-search button { min-width: 86px; min-height: 36px; padding: 7px 15px; flex: 0 0 auto; border: 0; border-radius: 4px; color: #fff; background: #0c4d55; box-shadow: 0 2px 5px rgba(6,54,61,.12); font-size: 10px; font-weight: 700; white-space: nowrap; cursor: pointer; }
+.Ika-location-search button:hover:not(:disabled) { background: #06363d; }
+.Ika-location-search button:disabled { opacity: .7; cursor: wait; }
+.Ika-location-toolbar-meta { display: flex; align-items: center; gap: 13px; color: #718084; font-size: 10px; white-space: nowrap; }
+.Ika-location-view-toggle { padding: 3px; display: flex; gap: 2px; border: 1px solid #e9e7e1; border-radius: 5px; background: #faf9f6; }
+.Ika-location-view-toggle a { width: 29px; height: 27px; display: grid; place-items: center; border-radius: 3px; color: #748287; font-size: 11px; text-decoration: none; }
+.Ika-location-view-toggle a:hover { color: #0c4d55; background: #edf3f0; }
+.Ika-location-view-toggle a.is-active { color: #fff; background: #06363d; }
+.Ika-location-error { margin: 0; padding: 10px 12px; border: 1px solid #f0d1cc; border-radius: 5px; color: #a3423b; background: #fff7f5; font-size: 10px; }
+
+.Ika-location-list-scroll { overflow-x: auto; border: 1px solid #e8e5de; border-radius: 7px; background: #fff; }
+.Ika-location-list { width: 100%; border-collapse: collapse; text-align: left; }
+.Ika-location-list th { padding: 11px 14px; border-bottom: 1px solid #e9e7e1; color: #78878a; background: #fbfaf7; font-size: 9px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.Ika-location-list td { padding: 9px 14px; border-bottom: 1px solid #f0efeb; color: #30494e; font-size: 10px; vertical-align: middle; }
+.Ika-location-list tr:last-child td { border-bottom: 0; }
+.Ika-location-list tr:hover td { background: #fcfbf8; }
+.Ika-location-list-identity { min-width: 210px; display: grid; gap: 3px; }
+.Ika-location-list-identity strong { overflow: hidden; color: #17373d; font-size: 11px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-location-list-identity small { overflow: hidden; color: #889497; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-location-fee { color: #17373d !important; font-weight: 800; white-space: nowrap; }
+.Ika-location-status { padding: 4px 7px; display: inline-flex; align-items: center; border-radius: 20px; color: #687578; background: #eff0ed; font-size: 8px; font-weight: 700; white-space: nowrap; }
+.Ika-location-status.is-active { color: #087c5a; background: #e8f4ec; }
+.Ika-location-actions { display: flex; align-items: center; justify-content: flex-end; gap: 4px; }
+.Ika-location-actions > a,
+.Ika-location-actions > button { width: 30px; height: 30px; padding: 0; display: grid; place-items: center; border: 1px solid transparent; border-radius: 4px; color: #617579; background: transparent; font-size: 10px; text-decoration: none; cursor: pointer; }
+.Ika-location-actions > a:hover,
+.Ika-location-actions > button:hover:not(:disabled) { border-color: #e7e5df; color: #0b5059; background: #f4f7f3; }
+.Ika-location-actions > button:hover:not(:disabled) { border-color: #f1d8d2; color: #b7463c; background: #fff4f1; }
+.Ika-location-actions > button:disabled { opacity: .45; cursor: wait; }
+
+.Ika-location-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.Ika-location-card { min-width: 0; padding: 14px; display: grid; gap: 8px; border: 1px solid #e8e5de; border-radius: 7px; background: #fff; transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease; }
+.Ika-location-card:hover { border-color: #d7e1dc; box-shadow: 0 8px 22px rgba(21,51,53,.08); transform: translateY(-2px); }
+.Ika-location-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.Ika-location-type { padding: 4px 7px; border-radius: 4px; color: #805a31; background: #f6f0e5; font-size: 8px; font-weight: 800; text-transform: uppercase; }
+.Ika-location-type.is-city { color: #3c6170; background: #eaf2f3; }
+.Ika-location-type.is-street { color: #716241; background: #f4f0e2; }
+.Ika-location-card h2 { margin: 1px 0 0; overflow: hidden; color: #16363d; font-size: 16px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-location-card > small { overflow: hidden; color: #8b9698; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-location-card-facts { margin-top: 5px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 10px; }
+.Ika-location-card-facts > div { min-width: 0; display: grid; gap: 4px; }
+.Ika-location-card-facts span { color: #849094; font-size: 8px; }
+.Ika-location-card-facts strong { overflow: hidden; color: #17373d; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.Ika-location-card-footer { padding-top: 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px solid #f0efeb; color: #849094; font-size: 9px; }
+.Ika-location-empty { min-height: 270px; padding: 34px 20px; display: grid; justify-items: center; align-content: center; text-align: center; border: 1px dashed #d8ded8; border-radius: 7px; background: rgba(255,255,255,.62); }
+.Ika-location-empty > span { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; color: #0c4d55; background: #e8f0eb; font-size: 16px; }
+.Ika-location-empty h2 { margin: 11px 0 3px; color: #15383f; font-size: 16px; }
+.Ika-location-empty p { margin: 0 0 13px; color: #7d8a8d; font-size: 10px; }
+.Ika-location-pagination { min-height: 42px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+.Ika-location-pagination a { min-width: 31px; height: 31px; padding: 0 8px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #e8e5de; border-radius: 4px; color: #476064; background: #fff; font-size: 10px; font-weight: 700; text-decoration: none; }
+.Ika-location-pagination a:hover:not(.is-disabled) { border-color: #b7cbc4; color: #06363d; background: #f3f7f3; }
+.Ika-location-pagination a.is-current { border-color: #06363d; color: #fff; background: #06363d; }
+.Ika-location-pagination a.is-disabled { opacity: .4; pointer-events: none; }
+
+.Ika-location-editor { display: grid; gap: 12px; }
+.Ika-location-editor-section { padding: 16px; border: 1px solid #e8e5de; border-radius: 7px; background: #fff; }
+.Ika-location-editor-section-heading { margin-bottom: 13px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.Ika-location-editor-section-heading span { color: #8a6c4a; font-size: 8px; font-weight: 800; letter-spacing: .1em; }
+.Ika-location-editor-section-heading strong { color: #17373d; font-size: 12px; }
+.Ika-location-editor-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.Ika-location-editor-fields > label { min-width: 0; display: grid; align-content: start; gap: 5px; color: #50656a; font-size: 10px; font-weight: 700; }
+.Ika-location-editor-fields > label.is-wide { grid-column: 1 / -1; }
+.Ika-location-editor-fields input:not([type="checkbox"]),
+.Ika-location-editor-fields select { width: 100%; min-height: 39px; padding: 9px 10px; border: 1px solid #dfe4df; border-radius: 4px; outline: none; color: #19383e; background: #fff; font: inherit; font-size: 11px; font-weight: 500; }
+.Ika-location-editor-fields input:focus,
+.Ika-location-editor-fields select:focus { border-color: #70a59b; box-shadow: 0 0 0 3px rgba(23,104,115,.1); }
+.Ika-location-slug-field { display: flex; gap: 6px; }
+.Ika-location-slug-field button { min-width: 56px; padding: 0 9px; border: 1px solid #dce5df; border-radius: 4px; color: #365d5f; background: #f5f7f3; font-size: 9px; font-weight: 700; cursor: pointer; }
+.Ika-location-active-toggle { min-height: 39px; display: flex !important; align-items: center; gap: 9px !important; }
+.Ika-location-active-toggle input { width: 16px; height: 16px; min-height: 0; accent-color: #138b69; }
+.Ika-location-active-toggle span { display: grid; gap: 2px; }
+.Ika-location-active-toggle strong { color: #2b484d; font-size: 9px; }
+.Ika-location-active-toggle small { color: #899496; font-size: 8px; font-weight: 500; }
+.Ika-location-form-error { margin: 0; color: #a3423b; font-size: 10px; }
+.Ika-location-editor-footer { position: sticky; bottom: 0; padding: 12px 0; display: flex; align-items: center; gap: 8px; background: rgba(248,246,241,.96); backdrop-filter: blur(8px); }
+.Ika-location-editor-footer button,
+.Ika-location-editor-footer a { min-height: 38px; padding: 8px 13px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid #06363d; border-radius: 4px; color: #fff; background: #06363d; font-size: 10px; font-weight: 800; text-decoration: none; cursor: pointer; }
+.Ika-location-editor-footer button:hover { background: #0c4d55; }
+.Ika-location-editor-footer button:disabled { opacity: .55; cursor: wait; }
+.Ika-location-editor-footer a { border-color: #e4e6df; color: #52686d; background: #fff; }
+
+@media (max-width: 1050px) {
+  .Ika-location-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 680px) {
+  .Ika-location-page-heading { align-items: flex-start; }
+  .Ika-location-page-heading h1,
+  .Ika-location-new-head h1 { font-size: 23px; }
+  .Ika-location-add-button { min-height: 36px; padding: 8px 10px; font-size: 9px; white-space: nowrap; }
+  .Ika-location-toolbar { align-items: flex-start; flex-direction: column; }
+  .Ika-location-search { width: 100%; }
+  .Ika-location-search button { min-width: 96px; padding-right: 12px; padding-left: 12px; }
+  .Ika-location-toolbar-meta { width: 100%; justify-content: space-between; }
+  .Ika-location-card-grid { grid-template-columns: 1fr; }
+  .Ika-location-list { min-width: 650px; }
+  .Ika-location-list th,
+  .Ika-location-list td { padding: 8px; }
+  .Ika-location-editor-section { padding: 12px; }
+  .Ika-location-editor-fields { grid-template-columns: 1fr; }
+  .Ika-location-editor-fields > label.is-wide { grid-column: auto; }
+  .Ika-location-new-head { flex-direction: column; }
+}

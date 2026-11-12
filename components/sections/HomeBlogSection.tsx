@@ -47,7 +47,7 @@ export function HomeBlogSection() {
   const scrollPosts = (direction: -1 | 1) => {
     const track = trackRef.current;
     if (!track) return;
-    const card = track.querySelector<HTMLElement>(".foodu-blog-card");
+    const card = track.querySelector<HTMLElement>(".Ika-blog-card");
     const distance = card ? card.offsetWidth + 18 : track.clientWidth * 0.8;
     track.scrollBy({
       left: distance * direction,
@@ -98,18 +98,18 @@ export function HomeBlogSection() {
   };
 
   return (
-    <section className="foodu-home-blog" aria-labelledby="foodu-home-blog-title">
-      <div className="foodu-home-blog-inner">
-        <header className="foodu-home-blog-heading">
+    <section className="Ika-home-blog" aria-labelledby="Ika-home-blog-title">
+      <div className="Ika-home-blog-inner">
+        <header className="Ika-home-blog-heading">
           <div>
-            <span className="foodu-home-blog-kicker">NEWS &amp; BLOG</span>
-            <h2 id="foodu-home-blog-title">Stories from our kitchen</h2>
+            <span className="Ika-home-blog-kicker">NEWS &amp; BLOG</span>
+            <h2 id="Ika-home-blog-title">Stories from our kitchen</h2>
             <p>Meet the craft, ingredients, and people behind every plate.</p>
           </div>
         </header>
 
         <div
-          className="foodu-home-blog-track"
+          className="Ika-home-blog-track"
           ref={trackRef}
           role="region"
           aria-label="Latest stories"
@@ -121,27 +121,27 @@ export function HomeBlogSection() {
           onClickCapture={handleClickCapture}
         >
           {posts.map((post) => (
-            <article className="foodu-blog-card" key={post.title}>
-              <Link className="foodu-blog-card-image" href="/blog-single-with-sidebar" aria-label={`Read: ${post.title}`}>
+            <article className="Ika-blog-card" key={post.title}>
+              <Link className="Ika-blog-card-image" href="/blog-single-with-sidebar" aria-label={`Read: ${post.title}`}>
                 <img src={post.image} alt={post.imageAlt} draggable={false} />
                 <span>{post.category}</span>
               </Link>
-              <div className="foodu-blog-card-content">
-                <div className="foodu-blog-card-meta">
+              <div className="Ika-blog-card-content">
+                <div className="Ika-blog-card-meta">
                   <time dateTime={post.dateTime}>{post.date}</time>
                   <span>{post.readTime}</span>
                 </div>
                 <h3>
                   <Link href="/blog-single-with-sidebar">{post.title}</Link>
                 </h3>
-                <Link className="foodu-blog-read-more" href="/blog-single-with-sidebar">
+                <Link className="Ika-blog-read-more" href="/blog-single-with-sidebar">
                   Read story <i className="fas fa-arrow-right" aria-hidden="true" />
                 </Link>
               </div>
             </article>
           ))}
         </div>
-        <div className="foodu-home-blog-controls" aria-label="Blog carousel controls">
+        <div className="Ika-home-blog-controls" aria-label="Blog carousel controls">
           <button type="button" aria-label="Previous stories" title="Previous stories" onClick={() => scrollPosts(-1)}>
             <i className="fas fa-arrow-left" aria-hidden="true" />
           </button>

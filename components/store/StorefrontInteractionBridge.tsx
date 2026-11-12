@@ -48,7 +48,7 @@ export function StorefrontInteractionBridge() {
     const syncWishlistButtons = () => {
       document
         .querySelectorAll(
-          ".product .shop-action .wishlist a, .food-menu-style-one .item-price .right a, .single-product-contents .wishlist a, .foodu-card-like",
+          ".product .shop-action .wishlist a, .food-menu-style-one .item-price .right a, .single-product-contents .wishlist a, .Ika-card-like",
         )
         .forEach((button) => {
           const card = findProductCard(button);
@@ -56,11 +56,11 @@ export function StorefrontInteractionBridge() {
           if (!product) return;
           const liked = wishlist.some((item) => item.id === product.id);
           const listItem = button.closest("li.wishlist") ?? button;
-          listItem?.classList.toggle("foodu-is-wishlisted", liked);
+          listItem?.classList.toggle("Ika-is-wishlisted", liked);
           button.setAttribute("aria-label", liked ? "Remove from wishlist" : "Add to wishlist");
           button.setAttribute("aria-pressed", String(liked));
           button.setAttribute("title", liked ? "Remove from wishlist" : "Add to wishlist");
-          if (button.matches(".foodu-card-like")) {
+          if (button.matches(".Ika-card-like")) {
             const icon = button.querySelector("i");
             icon?.classList.toggle("far", !liked);
             icon?.classList.toggle("fas", liked);
@@ -73,10 +73,10 @@ export function StorefrontInteractionBridge() {
       if (!(event.target instanceof Element)) return;
       const action = event.target.closest("a, button");
       if (!action) return;
-      if (action.closest(".foodu-product-card")) return;
+      if (action.closest(".Ika-product-card")) return;
 
       const isWishlist = action.matches(
-        ".shop-action li.wishlist a, .food-menu-style-one .item-price .right a, .single-product-contents .wishlist a, .foodu-card-like",
+        ".shop-action li.wishlist a, .food-menu-style-one .item-price .right a, .single-product-contents .wishlist a, .Ika-card-like",
       );
       const isCart = action.matches(
         ".cart-btn, .shop-action li.cart a, .food-menu-style-one .button a, .single-product-contents .product-purchase-list > a",
@@ -113,7 +113,7 @@ export function StorefrontInteractionBridge() {
         void addToCart(product)
           .then(() => {
             window.dispatchEvent(
-              new CustomEvent("foodu:store-feedback", {
+              new CustomEvent("Ika:store-feedback", {
                 detail: {
                   action: "cart",
                   message: `${product.name} added to cart`,
@@ -126,7 +126,7 @@ export function StorefrontInteractionBridge() {
           })
           .catch((error: unknown) => {
             window.dispatchEvent(
-              new CustomEvent("foodu:store-feedback", {
+              new CustomEvent("Ika:store-feedback", {
                 detail: {
                   action: "error",
                   message:

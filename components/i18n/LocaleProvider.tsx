@@ -13,7 +13,7 @@ import {
 } from "react";
 import { translate, type Locale } from "./translations";
 
-const STORAGE_KEY = "foodu-locale";
+const STORAGE_KEY = "Ika-locale";
 const supportedLocales: Locale[] = ["fr", "en", "ar"];
 const textSources = new WeakMap<Text, { source: string; rendered: string }>();
 const attributeSources = new WeakMap<
@@ -136,7 +136,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const cleanup = localizeDocument(locale);
-    document.dispatchEvent(new CustomEvent("foodu:locale-change", { detail: { locale } }));
+    document.dispatchEvent(new CustomEvent("Ika:locale-change", { detail: { locale } }));
     return cleanup;
   }, [locale]);
 
@@ -197,10 +197,10 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div className="foodu-language-switcher" ref={switcherRef}>
+    <div className="Ika-language-switcher" ref={switcherRef}>
       <button
         ref={triggerRef}
-        className="foodu-language-trigger"
+        className="Ika-language-trigger"
         type="button"
         aria-label={`Language: ${selectedLanguage.name}`}
         aria-haspopup="menu"
@@ -216,22 +216,22 @@ export function LanguageSwitcher() {
           }
         }}
       >
-        <span className="foodu-language-flag" aria-hidden="true">{selectedLanguage.flag}</span>
-        <span className="foodu-language-current">{selectedLanguage.name}</span>
+        <span className="Ika-language-flag" aria-hidden="true">{selectedLanguage.flag}</span>
+        <span className="Ika-language-current">{selectedLanguage.name}</span>
         <i
-          className={`fas fa-chevron-down foodu-language-chevron${isOpen ? " is-open" : ""}`}
+          className={`fas fa-chevron-down Ika-language-chevron${isOpen ? " is-open" : ""}`}
           aria-hidden="true"
         />
       </button>
       {isOpen && (
-        <div className="foodu-language-menu" role="menu" aria-label="Choose a language">
+        <div className="Ika-language-menu" role="menu" aria-label="Choose a language">
           {languages.map((language, index) => (
             <button
               key={language.locale}
               ref={(element) => {
                 optionRefs.current[index] = element;
               }}
-              className={`foodu-language-option${language.locale === locale ? " is-selected" : ""}`}
+              className={`Ika-language-option${language.locale === locale ? " is-selected" : ""}`}
               type="button"
               role="menuitemradio"
               aria-checked={language.locale === locale}
@@ -239,12 +239,12 @@ export function LanguageSwitcher() {
               onClick={() => chooseLanguage(language.locale)}
               onKeyDown={(event) => handleOptionKeyDown(event, index)}
             >
-              <span className="foodu-language-option-flag" aria-hidden="true">
+              <span className="Ika-language-option-flag" aria-hidden="true">
                 {language.flag}
               </span>
-              <span className="foodu-language-option-name">{language.name}</span>
+              <span className="Ika-language-option-name">{language.name}</span>
               {language.locale === locale && (
-                <i className="fas fa-check foodu-language-option-check" aria-hidden="true" />
+                <i className="fas fa-check Ika-language-option-check" aria-hidden="true" />
               )}
             </button>
           ))}

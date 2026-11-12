@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale } from "../i18n/LocaleProvider";
 import { translate } from "../i18n/translations";
 import { useStore } from "./StoreProvider";
+import { getProductName } from "./product-locale";
+import { toLocalImageUrl } from "../../lib/image-url";
 
 const formatPrice = (price: number) =>
   `$${price.toLocaleString(undefined, {
@@ -22,9 +24,9 @@ export function CartDrawer() {
 
   useEffect(() => {
     const openDrawer = () => setIsOpen(true);
-    window.addEventListener("foodu:open-cart-drawer", openDrawer);
+    window.addEventListener("Ika:open-cart-drawer", openDrawer);
     return () => {
-      window.removeEventListener("foodu:open-cart-drawer", openDrawer);
+      window.removeEventListener("Ika:open-cart-drawer", openDrawer);
     };
   }, []);
 
@@ -49,26 +51,26 @@ export function CartDrawer() {
   if (!isOpen) return null;
 
   return (
-    <div className="foodu-cart-drawer-layer">
+    <div className="Ika-cart-drawer-layer">
       <button
-        className="foodu-cart-drawer-scrim"
+        className="Ika-cart-drawer-scrim"
         type="button"
         aria-label={translate("Close cart panel", locale)}
         onClick={() => setIsOpen(false)}
       />
       <aside
-        className="foodu-cart-drawer"
+        className="Ika-cart-drawer"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="foodu-cart-drawer-title"
+        aria-labelledby="Ika-cart-drawer-title"
         dir={locale === "ar" ? "rtl" : "ltr"}
       >
-        <div className="foodu-cart-drawer-header">
+        <div className="Ika-cart-drawer-header">
           <div>
-            <span className="foodu-cart-drawer-eyebrow">
+            <span className="Ika-cart-drawer-eyebrow">
               {translate("Your selection", locale)}
             </span>
-            <h2 id="foodu-cart-drawer-title">{translate("Your Cart", locale)}</h2>
+            <h2 id="Ika-cart-drawer-title">{translate("Your Cart", locale)}</h2>
             <p>
               {cartCount}{" "}
               {translate(cartCount === 1 ? "item in your bag" : "items in your bag", locale).replace(
@@ -79,7 +81,7 @@ export function CartDrawer() {
           </div>
           <button
             ref={closeButtonRef}
-            className="foodu-cart-drawer-close"
+            className="Ika-cart-drawer-close"
             type="button"
             aria-label={translate("Close cart panel", locale)}
             onClick={() => setIsOpen(false)}
@@ -88,25 +90,26 @@ export function CartDrawer() {
           </button>
         </div>
 
-        <div className="foodu-cart-drawer-items">
+        <div className="Ika-cart-drawer-items">
           {cart.length === 0 ? (
-            <p className="foodu-cart-drawer-empty">
+            <p className="Ika-cart-drawer-empty">
               {translate("Your cart is empty", locale)}
             </p>
-          ) : cart.map((item) => (
-            <article className="foodu-cart-drawer-item" key={item.id}>
-              <img src={item.image} alt={translate(item.name, locale)} />
-              <div className="foodu-cart-drawer-item-info">
-                <h3>{translate(item.name, locale)}</h3>
-                <div className="foodu-cart-drawer-item-meta">
+          ) : cart.map((item) => {
+            const productName = getProductName(item, locale);
+            return <article className="Ika-cart-drawer-item" key={item.id}>
+              <img src={toLocalImageUrl(item.image)} alt={productName} />
+              <div className="Ika-cart-drawer-item-info">
+                <h3>{productName}</h3>
+                <div className="Ika-cart-drawer-item-meta">
                   <div
-                    className="foodu-cart-quantity-control"
+                    className="Ika-cart-quantity-control"
                     role="group"
                     aria-label={`${translate("Quantity", locale)}: ${item.quantity}`}
                   >
                     <button
                       type="button"
-                      aria-label={`${translate("Decrease quantity", locale)} ${translate(item.name, locale)}`}
+                      aria-label={`${translate("Decrease quantity", locale)} ${productName}`}
                       disabled={item.quantity <= 1}
                       onClick={() => {
                         void setCartQuantity(item.id, item.quantity - 1).catch(
@@ -121,7 +124,7 @@ export function CartDrawer() {
                     <span aria-live="polite">{item.quantity}</span>
                     <button
                       type="button"
-                      aria-label={`${translate("Increase quantity", locale)} ${translate(item.name, locale)}`}
+                      aria-label={`${translate("Increase quantity", locale)} ${productName}`}
                       onClick={() => {
                         void setCartQuantity(item.id, item.quantity + 1).catch(
                           (error: unknown) => {
@@ -137,9 +140,9 @@ export function CartDrawer() {
                 </div>
               </div>
               <button
-                className="foodu-cart-drawer-remove"
+                className="Ika-cart-drawer-remove"
                 type="button"
-                aria-label={`${translate("Remove", locale)} ${translate(item.name, locale)}`}
+                aria-label={`${translate("Remove", locale)} ${productName}`}
                 onClick={() => {
                   void removeFromCart(item.id).catch((error: unknown) => {
                     console.error("Could not remove the item from the cart.", error);
@@ -148,24 +151,24 @@ export function CartDrawer() {
               >
                 <i className="far fa-trash-alt" aria-hidden="true" />
               </button>
-            </article>
-          ))}
+            </article>;
+          })}
         </div>
 
-        <div className="foodu-cart-drawer-footer">
-          <div className="foodu-cart-drawer-subtotal">
+        <div className="Ika-cart-drawer-footer">
+          <div className="Ika-cart-drawer-subtotal">
             <span>{translate("Subtotal", locale)}</span>
             <strong>{formatPrice(subtotal)}</strong>
           </div>
           {/* <Link
-            className="foodu-cart-drawer-action foodu-cart-drawer-view"
+            className="Ika-cart-drawer-action Ika-cart-drawer-view"
             href="/cart"
             onClick={() => setIsOpen(false)}
           >
             {translate("View cart", locale)}
           </Link> */}
           <Link
-            className="foodu-cart-drawer-action foodu-cart-drawer-checkout"
+            className="Ika-cart-drawer-action Ika-cart-drawer-checkout"
             href="/checkout"
             onClick={() => setIsOpen(false)}
           >

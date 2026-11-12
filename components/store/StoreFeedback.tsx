@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { toLocalImageUrl } from "../../lib/image-url";
 
 interface FeedbackMessage {
   id: number;
@@ -21,13 +22,13 @@ function pulseCart(target: HTMLElement) {
   const previousTimer = receivingTimers.get(target);
   if (previousTimer !== undefined) window.clearTimeout(previousTimer);
   target.classList.remove("is-receiving");
-  target.querySelector(".foodu-count-badge")?.classList.remove("is-popping");
+  target.querySelector(".Ika-count-badge")?.classList.remove("is-popping");
   void target.offsetWidth;
   target.classList.add("is-receiving");
-  target.querySelector(".foodu-count-badge")?.classList.add("is-popping");
+  target.querySelector(".Ika-count-badge")?.classList.add("is-popping");
   receivingTimers.set(target, window.setTimeout(() => {
     target.classList.remove("is-receiving");
-    target.querySelector(".foodu-count-badge")?.classList.remove("is-popping");
+    target.querySelector(".Ika-count-badge")?.classList.remove("is-popping");
     receivingTimers.delete(target);
   }, 650));
 }
@@ -37,8 +38,8 @@ function animateCartFlight(
   imageUrl?: string,
   sourceRectSnapshot?: StoreFeedbackDetail["sourceRect"],
 ) {
-  const bottomCart = document.querySelector<HTMLElement>(".foodu-bottom-nav .foodu-bottom-cart");
-  const desktopCart = document.querySelector<HTMLElement>(".foodu-desktop-cart");
+  const bottomCart = document.querySelector<HTMLElement>(".Ika-bottom-nav .Ika-bottom-cart");
+  const desktopCart = document.querySelector<HTMLElement>(".Ika-desktop-cart");
   const bottomCartRect = bottomCart?.getBoundingClientRect();
   const bottomCartIsVisible = bottomCart
     && bottomCartRect
@@ -68,13 +69,13 @@ function animateCartFlight(
   }
 
   const flight = document.createElement("div");
-  flight.className = "foodu-cart-flight";
+  flight.className = "Ika-cart-flight";
   flight.setAttribute("aria-hidden", "true");
   flight.style.left = `${sourceX}px`;
   flight.style.top = `${sourceY}px`;
   if (imageUrl) {
     const image = document.createElement("img");
-    image.src = imageUrl;
+    image.src = toLocalImageUrl(imageUrl);
     image.alt = "";
     flight.append(image);
   } else {
@@ -124,8 +125,8 @@ export function StoreFeedback() {
       if (suppressToast) return;
       setMessage({ action, message: text, id: Date.now() });
     };
-    window.addEventListener("foodu:store-feedback", handleFeedback);
-    return () => window.removeEventListener("foodu:store-feedback", handleFeedback);
+    window.addEventListener("Ika:store-feedback", handleFeedback);
+    return () => window.removeEventListener("Ika:store-feedback", handleFeedback);
   }, []);
 
   useEffect(() => {
@@ -140,11 +141,11 @@ export function StoreFeedback() {
   return (
     <div
       key={message.id}
-      className={`foodu-toast${isError ? " is-error" : ""}`}
+      className={`Ika-toast${isError ? " is-error" : ""}`}
       role={isError ? "alert" : "status"}
       aria-live="polite"
     >
-      <span className="foodu-toast-icon" aria-hidden="true">
+      <span className="Ika-toast-icon" aria-hidden="true">
         <i className={isError ? "fas fa-exclamation" : message.action === "cart" ? "fas fa-shopping-bag" : "fas fa-heart"} />
       </span>
       <span>{message.message}</span>

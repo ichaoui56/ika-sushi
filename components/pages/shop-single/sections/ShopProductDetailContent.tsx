@@ -6,6 +6,7 @@ import { ProductCard } from "../../../store/ProductCard";
 import { catalogProducts } from "../../../store/products";
 import { useLocale } from "../../../i18n/LocaleProvider";
 import { translate } from "../../../i18n/translations";
+import { toLocalImageUrl } from "../../../../lib/image-url";
 
 export default function ShopProductDetailContent() {
   const { locale } = useLocale();
@@ -19,7 +20,7 @@ export default function ShopProductDetailContent() {
 
   const scrollRelatedProducts = (direction: -1 | 1) => {
     const viewport = relatedProductsRef.current;
-    const firstCard = viewport?.querySelector<HTMLElement>(".foodu-related-card");
+    const firstCard = viewport?.querySelector<HTMLElement>(".Ika-related-card");
     if (!viewport || !firstCard) return;
     const gap = Number.parseFloat(getComputedStyle(firstCard.parentElement!).columnGap) || 0;
     viewport.scrollBy({
@@ -34,7 +35,7 @@ export default function ShopProductDetailContent() {
     try {
       await addToCart({ ...featuredProduct, quantity });
       window.dispatchEvent(
-        new CustomEvent("foodu:store-feedback", {
+        new CustomEvent("Ika:store-feedback", {
           detail: {
             action: "cart",
             message: translate(`${featuredProduct.name} added to cart`, locale),
@@ -45,7 +46,7 @@ export default function ShopProductDetailContent() {
       );
     } catch (error) {
       window.dispatchEvent(
-        new CustomEvent("foodu:store-feedback", {
+        new CustomEvent("Ika:store-feedback", {
           detail: {
             action: "error",
             message:
@@ -63,32 +64,32 @@ export default function ShopProductDetailContent() {
   return (
     <section className="validtheme-shop-single-area default-padding">
       <div className="container">
-        <div className="foodu-product-detail">
-          <div className="foodu-detail-gallery">
-            <div className="foodu-detail-image">
-              <span className="foodu-detail-badge">{translate("Guest favorite", locale)}</span>
-              <img src={featuredProduct.image} alt={productName} />
-              <span className="foodu-detail-image-caption">{translate("Prepared fresh to order", locale)}</span>
+        <div className="Ika-product-detail">
+          <div className="Ika-detail-gallery">
+            <div className="Ika-detail-image">
+              <span className="Ika-detail-badge">{translate("Guest favorite", locale)}</span>
+              <img src={toLocalImageUrl(featuredProduct.image)} alt={productName} />
+              <span className="Ika-detail-image-caption">{translate("Prepared fresh to order", locale)}</span>
             </div>
-            <div className="foodu-detail-gallery-note">
+            <div className="Ika-detail-gallery-note">
               <i className="fas fa-leaf" aria-hidden="true" />
               <span>{translate("Fresh ingredients, thoughtfully prepared", locale)}</span>
             </div>
           </div>
-          <div className="foodu-detail-info">
-            <span className="foodu-detail-eyebrow">{translate("Fresh from our kitchen", locale)}</span>
+          <div className="Ika-detail-info">
+            <span className="Ika-detail-eyebrow">{translate("Fresh from our kitchen", locale)}</span>
             <h1>{productName}</h1>
-            <div className="foodu-detail-rating" aria-label={translate("A customer favorite", locale)}>
+            <div className="Ika-detail-rating" aria-label={translate("A customer favorite", locale)}>
               <span aria-hidden="true">★★★★★</span>
               <small>{translate("Customer favorite", locale)}</small>
             </div>
-            <p className="foodu-detail-description">{productDescription}</p>
-            <strong className="foodu-detail-price">${featuredProduct.price.toFixed(2)}</strong>
-            <div className="foodu-detail-tags">
+            <p className="Ika-detail-description">{productDescription}</p>
+            <strong className="Ika-detail-price">${featuredProduct.price.toFixed(2)}</strong>
+            <div className="Ika-detail-tags">
               {featuredProduct.tags.map((tag) => <span key={tag}>{translate(tag, locale)}</span>)}
             </div>
-            <div className="foodu-detail-order-row">
-              <div className="foodu-detail-quantity" role="group" aria-label={translate("Quantity", locale)}>
+            <div className="Ika-detail-order-row">
+              <div className="Ika-detail-quantity" role="group" aria-label={translate("Quantity", locale)}>
                 <button
                   type="button"
                   aria-label="Decrease quantity"
@@ -108,7 +109,7 @@ export default function ShopProductDetailContent() {
               </div>
               <button
                 type="button"
-                className="foodu-detail-add"
+                className="Ika-detail-add"
                 disabled={!ready || isAdding}
                 onClick={(event) => void handleAddToCart(event.currentTarget)}
               >
@@ -117,15 +118,15 @@ export default function ShopProductDetailContent() {
                 <strong>${(featuredProduct.price * quantity).toFixed(2)}</strong>
               </button>
             </div>
-            <p className="foodu-detail-service">
+            <p className="Ika-detail-service">
               <i className="fas fa-check" aria-hidden="true" /> {translate("Made fresh when you order", locale)}
             </p>
           </div>
         </div>
-        <section className="foodu-related-section" aria-labelledby="foodu-related-title">
-          <div className="foodu-related-heading">
-            <h2 id="foodu-related-title">{translate("More from our sushi & seafood menu", locale)}</h2>
-            <div className="foodu-related-controls" role="group" aria-label={translate("Related products carousel controls", locale)}>
+        <section className="Ika-related-section" aria-labelledby="Ika-related-title">
+          <div className="Ika-related-heading">
+            <h2 id="Ika-related-title">{translate("More from our sushi & seafood menu", locale)}</h2>
+            <div className="Ika-related-controls" role="group" aria-label={translate("Related products carousel controls", locale)}>
               <button
                 type="button"
                 aria-label={translate("Show previous products", locale)}
@@ -143,14 +144,14 @@ export default function ShopProductDetailContent() {
             </div>
           </div>
           <div
-            className="foodu-related-viewport"
+            className="Ika-related-viewport"
             ref={relatedProductsRef}
             aria-label={translate("Related sushi and seafood products", locale)}
             tabIndex={0}
           >
-            <div className="foodu-related-track">
+            <div className="Ika-related-track">
               {catalogProducts.slice(1, 5).map((product) => (
-                <div className="foodu-related-card" key={product.id}>
+                <div className="Ika-related-card" key={product.id}>
                   <ProductCard product={product} />
                 </div>
               ))}

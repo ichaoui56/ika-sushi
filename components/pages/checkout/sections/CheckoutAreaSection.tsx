@@ -2,54 +2,74 @@
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
+import { createCheckoutOrder, type CheckoutResult } from "../../../../features/orders/actions";
 import { useStore } from "../../../store/StoreProvider";
 import { useLocale } from "../../../i18n/LocaleProvider";
 import { translate } from "../../../i18n/translations";
+import { getProductName } from "../../../store/product-locale";
+import { toLocalImageUrl } from "../../../../lib/image-url";
+
+interface DeliveryArea {
+  id: string;
+  name: string;
+  feeMinor: number;
+  minimumOrderMinor: number;
+  estimatedMinutes: number | null;
+}
+
+interface CheckoutAreaSectionProps {
+  areas: DeliveryArea[];
+  loadError?: string;
+}
 
 const formatPrice = (price: number) =>
   `$${price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-const casablancaAreas = [
-  { id: "maarif", name: { en: "Maarif", fr: "Maârif", ar: "المعاريف" }, fee: 3 },
-  { id: "gauthier", name: { en: "Gauthier", fr: "Gauthier", ar: "غوتييه" }, fee: 3 },
-  { id: "racine", name: { en: "Racine", fr: "Racine", ar: "راسين" }, fee: 3 },
-  { id: "bourgogne", name: { en: "Bourgogne", fr: "Bourgogne", ar: "بورغون" }, fee: 3.5 },
-  { id: "palmier", name: { en: "Palmier", fr: "Palmier", ar: "بالمير" }, fee: 3 },
-  { id: "anfa", name: { en: "Anfa", fr: "Anfa", ar: "أنفا" }, fee: 3.5 },
-  { id: "oasis", name: { en: "Oasis", fr: "Oasis", ar: "الواحة" }, fee: 3.5 },
-  { id: "cil", name: { en: "CIL", fr: "CIL", ar: "حي سي آي إل" }, fee: 4 },
-  { id: "ain-diab", name: { en: "Ain Diab", fr: "Aïn Diab", ar: "عين الذئاب" }, fee: 4.5 },
-  { id: "hay-hassani", name: { en: "Hay Hassani", fr: "Hay Hassani", ar: "الحي الحسني" }, fee: 4 },
-  { id: "sidi-maarouf", name: { en: "Sidi Maarouf", fr: "Sidi Maârouf", ar: "سيدي معروف" }, fee: 4.5 },
-  { id: "californie", name: { en: "Californie", fr: "Californie", ar: "كاليفورنيا" }, fee: 4.5 },
-  { id: "ain-sebaa", name: { en: "Ain Sebaa", fr: "Aïn Sebaâ", ar: "عين السبع" }, fee: 4.5 },
-  { id: "hay-mohammadi", name: { en: "Hay Mohammadi", fr: "Hay Mohammadi", ar: "الحي المحمدي" }, fee: 4 },
-  { id: "sidi-bernoussi", name: { en: "Sidi Bernoussi", fr: "Sidi Bernoussi", ar: "سيدي البرنوصي" }, fee: 5 },
-  { id: "bouskoura", name: { en: "Bouskoura", fr: "Bouskoura", ar: "بوسكورة" }, fee: 5.5 },
-  { id: "dar-bouazza", name: { en: "Dar Bouazza", fr: "Dar Bouazza", ar: "دار بوعزة" }, fee: 6 },
-] as const;
-
-export default function CheckoutAreaSection() {
+export default function CheckoutAreaSection({ areas, loadError }: CheckoutAreaSectionProps) {
   const { locale } = useLocale();
-  const { cart, ready } = useStore();
+  const { cart, ready, removeFromCart } = useStore();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [selectedAreaId, setSelectedAreaId] = useState("");
   const [orderReference, setOrderReference] = useState("");
+  const [submittedOrder, setSubmittedOrder] = useState<CheckoutResult["order"]>(undefined);
+  const [submitError, setSubmitError] = useState("");
+  const [pending, setPending] = useState(false);
   const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  const selectedArea = casablancaAreas.find((area) => area.id === selectedAreaId);
-  const deliveryFee = selectedArea?.fee ?? 0;
+  const selectedArea = areas.find((area) => area.id === selectedAreaId);
+  const deliveryFee = selectedArea ? selectedArea.feeMinor / 100 : 0;
   const total = subtotal + deliveryFee;
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setOrderReference(`IKA-${Date.now().toString(36).toUpperCase()}`);
+    setSubmitError("");
+    setPending(true);
+    try {
+      const result = await createCheckoutOrder({
+        name,
+        phone,
+        locationId: selectedAreaId,
+        street: address,
+        items: cart.map(({ id, quantity }) => ({ productId: id, quantity })),
+      });
+      if (!result.success || !result.order) {
+        setSubmitError(result.message);
+        return;
+      }
+      setSubmittedOrder(result.order);
+      setOrderReference(result.order.reference);
+      await Promise.all(cart.map((item) => removeFromCart(item.id)));
+    } catch {
+      setSubmitError("We could not place your order. Please try again.");
+    } finally {
+      setPending(false);
+    }
   };
 
   if (!ready) {
     return (
-      <main className="foodu-checkout-page">
+      <main className="Ika-checkout-page">
         <div className="container" aria-live="polite">{translate("Loading your order...", locale)}</div>
       </main>
     );
@@ -57,13 +77,13 @@ export default function CheckoutAreaSection() {
 
   if (cart.length === 0) {
     return (
-      <main className="foodu-checkout-page">
+      <main className="Ika-checkout-page">
         <div className="container">
-          <div className="foodu-checkout-empty">
-            <span className="foodu-checkout-eyebrow">{translate("Checkout", locale)}</span>
+          <div className="Ika-checkout-empty">
+            <span className="Ika-checkout-eyebrow">{translate("Checkout", locale)}</span>
             <h2>{translate("Your cart is empty", locale)}</h2>
             <p>{translate("Add a few favorites before continuing to checkout.", locale)}</p>
-            <Link className="foodu-checkout-submit" href="/shop">
+            <Link className="Ika-checkout-submit" href="/shop">
               {translate("Explore the menu", locale)} <i className="fas fa-arrow-right" aria-hidden="true" />
             </Link>
           </div>
@@ -74,61 +94,59 @@ export default function CheckoutAreaSection() {
 
   if (orderReference) {
     return (
-      <main className="foodu-checkout-page">
+      <main className="Ika-checkout-page">
         <div className="container">
-          <section className="foodu-order-success" aria-labelledby="foodu-order-success-title" aria-live="polite">
-            <div className="foodu-order-success-main">
-              <span className="foodu-order-success-icon">
+          <section className="Ika-order-success" aria-labelledby="Ika-order-success-title" aria-live="polite">
+            <div className="Ika-order-success-main">
+              <span className="Ika-order-success-icon">
                 <i className="fas fa-check" aria-hidden="true" />
               </span>
-              <span className="foodu-checkout-eyebrow">{translate("ORDER CONFIRMED", locale)}</span>
-              <h2 id="foodu-order-success-title">{translate("Thank you,", locale)} {name}!</h2>
-              <p className="foodu-order-success-lead">{translate("Your order details are confirmed.", locale)}</p>
-              <p className="foodu-order-reference">
+              <span className="Ika-checkout-eyebrow">{translate("ORDER CONFIRMED", locale)}</span>
+              <h2 id="Ika-order-success-title">{translate("Thank you,", locale)} {name}!</h2>
+              <p className="Ika-order-success-lead">{translate("Your order details are confirmed.", locale)}</p>
+              <p className="Ika-order-reference">
                 <span>{translate("Order reference", locale)}</span>
                 <strong>{orderReference}</strong>
               </p>
-              <div className="foodu-order-success-contact">
+              <div className="Ika-order-success-contact">
                 <span>{translate("Phone number", locale)}</span>
                 <strong>{phone}</strong>
                 <span>{translate("Delivery area", locale)}</span>
-                <strong>{selectedArea ? selectedArea.name[locale] : ""}</strong>
+                <strong>{selectedArea ? translate(selectedArea.name, locale) : ""}</strong>
                 <span>{translate("Delivery address", locale)}</span>
                 <strong>{address}</strong>
               </div>
-              <p className="foodu-order-demo-note">
-                {translate("Demo confirmation only. This order has not been sent to the restaurant.", locale)}
-              </p>
             </div>
 
-            <div className="foodu-order-success-summary">
+            <div className="Ika-order-success-summary">
               <h3>{translate("Your order", locale)}</h3>
-              {cart.map((item) => (
-                <div className="foodu-order-success-item" key={item.id}>
-                  <img src={item.image} alt="" />
+              {submittedOrder?.items.map((item) => (
+                <div className="Ika-order-success-item" key={item.id}>
+                  <img src={toLocalImageUrl(item.image)} alt="" />
                   <div>
-                    <strong>{translate(item.name, locale)}</strong>
+                    <strong>{getProductName(item, locale)}</strong>
                     <span>{translate("Qty", locale)} {item.quantity}</span>
                   </div>
-                  <strong>{formatPrice(item.price * item.quantity)}</strong>
+                  <strong>{formatPrice(item.lineTotalMinor / 100)}</strong>
                 </div>
               ))}
-              <div className="foodu-order-success-total is-subtotal">
+              <div className="Ika-order-success-total is-subtotal">
                 <span>{translate("Subtotal", locale)}</span>
-                <strong>{formatPrice(subtotal)}</strong>
+                <strong>{formatPrice((submittedOrder?.subtotalMinor ?? 0) / 100)}</strong>
               </div>
-              <div className="foodu-order-success-total">
+              {(submittedOrder?.discountMinor ?? 0) > 0 && <div className="Ika-order-success-total"><span>{translate("Discount", locale)}</span><strong>-{formatPrice((submittedOrder?.discountMinor ?? 0) / 100)}</strong></div>}
+              <div className="Ika-order-success-total">
                 <span>{translate("Delivery", locale)}</span>
-                <strong>{formatPrice(deliveryFee)}</strong>
+                <strong>{formatPrice((submittedOrder?.deliveryFeeMinor ?? 0) / 100)}</strong>
               </div>
-              <div className="foodu-order-success-total">
+              <div className="Ika-order-success-total">
                 <span>{translate("Total", locale)}</span>
-                <strong>{formatPrice(total)}</strong>
+                <strong>{formatPrice((submittedOrder?.totalMinor ?? 0) / 100)}</strong>
               </div>
-              <Link className="foodu-checkout-submit" href="/shop">
+              <Link className="Ika-checkout-submit" href="/shop">
                 {translate("Continue shopping", locale)} <i className="fas fa-arrow-right" aria-hidden="true" />
               </Link>
-              <button className="foodu-order-edit" type="button" onClick={() => setOrderReference("")}>
+              <button className="Ika-order-edit" type="button" onClick={() => setOrderReference("")}>
                 {translate("Return to checkout", locale)}
               </button>
             </div>
@@ -139,26 +157,26 @@ export default function CheckoutAreaSection() {
   }
 
   return (
-    <main className="foodu-checkout-page">
+    <main className="Ika-checkout-page">
       <div className="container">
-        <header className="foodu-checkout-heading">
-          <span className="foodu-checkout-eyebrow">{translate("Checkout", locale)}</span>
+        <header className="Ika-checkout-heading">
+          <span className="Ika-checkout-eyebrow">{translate("Checkout", locale)}</span>
           <h2>{translate("Delivery details", locale)}</h2>
           <p>{translate("Add your contact details and choose your Casablanca delivery area.", locale)}</p>
         </header>
 
-        <form className="foodu-checkout-layout" onSubmit={handleSubmit}>
-          <section className="foodu-checkout-form-panel" aria-labelledby="foodu-delivery-title">
-            <div className="foodu-checkout-panel-heading">
-              <span className="foodu-checkout-step">01</span>
+        <form className="Ika-checkout-layout" onSubmit={handleSubmit}>
+          <section className="Ika-checkout-form-panel" aria-labelledby="Ika-delivery-title">
+            <div className="Ika-checkout-panel-heading">
+              <span className="Ika-checkout-step">01</span>
               <div>
-                <h3 id="foodu-delivery-title">{translate("Your information", locale)}</h3>
+                <h3 id="Ika-delivery-title">{translate("Your information", locale)}</h3>
                 <p>{translate("Enter your name, phone number, and delivery address.", locale)}</p>
               </div>
             </div>
 
-            <div className="foodu-checkout-fields">
-              <div className="foodu-checkout-field">
+            <div className="Ika-checkout-fields">
+              <div className="Ika-checkout-field">
                 <label htmlFor="checkout-name">{translate("Full name", locale)}</label>
                 <input
                   id="checkout-name"
@@ -171,7 +189,7 @@ export default function CheckoutAreaSection() {
                   required
                 />
               </div>
-              <div className="foodu-checkout-field">
+              <div className="Ika-checkout-field">
                 <label htmlFor="checkout-phone">{translate("Phone number", locale)}</label>
                 <input
                   id="checkout-phone"
@@ -184,7 +202,7 @@ export default function CheckoutAreaSection() {
                   required
                 />
               </div>
-              <div className="foodu-checkout-field">
+              <div className="Ika-checkout-field">
                 <label htmlFor="checkout-area">{translate("Casablanca area", locale)}</label>
                 <select
                   id="checkout-area"
@@ -194,17 +212,19 @@ export default function CheckoutAreaSection() {
                   required
                 >
                   <option value="" disabled>{translate("Choose your area", locale)}</option>
-                  {casablancaAreas.map((area) => (
+                  {areas.map((area) => (
                     <option key={area.id} value={area.id}>
-                      {area.name[locale]} · {formatPrice(area.fee)}
+                      {translate(area.name, locale)} · {formatPrice(area.feeMinor / 100)}
                     </option>
                   ))}
                 </select>
-                <p className="foodu-checkout-field-hint">
-                  {translate("Delivery fee is calculated from your selected area.", locale)}
+                <p className="Ika-checkout-field-hint">
+                  {loadError ?? (areas.length === 0
+                    ? translate("Delivery is not available in your area yet.", locale)
+                    : translate("Delivery fee is calculated from your selected area.", locale))}
                 </p>
               </div>
-              <div className="foodu-checkout-field foodu-checkout-location-field">
+              <div className="Ika-checkout-field Ika-checkout-location-field">
                 <label htmlFor="checkout-address">{translate("Delivery address", locale)}</label>
                 <textarea
                   id="checkout-address"
@@ -219,29 +239,30 @@ export default function CheckoutAreaSection() {
               </div>
             </div>
 
-            <button className="foodu-checkout-submit" type="submit">
-              {translate("Place order", locale)} <i className="fas fa-arrow-right" aria-hidden="true" />
+            {submitError && <p role="alert" aria-live="polite">{submitError}</p>}
+            <button className="Ika-checkout-submit" type="submit" disabled={pending || areas.length === 0}>
+              {pending ? translate("Please wait...", locale) : translate("Place order", locale)} <i className="fas fa-arrow-right" aria-hidden="true" />
             </button>
-            <p className="foodu-checkout-privacy">
+            <p className="Ika-checkout-privacy">
               <i className="fas fa-lock" aria-hidden="true" /> {translate("Your details are used only to prepare this demo order.", locale)}
             </p>
           </section>
 
-          <aside className="foodu-checkout-summary" aria-labelledby="foodu-order-summary-title">
-            <div className="foodu-checkout-summary-heading">
+          <aside className="Ika-checkout-summary" aria-labelledby="Ika-order-summary-title">
+            <div className="Ika-checkout-summary-heading">
               <div>
-                <span className="foodu-checkout-eyebrow">{translate("02 / YOUR ORDER", locale)}</span>
-                <h3 id="foodu-order-summary-title">{translate("Order summary", locale)}</h3>
+                <span className="Ika-checkout-eyebrow">{translate("02 / YOUR ORDER", locale)}</span>
+                <h3 id="Ika-order-summary-title">{translate("Order summary", locale)}</h3>
               </div>
               <span>{cart.reduce((count, item) => count + item.quantity, 0)} {translate("items", locale)}</span>
             </div>
 
-            <div className="foodu-checkout-order-items">
+            <div className="Ika-checkout-order-items">
               {cart.map((item) => (
-                <article className="foodu-checkout-order-item" key={item.id}>
-                    <img src={item.image} alt={translate(item.name, locale)} />
+                <article className="Ika-checkout-order-item" key={item.id}>
+                    <img src={toLocalImageUrl(item.image)} alt={getProductName(item, locale)} />
                   <div>
-                    <h4>{translate(item.name, locale)}</h4>
+                    <h4>{getProductName(item, locale)}</h4>
                     <span>{translate("Qty", locale)} {item.quantity} · {formatPrice(item.price)} {translate("each", locale)}</span>
                   </div>
                   <strong>{formatPrice(item.price * item.quantity)}</strong>
@@ -249,15 +270,15 @@ export default function CheckoutAreaSection() {
               ))}
             </div>
 
-            <div className="foodu-checkout-totals">
+            <div className="Ika-checkout-totals">
               <div><span>{translate("Subtotal", locale)}</span><strong>{formatPrice(subtotal)}</strong></div>
               <div>
                 <span>{translate("Delivery", locale)}</span>
                 <strong>{selectedArea ? formatPrice(deliveryFee) : translate("Choose an area", locale)}</strong>
               </div>
-              <div className="foodu-checkout-total"><strong>{translate("Total", locale)}</strong><strong>{formatPrice(total)}</strong></div>
+              <div className="Ika-checkout-total"><strong>{translate("Total", locale)}</strong><strong>{formatPrice(total)}</strong></div>
             </div>
-            <Link className="foodu-checkout-edit-cart" href="/cart">
+            <Link className="Ika-checkout-edit-cart" href="/cart">
               <i className="fas fa-arrow-left" aria-hidden="true" /> {translate("Edit cart", locale)}
             </Link>
           </aside>

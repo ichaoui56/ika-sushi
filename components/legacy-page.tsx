@@ -61,7 +61,7 @@ export default function LegacyPage({
     const shouldReinitialize = scriptsReady;
     let savedMode: string | null = null;
     try {
-      savedMode = window.localStorage.getItem("foodu-color-mode");
+      savedMode = window.localStorage.getItem("Ika-color-mode");
     } catch (error) {
       console.error("Could not read the saved color mode.", error);
     }
@@ -73,7 +73,7 @@ export default function LegacyPage({
     void loadScripts()
       .then(() => {
         if (shouldReinitialize) {
-          document.dispatchEvent(new Event("foodu:route-change"));
+          document.dispatchEvent(new Event("Ika:route-change"));
         }
       })
       .catch((error: unknown) => {
@@ -91,7 +91,7 @@ export default function LegacyPage({
 
     void loadScripts()
       .then(() => {
-        document.dispatchEvent(new Event("foodu:route-change"));
+        document.dispatchEvent(new Event("Ika:route-change"));
       })
       .catch((error: unknown) => {
         console.error("Failed to reinitialize the page after navigation.", error);

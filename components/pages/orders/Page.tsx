@@ -13,10 +13,10 @@ export default function Page() {
       <Preloader />
       <TopBar />
       <SiteHeader />
-      <main className="default-padding foodu-orders-page">
+      <main className="default-padding Ika-orders-page">
         <div className="container">
           <div className="site-heading text-center">
-            <h4 className="sub-title">Your Foodu activity</h4>
+            <h4 className="sub-title">Your Ika activity</h4>
             <h2 className="title">My Orders</h2>
           </div>
           <OrdersContent />

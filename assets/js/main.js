@@ -1,7 +1,7 @@
 /* ===================================================================
     
     Author          : Valid Theme
-    Template Name   : Foodu - Food & Restaurant HTML Template 
+    Template Name   : Ika - Food & Restaurant HTML Template 
     Version         : 1.0
     
 * ================================================================= */
@@ -436,7 +436,7 @@
 	}
 
 	$(document).ready(initializePage);
-	document.addEventListener("foodu:route-change", initializePage);
-	document.addEventListener("foodu:locale-change", initializeBannerFade);
+	document.addEventListener("Ika:route-change", initializePage);
+	document.addEventListener("Ika:locale-change", initializeBannerFade);
 
 })(jQuery); // End jQuery
