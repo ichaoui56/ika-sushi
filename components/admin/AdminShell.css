@@ -9,6 +9,7 @@
 }
 
 .Ika-admin-shell {
+  --admin-sidebar-width: 240px;
   min-height: 100vh;
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr);
@@ -19,7 +20,13 @@
 }
 
 .Ika-admin-shell.is-sidebar-collapsed {
+  --admin-sidebar-width: 84px;
   grid-template-columns: 84px minmax(0, 1fr);
+}
+
+.Ika-admin-shell button::after {
+  display: none !important;
+  content: none !important;
 }
 
 .Ika-admin-sidebar {
@@ -631,6 +638,11 @@
   height: 100%;
 }
 
+.Ika-dashboard-zone-active {
+  color: #087c5a;
+  font-weight: 700;
+}
+
 .Ika-dashboard-lower {
   display: grid;
   grid-template-columns: minmax(0, 1.72fr) minmax(315px, 1fr);
@@ -1167,6 +1179,10 @@
   background: #e8efe9;
 }
 
+.Ika-admin-button:not(.is-muted):hover:not(:disabled) {
+  color: #fff;
+}
+
 .Ika-admin-button:disabled {
   opacity: .55;
   cursor: not-allowed;
@@ -1562,11 +1578,57 @@
 }
 
 .Ika-hero-form-card {
+  min-width: 0;
   display: grid;
   gap: 18px;
 }
 
 .Ika-hero-form-grid {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.Ika-hero-language-tabs {
+  width: 100%;
+  padding: 4px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  border: 1px solid #dfe8e1;
+  border-radius: 6px;
+  background: #f5f8f5;
+}
+
+.Ika-hero-language-tabs button {
+  width: 100%;
+  min-width: 0;
+  min-height: 34px;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 4px;
+  color: #53665b;
+  background: transparent;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.Ika-hero-language-tabs button.is-active {
+  color: #fff;
+  background: #173d2b;
+}
+
+.Ika-hero-language-tabs button:focus-visible {
+  outline: 2px solid #0b7472;
+  outline-offset: 2px;
+}
+
+.Ika-hero-language-panel {
+  min-width: 0;
+  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
@@ -1796,10 +1858,12 @@
 
 @media (max-width: 900px) {
   .Ika-admin-shell {
+    --admin-sidebar-width: 205px;
     grid-template-columns: 205px minmax(0, 1fr);
   }
 
   .Ika-admin-shell.is-sidebar-collapsed {
+    --admin-sidebar-width: 84px;
     grid-template-columns: 84px minmax(0, 1fr);
   }
 
@@ -1832,11 +1896,18 @@
 }
 
 @media (max-width: 680px) {
+  .Ika-hero-form-grid,
+  .Ika-hero-language-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .Ika-admin-shell {
+    --admin-sidebar-width: 0px;
     grid-template-columns: 1fr;
   }
 
   .Ika-admin-shell.is-sidebar-collapsed {
+    --admin-sidebar-width: 0px;
     grid-template-columns: 1fr;
   }
 

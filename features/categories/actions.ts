@@ -6,6 +6,7 @@ import { requirePermission } from "../../lib/auth/permissions";
 import { deleteImage, parsePinataImageUrl } from "../../lib/pinata/client";
 import { localImageUrlForCid } from "../../lib/image-url";
 import { categorySchema, categoryUpdateSchema } from "./schemas";
+import { makeCategoryTranslations } from "./translations";
 
 function slugify(value: string): string {
   return value
@@ -20,12 +21,14 @@ export async function createCategory(input: unknown) {
   await requirePermission("MANAGE_CATEGORIES");
   const parsed = categorySchema.safeParse(input);
   if (!parsed.success) return { success: false, message: "Check the category details." };
+  const { nameEn, nameAr, ...data } = parsed.data;
 
   await prisma.category.create({
     data: {
-      ...parsed.data,
-      slug: parsed.data.slug ? slugify(parsed.data.slug) : slugify(parsed.data.name),
-      description: parsed.data.description || null,
+      ...data,
+      translations: makeCategoryTranslations(data.name, nameEn, nameAr),
+      slug: data.slug ? slugify(data.slug) : slugify(data.name),
+      description: data.description || null,
     },
   });
   revalidatePath("/admin/categories");
@@ -39,13 +42,15 @@ export async function updateCategory(input: unknown) {
   const parsed = categoryUpdateSchema.safeParse(input);
   if (!parsed.success) return { success: false, message: "Check the category details." };
   const { id, ...data } = parsed.data;
+  const { nameEn, nameAr, ...categoryData } = data;
 
   await prisma.category.update({
     where: { id },
     data: {
-      ...data,
-      slug: data.slug ? slugify(data.slug) : slugify(data.name),
-      description: data.description || null,
+      ...categoryData,
+      translations: makeCategoryTranslations(categoryData.name, nameEn, nameAr),
+      slug: categoryData.slug ? slugify(categoryData.slug) : slugify(categoryData.name),
+      description: categoryData.description || null,
     },
   });
   revalidatePath("/admin/categories");

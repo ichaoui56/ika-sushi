@@ -152,7 +152,6 @@ img {
 label {
 	display: inline-block;
 	font-weight: normal;
-	margin-bottom: 5px;
 	max-width: 100%;
 }
 
@@ -2045,6 +2044,7 @@ button::after {
 button:hover::after {
 	-webkit-transform: translateY(-45%) skew(25deg) scale(1.2);
 	transform: translateY(-45%) skew(25deg) scale(1.2);
+	color: white;
 }
 
 button i {

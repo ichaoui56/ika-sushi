@@ -23,7 +23,7 @@
 .Ika-product-search input::placeholder { color: #9aa6a5; }
 .Ika-product-search input::-webkit-search-cancel-button { cursor: pointer; }
 .Ika-product-search button { min-width: 86px; min-height: 36px; padding: 7px 15px; flex: 0 0 auto; border: 0; border-radius: 4px; color: #fff; background: #0c4d55; box-shadow: 0 2px 5px rgba(6,54,61,.12); font-size: 10px; font-weight: 700; white-space: nowrap; cursor: pointer; transition: background-color 140ms ease, box-shadow 140ms ease, transform 140ms ease; }
-.Ika-product-search button:hover:not(:disabled) { background: #06363d; box-shadow: 0 4px 9px rgba(6,54,61,.18); transform: translateY(-1px); }
+.Ika-product-search button:hover:not(:disabled) { color: #fff; background: #06363d; box-shadow: 0 4px 9px rgba(6,54,61,.18); transform: translateY(-1px); }
 .Ika-product-search button:focus-visible { outline: 2px solid #70a59b; outline-offset: 2px; }
 .Ika-product-search button:disabled { opacity: .7; cursor: wait; }
 .Ika-product-category-filter { width: min(230px, 100%); min-height: 46px; padding: 0 10px; display: flex; align-items: center; gap: 8px; border: 1px solid #dce5df; border-radius: 6px; color: #758b89; background: #fff; transition: border-color 150ms ease, box-shadow 150ms ease; }
@@ -121,7 +121,7 @@
 .Ika-product-drawer-footer .Ika-product-delete { color: #a3423b; }
 .Ika-product-drawer-footer .Ika-product-delete:hover { border-color: #f0d1cc; background: #fff6f3; }
 .Ika-product-drawer-footer .Ika-product-edit { margin-left: auto; border-color: #06363d; color: #fff; background: #06363d; }
-.Ika-product-drawer-footer .Ika-product-edit:hover { background: #0c4d55; }
+.Ika-product-drawer-footer .Ika-product-edit:hover { color: #fff; background: #0c4d55; }
 
 .Ika-product-new-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; }
 .Ika-product-new-head a { display: inline-flex; align-items: center; gap: 7px; color: #536a6e; font-size: 10px; font-weight: 700; text-decoration: none; }
@@ -215,7 +215,7 @@
 .Ika-product-image-manager > .Ika-product-pricing-hint { flex-basis: 100%; margin: 2px 0 0; }
 .Ika-product-editor-footer { position: sticky; bottom: 0; margin: 0 -20px -18px; padding: 12px 20px; display: flex; align-items: center; gap: 8px; border-top: 1px solid #e8e5de; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); }
 .Ika-product-save, .Ika-product-cancel { min-height: 38px; padding: 8px 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid #06363d; border-radius: 4px; color: #fff; background: #06363d; font-size: 10px; font-weight: 800; cursor: pointer; }
-.Ika-product-save:hover { background: #0c4d55; }
+.Ika-product-save:hover { color: #fff; background: #0c4d55; }
 .Ika-product-save:disabled { opacity: .55; cursor: wait; }
 .Ika-product-cancel { border-color: #e4e6df; color: #52686d; background: #fff; }
 .Ika-product-cancel:hover { background: #f4f5f0; }

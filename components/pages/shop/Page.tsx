@@ -6,8 +6,18 @@ import { SiteHeader } from "../../layout/SiteHeader";
 import { Footer } from "../../layout/Footer";
 import BreadcrumbSection from "./sections/BreadcrumbSection";
 import ValidthemeShopAreaSection from "./sections/ValidthemeShopAreaSection";
+import { getStorefrontCatalog } from "../../store/storefront-data";
+import type { CatalogProduct } from "../../store/products";
 
-export default function Page() {
+export default async function Page() {
+  let products: CatalogProduct[];
+  try {
+    ({ products } = await getStorefrontCatalog());
+  } catch (error) {
+    console.error("Unable to load shop catalog.", error);
+    products = [];
+  }
+
   return (
     <LegacyPage>
       
@@ -15,7 +25,7 @@ export default function Page() {
       <TopBar />
       <SiteHeader />
       <BreadcrumbSection />
-      <ValidthemeShopAreaSection />
+      <ValidthemeShopAreaSection products={products} />
       <Footer />
     </LegacyPage>
   );

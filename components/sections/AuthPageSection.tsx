@@ -1,9 +1,13 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { loginAction, registerAction, type AuthActionState } from "../../features/auth/actions";
+import { useLocale } from "../i18n/LocaleProvider";
+import { translate } from "../i18n/translations";
 import "./AuthPage.css";
+
+const PHONE_PATTERN = "(?:\\d(?:[\\s().-]*\\d){9}|\\+[1-9](?:[\\s().-]*\\d){7,14})";
 
 export default function AuthPageSection({
   mode,
@@ -11,13 +15,50 @@ export default function AuthPageSection({
   mode: "login" | "register";
 }) {
   const isLogin = mode === "login";
+  const { locale } = useLocale();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const initialState: AuthActionState = { success: false, message: "" };
   const [loginState, loginFormAction, loginPending] = useActionState(loginAction, initialState);
   const [registerState, registerFormAction, registerPending] = useActionState(registerAction, initialState);
   const actionState = isLogin ? loginState : registerState;
   const pending = isLogin ? loginPending : registerPending;
+  const actionErrorIsInline = !isLogin && ["Enter a valid phone number.", "Passwords do not match."].includes(actionState.message);
+
+  const handleInvalid = (event: FormEvent<HTMLFormElement>) => {
+    const field = event.target;
+    if (!(field instanceof HTMLInputElement)) return;
+    event.preventDefault();
+    const message = field.validity.valueMissing
+      ? "This field is required."
+      : field.validity.typeMismatch
+        ? "Enter a valid email address."
+        : field.name === "phone" || field.validity.patternMismatch
+          ? "Enter a valid phone number."
+          : field.validity.tooShort
+            ? "Enter at least 8 characters."
+            : "Please check this field.";
+    setFieldErrors((current) => ({ ...current, [field.name]: message }));
+  };
+
+  const clearFieldError = (fieldName: string) => {
+    setFieldErrors((current) => {
+      if (!current[fieldName]) return current;
+      const next = { ...current };
+      delete next[fieldName];
+      return next;
+    });
+  };
+
+  const getFieldError = (fieldName: string) => fieldErrors[fieldName]
+    ?? (!isLogin && fieldName === "phone" && actionState.message === "Enter a valid phone number." ? actionState.message : undefined)
+    ?? (!isLogin && fieldName === "confirmPassword" && actionState.message === "Passwords do not match." ? actionState.message : undefined);
+
+  const renderFieldError = (fieldName: string) => {
+    const message = getFieldError(fieldName);
+    return message ? <p className="Ika-auth-field-error" id={`auth-${fieldName}-error`} role="alert">{translate(message, locale)}</p> : null;
+  };
 
   return (
     <main className="Ika-auth-page">
@@ -51,7 +92,7 @@ export default function AuthPageSection({
               </p>
             </div>
 
-            <form className="Ika-auth-form" action={isLogin ? loginFormAction : registerFormAction}>
+            <form className="Ika-auth-form" action={isLogin ? loginFormAction : registerFormAction} onInvalid={handleInvalid}>
               {!isLogin && (
                 <div className="Ika-auth-field">
                   <label htmlFor="auth-name">Full name</label>
@@ -61,8 +102,12 @@ export default function AuthPageSection({
                     type="text"
                     autoComplete="name"
                     placeholder="Your name"
+                    aria-invalid={Boolean(getFieldError("name"))}
+                    aria-describedby={getFieldError("name") ? "auth-name-error" : undefined}
+                    onInput={() => clearFieldError("name")}
                     required
                   />
+                  {renderFieldError("name")}
                 </div>
               )}
               {!isLogin && (
@@ -74,7 +119,11 @@ export default function AuthPageSection({
                     type="email"
                     autoComplete="email"
                     placeholder="you@example.com"
+                    aria-invalid={Boolean(getFieldError("email"))}
+                    aria-describedby={getFieldError("email") ? "auth-email-error" : undefined}
+                    onInput={() => clearFieldError("email")}
                   />
+                  {renderFieldError("email")}
                 </div>
               )}
               <div className="Ika-auth-field">
@@ -85,8 +134,14 @@ export default function AuthPageSection({
                   type={isLogin ? "text" : "tel"}
                   autoComplete={isLogin ? "username" : "tel"}
                   placeholder={isLogin ? "Email address or phone number" : "05 21 47 24 81"}
+                  pattern={isLogin ? undefined : PHONE_PATTERN}
+                  title={isLogin ? undefined : translate("Use 10 digits or an international number with country code.", locale)}
+                  aria-invalid={Boolean(getFieldError(isLogin ? "email" : "phone"))}
+                  aria-describedby={getFieldError(isLogin ? "email" : "phone") ? `auth-${isLogin ? "email" : "phone"}-error` : undefined}
+                  onInput={() => clearFieldError(isLogin ? "email" : "phone")}
                   required
                 />
+                {renderFieldError(isLogin ? "email" : "phone")}
               </div>
               <div className="Ika-auth-field">
                 <label htmlFor="auth-password">Password</label>
@@ -98,6 +153,9 @@ export default function AuthPageSection({
                     autoComplete={isLogin ? "current-password" : "new-password"}
                     placeholder="Enter your password"
                     minLength={isLogin ? 1 : 8}
+                    aria-invalid={Boolean(getFieldError("password"))}
+                    aria-describedby={getFieldError("password") ? "auth-password-error" : undefined}
+                    onInput={() => clearFieldError("password")}
                     required
                   />
                   <button
@@ -110,6 +168,7 @@ export default function AuthPageSection({
                     <i className={`fas ${passwordVisible ? "fa-eye-slash" : "fa-eye"}`} aria-hidden="true" />
                   </button>
                 </div>
+                {renderFieldError("password")}
               </div>
               {!isLogin && (
                 <div className="Ika-auth-field">
@@ -122,6 +181,9 @@ export default function AuthPageSection({
                       autoComplete="new-password"
                       placeholder="Enter your password again"
                       minLength={8}
+                      aria-invalid={Boolean(getFieldError("confirmPassword"))}
+                      aria-describedby={getFieldError("confirmPassword") ? "auth-confirmPassword-error" : undefined}
+                      onInput={() => clearFieldError("confirmPassword")}
                       required
                     />
                     <button
@@ -134,9 +196,10 @@ export default function AuthPageSection({
                       <i className={`fas ${confirmPasswordVisible ? "fa-eye-slash" : "fa-eye"}`} aria-hidden="true" />
                     </button>
                   </div>
+                  {renderFieldError("confirmPassword")}
                 </div>
               )}
-              {actionState.message && (
+              {actionState.message && !actionErrorIsInline && (
                 <p role="alert" aria-live="polite">{actionState.message}</p>
               )}
               <button className="Ika-auth-submit" type="submit" disabled={pending}>
@@ -144,13 +207,6 @@ export default function AuthPageSection({
                 <i className="fas fa-arrow-right" aria-hidden="true" />
               </button>
             </form>
-
-            <p className="Ika-auth-switch">
-              {isLogin ? "New to IKA Sushi?" : "Already have an account?"}{" "}
-              <Link href={isLogin ? "/register" : "/login"}>
-                {isLogin ? "Create an account" : "Sign in"}
-              </Link>
-            </p>
           </section>
         </div>
       </div>

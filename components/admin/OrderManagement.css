@@ -1,0 +1,893 @@
+.Ika-orders-manager {
+  display: grid;
+  gap: 18px;
+  color: #233b3d;
+}
+
+.Ika-orders-toolbar {
+  padding: 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  border: 1px solid #e3e9e5;
+  border-radius: 7px;
+  background: #fff;
+}
+
+.Ika-orders-filters {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(190px, 1.5fr) minmax(150px, 0.9fr) repeat(2, minmax(135px, 0.7fr)) auto auto;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.Ika-orders-filters label,
+.Ika-orders-status-control {
+  min-width: 0;
+  margin: 0;
+  display: grid;
+  gap: 5px;
+  color: #52635e;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.Ika-orders-filters input,
+.Ika-orders-filters select,
+.Ika-orders-status-control select {
+  width: 100%;
+  min-width: 0;
+  height: 38px;
+  padding: 0 10px;
+  border: 1px solid #dfe6e2;
+  border-radius: 5px;
+  color: #263f40;
+  background: #fbfcfb;
+  font: inherit;
+  font-size: 11px;
+}
+
+.Ika-orders-search > div {
+  position: relative;
+}
+
+.Ika-orders-search > div > i {
+  position: absolute;
+  top: 50%;
+  left: 11px;
+  color: #809089;
+  font-size: 11px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.Ika-orders-search input {
+  padding-left: 31px;
+}
+
+.Ika-orders-filter-submit,
+.Ika-orders-filter-clear {
+  height: 38px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #0a393e;
+  border-radius: 5px;
+  color: #fff;
+  background: #0a393e;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.Ika-orders-filter-submit:hover {
+  color: #fff;
+  background: #12565a;
+}
+
+.Ika-orders-filter-clear {
+  border-color: #dfe6e2;
+  color: #61716b;
+  background: #fff;
+}
+
+.Ika-orders-filter-clear:hover {
+  border-color: #9eb4aa;
+  color: #0a393e;
+  background: #f7faf8;
+}
+
+.Ika-orders-view-switch {
+  flex: 0 0 auto;
+  padding: 3px;
+  display: inline-flex;
+  gap: 3px;
+  border: 1px solid #e3e9e5;
+  border-radius: 6px;
+  background: #f7f9f7;
+}
+
+.Ika-orders-view-switch button {
+  min-height: 32px;
+  padding: 0 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  border-radius: 4px;
+  color: #65756f;
+  background: transparent;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.Ika-orders-view-switch button.is-active {
+  color: #0a393e;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(27, 55, 42, 0.12);
+}
+
+.Ika-orders-results-bar {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  color: #76847e;
+  font-size: 11px;
+}
+
+.Ika-orders-results-bar strong {
+  color: #243f40;
+  font-size: 13px;
+}
+
+.Ika-orders-range-label {
+  margin-left: auto;
+  color: #8a9690;
+}
+
+.Ika-orders-error {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #f0d7d2;
+  border-radius: 5px;
+  color: #a33c2d;
+  background: #fff7f5;
+  font-size: 12px;
+}
+
+.Ika-orders-empty {
+  padding: 42px 18px;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  border: 1px dashed #d7e1db;
+  border-radius: 7px;
+  color: #687872;
+  background: #fff;
+  text-align: center;
+}
+
+.Ika-orders-empty > i {
+  margin-bottom: 5px;
+  color: #789187;
+  font-size: 22px;
+}
+
+.Ika-orders-empty h2 {
+  margin: 0;
+  color: #26454a;
+  font-size: 17px;
+}
+
+.Ika-orders-empty p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.Ika-orders-day-group {
+  display: grid;
+  gap: 11px;
+}
+
+.Ika-orders-day-heading {
+  padding: 0 0 8px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #dfe6e2;
+}
+
+.Ika-orders-day-heading > div > span {
+  color: #a33c2d;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.Ika-orders-day-heading h2 {
+  margin: 3px 0 0;
+  color: #203d3d;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.Ika-orders-day-count {
+  padding: 4px 8px;
+  border: 1px solid #e1e9e4;
+  border-radius: 4px;
+  color: #687872;
+  background: #fff;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.Ika-orders-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.Ika-order-card {
+  min-width: 0;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  border: 1px solid #e1e8e3;
+  border-radius: 7px;
+  background: #fff;
+  transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.Ika-order-card:hover {
+  transform: translateY(-1px);
+  border-color: #b7cbc0;
+  box-shadow: 0 8px 22px rgba(27, 55, 42, 0.07);
+}
+
+.Ika-order-card > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: #71807a;
+  font-size: 10px;
+}
+
+.Ika-order-card > header > span {
+  color: #0a393e;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.Ika-order-card-customer {
+  min-width: 0;
+  padding: 0;
+  display: grid;
+  justify-items: start;
+  gap: 3px;
+  border: 0;
+  color: #263f40;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.Ika-order-card-customer strong {
+  overflow: hidden;
+  max-width: 100%;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.Ika-order-card-customer span {
+  color: #71807a;
+  font-size: 11px;
+}
+
+.Ika-order-card-meta {
+  min-width: 0;
+  padding: 9px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-top: 1px solid #edf1ee;
+  border-bottom: 1px solid #edf1ee;
+}
+
+.Ika-order-card-meta > span {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #63736d;
+  font-size: 10px;
+}
+
+.Ika-order-card-meta > span i {
+  color: #087c6a;
+}
+
+.Ika-order-card-meta > strong {
+  color: #233f3f;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.Ika-order-card-footer {
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.Ika-orders-inline-assignment {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 6px;
+}
+
+.Ika-orders-inline-assignment label {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+  color: #78857f;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.Ika-orders-inline-assignment select {
+  width: 100%;
+  min-width: 0;
+  height: 34px;
+  padding: 0 7px;
+  border: 1px solid #dfe6e2;
+  border-radius: 4px;
+  color: #263f40;
+  background: #fbfcfb;
+  font: inherit;
+  font-size: 10px;
+}
+
+.Ika-orders-inline-assignment > button {
+  min-height: 34px;
+  padding: 0 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid #0a393e;
+  border-radius: 4px;
+  color: #fff;
+  background: #0a393e;
+  font: inherit;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.Ika-orders-inline-assignment > button:hover:not(:disabled) {
+  border-color: #12565a;
+  color: #fff;
+  background: #12565a;
+}
+
+.Ika-orders-inline-assignment > button:disabled {
+  opacity: .48;
+  cursor: not-allowed;
+}
+
+.Ika-orders-inline-assignment > p {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #798780;
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.Ika-orders-inline-assignment > p.Ika-orders-error {
+  color: #a33c2d;
+}
+
+.Ika-orders-status-pill {
+  width: fit-content;
+  max-width: 100%;
+  padding: 4px 7px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #dce8e1;
+  border-radius: 4px;
+  color: #35624e;
+  background: #f2f7f3;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.Ika-orders-status-pill.is-pending { color: #805c16; border-color: #efe2c7; background: #fff9ed; }
+.Ika-orders-status-pill.is-confirmed,
+.Ika-orders-status-pill.is-preparing { color: #315a79; border-color: #dbe7f0; background: #f2f7fb; }
+.Ika-orders-status-pill.is-ready-for-delivery,
+.Ika-orders-status-pill.is-assigned { color: #586523; border-color: #e4e9cf; background: #f8faef; }
+.Ika-orders-status-pill.is-out-for-delivery { color: #126d60; border-color: #d5ebe5; background: #eff8f5; }
+.Ika-orders-status-pill.is-delivered { color: #35624e; border-color: #dce8e1; background: #f2f7f3; }
+.Ika-orders-status-pill.is-delivery-failed,
+.Ika-orders-status-pill.is-cancelled { color: #a33c2d; border-color: #f0d7d2; background: #fff7f5; }
+
+.Ika-order-assignee {
+  overflow: hidden;
+  color: #78857f;
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.Ika-order-assignee i {
+  margin-right: 4px;
+  color: #87958f;
+}
+
+.Ika-orders-status-control {
+  min-width: 0;
+  margin: 0;
+  display: grid;
+  gap: 4px;
+  color: #78857f;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.Ika-orders-status-control select {
+  width: 100%;
+  min-width: 0;
+  height: 34px;
+  padding: 0 8px;
+  border: 1px solid #dfe6e2;
+  border-radius: 4px;
+  color: #263f40;
+  background: #fbfcfb;
+  font: inherit;
+  font-size: 10px;
+}
+
+.Ika-orders-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.Ika-orders-actions > a,
+.Ika-orders-actions > button {
+  min-width: 30px;
+  height: 30px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid #e1e8e3;
+  border-radius: 4px;
+  color: #536861;
+  background: #fff;
+  font: inherit;
+  font-size: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.Ika-orders-actions > a:hover,
+.Ika-orders-actions > button:hover {
+  border-color: #b7cbc0;
+  color: #0a6457;
+  background: #f5faf7;
+}
+
+.Ika-orders-actions > a:nth-child(2):hover { color: #128c7e; }
+.Ika-orders-actions > button span { white-space: nowrap; }
+
+.Ika-order-card .Ika-orders-actions {
+  justify-content: flex-end;
+}
+
+.Ika-orders-list-scroll {
+  border: 1px solid #e1e8e3;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.Ika-orders-list {
+  width: 100%;
+}
+
+.Ika-orders-list td:has(.Ika-orders-inline-assignment) {
+  min-width: 235px;
+}
+
+.Ika-orders-list .Ika-orders-reference-button {
+  padding: 0;
+  display: grid;
+  justify-items: start;
+  gap: 3px;
+  border: 0;
+  color: #0a393e;
+  background: transparent;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+}
+
+.Ika-orders-list .Ika-orders-reference-button time,
+.Ika-orders-phone-link {
+  color: #71807a;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.Ika-orders-phone-link {
+  margin-top: 3px;
+  display: block;
+  text-decoration: none;
+}
+
+.Ika-orders-drawer-layer {
+  position: fixed;
+  z-index: 1100;
+  inset: 0 0 0 var(--admin-sidebar-width, 0px);
+}
+
+.Ika-orders-drawer-scrim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 10;
+  border-radius: 0;
+  background: rgba(8, 24, 22, 0.44);
+  cursor: default;
+}
+
+.Ika-orders-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  width: min(520px, 100%);
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: -16px 0 48px rgba(11, 34, 30, 0.18);
+  animation: Ika-order-drawer-in 200ms ease both;
+}
+
+.Ika-orders-drawer-header {
+  position: relative;
+  z-index: 1;
+  min-height: 86px;
+  padding: 17px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid #e6ece8;
+  background: #fff;
+}
+
+.Ika-orders-drawer-header span {
+  color: #a33c2d;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+.Ika-orders-drawer-header h2 {
+  margin: 4px 0 0;
+  color: #193c3d;
+  font-family: Belleza, Georgia, serif;
+  font-size: 21px;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.Ika-orders-drawer-header > button {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #e1e8e3;
+  border-radius: 5px;
+  color: #536861;
+  background: #fff;
+  cursor: pointer;
+}
+
+.Ika-orders-drawer-content {
+  flex: 1;
+  min-height: 0;
+  padding: 18px 22px 26px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.Ika-orders-drawer-state {
+  padding: 30px 20px;
+  color: #71807a;
+  font-size: 12px;
+}
+
+.Ika-orders-detail-status {
+  min-height: 46px;
+  margin-bottom: 20px;
+  padding: 10px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid #e2ebe5;
+  border-radius: 5px;
+  background: #f7faf8;
+}
+
+.Ika-orders-detail-status time {
+  color: #71807a;
+  font-size: 11px;
+}
+
+.Ika-orders-detail-section {
+  margin-top: 21px;
+  padding-top: 17px;
+  border-top: 1px solid #e8eeea;
+}
+
+.Ika-orders-detail-section h3 {
+  margin: 0 0 12px;
+  color: #233f3f;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.Ika-orders-customer-name,
+.Ika-orders-customer-phone {
+  display: block;
+}
+
+.Ika-orders-customer-name { color: #263f40; font-size: 14px; }
+.Ika-orders-customer-phone { margin-top: 3px; color: #71807a; font-size: 12px; }
+
+.Ika-orders-contact-actions {
+  margin-top: 11px;
+  display: flex;
+  gap: 7px;
+}
+
+.Ika-orders-contact-actions a {
+  min-height: 34px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #dfe8e2;
+  border-radius: 4px;
+  color: #33574c;
+  background: #f8fbf8;
+  font-size: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.Ika-orders-contact-actions a:hover { border-color: #a9c7b5; color: #0a6457; }
+
+.Ika-orders-assignment-section > label {
+  margin-bottom: 6px;
+  display: block;
+  color: #687872;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.Ika-orders-assignment-section select {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 10px;
+  border: 1px solid #dfe6e2;
+  border-radius: 5px;
+  color: #263f40;
+  background: #fbfcfb;
+  font: inherit;
+  font-size: 11px;
+}
+
+.Ika-orders-assign-button {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 9px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #0a393e;
+  border-radius: 5px;
+  color: #fff;
+  background: #0a393e;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.Ika-orders-assign-button:hover:not(:disabled) {
+  border-color: #12565a;
+  color: #fff;
+  background: #12565a;
+}
+
+.Ika-orders-assign-button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.Ika-orders-assignment-section > p:not(.Ika-orders-error) {
+  margin: 0;
+  color: #71807a;
+  font-size: 11px;
+}
+
+.Ika-orders-assignment-section {
+  margin-top: 19px;
+  padding: 15px;
+  border: 1px solid #dce9e1;
+  border-radius: 6px;
+  background: #f6faf7;
+}
+
+.Ika-orders-assignment-section h3 {
+  margin-bottom: 12px;
+}
+
+.Ika-orders-assignment-hint {
+  margin-top: 9px !important;
+  line-height: 1.5;
+}
+
+.Ika-orders-assignment-section .Ika-orders-error {
+  margin-bottom: 10px;
+}
+
+.Ika-orders-detail-list,
+.Ika-orders-detail-totals {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.Ika-orders-detail-list > div,
+.Ika-orders-detail-totals > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.Ika-orders-detail-list dt,
+.Ika-orders-detail-totals dt {
+  flex: 0 0 auto;
+  color: #798780;
+  font-size: 10px;
+}
+
+.Ika-orders-detail-list dd,
+.Ika-orders-detail-totals dd {
+  margin: 0;
+  color: #263f40;
+  font-size: 10px;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.Ika-orders-detail-items {
+  margin: 0 0 14px;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+
+.Ika-orders-detail-items li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.Ika-orders-detail-items li > div { display: grid; gap: 3px; }
+.Ika-orders-detail-items li strong { color: #344a45; font-size: 10px; }
+.Ika-orders-detail-items li span,
+.Ika-orders-detail-items li b { color: #71807a; font-size: 10px; }
+.Ika-orders-detail-items li b { flex: 0 0 auto; color: #263f40; }
+.Ika-orders-detail-totals { padding-top: 12px; border-top: 1px solid #e8eeea; }
+.Ika-orders-detail-totals .is-total { padding-top: 9px; border-top: 1px solid #e8eeea; }
+.Ika-orders-detail-totals .is-total dt,
+.Ika-orders-detail-totals .is-total dd { color: #233f3f; font-size: 12px; font-weight: 800; }
+
+.Ika-orders-history {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 13px;
+  list-style: none;
+}
+
+.Ika-orders-history li {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr);
+  align-items: start;
+  gap: 9px;
+}
+
+.Ika-orders-history-dot {
+  width: 8px;
+  height: 8px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: #0b8170;
+  box-shadow: 0 0 0 3px #e6f2ec;
+}
+
+.Ika-orders-history li > div { display: grid; gap: 3px; }
+.Ika-orders-history strong { color: #344a45; font-size: 10px; }
+.Ika-orders-history time,
+.Ika-orders-history p { margin: 0; color: #7a8781; font-size: 9px; }
+
+.Ika-orders-drawer-footer {
+  padding: 14px 22px 18px;
+  border-top: 1px solid #e6ece8;
+  background: #fff;
+}
+
+.Ika-orders-drawer-footer .Ika-orders-status-control select { height: 40px; }
+
+@keyframes Ika-order-drawer-in {
+  from { opacity: 0.75; transform: translateX(18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 1200px) {
+  .Ika-orders-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .Ika-orders-toolbar { align-items: stretch; flex-direction: column; }
+}
+
+@media (max-width: 760px) {
+  .Ika-orders-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .Ika-orders-search { grid-column: 1 / -1; }
+  .Ika-orders-filter-submit { grid-column: 1; }
+  .Ika-orders-filter-clear { grid-column: 2; }
+  .Ika-orders-view-switch { align-self: flex-end; }
+  .Ika-orders-card-grid { grid-template-columns: minmax(0, 1fr); }
+  .Ika-orders-day-heading h2 { font-size: 15px; }
+  .Ika-orders-list { min-width: 760px; }
+  .Ika-orders-list-scroll { overflow-x: auto; }
+  .Ika-orders-drawer { width: 100%; }
+}

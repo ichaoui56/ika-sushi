@@ -5,11 +5,13 @@ import { useLocale } from "../../../i18n/LocaleProvider";
 import { translate } from "../../../i18n/translations";
 import { ProductCarouselControls } from "../../../store/ProductCarouselControls";
 import { ProductCard } from "../../../store/ProductCard";
-import { catalogProducts } from "../../../store/products";
+import type { CatalogProduct } from "../../../store/products";
 
-export default function MenuStyleFiveAreaSection() {
+export default function MenuStyleFiveAreaSection({ products }: { products: CatalogProduct[] }) {
   const { locale } = useLocale();
-  const promotions = catalogProducts.filter((product) => product.originalPrice !== undefined);
+  if (!products.length) return null;
+
+  const promotions = products;
   const renderCards = (isDuplicate = false) => (
     <ul
       className="Ika-picks-group"

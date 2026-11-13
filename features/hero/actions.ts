@@ -6,6 +6,7 @@ import { requirePermission } from "../../lib/auth/permissions";
 import { deleteImage, parsePinataImageUrl } from "../../lib/pinata/client";
 import { localImageUrlForCid } from "../../lib/image-url";
 import { heroSlideSchema, heroSlideUpdateSchema } from "./schemas";
+import { getHeroSlideCopies, toPrismaHeroTranslations } from "./translations";
 
 export async function createHeroSlide(input: unknown) {
   await requirePermission("MANAGE_HERO");
@@ -14,16 +15,26 @@ export async function createHeroSlide(input: unknown) {
   if (!parsed.data.imageUrl) {
     return { success: false, message: "Upload an image or provide an HTTPS image URL." };
   }
+  const fallbackCopy = {
+    title: parsed.data.title,
+    subtitle: parsed.data.subtitle ?? "",
+    description: parsed.data.description ?? "",
+    ctaText: parsed.data.ctaText ?? "",
+  };
+  const copies = getHeroSlideCopies(parsed.data.translations, fallbackCopy);
+  const { translations: _translations, ...slideData } = parsed.data;
 
   const pinned = parsePinataImageUrl(parsed.data.imageUrl);
   await prisma.heroSlide.create({
     data: {
-      ...parsed.data,
-      subtitle: parsed.data.subtitle || null,
-      description: parsed.data.description || null,
+      ...slideData,
+      title: copies.fr.title,
+      translations: toPrismaHeroTranslations(parsed.data.translations, fallbackCopy),
+      subtitle: copies.fr.subtitle || null,
+      description: copies.fr.description || null,
       imageUrl: pinned ? localImageUrlForCid(pinned.cid) : parsed.data.imageUrl,
       imageCid: pinned?.cid,
-      ctaText: parsed.data.ctaText || null,
+      ctaText: copies.fr.ctaText || null,
       ctaDestination: parsed.data.ctaDestination || null,
     },
   });
@@ -41,6 +52,14 @@ export async function updateHeroSlide(input: unknown) {
   const { id, ...data } = parsed.data;
   const existing = await prisma.heroSlide.findUnique({ where: { id } });
   if (!existing) return { success: false, message: "Hero slide not found." };
+  const fallbackCopy = {
+    title: data.title,
+    subtitle: data.subtitle ?? "",
+    description: data.description ?? "",
+    ctaText: data.ctaText ?? "",
+  };
+  const copies = getHeroSlideCopies(data.translations, fallbackCopy);
+  const { translations: _translations, ...slideData } = data;
 
   const requestedImageUrl = data.imageUrl ?? existing.imageUrl;
   const pinned = parsePinataImageUrl(requestedImageUrl);
@@ -49,12 +68,14 @@ export async function updateHeroSlide(input: unknown) {
   await prisma.heroSlide.update({
     where: { id },
     data: {
-      ...data,
-      subtitle: data.subtitle || null,
-      description: data.description || null,
+      ...slideData,
+      title: copies.fr.title,
+      translations: toPrismaHeroTranslations(data.translations, fallbackCopy),
+      subtitle: copies.fr.subtitle || null,
+      description: copies.fr.description || null,
       imageUrl,
       imageCid: pinned?.cid ?? (imageChanged ? null : existing.imageCid),
-      ctaText: data.ctaText || null,
+      ctaText: copies.fr.ctaText || null,
       ctaDestination: data.ctaDestination || null,
     },
   });

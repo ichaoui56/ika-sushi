@@ -1,40 +1,35 @@
 import LegacyPage from "../../legacy-page";
-import { ThemeToggle } from "../../layout/ThemeToggle";
 import { Preloader } from "../../layout/Preloader";
 import { TopBar } from "../../layout/TopBar";
 import { SiteHeader } from "../../layout/SiteHeader";
-import { TestimonialsSection } from "../../sections/TestimonialsSection";
 import { HomeBlogSection } from "../../sections/HomeBlogSection";
 import { Footer } from "../../layout/Footer";
-import HeroSection from "./sections/HeroServerSection";
+import HeroSection from "./sections/HeroSection";
 import MenuStyleFiveAreaSection from "./sections/MenuStyleFiveAreaSection";
-import FeatureStyleTwoAreaSection from "./sections/FeatureStyleTwoAreaSection";
-import ValidthemeShopAreaSection from "./sections/HomeMenuServerSection";
-import DiscountAreaSection from "./sections/PromotionsServerSection";
-import ChefStyleOneAreaSection from "./sections/ChefStyleOneAreaSection";
-import GalleryStyleTwoAreaSection from "./sections/GalleryStyleTwoAreaSection";
-import BrandAreaSection from "./sections/BrandAreaSection";
-import FeatureStyleOneAreaSection from "./sections/FeatureStyleOneAreaSection";
-import MostSelledProducts from "./sections/BestSellersServerSection";
+import ValidthemeShopAreaSection from "./sections/ValidthemeShopAreaSection";
+import DiscountAreaSection from "./sections/DiscountAreaSection";
+import MostSelledProducts from "./sections/MostSelledProducts";
+import { getHomeStorefrontData } from "../../store/storefront-data";
 
-export default function Page() {
+export default async function Page() {
+  let storefront;
+  try {
+    storefront = await getHomeStorefrontData();
+  } catch (error) {
+    console.error("Unable to load homepage storefront data.", error);
+    storefront = { categories: [], products: [], heroSlides: [], bestSellers: [], promotions: [] };
+  }
+
   return (
     <LegacyPage>
-      
       <Preloader />
       <TopBar />
       <SiteHeader />
-      <HeroSection />
-      <MenuStyleFiveAreaSection />
-      {/* <FeatureStyleTwoAreaSection /> */}
-      <MostSelledProducts />
-      <ValidthemeShopAreaSection />
-      <DiscountAreaSection />
-      <FeatureStyleOneAreaSection />
-      {/* <ChefStyleOneAreaSection /> */}
-      {/* <TestimonialsSection /> */}
-      {/* <GalleryStyleTwoAreaSection /> */}
-      {/* <BrandAreaSection /> */}
+      <HeroSection slides={storefront.heroSlides} />
+      <MenuStyleFiveAreaSection products={storefront.promotions} />
+      <MostSelledProducts products={storefront.bestSellers} />
+      <ValidthemeShopAreaSection products={storefront.products} categories={storefront.categories} />
+      <DiscountAreaSection products={storefront.promotions} />
       <HomeBlogSection />
       <Footer />
     </LegacyPage>

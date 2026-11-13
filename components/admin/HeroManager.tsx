@@ -13,6 +13,7 @@ interface HeroSlideRecord {
   imageUrl: string;
   ctaText: string | null;
   ctaDestination: string | null;
+  product: { id: string; name: string } | null;
   sortOrder: number;
   isActive: boolean;
   visibleFrom: string | null;
@@ -74,6 +75,7 @@ export default function HeroManager({ slides }: { slides: HeroSlideRecord[] }) {
               <h3>{slide.title}</h3>
               {slide.subtitle && <p className="Ika-hero-slide-subtitle">{slide.subtitle}</p>}
               {slide.description && <p className="Ika-hero-slide-description">{slide.description}</p>}
+              {slide.product && <p className="Ika-hero-slide-subtitle">Featured product: {slide.product.name}</p>}
               <div className="Ika-hero-slide-footer">
                 <span>{slide.ctaDestination || "No destination"}</span>
                 <div className="Ika-admin-row-actions">

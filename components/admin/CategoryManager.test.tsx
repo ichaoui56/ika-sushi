@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { localizeCategoryName, makeCategoryTranslations } from "../../features/categories/translations";
 
 test("Category manager supports list and card views with client-side search", () => {
   const source = readFileSync(path.join(process.cwd(), "components/admin/CategoryManager.tsx"), "utf8");
@@ -21,4 +22,18 @@ test("Category creation has a dedicated editable route without image controls", 
   assert.doesNotMatch(editorSource, /uploadAdminImage|type="file"|Category image/);
   assert.match(editorSource, /createCategory/);
   assert.match(editorSource, /updateCategory/);
+  assert.match(editorSource, /Category name \(English\)/);
+  assert.match(editorSource, /Category name \(Arabic\)/);
+});
+
+test("category names follow the selected locale and fall back to French", () => {
+  const category = {
+    name: "Rouleaux de sushi",
+    translations: makeCategoryTranslations("Rouleaux de sushi", "Sushi rolls", "لفائف السوشي"),
+  };
+
+  assert.equal(localizeCategoryName(category, "fr"), "Rouleaux de sushi");
+  assert.equal(localizeCategoryName(category, "en"), "Sushi rolls");
+  assert.equal(localizeCategoryName(category, "ar"), "لفائف السوشي");
+  assert.equal(localizeCategoryName({ name: "Catégorie existante" }, "en"), "Catégorie existante");
 });

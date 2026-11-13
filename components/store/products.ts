@@ -1,12 +1,26 @@
 import type { StoreProduct } from "./StoreProvider";
+import type { CategoryTranslations } from "../../features/categories/translations";
+
+export interface CatalogCategory {
+  id: string;
+  name: string;
+  translations?: CategoryTranslations;
+}
 
 export interface CatalogProduct extends StoreProduct {
   description: string;
   shortDescription?: string;
+  slug?: string;
+  currency?: string;
+  images?: string[];
   tags: string[];
   categories: string[];
+  categoryDetails?: CatalogCategory[];
   isBestSeller?: boolean;
+  isOnPromotion?: boolean;
+  isAvailable?: boolean;
   originalPrice?: number;
+  discountPercent?: number;
 }
 
 export const menuCategories = [

@@ -2,17 +2,16 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ProductCard } from "../../../store/ProductCard";
-import { catalogProducts, menuCategories, type CatalogProduct } from "../../../store/products";
+import type { CatalogCategory, CatalogProduct } from "../../../store/products";
 import { useLocale } from "../../../i18n/LocaleProvider";
 import { translate } from "../../../i18n/translations";
-import { getProductDescription, getProductName } from "../../../store/product-locale";
+import { formatProductPrice, getProductDescription, getProductName } from "../../../store/product-locale";
 import { toLocalImageUrl } from "../../../../lib/image-url";
-
-type MenuCategory = { id: string; name: string };
+import { localizeCategoryName, normalizeCategoryTranslations } from "../../../../features/categories/translations";
 
 const matchesMenuQuery = (
   product: CatalogProduct,
-  categories: readonly MenuCategory[],
+  categories: readonly CatalogCategory[],
   query: string,
   locale: "fr" | "en" | "ar",
 ) => {
@@ -20,8 +19,12 @@ const matchesMenuQuery = (
 
   const categoryNames = product.categories
     .map((categoryId) => categories.find((category) => category.id === categoryId))
-    .filter((category): category is MenuCategory => category !== undefined)
-    .map((category) => category.name);
+    .filter((category): category is CatalogCategory => category !== undefined)
+    .flatMap((category) => [
+      category.name,
+      localizeCategoryName(category, locale),
+      ...Object.values(normalizeCategoryTranslations(category.translations).name ?? {}),
+    ]);
   const searchableText = [
     product.name,
     getProductName(product, locale),
@@ -37,16 +40,16 @@ const matchesMenuQuery = (
 };
 
 export default function FoodMenuAreaSection({
-  products = catalogProducts,
-  categories = menuCategories,
+  products,
+  categories,
 }: {
-  products?: CatalogProduct[];
-  categories?: readonly MenuCategory[];
+  products: CatalogProduct[];
+  categories: readonly CatalogCategory[];
 }) {
   const { locale } = useLocale();
   const filters = [
     { label: "All", value: null as string[] | null },
-    ...categories.map((category) => ({ label: category.name, value: [category.id] })),
+    ...categories.map((category) => ({ label: localizeCategoryName(category, locale), value: [category.id] })),
   ];
   const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -56,7 +59,7 @@ export default function FoodMenuAreaSection({
   const searchInputRef = useRef<HTMLInputElement>(null);
   const filterRailRef = useRef<HTMLDivElement>(null);
 
-  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const normalizedQuery = searchQuery.trim().toLocaleLowerCase(locale);
 
   const searchResults = useMemo(() => {
     if (!normalizedQuery) return [];
@@ -64,7 +67,7 @@ export default function FoodMenuAreaSection({
     return products
       .filter((product) => matchesMenuQuery(product, categories, normalizedQuery, locale))
       .slice(0, 6);
-  }, [categories, normalizedQuery, products]);
+  }, [categories, locale, normalizedQuery, products]);
 
   const categorySections = useMemo(
     () =>
@@ -226,12 +229,15 @@ export default function FoodMenuAreaSection({
                             <span className="Ika-menu-page-search-result-name">{getProductName(product, locale)}</span>
                             <span className="Ika-menu-page-search-result-category">
                               {product.categories
-                                .map((categoryId) => menuCategories.find((category) => category.id === categoryId)?.name)
+                                .map((categoryId) => {
+                                  const category = categories.find((item) => item.id === categoryId);
+                                  return category ? localizeCategoryName(category, locale) : undefined;
+                                })
                                 .filter(Boolean)
                                 .join(", ")}
                             </span>
                           </span>
-                          <strong className="Ika-menu-page-search-result-price">${product.price.toFixed(2)}</strong>
+                          <strong className="Ika-menu-page-search-result-price">{formatProductPrice(product.price, product.currency, locale)}</strong>
                         </button>
                       </li>
                     ))}
@@ -305,7 +311,7 @@ export default function FoodMenuAreaSection({
                     <span className="Ika-menu-category-index" aria-hidden="true">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <h2 id={`Ika-menu-category-title-${category.id}`}>{category.name}</h2>
+                    <h2 id={`Ika-menu-category-title-${category.id}`}>{localizeCategoryName(category, locale)}</h2>
                   </div>
                   <span className="Ika-menu-category-rule" aria-hidden="true" />
                   <span className="Ika-menu-category-count">

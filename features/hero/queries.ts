@@ -4,7 +4,19 @@ import { requirePermission } from "../../lib/auth/permissions";
 
 export async function getAdminHeroSlides() {
   await requirePermission("MANAGE_HERO");
-  return prisma.heroSlide.findMany({ orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }] });
+  return prisma.heroSlide.findMany({
+    orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }],
+    include: { product: { select: { id: true, name: true } } },
+  });
+}
+
+export async function getHeroProductOptions() {
+  await requirePermission("MANAGE_HERO");
+  return prisma.product.findMany({
+    where: { isAvailable: true },
+    orderBy: [{ sortOrder: "asc" }, { name: "asc" }],
+    select: { id: true, name: true, priceMinor: true, currency: true },
+  });
 }
 
 export function getVisibleHeroSlides(now = new Date()) {
@@ -17,5 +29,8 @@ export function getVisibleHeroSlides(now = new Date()) {
       ],
     },
     orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }],
+    include: {
+      product: { select: { id: true, name: true, translations: true, priceMinor: true, currency: true } },
+    },
   });
 }

@@ -4,11 +4,13 @@ import { useLocale } from "../../../i18n/LocaleProvider";
 import { translate } from "../../../i18n/translations";
 import { ProductCard } from "../../../store/ProductCard";
 import { ProductCarouselControls } from "../../../store/ProductCarouselControls";
-import { catalogProducts, type CatalogProduct } from "../../../store/products";
+import type { CatalogProduct } from "../../../store/products";
 
-export default function MostSelledProducts({ products }: { products?: CatalogProduct[] }) {
+export default function MostSelledProducts({ products }: { products: CatalogProduct[] }) {
   const { locale } = useLocale();
-  const bestSellers = products ?? catalogProducts.filter((product) => product.isBestSeller);
+  if (!products.length) return null;
+
+  const bestSellers = products;
   const renderCards = (isDuplicate = false) => (
     <ul
       className="Ika-picks-group"

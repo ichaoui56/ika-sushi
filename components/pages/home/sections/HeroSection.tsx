@@ -4,52 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "../../../i18n/LocaleProvider";
 import { translate } from "../../../i18n/translations";
+import { getHeroSlideText, type HeroSlideTranslations } from "../../../../features/hero/translations";
+import type { ProductTranslations } from "../../../../features/products/translations";
 import { toLocalImageUrl } from "../../../../lib/image-url";
-
-const fallbackHeroSlides = [
-  {
-    id: "platter",
-    eyebrow: "TOUT DROIT VENU DE LA MER",
-    badgeLine: "CHAQUE JOUR",
-    titleLineOne: "SUSHI FAÇONNÉ",
-    titleLineTwo: "À LA MAIN",
-    description: "Des gestes précis, des produits frais, une histoire de goût.",
-    image: "/assets/img/food/sushi1.PNG",
-    imageAlt: "Assortiment de sushi frais détouré sur fond transparent",
-    imagePosition: "center",
-    ctaText: "COMMANDER",
-    ctaDestination: "/shop",
-  },
-  {
-    id: "rolls",
-    eyebrow: "ROULÉ AVEC SOIN",
-    badgeLine: "SERVI BIEN FRAIS",
-    titleLineOne: "LA MER",
-    titleLineTwo: "EN MAKI",
-    description: "Des rouleaux généreux, préparés à la commande avec soin.",
-    image: "/assets/img/food/sushi-platter.png",
-    imageAlt: "Saumon grillé accompagné de légumes sur fond transparent",
-    imagePosition: "center",
-    ctaText: "COMMANDER",
-    ctaDestination: "/shop",
-  },
-  {
-    id: "board",
-    eyebrow: "SÉLECTION DU CHEF",
-    badgeLine: "FRAÎCHEUR GARANTIE",
-    titleLineOne: "UN GOÛT",
-    titleLineTwo: "DU JAPON",
-    description: "Une sélection de sushi et de fruits de mer à partager.",
-    image: "/assets/img/food/sushi-boat.PNG",
-    imageAlt: "Plat de crevettes préparé avec des légumes sur fond transparent",
-    imagePosition: "center",
-    ctaText: "COMMANDER",
-    ctaDestination: "/shop",
-  },
-];
+import { formatProductPrice, getProductName } from "../../../store/product-locale";
 
 export interface HeroSlideContent {
   id: string;
+  translations?: HeroSlideTranslations;
   eyebrow: string;
   badgeLine: string;
   titleLineOne: string;
@@ -60,11 +22,18 @@ export interface HeroSlideContent {
   imagePosition: string;
   ctaText: string;
   ctaDestination: string;
+  associatedProduct?: {
+    id: string;
+    name: string;
+    translations?: ProductTranslations;
+    price: number;
+    currency: string;
+  };
 }
 
 export default function HeroSection({ slides = [] }: { slides?: HeroSlideContent[] }) {
   const { locale } = useLocale();
-  const heroSlides = slides.length ? slides : fallbackHeroSlides;
+  if (!slides.length) return null;
 
   return (
     <section className="ika-hero" aria-label={translate("IKA Sushi", locale)}>
@@ -79,50 +48,62 @@ export default function HeroSection({ slides = [] }: { slides?: HeroSlideContent
 
       <div className="banner-fade ika-hero-carousel">
         <div className="swiper-wrapper">
-          {heroSlides.map((slide, index) => (
-            <div className={`swiper-slide ika-hero-slide ika-hero-slide-${slide.id}`} key={slide.id}>
-              <div className="container ika-hero-layout">
-                <div className="ika-hero-copy">
-                  <div className="ika-hero-badge">
-                    <span>
-                      <span>{translate(slide.eyebrow, locale)}</span>
-                      <strong>{translate(slide.badgeLine, locale)}</strong>
-                    </span>
+          {slides.map((slide, index) => {
+            const translatedTitle = getHeroSlideText(slide.translations, locale, "title");
+            const translatedSubtitle = getHeroSlideText(slide.translations, locale, "subtitle");
+            const subtitleParts = translatedSubtitle?.split("·");
+            const eyebrow = subtitleParts?.[0]?.trim() || translate(slide.eyebrow, locale);
+            const badgeLine = subtitleParts?.[1]?.trim() || translate(slide.badgeLine, locale);
+            const title = translatedTitle || translate(slide.titleLineOne, locale);
+            const description = getHeroSlideText(slide.translations, locale, "description") || translate(slide.description, locale);
+            const ctaText = getHeroSlideText(slide.translations, locale, "ctaText") || translate(slide.ctaText, locale);
+
+            return (
+              <div className={`swiper-slide ika-hero-slide ika-hero-slide-${slide.id}`} key={slide.id}>
+                <div className="container ika-hero-layout">
+                  <div className="ika-hero-copy">
+                    <div className="ika-hero-badge">
+                      <span>
+                        <span>{eyebrow}</span>
+                        <strong>{badgeLine}</strong>
+                      </span>
+                    </div>
+
+                    <h1 className="ika-hero-title">
+                      <span>{title}</span>
+                      <span className="ika-hero-title-accent">{translate(slide.titleLineTwo, locale)}</span>
+                    </h1>
+
+                    <p className="ika-hero-description">{description}</p>
+                    {slide.associatedProduct && <p className="ika-hero-associated-product"><span>{translate("Featured product", locale)}</span><strong>{getProductName(slide.associatedProduct, locale)}</strong><span>{formatProductPrice(slide.associatedProduct.price, slide.associatedProduct.currency, locale)}</span></p>}
+
+                    <Link className="ika-hero-cta" href={slide.ctaDestination}>
+                      <span>{ctaText}</span>
+                      <span className="ika-hero-cta-arrow" aria-hidden="true">
+                        <i className="fas fa-arrow-right" />
+                      </span>
+                    </Link>
                   </div>
 
-                  <h1 className="ika-hero-title">
-                    <span>{translate(slide.titleLineOne, locale)}</span>
-                    <span className="ika-hero-title-accent">{translate(slide.titleLineTwo, locale)}</span>
-                  </h1>
-
-                  <p className="ika-hero-description">{translate(slide.description, locale)}</p>
-
-                  <Link className="ika-hero-cta" href={slide.ctaDestination}>
-                    <span>{translate(slide.ctaText, locale)}</span>
-                    <span className="ika-hero-cta-arrow" aria-hidden="true">
-                      <i className="fas fa-arrow-right" />
-                    </span>
-                  </Link>
-                </div>
-
-                <div className="ika-hero-visual">
-                  <span className="ika-hero-plate-glow" aria-hidden="true" />
-                  <div className="ika-hero-photo-frame">
-                    <Image
-                      className="ika-hero-photo"
-                      src={toLocalImageUrl(slide.image)}
-                      alt={slide.imageAlt}
-                      fill
-                      priority={index === 0}
-                      unoptimized={toLocalImageUrl(slide.image).startsWith("/api/images/")}
-                      sizes="(max-width: 767px) 48vw, (max-width: 1199px) 50vw, 55vw"
-                      style={{ objectPosition: slide.imagePosition }}
-                    />
+                  <div className="ika-hero-visual">
+                    <span className="ika-hero-plate-glow" aria-hidden="true" />
+                    <div className="ika-hero-photo-frame">
+                      <Image
+                        className="ika-hero-photo"
+                        src={toLocalImageUrl(slide.image)}
+                        alt={translatedTitle || slide.imageAlt}
+                        fill
+                        priority={index === 0}
+                        unoptimized={toLocalImageUrl(slide.image).startsWith("/api/images/")}
+                        sizes="(max-width: 767px) 48vw, (max-width: 1199px) 50vw, 55vw"
+                        style={{ objectPosition: slide.imagePosition }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="swiper-pagination ika-hero-pagination" />

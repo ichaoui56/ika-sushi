@@ -2,7 +2,9 @@ import { ProductCard } from "../../../store/ProductCard";
 import type { CatalogProduct } from "../../../store/products";
 import styles from "./DiscountArea.module.css";
 
-export default function DiscountAreaSection({ products = [] }: { products?: CatalogProduct[] }) {
+export default function DiscountAreaSection({ products }: { products: CatalogProduct[] }) {
+  if (!products.length) return null;
+
   return (
     <div
       className="discount-area default-padding bg-theme bg-cover text-light overflow-hidden"
@@ -28,34 +30,26 @@ export default function DiscountAreaSection({ products = [] }: { products?: Cata
         <div className="row align-items-center">
           <div className="col-lg-5">
             <div className="discount-content">
-              <h4>{products.length ? "Limited Offer" : "Fresh selection"}</h4>
+              <h4>Limited Offer</h4>
 
               <h2
                 style={{
                   backgroundImage: "url(/assets/img/shape/27.png)",
                 }}
               >
-                {products.length ? "Sushi & Seafood Feast" : "Prepared fresh, every day"}
+                Sushi &amp; Seafood Feast
               </h2>
 
               <p>
-                {products.length
-                  ? "A beautiful selection of fresh sushi and seafood, made for sharing."
-                  : "Explore our full menu and discover what is ready to order today."}
+                A beautiful selection of fresh sushi and seafood, made for sharing.
               </p>
             </div>
           </div>
 
           <div className="col-lg-6 offset-lg-1">
-            {products.length ? (
-              <div className={styles.products}>
-                {products.slice(0, 2).map((product) => <ProductCard key={product.id} product={product} />)}
-              </div>
-            ) : (
-              <div className="offer-item-thumb">
-                <img src="/assets/img/shop/Crustaceans-such-as-lobsters.png" alt="Fresh lobster and seafood" />
-              </div>
-            )}
+            <div className={styles.products}>
+              {products.slice(0, 2).map((product) => <ProductCard key={product.id} product={product} />)}
+            </div>
           </div>
         </div>
       </div>

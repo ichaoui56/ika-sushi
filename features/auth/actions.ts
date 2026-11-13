@@ -66,7 +66,18 @@ export async function registerAction(
     confirmPassword: formData.get("confirmPassword"),
   });
   if (!parsed.success) {
-    return { success: false, message: parsed.error.issues[0]?.message ?? "Check your details and try again." };
+    const passwordMismatch = parsed.error.issues.some(
+      (issue) => issue.path[0] === "confirmPassword" && issue.code === "custom",
+    );
+    const invalidPhone = parsed.error.issues.some((issue) => issue.path[0] === "phone");
+    return {
+      success: false,
+      message: passwordMismatch
+        ? "Passwords do not match."
+        : invalidPhone
+          ? "Enter a valid phone number."
+          : "Check your details and try again.",
+    };
   }
 
   const normalizedPhone = normalizePhoneNumber(parsed.data.phone);

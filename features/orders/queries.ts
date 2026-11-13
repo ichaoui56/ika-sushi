@@ -24,12 +24,25 @@ export async function getMyOrders() {
   });
 }
 
-export async function getAdminOrders(filters: { status?: OrderStatus; query?: string } = {}) {
+export async function getAdminOrders(filters: { status?: OrderStatus; query?: string; from?: string; to?: string } = {}) {
   await requirePermission("VIEW_ORDERS");
   const query = filters.query?.trim();
+  const createdAt: { gte?: Date; lt?: Date } = {};
+  if (filters.from && /^\d{4}-\d{2}-\d{2}$/.test(filters.from)) {
+    const from = new Date(`${filters.from}T00:00:00.000Z`);
+    if (!Number.isNaN(from.getTime())) createdAt.gte = from;
+  }
+  if (filters.to && /^\d{4}-\d{2}-\d{2}$/.test(filters.to)) {
+    const to = new Date(`${filters.to}T00:00:00.000Z`);
+    if (!Number.isNaN(to.getTime())) {
+      to.setUTCDate(to.getUTCDate() + 1);
+      createdAt.lt = to;
+    }
+  }
   return prisma.order.findMany({
     where: {
       ...(filters.status ? { status: filters.status } : {}),
+      ...(Object.keys(createdAt).length ? { createdAt } : {}),
       ...(query ? {
         OR: [
           { reference: { contains: query, mode: "insensitive" } },
@@ -39,7 +52,6 @@ export async function getAdminOrders(filters: { status?: OrderStatus; query?: st
       } : {}),
     },
     orderBy: { createdAt: "desc" },
-    take: 100,
     select: {
       id: true,
       reference: true,
@@ -67,6 +79,15 @@ export async function getAdminOrderDetail(orderId: string) {
   });
 }
 
+export async function getAssignableDeliveryPeople() {
+  await requirePermission("MANAGE_DELIVERY");
+  return prisma.user.findMany({
+    where: { role: "DELIVERY", status: "ACTIVE" },
+    orderBy: { name: "asc" },
+    select: { id: true, name: true, phone: true },
+  });
+}
+
 export async function getMyDeliveryOrders() {
   const user = await getCurrentUser();
   if (!user || user.role !== "DELIVERY") return null;
@@ -80,6 +101,12 @@ export async function getMyDeliveryOrders() {
         include: {
           items: true,
           location: { select: { name: true } },
+          statusHistory: {
+            where: { next: "DELIVERY_FAILED" },
+            orderBy: { createdAt: "desc" },
+            take: 1,
+            select: { note: true },
+          },
         },
       },
     },

@@ -472,6 +472,27 @@ Sidebar heading:  22px 'Jost', sans-serif
   left: 0;
 }
 
+.Ika-desktop-nav a.Ika-nav-track-link {
+  padding: 11px 15px;
+  border: 1px solid #072b31;
+  border-radius: 6px;
+  color: #fff;
+  background: #072b31;
+  line-height: 1;
+}
+
+.Ika-desktop-nav a.Ika-nav-track-link::after {
+  display: none;
+}
+
+.Ika-desktop-nav a.Ika-nav-track-link:hover,
+.Ika-desktop-nav a.Ika-nav-track-link:focus-visible {
+  border-color: #0c424a;
+  color: #fff;
+  background: #0c424a;
+  transform: translateY(-1px);
+}
+
 .Ika-header-actions {
   gap: 8px;
 }
@@ -1266,11 +1287,307 @@ Sidebar heading:  22px 'Jost', sans-serif
   box-shadow: 0 0 0 3px rgba(7, 43, 49, 0.1);
 }
 
+.Ika-checkout-field input[aria-invalid="true"],
+.Ika-checkout-field textarea[aria-invalid="true"] {
+  border-color: #b42318;
+}
+
+.Ika-checkout-zones[aria-invalid="true"] .Ika-checkout-area-trigger {
+  border-color: #b42318;
+}
+
+.Ika-checkout-field-error {
+  margin: -1px 0 0;
+  color: #b42318;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 .Ika-checkout-field-hint {
   margin: -1px 0 0;
   color: #788785;
   font-size: 11px;
   line-height: 1.4;
+}
+
+.Ika-checkout-zones {
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.Ika-checkout-zones legend {
+  margin-bottom: 8px;
+  color: #26454a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.Ika-checkout-zones > .Ika-checkout-field-hint {
+  margin: 0 0 10px;
+}
+
+.Ika-checkout-zone-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.Ika-checkout-zone-card {
+  min-width: 0;
+  min-height: 78px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #dfe6e2;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease, box-shadow 150ms ease;
+}
+
+.Ika-checkout-zone-card.is-selected {
+  border-color: #087c6a;
+  background: #f0f8f4;
+  box-shadow: 0 0 0 2px rgba(8, 124, 106, .09);
+}
+
+.Ika-checkout-zone-card input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.Ika-checkout-zone-card:focus-within {
+  outline: 2px solid #087c6a;
+  outline-offset: 2px;
+}
+
+.Ika-checkout-zone-indicator {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #b9c9c1;
+  border-radius: 50%;
+  color: transparent;
+  font-size: 8px;
+}
+
+.Ika-checkout-zone-card.is-selected .Ika-checkout-zone-indicator {
+  border-color: #087c6a;
+  color: #fff;
+  background: #087c6a;
+}
+
+.Ika-checkout-zone-copy {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.Ika-checkout-zone-copy strong {
+  overflow-wrap: anywhere;
+  color: #173d3c;
+  font-size: 12px;
+}
+
+.Ika-checkout-zone-copy small {
+  color: #788785;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.Ika-checkout-zone-fee {
+  color: #173d3c;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.Ika-checkout-selected-zone {
+  margin: 12px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  color: #526a60;
+  font-size: 11px;
+}
+
+.Ika-checkout-selected-zone i {
+  color: #087c6a;
+}
+
+.Ika-checkout-area-trigger,
+.Ika-checkout-area-selected {
+  width: 100%;
+  min-height: 58px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid #dfe6e2;
+  border-radius: 7px;
+  color: #173a3e;
+  background: #fff;
+  text-align: start;
+}
+
+.Ika-checkout-area-trigger {
+  cursor: pointer;
+}
+
+.Ika-checkout-area-trigger:hover {
+  border-color: #087c6a;
+  color: #fff;
+  background: #087c6a;
+}
+
+.Ika-checkout-area-trigger:hover > span,
+.Ika-checkout-area-trigger:hover > i {
+  color: #fff;
+}
+
+.Ika-checkout-area-trigger > span {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.Ika-checkout-area-trigger > i:first-child,
+.Ika-checkout-area-pin {
+  color: #087c6a;
+}
+
+.Ika-checkout-area-selected > span:nth-child(2) {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  gap: 4px;
+}
+
+.Ika-checkout-area-selected strong {
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+
+.Ika-checkout-area-selected small {
+  color: #788785;
+  font-size: 11px;
+}
+
+.Ika-checkout-area-selected button {
+  min-height: 36px;
+  padding: 0 10px;
+  border: 1px solid #dfe6e2;
+  border-radius: 5px;
+  color: #087c6a;
+  background: #fff;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.Ika-checkout-area-picker {
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #dfe6e2;
+  border-radius: 7px;
+  background: #fff;
+}
+
+.Ika-checkout-area-picker > label {
+  display: block;
+  margin-bottom: 6px;
+  color: #526a60;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.Ika-checkout-area-picker > input {
+  width: 100%;
+  min-height: 44px;
+  padding: 9px 11px;
+  border: 1px solid #dfe6e2;
+  border-radius: 6px;
+  color: #072b31;
+  background: #fbfcfb;
+  font: inherit;
+  font-size: 13px;
+}
+
+.Ika-checkout-area-picker > input:focus-visible,
+.Ika-checkout-area-option:focus-visible,
+.Ika-checkout-area-selected button:focus-visible,
+.Ika-checkout-area-trigger:focus-visible {
+  outline: 2px solid #087c6a;
+  outline-offset: 2px;
+}
+
+.Ika-checkout-area-options {
+  max-height: min(38vh, 300px);
+  margin-top: 8px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.Ika-checkout-area-option {
+  width: 100%;
+  min-height: 56px;
+  padding: 9px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 0;
+  border-bottom: 1px solid #edf1ee;
+  color: #173a3e;
+  background: #fff;
+  text-align: start;
+  cursor: pointer;
+}
+
+.Ika-checkout-area-option:hover,
+.Ika-checkout-area-option.is-selected {
+  color: #173a3e !important;
+  background: #f0f8f4 !important;
+}
+
+.Ika-checkout-area-option::after {
+  display: none;
+  content: none;
+}
+
+.Ika-checkout-area-option:hover .Ika-checkout-area-option-copy strong,
+.Ika-checkout-area-option.is-selected .Ika-checkout-area-option-copy strong {
+  color: #173a3e;
+}
+
+.Ika-checkout-area-option:hover .Ika-checkout-area-option-copy small,
+.Ika-checkout-area-option.is-selected .Ika-checkout-area-option-copy small {
+  color: #526a60;
+}
+
+.Ika-checkout-area-option-copy {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.Ika-checkout-area-option-copy strong {
+  overflow-wrap: anywhere;
+  font-size: 12px;
+}
+
+.Ika-checkout-area-option-copy small {
+  color: #788785;
+  font-size: 10px;
 }
 
 .Ika-checkout-location-heading {
@@ -1539,6 +1856,189 @@ Sidebar heading:  22px 'Jost', sans-serif
   animation: Ika-checkout-success-in 520ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
+.Ika-checkout-password-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(460px, calc(100% - 28px));
+  max-width: 460px;
+  padding: 0;
+  overflow: auto;
+  border: 0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(7, 27, 29, 0.28);
+}
+
+.Ika-checkout-password-dialog::backdrop {
+  background: rgba(7, 27, 29, 0.62);
+  backdrop-filter: blur(3px);
+}
+
+.Ika-checkout-password-panel {
+  position: relative;
+  padding: 34px;
+}
+
+.Ika-checkout-password-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 6px;
+  color: #647a7b;
+  background: transparent;
+  cursor: pointer;
+}
+
+.Ika-checkout-password-panel h2 {
+  margin: 12px 40px 8px 0;
+  color: #173a3e;
+  font-family: Belleza, Georgia, serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.Ika-checkout-password-panel > p {
+  margin: 0 0 22px;
+  color: #64746d;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.Ika-checkout-password-form {
+  display: grid;
+  gap: 16px;
+}
+
+.Ika-checkout-password-form label {
+  display: grid;
+  gap: 7px;
+  color: #28464a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.Ika-checkout-password-input-wrap {
+  position: relative;
+  display: block;
+}
+
+.Ika-checkout-password-form input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 13px;
+  border: 1px solid #dfe4dc;
+  border-radius: 7px;
+  outline: none;
+  color: #173a3e;
+  background: #fbfcfa;
+  font: inherit;
+  font-size: 14px;
+}
+
+.Ika-checkout-password-form .Ika-checkout-password-input-wrap input {
+  padding-inline-end: 48px;
+}
+
+.Ika-checkout-password-toggle {
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 6px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  color: #647a7b;
+  background: transparent;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.Ika-checkout-password-toggle::after {
+  display: none;
+}
+
+.Ika-checkout-password-toggle:hover,
+.Ika-checkout-password-toggle:focus-visible {
+  color: #087c6a;
+  background: #eaf3ee;
+}
+
+.Ika-checkout-password-form input:focus {
+  border-color: #087c6a;
+  box-shadow: 0 0 0 3px rgba(8, 124, 106, 0.12);
+}
+
+.Ika-checkout-password-form > p {
+  margin: 0;
+  color: #a33c2d;
+  font-size: 12px;
+}
+
+.Ika-checkout-password-dialog .Ika-checkout-submit {
+  width: 100%;
+  margin: 2px 0 0;
+}
+
+.Ika-checkout-password-dialog .Ika-checkout-submit:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.Ika-checkout-password-guest {
+  min-height: 44px;
+  border: 1px solid #dfe4dc;
+  border-radius: 7px;
+  color: #28464a;
+  background: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.Ika-checkout-password-guest:hover {
+  border-color: #087c6a;
+  color: #fff;
+  background: #087c6a;
+}
+
+.Ika-checkout-password-guest:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.Ika-order-success-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(940px, calc(100% - 24px));
+  max-width: 940px;
+  max-height: min(92dvh, 900px);
+  padding: 0;
+  overflow: auto;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.Ika-order-success-dialog::backdrop {
+  background: rgba(7, 27, 29, 0.62);
+  backdrop-filter: blur(3px);
+}
+
+.Ika-order-success-dialog .Ika-order-success {
+  width: 100%;
+  margin: 0;
+}
+
 .Ika-order-success-main {
   padding: 34px;
 }
@@ -1729,6 +2229,10 @@ Sidebar heading:  22px 'Jost', sans-serif
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .Ika-order-edit:hover,
@@ -1739,6 +2243,12 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 @media (max-width: 767px) {
+  .Ika-order-success-dialog {
+    width: calc(100% - 16px);
+    max-height: 94dvh;
+    border-radius: 9px;
+  }
+
   .Ika-order-success {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -3096,6 +3606,27 @@ html[lang="ar"] h6 {
   color: rgba(255, 255, 255, 0.76);
   font-size: 16px;
   line-height: 1.65;
+}
+
+.ika-hero-associated-product {
+  margin: 0 0 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 7px 12px;
+  color: rgba(255, 255, 255, .86);
+  font-size: 13px;
+}
+
+.ika-hero-associated-product > span:first-child {
+  color: #f3c276;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.ika-hero-associated-product strong {
+  color: #fff;
 }
 
 .ika-hero-cta {
@@ -5771,6 +6302,52 @@ html[lang="ar"] h6 {
   transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
+.Ika-product-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  color: #78878a;
+  background: #f3efe5;
+  font-size: 12px;
+}
+
+.Ika-product-image-placeholder i {
+  font-size: 24px;
+}
+
+.Ika-product-image.is-unavailable img {
+  filter: grayscale(.85);
+}
+
+.Ika-product-availability-badge {
+  position: absolute;
+  z-index: 3;
+  right: 12px;
+  bottom: 12px;
+  padding: 6px 9px;
+  border-radius: 3px;
+  color: #fff;
+  background: #4a5557;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.Ika-product-category,
+.Ika-product-unavailable-copy {
+  margin: 0 0 8px;
+  color: #68716b;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.Ika-product-unavailable-copy {
+  color: #a3423b;
+  font-weight: 700;
+}
+
 .Ika-product-card:hover .Ika-product-image img {
   transform: scale(1.06);
 }
@@ -6594,6 +7171,8 @@ html[lang="ar"] h6 {
 
 .Ika-orders-page {
   min-height: 48vh;
+  padding: 48px 0 76px;
+  background: #f6f7f4;
 }
 
 .Ika-orders-content {
@@ -6601,54 +7180,226 @@ html[lang="ar"] h6 {
   margin: 0 auto;
 }
 
-.Ika-orders-intro {
-  margin-bottom: 24px;
-  padding: 24px 28px;
+.Ika-orders-hero {
+  width: min(880px, 100%);
+  margin: 0 auto 34px;
+  padding: 0 0 24px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 24px;
-  border: 1px solid rgba(24, 61, 43, 0.1);
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 12px 35px rgba(24, 61, 43, 0.06);
+  gap: 20px;
+  border-bottom: 1px solid #dfe5df;
 }
 
 .Ika-orders-eyebrow {
   color: #a33c2d;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.Ika-orders-intro h3 {
-  margin: 5px 0 4px;
+.Ika-orders-hero h1 {
+  margin: 7px 0 5px;
   color: var(--Ika-ink);
-  font-size: clamp(19px, 3vw, 24px);
+  font-family: Belleza, Georgia, serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.1;
 }
 
-.Ika-orders-intro p {
+.Ika-orders-hero p {
   margin: 0;
   color: #74766f;
-  font-size: 14px;
+  font-size: 13px;
 }
 
-.Ika-orders-intro > i {
-  width: 54px;
-  height: 54px;
-  flex: 0 0 54px;
+.Ika-orders-shop-link {
+  min-height: 42px;
+  padding: 0 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  color: var(--Ika-green);
-  background: rgba(24, 61, 43, 0.09);
-  font-size: 22px;
+  gap: 9px;
+  border: 1px solid rgba(24, 61, 43, 0.18);
+  border-radius: 5px;
+  color: #183d2b;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.Ika-orders-shop-link:hover {
+  color: #fff;
+  background: #183d2b;
+}
+
+.Ika-orders-content-heading {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.Ika-orders-content-heading > div > span {
+  color: #8a948c;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.Ika-orders-content-heading h2 {
+  margin: 4px 0 0;
+  color: #183d2b;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.Ika-orders-content-heading > p {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  color: #78827a;
+  font-size: 11px;
+}
+
+.Ika-orders-content-heading > p strong {
+  color: #183d2b;
+  font-size: 18px;
+}
+
+.Ika-order-history-list {
+  display: grid;
+  gap: 10px;
+}
+
+.Ika-order-history-item {
+  min-width: 0;
+  padding: 17px 19px 13px;
+  border: 1px solid #e1e6e1;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(24, 61, 43, 0.035);
+}
+
+.Ika-order-history-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.Ika-order-history-head > div {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.Ika-order-history-head > div > strong {
+  color: #183d2b;
+  font-size: 13px;
+}
+
+.Ika-order-history-head time {
+  color: #818a82;
+  font-size: 10px;
+}
+
+.Ika-order-status {
+  flex: 0 0 auto;
+  padding: 5px 8px;
+  border-radius: 3px;
+  color: #6c6251;
+  background: #f3efe5;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.Ika-order-status.is-delivered {
+  color: #286646;
+  background: #e8f3eb;
+}
+
+.Ika-order-status.is-cancelled,
+.Ika-order-status.is-delivery-failed {
+  color: #983f35;
+  background: #f9ece8;
+}
+
+.Ika-order-history-location {
+  margin: 12px 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #748078;
+  font-size: 10px;
+}
+
+.Ika-order-history-location i {
+  color: #a33c2d;
+}
+
+.Ika-order-history-location strong {
+  color: #47574d;
+  font-size: 11px;
+}
+
+.Ika-order-history-item ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Ika-order-history-item li {
+  padding: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid #f0f2ef;
+  color: #4a574d;
+  font-size: 11px;
+}
+
+.Ika-order-history-item li span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.Ika-order-history-item li strong {
+  flex: 0 0 auto;
+  color: #4a574d;
+  font-size: 11px;
+}
+
+.Ika-order-history-item > footer {
+  margin-top: 6px;
+  padding-top: 11px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid #e9ede9;
+  color: #7a847c;
+  font-size: 10px;
+}
+
+.Ika-order-history-item > footer strong {
+  margin-left: auto;
+  color: #183d2b;
+  font-size: 14px;
 }
 
 .Ika-orders-empty {
-  padding: 52px 24px;
+  padding: 38px 24px;
+  border: 1px solid #e1e6e1;
+  border-radius: 7px;
+  background: #fff;
 }
 
 .Ika-orders-empty-icon {
@@ -6673,6 +7424,27 @@ html[lang="ar"] h6 {
   max-width: 440px;
   margin: 0 auto 20px;
   color: #74766f;
+}
+
+@media (max-width: 767px) {
+  .Ika-orders-page {
+    padding: 30px 0 56px;
+  }
+
+  .Ika-orders-hero {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .Ika-orders-hero h1 {
+    font-size: 32px;
+  }
+
+  .Ika-order-history-item {
+    padding: 14px 13px 11px;
+  }
 }
 
 .Ika-wishlist-grid {
@@ -7323,6 +8095,44 @@ html[lang="ar"] h6 {
   .Ika-product-selected-actions {
     animation-duration: 0.01ms !important;
   }
+}
+
+.Ika-detail-image > .Ika-product-image-placeholder {
+  position: relative;
+  z-index: 1;
+  width: 86%;
+  min-height: 300px;
+  background: transparent;
+}
+
+.Ika-detail-thumbnails {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.Ika-detail-thumbnails button {
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid #dfe8e1;
+  border-radius: 4px;
+  background: #f4eee3;
+  cursor: pointer;
+}
+
+.Ika-detail-thumbnails button[aria-pressed="true"] {
+  border-color: #173d2b;
+  box-shadow: inset 0 0 0 1px #173d2b;
+}
+
+.Ika-detail-thumbnails img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (prefers-reduced-motion: reduce) {

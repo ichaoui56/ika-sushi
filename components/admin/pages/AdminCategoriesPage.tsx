@@ -1,5 +1,6 @@
 import CategoryManager from "../CategoryManager";
 import { getAdminCategoryPage } from "../../../features/categories/queries";
+import { normalizeCategoryTranslations } from "../../../features/categories/translations";
 import { getCurrentUser } from "../../../lib/auth/session";
 
 interface CategorySearchParams {
@@ -21,11 +22,15 @@ export default async function AdminCategoriesPage({ searchParams }: { searchPara
     }),
     getCurrentUser(),
   ]);
+  const categories = categoryPage.categories.map((category) => ({
+    ...category,
+    translations: normalizeCategoryTranslations(category.translations),
+  }));
   const canManage = currentUser?.role === "ADMIN" || Boolean(currentUser?.permissions.includes("MANAGE_CATEGORIES"));
 
   return (
     <CategoryManager
-      categories={categoryPage.categories}
+      categories={categories}
       page={categoryPage.page}
       pageCount={categoryPage.pageCount}
       total={categoryPage.total}

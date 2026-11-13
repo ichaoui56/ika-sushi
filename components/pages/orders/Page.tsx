@@ -2,8 +2,8 @@ import LegacyPage from "../../legacy-page";
 import { Footer } from "../../layout/Footer";
 import { Preloader } from "../../layout/Preloader";
 import { SiteHeader } from "../../layout/SiteHeader";
-import { ThemeToggle } from "../../layout/ThemeToggle";
 import { TopBar } from "../../layout/TopBar";
+import Link from "next/link";
 import OrdersContent from "./OrdersContent";
 
 export default function Page() {
@@ -13,12 +13,16 @@ export default function Page() {
       <Preloader />
       <TopBar />
       <SiteHeader />
-      <main className="default-padding Ika-orders-page">
+      <main className="Ika-orders-page">
         <div className="container">
-          <div className="site-heading text-center">
-            <h4 className="sub-title">Your Ika activity</h4>
-            <h2 className="title">My Orders</h2>
-          </div>
+          <header className="Ika-orders-hero">
+            <div>
+              <span className="Ika-orders-eyebrow">Your Ika activity</span>
+              <h1>My Orders</h1>
+              <p>Track every order and revisit what you love.</p>
+            </div>
+            <Link href="/food-menu" className="Ika-orders-shop-link"><i className="fas fa-utensils" aria-hidden="true" />Browse menu</Link>
+          </header>
           <OrdersContent />
         </div>
       </main>

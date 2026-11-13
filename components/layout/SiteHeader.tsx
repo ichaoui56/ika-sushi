@@ -10,7 +10,7 @@ const links = [
   { label: "Home", href: "/" },
   { label: "Menu", href: "/food-menu" },
   { label: "Orders", href: "/orders" },
-  { label: "About us", href: "/about-us" },
+  { label: "Track order", href: "/track-order" },
   { label: "Contact us", href: "/contact" },
 ];
 
@@ -147,7 +147,7 @@ export function SiteHeader() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={active ? "is-active" : undefined}
+                    className={active ? "is-active" : link.href === "/track-order" ? "Ika-nav-track-link" : undefined}
                     aria-current={active ? "page" : undefined}
                   >
                     {link.label}
@@ -163,7 +163,7 @@ export function SiteHeader() {
 
               <Link
                 className="Ika-icon-link"
-                href="/login"
+                href="/account"
                 aria-label="Account"
                 title="Account"
               >
@@ -248,7 +248,7 @@ export function SiteHeader() {
             <i className="far fa-heart" aria-hidden="true" />
             Wishlist <CountBadge count={wishlistCount} />
           </Link>
-          <Link href="/login" onClick={closeMenu} tabIndex={menuOpen ? 0 : -1}>
+          <Link href="/account" onClick={closeMenu} tabIndex={menuOpen ? 0 : -1}>
             <i className="far fa-user" aria-hidden="true" />
             My account
           </Link>
@@ -305,6 +305,15 @@ export function SiteHeader() {
           <span>Cart</span>
         </Link>
         <Link
+          href="/track-order"
+          aria-label="Track order"
+          className={pathname.startsWith("/track-order") ? "is-active Ika-bottom-track" : "Ika-bottom-track"}
+          aria-current={pathname.startsWith("/track-order") ? "page" : undefined}
+        >
+          <i className="fas fa-map-marker-alt" aria-hidden="true" />
+          <span>Track</span>
+        </Link>
+        <Link
           href="/orders"
           aria-label="Orders"
           className={pathname.startsWith("/orders") ? "is-active" : ""}
@@ -314,10 +323,10 @@ export function SiteHeader() {
           <span>Orders</span>
         </Link>
         <Link
-          href="/login"
+          href="/account"
           aria-label="Account"
-          className={["/login", "/register"].includes(pathname) ? "is-active" : ""}
-          aria-current={["/login", "/register"].includes(pathname) ? "page" : undefined}
+          className={["/account", "/login", "/register"].includes(pathname) ? "is-active" : ""}
+          aria-current={["/account", "/login", "/register"].includes(pathname) ? "page" : undefined}
         >
           <i className="far fa-user" aria-hidden="true" />
           <span>Account</span>

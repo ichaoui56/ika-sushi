@@ -1,0 +1,5 @@
+ALTER TABLE "Location"
+  DROP COLUMN IF EXISTS "parentId",
+  DROP COLUMN IF EXISTS "type";
+
+DROP TYPE IF EXISTS "LocationType";

@@ -113,6 +113,28 @@ export default async function AdminDashboardPage() {
           ) : <p className="Ika-dashboard-empty">Aucune activité récente pour le moment.</p>}
         </section>
       </div>
+
+      <section className="Ika-dashboard-panel Ika-dashboard-delivery-zones" aria-labelledby="dashboard-delivery-zones-title">
+        <div className="Ika-dashboard-panel-heading">
+          <div><span className="Ika-dashboard-panel-icon"><i className="fas fa-map-marker-alt" aria-hidden="true" /></span><div><h2 id="dashboard-delivery-zones-title">Zones de livraison actives</h2><p>{stats.activeDeliveryZones.length} quartiers disponibles à Casablanca</p></div></div>
+          <a href="/admin/locations">Gérer les zones <i className="fas fa-arrow-right" aria-hidden="true" /></a>
+        </div>
+        {stats.activeDeliveryZones.length ? (
+          <div className="Ika-admin-table-scroll">
+            <table className="Ika-admin-table">
+              <thead><tr><th>Quartier</th><th>Frais de livraison</th><th>Temps estimé</th><th>Disponibilité</th></tr></thead>
+              <tbody>{stats.activeDeliveryZones.map((zone) => (
+                <tr key={zone.id}>
+                  <td>{zone.name}</td>
+                  <td>{formatMoney(zone.deliveryFeeMinor)}</td>
+                  <td>{zone.estimatedMinutes ? `${zone.estimatedMinutes} min` : "Non défini"}</td>
+                  <td><span className="Ika-dashboard-zone-active">Active</span></td>
+                </tr>
+              ))}</tbody>
+            </table>
+          </div>
+        ) : <p className="Ika-dashboard-empty">Aucune zone de livraison active.</p>}
+      </section>
     </div>
   );
 }

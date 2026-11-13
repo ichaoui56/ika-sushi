@@ -5,14 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale } from "../i18n/LocaleProvider";
 import { translate } from "../i18n/translations";
 import { useStore } from "./StoreProvider";
-import { getProductName } from "./product-locale";
+import { formatProductPrice, getProductName } from "./product-locale";
 import { toLocalImageUrl } from "../../lib/image-url";
-
-const formatPrice = (price: number) =>
-  `$${price.toLocaleString(undefined, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })}`;
 
 export function CartDrawer() {
   const { cart, removeFromCart, setCartQuantity, cartCount } = useStore();
@@ -136,7 +130,7 @@ export function CartDrawer() {
                       <i className="fas fa-plus" aria-hidden="true" />
                     </button>
                   </div>
-                  <strong>{formatPrice(item.price * item.quantity)}</strong>
+                  <strong>{formatProductPrice(item.price * item.quantity, item.currency, locale)}</strong>
                 </div>
               </div>
               <button
@@ -158,7 +152,7 @@ export function CartDrawer() {
         <div className="Ika-cart-drawer-footer">
           <div className="Ika-cart-drawer-subtotal">
             <span>{translate("Subtotal", locale)}</span>
-            <strong>{formatPrice(subtotal)}</strong>
+            <strong>{formatProductPrice(subtotal, cart[0]?.currency, locale)}</strong>
           </div>
           {/* <Link
             className="Ika-cart-drawer-action Ika-cart-drawer-view"

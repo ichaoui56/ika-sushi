@@ -10,7 +10,7 @@ const navigation: Array<{ label: string; href: string; icon: string; section: st
   { label: "Commandes", href: "/admin/orders", icon: "fa-shopping-cart", section: "Boutique", permissions: ["VIEW_ORDERS", "MANAGE_ORDERS"] },
   { label: "Produits", href: "/admin/products", icon: "fa-box", section: "Boutique", permissions: ["VIEW_PRODUCTS", "MANAGE_PRODUCTS"] },
   { label: "Catégories", href: "/admin/categories", icon: "fa-th-large", section: "Boutique", permissions: ["VIEW_CATEGORIES", "MANAGE_CATEGORIES"] },
-  { label: "Promotions", href: "/admin/hero", icon: "fa-bolt", section: "Boutique", permission: "MANAGE_HERO" },
+  { label: "Slides d'accueil", href: "/admin/hero", icon: "fa-bolt", section: "Boutique", permission: "MANAGE_HERO" },
   { label: "Zones de livraison", href: "/admin/locations", icon: "fa-map-marker-alt", section: "Boutique", permissions: ["VIEW_DELIVERY", "MANAGE_DELIVERY"] },
   { label: "Livraisons", href: "/admin/delivery", icon: "fa-truck", section: "Opérations", permissions: ["VIEW_DELIVERY", "MANAGE_DELIVERY"] },
   { label: "Équipe", href: "/admin/employees", icon: "fa-users", section: "Opérations", permissions: ["VIEW_EMPLOYEES", "MANAGE_EMPLOYEES"] },

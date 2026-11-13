@@ -17,6 +17,7 @@ export interface StoreProduct {
   name: string;
   translations?: ProductTranslations;
   price: number;
+  currency?: string;
   image: string;
   quantity: number;
 }

@@ -7,7 +7,7 @@ const labels: Record<string, string> = {
   "/admin/orders": "Commandes",
   "/admin/products": "Produits",
   "/admin/categories": "Catégories",
-  "/admin/hero": "Promotions",
+  "/admin/hero": "Slides d'accueil",
   "/admin/locations": "Zones de livraison",
   "/admin/delivery": "Livraisons",
   "/admin/employees": "Équipe",

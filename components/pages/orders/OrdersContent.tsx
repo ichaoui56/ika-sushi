@@ -9,14 +9,13 @@ export default async function OrdersContent() {
 
   return (
     <section className="Ika-orders-content" aria-labelledby="Ika-orders-heading">
-      <div className="Ika-orders-intro">
+      <header className="Ika-orders-content-heading">
         <div>
-          <span className="Ika-orders-eyebrow">Order history</span>
-          <h3 id="Ika-orders-heading">Everything you’ve ordered, in one place</h3>
-          <p>Check back here to follow your Ika orders and revisit your favorites.</p>
+          <span>ORDER HISTORY</span>
+          <h2 id="Ika-orders-heading">Recent orders</h2>
         </div>
-        <i className="fas fa-receipt" aria-hidden="true" />
-      </div>
+        {orders !== null && <p><strong>{orders.length}</strong><span>{orders.length === 1 ? "order" : "orders"}</span></p>}
+      </header>
 
       {orders === null ? (
         <div className="Ika-empty-state Ika-orders-empty">
@@ -36,10 +35,13 @@ export default async function OrdersContent() {
         <div className="Ika-order-history-list">
           {orders.map((order) => (
             <article className="Ika-order-history-item" key={order.reference}>
-              <header><div><span>{order.reference}</span><time dateTime={order.createdAt.toISOString()}>{order.createdAt.toLocaleDateString()}</time></div><strong>{order.status.replaceAll("_", " ")}</strong></header>
-              <p>{order.locationNameSnapshot}</p>
-              <ul>{order.items.map((item, index) => <li key={`${order.reference}-${index}`}>{item.quantity} × {item.productName} <span>{formatPrice(item.lineTotalMinor, order.currency)}</span></li>)}</ul>
-              <footer><span>{order.items.length} products</span><strong>{formatPrice(order.totalMinor, order.currency)}</strong></footer>
+              <header className="Ika-order-history-head">
+                <div><strong>{order.reference}</strong><time dateTime={order.createdAt.toISOString()}>{order.createdAt.toLocaleDateString()}</time></div>
+                <span className={`Ika-order-status is-${order.status.toLowerCase().replaceAll("_", "-")}`}>{order.status.replaceAll("_", " ")}</span>
+              </header>
+              <p className="Ika-order-history-location"><i className="fas fa-map-marker-alt" aria-hidden="true" /><span>Delivery area</span><strong>{order.locationNameSnapshot}</strong></p>
+              <ul>{order.items.map((item, index) => <li key={`${order.reference}-${index}`}><span>{item.quantity} × {item.productName}</span><strong>{formatPrice(item.lineTotalMinor, order.currency)}</strong></li>)}</ul>
+              <footer><span>{order.items.length} {order.items.length === 1 ? "item" : "items"}</span><span>Order total</span><strong>{formatPrice(order.totalMinor, order.currency)}</strong></footer>
             </article>
           ))}
         </div>

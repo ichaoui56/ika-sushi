@@ -4,23 +4,22 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale } from "../../../i18n/LocaleProvider";
 import { translate } from "../../../i18n/translations";
 import { ProductCard } from "../../../store/ProductCard";
-import { catalogProducts, menuCategories, type CatalogProduct } from "../../../store/products";
-import { getProductDescription, getProductName } from "../../../store/product-locale";
+import type { CatalogCategory, CatalogProduct } from "../../../store/products";
+import { formatProductPrice, getProductDescription, getProductName } from "../../../store/product-locale";
 import { toLocalImageUrl } from "../../../../lib/image-url";
-
-type MenuCategory = { id: string; name: string };
+import { localizeCategoryName, normalizeCategoryTranslations } from "../../../../features/categories/translations";
 
 export default function ValidthemeShopAreaSection({
-  products = catalogProducts,
-  categories = menuCategories,
+  products,
+  categories,
 }: {
-  products?: CatalogProduct[];
-  categories?: readonly MenuCategory[];
+  products: CatalogProduct[];
+  categories: readonly CatalogCategory[];
 }) {
   const { locale } = useLocale();
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
-  const activeCategoryRef = useRef<string>(categories[0].id);
+  const activeCategoryRef = useRef<string>(categories[0]?.id ?? "");
   const categoryNavRef = useRef<HTMLElement>(null);
   const searchFormRef = useRef<HTMLFormElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -33,7 +32,11 @@ export default function ValidthemeShopAreaSection({
           const categoryNames = product.categories
             .map((categoryId) => categories.find((category) => category.id === categoryId))
             .filter((category) => category !== undefined)
-            .flatMap((category) => [category.name, translate(category.name, locale)]);
+            .flatMap((category) => [
+              category.name,
+              localizeCategoryName(category, locale),
+              ...Object.values(normalizeCategoryTranslations(category.translations).name ?? {}),
+            ]);
           const searchableText = [
             product.name,
             productName,
@@ -99,7 +102,7 @@ export default function ValidthemeShopAreaSection({
     const updateActiveCategory = () => {
       frame = null;
       const marker = (categoryNavRef.current?.getBoundingClientRect().bottom ?? 120) + 20;
-      let nextCategory: string = categories[0].id;
+      let nextCategory: string = categories[0]?.id ?? "";
 
       for (const category of categories) {
         const section = document.getElementById(`Ika-menu-${category.id}`);
@@ -249,10 +252,10 @@ export default function ValidthemeShopAreaSection({
                             <span className="Ika-menu-search-result-copy">
                               <span className="Ika-menu-search-result-name">{getProductName(product, locale)}</span>
                               <span className="Ika-menu-search-result-category">
-                                {category ? translate(category.name, locale) : ""}
+                                {category ? localizeCategoryName(category, locale) : ""}
                               </span>
                             </span>
-                            <strong className="Ika-menu-search-result-price">${product.price.toFixed(2)}</strong>
+                            <strong className="Ika-menu-search-result-price">{formatProductPrice(product.price, product.currency, locale)}</strong>
                             <i className="fas fa-arrow-left Ika-menu-search-result-arrow" aria-hidden="true" />
                           </button>
                         </li>
@@ -272,7 +275,7 @@ export default function ValidthemeShopAreaSection({
             aria-label={translate("Jump to menu category", locale)}
           >
             {categories.map((category, index) => {
-              const translatedCategoryName = translate(category.name, locale);
+              const translatedCategoryName = localizeCategoryName(category, locale);
 
               return (
                 <a
@@ -303,7 +306,7 @@ export default function ValidthemeShopAreaSection({
           {categories.map((category, index) => {
             const categoryProducts = products.filter((product) => product.categories.includes(category.id));
             const titleId = `Ika-menu-title-${category.id}`;
-            const translatedCategoryName = translate(category.name, locale);
+            const translatedCategoryName = localizeCategoryName(category, locale);
 
             return (
               <section

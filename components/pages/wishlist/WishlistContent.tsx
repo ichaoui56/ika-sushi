@@ -15,7 +15,7 @@ export default function WishlistContent() {
         <i className="far fa-heart" aria-hidden="true" />
         <h2>No favorites just yet</h2>
         <p>Tap the heart on a dish to save it here.</p>
-        <Link className="btn btn-theme" href="/shop">Discover the shop</Link>
+        <Link className="btn btn-theme" href="/food-menu">Discover the shop</Link>
       </div>
     );
   }

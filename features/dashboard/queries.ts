@@ -10,7 +10,7 @@ export async function getDashboardSummary() {
   const chartStart = new Date(startOfDay);
   chartStart.setDate(chartStart.getDate() - 13);
 
-  const [totalOrders, todayOrders, pendingOrders, completedOrders, cancelledOrders, revenue, todayRevenue, customers, products, promotionalProducts, bestSellers, activeLocations, revenueByDay, recentOrders, recentCustomers, recentProducts] = await Promise.all([
+  const [totalOrders, todayOrders, pendingOrders, completedOrders, cancelledOrders, revenue, todayRevenue, customers, products, promotionalProducts, bestSellers, activeDeliveryZones, revenueByDay, recentOrders, recentCustomers, recentProducts] = await Promise.all([
     prisma.order.count(),
     prisma.order.count({ where: { createdAt: { gte: startOfDay } } }),
     prisma.order.count({ where: { status: OrderStatus.PENDING } }),
@@ -22,7 +22,13 @@ export async function getDashboardSummary() {
     prisma.product.count({ where: { isAvailable: true } }),
     prisma.product.count({ where: { isOnPromotion: true, isAvailable: true } }),
     prisma.product.count({ where: { isFeaturedBestSeller: true, isAvailable: true } }),
-    prisma.location.count({ where: { isActive: true, deliveryAvailable: true } }),
+    prisma.location.findMany({
+      where: {
+        isActive: true,
+      },
+      select: { id: true, name: true, deliveryFeeMinor: true, estimatedMinutes: true },
+      orderBy: [{ sortOrder: "asc" }, { name: "asc" }],
+    }),
     prisma.$queryRaw<Array<{ day: Date; totalMinor: number | bigint }>>`
       SELECT date_trunc('day', "createdAt") AS day,
         COALESCE(SUM("totalMinor"), 0)::bigint AS "totalMinor"
@@ -99,7 +105,8 @@ export async function getDashboardSummary() {
     products,
     promotionalProducts,
     bestSellers,
-    activeLocations,
+    activeLocations: activeDeliveryZones.length,
+    activeDeliveryZones,
     dailyRevenue: dailyRevenue.slice(7),
     weeklyRevenueMinor: dailyRevenue.slice(7).reduce((sum, day) => sum + day.totalMinor, 0),
     previousWeekRevenueMinor: dailyRevenue.slice(0, 7).reduce((sum, day) => sum + day.totalMinor, 0),

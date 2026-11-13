@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { createCategory, updateCategory } from "../../features/categories/actions";
+import { normalizeCategoryTranslations } from "../../features/categories/translations";
 import type { AdminCategoryPage } from "./category-types";
 import "./CategoryManagement.css";
 
@@ -19,6 +20,8 @@ function slugify(value: string) {
 export default function CategoryEditor({ category }: { category?: AdminCategoryPage }) {
   const router = useRouter();
   const [name, setName] = useState(category?.name ?? "");
+  const [nameEn, setNameEn] = useState(() => normalizeCategoryTranslations(category?.translations).name?.en ?? "");
+  const [nameAr, setNameAr] = useState(() => normalizeCategoryTranslations(category?.translations).name?.ar ?? "");
   const [slug, setSlug] = useState(category?.slug ?? "");
   const [slugEdited, setSlugEdited] = useState(Boolean(category));
   const [description, setDescription] = useState(category?.description ?? "");
@@ -34,6 +37,8 @@ export default function CategoryEditor({ category }: { category?: AdminCategoryP
     try {
       const input = {
         name,
+        nameEn,
+        nameAr,
         slug: slug || undefined,
         description: description || undefined,
         isActive,
@@ -66,7 +71,9 @@ export default function CategoryEditor({ category }: { category?: AdminCategoryP
         <section className="Ika-category-editor-section">
           <div className="Ika-category-editor-section-heading"><span>CATEGORY CONTENT</span><strong>Details</strong></div>
           <div className="Ika-category-editor-fields">
-            <label className="is-wide">Category name<input value={name} onChange={(event) => { const nextName = event.target.value; setName(nextName); if (!slugEdited) setSlug(slugify(nextName)); }} maxLength={120} required placeholder="e.g. Sushi rolls" /></label>
+            <label>Category name (French)<input value={name} onChange={(event) => { const nextName = event.target.value; setName(nextName); if (!slugEdited) setSlug(slugify(nextName)); }} maxLength={120} required placeholder="e.g. Rouleaux de sushi" /></label>
+            <label>Category name (English)<input value={nameEn} onChange={(event) => setNameEn(event.target.value)} maxLength={120} required placeholder="e.g. Sushi rolls" /></label>
+            <label>Category name (Arabic)<input dir="rtl" lang="ar" value={nameAr} onChange={(event) => setNameAr(event.target.value)} maxLength={120} required placeholder="مثال: لفائف السوشي" /></label>
             <label className="is-wide">URL slug<div className="Ika-category-slug-field"><input value={slug} onChange={(event) => { setSlugEdited(true); setSlug(event.target.value); }} maxLength={140} placeholder="Generated from category name" /><button type="button" onClick={() => { setSlugEdited(false); setSlug(slugify(name)); }}>Auto</button></div></label>
             <label className="is-wide">Description<textarea value={description} onChange={(event) => setDescription(event.target.value)} rows={4} maxLength={2000} placeholder="Describe the products in this category" /></label>
             <label>Display order<input type="number" step="1" value={sortOrder} onChange={(event) => setSortOrder(event.target.value)} /></label>

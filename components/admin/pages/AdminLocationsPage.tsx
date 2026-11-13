@@ -1,5 +1,6 @@
 import LocationManager from "../LocationManager";
 import { getAdminLocationPage } from "../../../features/locations/queries";
+import { normalizeLocationTranslations } from "../../../features/locations/translations";
 import { getCurrentUser } from "../../../lib/auth/session";
 
 interface LocationSearchParams {
@@ -21,11 +22,15 @@ export default async function AdminLocationsPage({ searchParams }: { searchParam
     }),
     getCurrentUser(),
   ]);
+  const locations = locationPage.locations.map((location) => ({
+    ...location,
+    translations: normalizeLocationTranslations(location.translations),
+  }));
   const canManage = currentUser?.role === "ADMIN" || Boolean(currentUser?.permissions.includes("MANAGE_DELIVERY"));
 
   return (
     <LocationManager
-      locations={locationPage.locations}
+      locations={locations}
       page={locationPage.page}
       pageCount={locationPage.pageCount}
       total={locationPage.total}

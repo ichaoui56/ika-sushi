@@ -21,3 +21,12 @@ export function getProductDescription(product: LocalizableProduct, locale: Local
   if (product.shortDescription) return product.shortDescription;
   return localizeProductText(product.description || "", product.translations, "description", locale);
 }
+
+export function formatProductPrice(price: number, currency = "MAD", locale: Locale = "fr") {
+  const localeTag = locale === "fr" ? "fr-MA" : locale === "ar" ? "ar-MA" : "en-MA";
+  try {
+    return new Intl.NumberFormat(localeTag, { style: "currency", currency }).format(price);
+  } catch {
+    return `${price.toFixed(2)} ${currency}`;
+  }
+}

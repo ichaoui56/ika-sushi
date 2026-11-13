@@ -1,7 +1,7 @@
 import { ProductCard } from "../../../store/ProductCard";
-import { catalogProducts } from "../../../store/products";
+import type { CatalogProduct } from "../../../store/products";
 
-export default function ValidthemeShopAreaSection() {
+export default function ValidthemeShopAreaSection({ products }: { products: CatalogProduct[] }) {
   return (
     <section className="validtheme-shop-area default-padding text-center">
       <div className="container">
@@ -18,9 +18,9 @@ export default function ValidthemeShopAreaSection() {
           </div>
         </div>
         <div className="Ika-product-grid">
-          {catalogProducts.map((product) => (
+          {products.length ? products.map((product) => (
             <ProductCard key={product.id} product={product} />
-          ))}
+          )) : <p>No products are currently available.</p>}
         </div>
       </div>
     </section>

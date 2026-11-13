@@ -81,7 +81,7 @@ export async function createProduct(input: unknown): Promise<MutationResult> {
     },
   });
 
-  revalidatePath("/shop");
+  revalidatePath("/food-menu");
   revalidatePath("/food-menu");
   revalidatePath("/");
   revalidatePath("/admin/products");
@@ -131,7 +131,7 @@ export async function updateProduct(input: unknown): Promise<MutationResult> {
     },
   });
 
-  revalidatePath("/shop");
+  revalidatePath("/food-menu");
   revalidatePath("/food-menu");
   revalidatePath("/");
   revalidatePath("/admin/products");
@@ -149,7 +149,7 @@ export async function deleteProduct(productId: string): Promise<MutationResult> 
   if (!product) return { success: false, message: "Product not found." };
   await prisma.product.delete({ where: { id: productId } });
   await Promise.allSettled(product.images.flatMap(({ cid }) => cid ? [deleteImage(cid)] : []));
-  revalidatePath("/shop");
+  revalidatePath("/food-menu");
   revalidatePath("/food-menu");
   revalidatePath("/");
   revalidatePath("/admin/products");
@@ -179,7 +179,7 @@ export async function attachProductImage(productId: string, imageUrl: string): P
   });
 
   revalidatePath("/admin/products");
-  revalidatePath("/shop");
+  revalidatePath("/food-menu");
   revalidatePath("/food-menu");
   return { success: true, message: "Image uploaded." };
 }
@@ -205,7 +205,7 @@ export async function setPrimaryProductImage(imageId: string): Promise<MutationR
   ]);
 
   revalidatePath("/admin/products");
-  revalidatePath("/shop");
+  revalidatePath("/food-menu");
   revalidatePath("/food-menu");
   return { success: true, message: "Cover image updated." };
 }
@@ -232,7 +232,7 @@ export async function deleteProductImage(imageId: string): Promise<MutationResul
   }
 
   revalidatePath("/admin/products");
-  revalidatePath("/shop");
+  revalidatePath("/food-menu");
   revalidatePath("/food-menu");
   return { success: true, message: "Image deleted." };
 }

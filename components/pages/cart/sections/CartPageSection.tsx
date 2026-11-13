@@ -2,17 +2,15 @@
 
 import { useStore } from "../../../store/StoreProvider";
 import { useLocale } from "../../../i18n/LocaleProvider";
-import { getProductName } from "../../../store/product-locale";
+import { formatProductPrice, getProductName } from "../../../store/product-locale";
 import { toLocalImageUrl } from "../../../../lib/image-url";
 import Link from "next/link";
-
-const formatPrice = (price: number) =>
-  `$${price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
 export default function CartPageSection() {
   const { cart, ready, removeFromCart, setCartQuantity } = useStore();
   const { locale } = useLocale();
   const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const currency = cart[0]?.currency ?? "MAD";
 
   if (!ready) {
     return (
@@ -30,7 +28,7 @@ export default function CartPageSection() {
             <i className="fas fa-shopping-bag" aria-hidden="true" />
             <h2>Your cart is waiting for something delicious</h2>
             <p>Explore the menu and add your favorites here.</p>
-            <Link className="Ika-cart-checkout" href="/shop">
+            <Link className="Ika-cart-checkout" href="/food-menu">
               Explore the shop <i className="fas fa-arrow-right" aria-hidden="true" />
             </Link>
           </div>
@@ -57,13 +55,13 @@ export default function CartPageSection() {
             {cart.map((item) => {
               const productName = getProductName(item, locale);
               return <article className="Ika-cart-item" key={item.id}>
-                <Link className="Ika-cart-item-image" href="/shop-single" aria-label={`View ${productName}`}>
+                <Link className="Ika-cart-item-image" href={`/shop-single?product=${encodeURIComponent(item.id)}`} aria-label={`View ${productName}`}>
                   <img src={toLocalImageUrl(item.image)} alt={productName} />
                 </Link>
                 <div className="Ika-cart-item-info">
                   <span>IKA SUSHI</span>
-                  <h3><Link href="/shop-single">{productName}</Link></h3>
-                  <p>{formatPrice(item.price)} each</p>
+                  <h3><Link href={`/shop-single?product=${encodeURIComponent(item.id)}`}>{productName}</Link></h3>
+                  <p>{formatProductPrice(item.price, item.currency, locale)} each</p>
                 </div>
                 <div className="Ika-cart-quantity-block">
                   <span>Quantity</span>
@@ -96,7 +94,7 @@ export default function CartPageSection() {
                 </div>
                 <div className="Ika-cart-item-total">
                   <span>Item total</span>
-                  <strong>{formatPrice(item.price * item.quantity)}</strong>
+                  <strong>{formatProductPrice(item.price * item.quantity, item.currency, locale)}</strong>
                   <button
                     className="Ika-cart-remove"
                     type="button"
@@ -110,7 +108,7 @@ export default function CartPageSection() {
                 </div>
               </article>;
             })}
-            <Link className="Ika-cart-continue" href="/shop">
+            <Link className="Ika-cart-continue" href="/food-menu">
               <i className="fas fa-arrow-left" aria-hidden="true" />
               Continue shopping
             </Link>
@@ -121,7 +119,7 @@ export default function CartPageSection() {
             <h2 id="Ika-cart-summary-title">Cart totals</h2>
             <div className="Ika-cart-summary-row">
               <span>Subtotal</span>
-              <strong>{formatPrice(subtotal)}</strong>
+              <strong>{formatProductPrice(subtotal, currency, locale)}</strong>
             </div>
             <div className="Ika-cart-summary-row Ika-cart-shipping">
               <span>Shipping</span>
@@ -129,7 +127,7 @@ export default function CartPageSection() {
             </div>
             <div className="Ika-cart-summary-row Ika-cart-grand-total">
               <strong>Total</strong>
-              <strong>{formatPrice(subtotal)}</strong>
+              <strong>{formatProductPrice(subtotal, currency, locale)}</strong>
             </div>
             <p className="Ika-cart-summary-note">Taxes and delivery are confirmed at checkout.</p>
             <Link className="Ika-cart-checkout" href="/checkout">

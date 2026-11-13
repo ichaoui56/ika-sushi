@@ -260,6 +260,18 @@
   box-shadow: 0 0 0 3px rgba(7, 43, 49, 0.12);
 }
 
+.Ika-auth-field input[aria-invalid="true"] {
+  border-color: #b42318;
+  background: #fffafa;
+}
+
+.Ika-auth-field-error {
+  margin: -2px 0 0;
+  color: #b42318;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 .Ika-auth-submit {
   min-height: 52px;
   margin-top: 5px;

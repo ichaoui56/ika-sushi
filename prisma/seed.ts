@@ -81,27 +81,12 @@ async function main() {
     console.warn("Skipping administrator seed. Set a strong ADMIN_PASSWORD to create the initial admin account.");
   }
 
-  const city = await prisma.location.upsert({
-    where: { slug: "casablanca" },
-    create: {
-      name: "Casablanca",
-      slug: "casablanca",
-      type: "CITY",
-      deliveryAvailable: false,
-      sortOrder: 0,
-    },
-    update: {},
-  });
-
   for (const [index, name] of deliveryNeighborhoods.entries()) {
     await prisma.location.upsert({
       where: { slug: slugify(name) },
       create: {
         name,
         slug: slugify(name),
-        type: "NEIGHBORHOOD",
-        parentId: city.id,
-        deliveryAvailable: false,
         sortOrder: index,
       },
       update: {},
@@ -174,7 +159,7 @@ async function main() {
       data: {
         ...slide,
         ctaText: "COMMANDER",
-        ctaDestination: "/shop",
+        ctaDestination: "/food-menu",
         sortOrder: index,
         isActive: true,
       },

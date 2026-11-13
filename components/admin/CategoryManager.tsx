@@ -134,7 +134,7 @@ export default function CategoryManager({
             <thead><tr><th>Category</th><th>Products</th><th>Order</th><th>Status</th>{canManage && <th aria-label="Actions" />}</tr></thead>
             <tbody>{categories.map((category) => (
               <tr key={category.id}>
-                <td><div className="Ika-category-list-identity"><span><strong>{category.name}</strong><small>/{category.slug}</small></span></div></td>
+                <td><div className="Ika-category-list-identity"><span><strong>{category.name}</strong><small>{category.translations.name?.en ?? "English translation missing"}</small><small dir="rtl">{category.translations.name?.ar ?? "Arabic translation missing"}</small><small>/{category.slug}</small></span></div></td>
                 <td>{category._count.products}</td>
                 <td>{category.sortOrder}</td>
                 <td><span className={`Ika-category-status${category.isActive ? " is-active" : ""}`}>{category.isActive ? "Active" : "Hidden"}</span></td>
@@ -149,7 +149,7 @@ export default function CategoryManager({
             <article className="Ika-category-card" key={category.id}>
               <div className="Ika-category-card-content">
                 <div className="Ika-category-card-title">
-                  <div><h2>{category.name}</h2><small>/{category.slug}</small></div>
+                  <div><h2>{category.name}</h2><small>{category.translations.name?.en ?? "English translation missing"}</small><small dir="rtl">{category.translations.name?.ar ?? "Arabic translation missing"}</small><small>/{category.slug}</small></div>
                   <span className={`Ika-category-status${category.isActive ? " is-active" : ""}`}>{category.isActive ? "Active" : "Hidden"}</span>
                 </div>
                 <p>{category.description || "No description"}</p>

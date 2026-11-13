@@ -14,6 +14,19 @@ const imageUrlSchema = z.union([
   z.string().trim().regex(/^\/api\/images\/[A-Za-z0-9]{20,128}$/),
 ]);
 
+const localizedHeroCopySchema = z.object({
+  title: z.string().trim().min(1).max(180),
+  subtitle: z.string().trim().max(180),
+  description: z.string().trim().max(2000),
+  ctaText: z.string().trim().max(80),
+});
+
+export const heroSlideTranslationsSchema = z.object({
+  fr: localizedHeroCopySchema,
+  en: localizedHeroCopySchema,
+  ar: localizedHeroCopySchema,
+});
+
 export const heroSlideSchema = z.object({
   title: z.string().trim().min(1).max(180),
   subtitle: z.string().trim().max(180).optional(),
@@ -21,6 +34,8 @@ export const heroSlideSchema = z.object({
   imageUrl: imageUrlSchema.optional(),
   ctaText: z.string().trim().max(80).optional(),
   ctaDestination: destinationSchema.optional(),
+  productId: z.string().trim().min(1).nullable().optional(),
+  translations: heroSlideTranslationsSchema.optional(),
   sortOrder: z.number().int().default(0),
   isActive: z.boolean().default(true),
   visibleFrom: z.coerce.date().nullable().optional(),

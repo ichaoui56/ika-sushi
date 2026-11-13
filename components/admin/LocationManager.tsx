@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { deleteLocation } from "../../features/locations/actions";
-import type { AdminLocationRecord, LocationType } from "./location-types";
+import type { AdminLocationRecord } from "./location-types";
 import "./LocationManagement.css";
 
 type LocationView = "list" | "cards";
@@ -18,12 +18,6 @@ function locationsHref(page: number, view: LocationView, search: string) {
 function locationEditHref(locationId: string) {
   return `/admin/locations/new?edit=${encodeURIComponent(locationId)}`;
 }
-
-const typeLabels: Record<LocationType, string> = {
-  CITY: "City",
-  NEIGHBORHOOD: "Neighborhood",
-  STREET: "Street",
-};
 
 function LocationActions({ location, pending, onDelete }: { location: AdminLocationRecord; pending: boolean; onDelete: () => void }) {
   return (
@@ -51,7 +45,7 @@ function formatFee(minor: number) {
 }
 
 function usedBy(location: AdminLocationRecord) {
-  return location._count.children + location._count.addresses + location._count.orders;
+  return location._count.addresses + location._count.orders;
 }
 
 export default function LocationManager({
@@ -129,11 +123,10 @@ export default function LocationManager({
       ) : view === "list" ? (
         <div className="Ika-location-list-scroll">
           <table className="Ika-location-list">
-            <thead><tr><th>Location</th><th>Type</th><th>Delivery fee</th><th>Used by</th><th>Status</th>{canManage && <th aria-label="Actions" />}</tr></thead>
+            <thead><tr><th>Location</th><th>Delivery fee</th><th>Used by</th><th>Status</th>{canManage && <th aria-label="Actions" />}</tr></thead>
             <tbody>{locations.map((location) => (
               <tr key={location.id}>
-                <td><div className="Ika-location-list-identity"><strong>{location.name}</strong><small>/{location.slug}</small></div></td>
-                <td>{typeLabels[location.type]}</td>
+                <td><div className="Ika-location-list-identity"><strong>{location.name}</strong>{location.translations.name?.en && <small>{location.translations.name.en}</small>}{location.translations.name?.ar && <small dir="rtl">{location.translations.name.ar}</small>}<small>/{location.slug}</small></div></td>
                 <td className="Ika-location-fee">{formatFee(location.deliveryFeeMinor)}</td>
                 <td>{usedBy(location)}</td>
                 <td><span className={`Ika-location-status${location.isActive ? " is-active" : ""}`}>{location.isActive ? "Active" : "Inactive"}</span></td>
@@ -146,8 +139,10 @@ export default function LocationManager({
         <div className="Ika-location-card-grid">
           {locations.map((location) => (
             <article className="Ika-location-card" key={location.id}>
-              <div className="Ika-location-card-top"><span className={`Ika-location-type is-${location.type.toLowerCase()}`}>{typeLabels[location.type]}</span><span className={`Ika-location-status${location.isActive ? " is-active" : ""}`}>{location.isActive ? "Active" : "Inactive"}</span></div>
+              <div className="Ika-location-card-top"><span className={`Ika-location-status${location.isActive ? " is-active" : ""}`}>{location.isActive ? "Active" : "Inactive"}</span></div>
               <h2>{location.name}</h2>
+              {location.translations.name?.en && <small>{location.translations.name.en}</small>}
+              {location.translations.name?.ar && <small dir="rtl">{location.translations.name.ar}</small>}
               <small>/{location.slug}</small>
               <div className="Ika-location-card-facts"><div><span>Delivery fee</span><strong>{formatFee(location.deliveryFeeMinor)}</strong></div><div><span>Used by</span><strong>{usedBy(location)}</strong></div></div>
               <footer className="Ika-location-card-footer"><span>Order {location.sortOrder}</span>{canManage && <LocationActions location={location} pending={pendingId === location.id} onDelete={() => void removeLocation(location)} />}</footer>

@@ -3,7 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { prisma } from "../../lib/prisma";
 import { getCurrentUser } from "../../lib/auth/session";
-import { customerAddressSchema, customerAddressUpdateSchema, customerProfileSchema } from "./schemas";
+import { hashPassword, verifyPassword } from "../../lib/auth/password";
+import { customerAddressSchema, customerAddressUpdateSchema, customerPasswordSchema, customerProfileSchema } from "./schemas";
 
 async function requireCustomer() {
   const user = await getCurrentUser();
@@ -20,19 +21,41 @@ export async function updateCustomerProfile(input: unknown) {
   return { success: true, message: "Profile updated." };
 }
 
+export async function updateCustomerPassword(input: unknown) {
+  const user = await requireCustomer();
+  const parsed = customerPasswordSchema.safeParse(input);
+  if (!parsed.success) return { success: false, message: "Use a password of at least 8 characters and confirm it." };
+
+  const account = await prisma.user.findUnique({ where: { id: user.id }, select: { passwordHash: true } });
+  if (!account) return { success: false, message: "Account not found." };
+  if (account.passwordHash && !(await verifyPassword(account.passwordHash, parsed.data.currentPassword ?? ""))) {
+    return { success: false, message: "Current password is incorrect." };
+  }
+  if (account.passwordHash && parsed.data.currentPassword === parsed.data.newPassword) {
+    return { success: false, message: "Choose a password different from your current one." };
+  }
+
+  await prisma.user.update({
+    where: { id: user.id },
+    data: { passwordHash: await hashPassword(parsed.data.newPassword) },
+  });
+  revalidatePath("/account");
+  return { success: true, message: "Password updated." };
+}
+
 export async function addCustomerAddress(input: unknown) {
   const user = await requireCustomer();
   const parsed = customerAddressSchema.safeParse(input);
   if (!parsed.success) return { success: false, message: "Check the address details." };
 
   const location = await prisma.location.findFirst({
-    where: { id: parsed.data.locationId, isActive: true, deliveryAvailable: true },
+    where: { id: parsed.data.locationId, isActive: true },
     select: { id: true },
   });
   if (!location) return { success: false, message: "That delivery area is not available." };
 
   const addressCount = await prisma.address.count({ where: { userId: user.id } });
-  await prisma.address.create({
+  const address = await prisma.address.create({
     data: {
       ...parsed.data,
       userId: user.id,
@@ -44,9 +67,9 @@ export async function addCustomerAddress(input: unknown) {
       instructions: parsed.data.instructions || null,
       isDefault: addressCount === 0,
     },
+    include: { location: { select: { id: true, name: true } } },
   });
-  revalidatePath("/account");
-  return { success: true, message: "Address saved." };
+  return { success: true, message: "Address saved.", address };
 }
 
 export async function updateCustomerAddress(input: unknown) {
@@ -55,7 +78,7 @@ export async function updateCustomerAddress(input: unknown) {
   if (!parsed.success) return { success: false, message: "Check the address details." };
   const { addressId, ...data } = parsed.data;
   const location = await prisma.location.findFirst({
-    where: { id: data.locationId, isActive: true, deliveryAvailable: true },
+    where: { id: data.locationId, isActive: true },
     select: { id: true },
   });
   if (!location) return { success: false, message: "That delivery area is not available." };
@@ -101,6 +124,5 @@ export async function deleteCustomerAddress(addressId: string) {
   } else {
     await prisma.address.delete({ where: { id: addressId } });
   }
-  revalidatePath("/account");
   return { success: true, message: "Address deleted." };
 }

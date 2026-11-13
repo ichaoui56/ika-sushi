@@ -9,7 +9,6 @@ export async function getActiveCatalog() {
     orderBy: { sortOrder: "asc" },
     include: {
       products: {
-        where: { product: { isAvailable: true } },
         orderBy: { product: { sortOrder: "asc" } },
         include: {
           product: {
@@ -62,20 +61,4 @@ export async function getAdminProducts({
   });
 
   return { products, page: currentPage, pageCount, total, pageSize, search: searchTerm, categoryId: categoryId ?? "" };
-}
-
-export async function getBestSellerProducts() {
-  return prisma.product.findMany({
-    where: { isAvailable: true, isFeaturedBestSeller: true },
-    orderBy: { sortOrder: "asc" },
-    include: { images: { where: { isPrimary: true }, take: 1 } },
-  });
-}
-
-export async function getPromotionalProducts() {
-  return prisma.product.findMany({
-    where: { isAvailable: true, isOnPromotion: true },
-    orderBy: { sortOrder: "asc" },
-    include: { images: { where: { isPrimary: true }, take: 1 } },
-  });
 }
