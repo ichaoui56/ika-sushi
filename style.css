@@ -563,6 +563,7 @@ Sidebar heading:  22px 'Jost', sans-serif
 }
 
 .Ika-menu-toggle,
+.Ika-mobile-account,
 .Ika-mobile-menu,
 .Ika-menu-scrim,
 .Ika-bottom-nav {
@@ -2876,9 +2877,7 @@ Sidebar heading:  22px 'Jost', sans-serif
     display: inline-flex;
   }
 
-  .Ika-desktop-cart {
-    display: inline-flex;
-  }
+  .Ika-desktop-cart { display: none; }
 
   .vt-products .product .product-contents .shop-action li a {
     right: 5px;
@@ -2890,12 +2889,22 @@ Sidebar heading:  22px 'Jost', sans-serif
     display: none;
   }
 
+  .Ika-mobile-account {
+    position: relative;
+    z-index: 1004;
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    border: 1px solid rgba(24, 61, 43, 0.12);
+    background: #fbf8f0;
+  }
+
   .Ika-menu-toggle {
     position: relative;
     z-index: 1004;
-    width: 46px;
-    height: 46px;
-    padding: 12px 10px;
+    width: 42px;
+    height: 42px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2940,6 +2949,10 @@ Sidebar heading:  22px 'Jost', sans-serif
   .Ika-header.is-menu-open .Ika-brand,
   .Ika-header.is-menu-open .Ika-desktop-nav,
   .Ika-header.is-menu-open .Ika-header-actions {
+    display: none;
+  }
+
+  .Ika-header.is-menu-open .Ika-mobile-account {
     display: none;
   }
 
@@ -3229,10 +3242,8 @@ Sidebar heading:  22px 'Jost', sans-serif
     height: 34px;
   }
 
-  .Ika-menu-toggle {
-    width: 42px;
-    height: 42px;
-  }
+  .Ika-mobile-account,
+  .Ika-menu-toggle { width: 38px; height: 38px; }
 
 }
 
@@ -6096,6 +6107,8 @@ html[lang="ar"] h6 {
 
 .Ika-product-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   overflow: hidden;
   border: 1px solid rgba(24, 61, 43, 0.1);
@@ -6473,18 +6486,28 @@ html[lang="ar"] h6 {
 }
 
 .Ika-product-content {
+  min-height: 0;
+  flex: 1 1 auto;
   padding: 18px 19px 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .Ika-product-tags {
-  min-height: 20px;
+  min-width: 0;
+  min-height: 22px;
+  overflow: hidden;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: flex-start;
   gap: 7px;
   margin-bottom: 7px;
 }
 
 .Ika-product-tags span {
+  flex: 0 0 auto;
+  max-width: 100%;
+  overflow: hidden;
   padding: 4px 8px;
   border-radius: 20px;
   color: #6d674e;
@@ -6492,13 +6515,21 @@ html[lang="ar"] h6 {
   font-size: 11px;
   font-weight: 600;
   line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .Ika-product-content h3 {
+  min-height: 2.6em;
+  max-height: 2.6em;
   margin: 0 0 7px;
+  display: -webkit-box;
+  overflow: hidden;
   font-size: 19px;
   line-height: 1.3;
   text-align: start;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .Ika-product-content h3 a {
@@ -6510,19 +6541,38 @@ html[lang="ar"] h6 {
 }
 
 .Ika-product-description {
+  min-height: calc(1.55em * 3);
+  max-height: calc(1.55em * 3);
+  display: -webkit-box;
+  overflow: hidden;
   text-align: start;
-  min-height: 42px;
   margin: 0 0 15px;
   color: #74766f;
   font-size: 13px;
   line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.Ika-product-category {
+  min-height: 1.4em;
+  max-height: 1.4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.Ika-product-category.is-empty {
+  visibility: hidden;
 }
 
 .Ika-product-footer {
+  flex-wrap: nowrap;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  margin-top: auto;
 }
 
 .Ika-product-footer > strong,

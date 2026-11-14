@@ -123,6 +123,7 @@ export function SiteHeader() {
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
+
   const isPrimaryLinkActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname === href || pathname.startsWith(`${href}/`);
@@ -131,9 +132,7 @@ export function SiteHeader() {
   return (
     <>
       <header
-        className={`Ika-header${scrolled ? " is-scrolled" : ""}${
-          menuOpen ? " is-menu-open" : ""
-        }`}
+        className={`Ika-header${scrolled ? " is-scrolled" : ""}${menuOpen ? " is-menu-open" : ""}`}
       >
         <div className="Ika-header-inner">
           <div className="Ika-header-primary">
@@ -192,6 +191,14 @@ export function SiteHeader() {
                 <CountBadge count={wishlistCount} />
               </Link>
             </div>
+            <Link
+              className="Ika-icon-link Ika-mobile-account"
+              href="/account"
+              aria-label="My account"
+              title="My account"
+            >
+              <i className="far fa-user" aria-hidden="true" />
+            </Link>
             <button
               className={`Ika-menu-toggle${menuOpen ? " is-open" : ""}`}
               type="button"
@@ -208,11 +215,7 @@ export function SiteHeader() {
         </div>
       </header>
 
-      <div
-        className={`Ika-mobile-menu${menuOpen ? " is-open" : ""}`}
-        id="Ika-mobile-menu"
-        aria-hidden={!menuOpen}
-      >
+      <div className={`Ika-mobile-menu${menuOpen ? " is-open" : ""}`} id="Ika-mobile-menu" aria-hidden={!menuOpen}>
         <div className="Ika-mobile-menu-top">
           <span className="Ika-mobile-eyebrow">Good food, good mood</span>
           <span className="Ika-mobile-mark">Ika</span>
@@ -230,9 +233,7 @@ export function SiteHeader() {
                 tabIndex={menuOpen ? 0 : -1}
                 style={{ "--menu-index": index } as CSSProperties}
               >
-                <span className="Ika-mobile-link-number">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                <span className="Ika-mobile-link-number">{String(index + 1).padStart(2, "0")}</span>
                 <span>{link.label}</span>
                 <i className="fas fa-arrow-right" aria-hidden="true" />
               </Link>
@@ -240,11 +241,7 @@ export function SiteHeader() {
           })}
         </nav>
         <div className="Ika-mobile-shortcuts">
-          <Link
-            href="/wishlist"
-            onClick={closeMenu}
-            tabIndex={menuOpen ? 0 : -1}
-          >
+          <Link href="/wishlist" onClick={closeMenu} tabIndex={menuOpen ? 0 : -1}>
             <i className="far fa-heart" aria-hidden="true" />
             Wishlist <CountBadge count={wishlistCount} />
           </Link>
@@ -257,19 +254,10 @@ export function SiteHeader() {
             Cart <CountBadge count={cartCount} />
           </Link>
         </div>
-        <div className="Ika-mobile-language">
-          <LanguageSwitcher />
-        </div>
+        <div className="Ika-mobile-language"><LanguageSwitcher /></div>
         <p className="Ika-mobile-tagline">Made fresh. Shared with love.</p>
       </div>
-      {menuOpen && (
-        <button
-          type="button"
-          className="Ika-menu-scrim"
-          aria-label="Close navigation menu"
-          onClick={closeMenu}
-        />
-      )}
+      {menuOpen && <button type="button" className="Ika-menu-scrim" aria-label="Close navigation menu" onClick={closeMenu} />}
 
       <nav className="Ika-bottom-nav" aria-label="Quick navigation">
         <Link
@@ -322,29 +310,18 @@ export function SiteHeader() {
           <i className="fas fa-receipt" aria-hidden="true" />
           <span>Orders</span>
         </Link>
-        <Link
-          href="/account"
-          aria-label="Account"
-          className={["/account", "/login", "/register"].includes(pathname) ? "is-active" : ""}
-          aria-current={["/account", "/login", "/register"].includes(pathname) ? "page" : undefined}
-        >
-          <i className="far fa-user" aria-hidden="true" />
-          <span>Account</span>
-        </Link>
       </nav>
 
-      {!menuOpen && (
-        <a
-          className="Ika-floating-whatsapp"
-          href="https://wa.me/212632933941"
-          aria-label="Message us on WhatsApp"
-          title="Message us on WhatsApp"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <i className="fab fa-whatsapp" aria-hidden="true" />
-        </a>
-      )}
+      {!menuOpen && <a
+        className="Ika-floating-whatsapp"
+        href="https://wa.me/212632933941"
+        aria-label="Message us on WhatsApp"
+        title="Message us on WhatsApp"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <i className="fab fa-whatsapp" aria-hidden="true" />
+      </a>}
 
       {scrolled && !menuOpen && (
         <button

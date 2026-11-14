@@ -166,7 +166,9 @@ export function ProductCard({
           {tags.slice(0, 2).map((tag) => <span key={tag}>{tag}</span>)}
         </div>
         <h3><Link href={productDetailHref}>{productName}</Link></h3>
-        {categoryNames.length > 0 && <p className="Ika-product-category">{categoryNames.join(" · ")}</p>}
+        {categoryNames.length > 0
+          ? <p className="Ika-product-category">{categoryNames.join(" · ")}</p>
+          : <p className="Ika-product-category is-empty" aria-hidden="true" />}
         <p className="Ika-product-description">{description}</p>
         <div className="Ika-product-footer">
           <div className="Ika-product-price">
