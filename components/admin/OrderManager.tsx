@@ -14,10 +14,14 @@ interface OrderRow {
   customerName: string;
   customerPhone: string;
   status: OrderStatus;
+  subtotalMinor: number;
+  discountMinor: number;
+  deliveryFeeMinor: number;
   totalMinor: number;
   currency: string;
   createdAt: string;
   locationNameSnapshot: string;
+  items: { productName: string; quantity: number; unitPriceMinor: number; lineTotalMinor: number }[];
   assignment: { deliveryPerson: { id: string; name: string } } | null;
 }
 
@@ -60,6 +64,18 @@ function formatMoney(minor: number, currency: string) {
   return new Intl.NumberFormat("fr-MA", { style: "currency", currency }).format(minor / 100);
 }
 
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" })[character] ?? character);
+}
+
+function receiptHtml(order: OrderRow) {
+  const items = order.items.map((item) => `<tr><td><strong>${escapeHtml(item.productName)}</strong><small>${item.quantity} × ${escapeHtml(formatMoney(item.unitPriceMinor, order.currency))}</small></td><td>${escapeHtml(formatMoney(item.lineTotalMinor, order.currency))}</td></tr>`).join("");
+  const discount = order.discountMinor > 0 ? `<div><dt>Remise</dt><dd>−${escapeHtml(formatMoney(order.discountMinor, order.currency))}</dd></div>` : "";
+  return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ticket ${escapeHtml(order.reference)}</title><style>
+    @page{size:80mm auto;margin:2mm}*{box-sizing:border-box}body{width:76mm;margin:0 auto;color:#171717;font:11px/1.3 Arial,sans-serif}header{text-align:center;padding:0 0 7px;border-bottom:1px dashed #555}header img{display:block;width:auto;height:auto;max-width:44mm;max-height:18mm;margin:0 auto 4px}header h1{margin:0;font-size:15px;letter-spacing:1px}header p{margin:1px 0;color:#555;font-size:9px}.order{padding:5px 0;border-bottom:1px dashed #555}.order div{display:flex;justify-content:space-between;gap:6px}.order p{margin:2px 0}.order .reference{font-weight:bold;font-size:12px}.items{width:100%;border-collapse:collapse}.items td{padding:4px 0;vertical-align:top}.items td:last-child{text-align:right;white-space:nowrap}.items tr+tr td{border-top:1px dotted #bbb}.items small{display:block;color:#555;font-size:9px}.totals{padding:5px 0;border-top:1px dashed #555}.totals div{display:flex;justify-content:space-between;gap:6px;padding:1px 0}.totals dt,.totals dd{margin:0}.totals .grand{margin-top:3px;padding-top:4px;border-top:1px solid #222;font-size:13px;font-weight:bold}.thanks{padding:7px 0;text-align:center;border-top:1px dashed #555;font-weight:bold}@media print{body{width:auto}}
+    </style></head><body><header><img src="/logo.png" alt="IKA Sushi"><h1>IKA SUSHI</h1><p>TICKET DE COMMANDE</p></header><section class="order"><div class="reference"><span>${escapeHtml(order.reference)}</span><span>${escapeHtml(statusLabels[order.status])}</span></div><p>${escapeHtml(new Date(order.createdAt).toLocaleString("fr-MA", { dateStyle: "medium", timeStyle: "short" }))}</p><p><strong>${escapeHtml(order.customerName)}</strong> · ${escapeHtml(order.customerPhone)}</p><p>${escapeHtml(order.locationNameSnapshot)}</p></section><table class="items"><tbody>${items}</tbody></table><dl class="totals"><div><dt>Sous-total</dt><dd>${escapeHtml(formatMoney(order.subtotalMinor, order.currency))}</dd></div>${discount}<div><dt>Livraison</dt><dd>${escapeHtml(formatMoney(order.deliveryFeeMinor, order.currency))}</dd></div><div class="grand"><dt>Total</dt><dd>${escapeHtml(formatMoney(order.totalMinor, order.currency))}</dd></div></dl><footer class="thanks">Merci pour votre commande !</footer></body></html>`;
+}
+
 function groupByDay(orders: OrderRow[]) {
   const grouped = new Map<string, { date: Date; orders: OrderRow[] }>();
   for (const order of orders) {
@@ -99,12 +115,13 @@ function StatusPicker({
   );
 }
 
-function OrderActions({ order, onDetails }: { order: OrderRow; onDetails: () => void }) {
+function OrderActions({ order, onDetails, onPrint }: { order: OrderRow; onDetails: () => void; onPrint: () => void }) {
   return (
     <div className="Ika-orders-actions">
       <a href={`tel:${order.customerPhone}`} aria-label={`Appeler ${order.customerName}`} title="Appeler le client"><i className="fas fa-phone" aria-hidden="true" /></a>
       <a href={whatsappHref(order.customerPhone)} aria-label={`Écrire à ${order.customerName} sur WhatsApp`} title="Écrire sur WhatsApp" target="_blank" rel="noreferrer"><i className="fab fa-whatsapp" aria-hidden="true" /></a>
       <button type="button" onClick={onDetails}><i className="far fa-eye" aria-hidden="true" /><span>Détails</span></button>
+      <button type="button" onClick={onPrint} title="Imprimer le ticket" aria-label={`Imprimer le ticket ${order.reference}`}><i className="fas fa-print" aria-hidden="true" /><span>Ticket</span></button>
     </div>
   );
 }
@@ -318,6 +335,29 @@ export default function OrderManager({ orders, canManage, canAssign, deliveryPeo
     }
   };
 
+  const printOrder = (order: OrderRow) => {
+    setError("");
+    const printFrame = document.createElement("iframe");
+    printFrame.title = `Ticket ${order.reference}`;
+    printFrame.setAttribute("aria-hidden", "true");
+    printFrame.style.cssText = "position:fixed;left:-10000px;top:0;width:80mm;height:1px;border:0";
+    try {
+      document.body.appendChild(printFrame);
+      const printWindow = printFrame.contentWindow;
+      const printDocument = printFrame.contentDocument;
+      if (!printWindow || !printDocument) throw new Error("Impossible d'ouvrir l'aperçu d'impression.");
+      printWindow.addEventListener("afterprint", () => printFrame.remove(), { once: true });
+      printDocument.open();
+      printDocument.write(receiptHtml(order));
+      printDocument.close();
+      printWindow.focus();
+      printWindow.print();
+    } catch (printError) {
+      printFrame.remove();
+      setError(printError instanceof Error ? printError.message : "Impossible de préparer le ticket.");
+    }
+  };
+
   const assignSelectedOrder = async () => {
     if (!selectedOrder || !selectedDeliveryPersonId) return;
     setAssignmentPending(true);
@@ -418,7 +458,7 @@ export default function OrderManager({ orders, canManage, canAssign, deliveryPeo
               <div className="Ika-order-card-footer"><span className={`Ika-orders-status-pill ${statusClass(order.status)}`}>{statusLabels[order.status]}</span>{order.assignment && <span className="Ika-order-assignee"><i className="fas fa-motorcycle" aria-hidden="true" />{order.assignment.deliveryPerson.name}</span>}</div>
               {canManage && <StatusPicker orderId={order.id} status={order.status} pending={pendingId === order.id} onChange={(id, current, next) => void changeStatus(id, current, next)} />}
               {canAssign && <InlineAssignmentControl order={order} deliveryPeople={deliveryPeople} onAssign={performAssignment} />}
-              <OrderActions order={order} onDetails={() => void openDetails(order.id)} />
+              <OrderActions order={order} onDetails={() => void openDetails(order.id)} onPrint={() => printOrder(order)} />
             </article>
           ))}</div> : (
             <div className="Ika-admin-table-scroll Ika-orders-list-scroll"><table className="Ika-admin-table Ika-orders-list"><thead><tr><th>Commande</th><th>Client</th><th>Zone</th><th>Total</th><th>Livreur</th><th>Statut</th><th aria-label="Actions" /></tr></thead><tbody>
@@ -427,7 +467,7 @@ export default function OrderManager({ orders, canManage, canAssign, deliveryPeo
                 <td><strong>{order.customerName}</strong><a className="Ika-orders-phone-link" href={`tel:${order.customerPhone}`}>{order.customerPhone}</a></td>
                 <td>{order.locationNameSnapshot}</td><td><strong>{formatMoney(order.totalMinor, order.currency)}</strong></td><td>{canAssign ? <InlineAssignmentControl order={order} deliveryPeople={deliveryPeople} onAssign={performAssignment} /> : order.assignment?.deliveryPerson.name ?? "Non assigné"}</td>
                 <td>{canManage ? <StatusPicker orderId={order.id} status={order.status} pending={pendingId === order.id} onChange={(id, current, next) => void changeStatus(id, current, next)} /> : <span className={`Ika-orders-status-pill ${statusClass(order.status)}`}>{statusLabels[order.status]}</span>}</td>
-                <td><OrderActions order={order} onDetails={() => void openDetails(order.id)} /></td>
+                <td><OrderActions order={order} onDetails={() => void openDetails(order.id)} onPrint={() => printOrder(order)} /></td>
               </tr>)}
             </tbody></table></div>
           )}

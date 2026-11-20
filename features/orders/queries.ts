@@ -58,13 +58,128 @@ export async function getAdminOrders(filters: { status?: OrderStatus; query?: st
       customerName: true,
       customerPhone: true,
       status: true,
+      subtotalMinor: true,
+      discountMinor: true,
+      deliveryFeeMinor: true,
       totalMinor: true,
       currency: true,
       createdAt: true,
       locationNameSnapshot: true,
+      items: { select: { productName: true, quantity: true, unitPriceMinor: true, lineTotalMinor: true } },
       assignment: { select: { deliveryPerson: { select: { id: true, name: true } } } },
     },
   });
+}
+
+export async function getOrderReportSummary() {
+  await requirePermission("VIEW_REPORTS");
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const reportStart = new Date(today);
+  reportStart.setDate(reportStart.getDate() - 13);
+  const reportEnd = new Date(today);
+  reportEnd.setDate(reportEnd.getDate() + 1);
+
+  const [totalOrders, todayOrders, pendingOrders, deliveringOrders, deliveredOrders, deliveredRevenue, customers, products, categories, locations, statusGroups, createdByDay, sentByDay, deliveredByDay] = await Promise.all([
+    prisma.order.count(),
+    prisma.order.count({ where: { createdAt: { gte: today } } }),
+    prisma.order.count({ where: { status: OrderStatus.PENDING } }),
+    prisma.order.count({ where: { status: { in: [OrderStatus.ASSIGNED, OrderStatus.OUT_FOR_DELIVERY] } } }),
+    prisma.order.count({ where: { status: OrderStatus.DELIVERED } }),
+    prisma.order.aggregate({ where: { status: OrderStatus.DELIVERED }, _sum: { totalMinor: true } }),
+    prisma.user.count({ where: { role: "CUSTOMER" } }),
+    prisma.product.count({ where: { isAvailable: true } }),
+    prisma.category.count({ where: { isActive: true } }),
+    prisma.location.count({ where: { isActive: true } }),
+    prisma.order.groupBy({ by: ["status"], _count: { _all: true } }),
+    prisma.$queryRaw<Array<{ day: Date; orders: number; totalMinor: number | bigint }>>`
+      SELECT date_trunc('day', "createdAt") AS day,
+        COUNT(*)::int AS orders,
+        COALESCE(SUM("totalMinor"), 0)::bigint AS "totalMinor"
+      FROM "Order"
+      WHERE "createdAt" >= ${reportStart} AND "createdAt" < ${reportEnd}
+      GROUP BY date_trunc('day', "createdAt")
+      ORDER BY day ASC
+    `,
+    prisma.$queryRaw<Array<{ day: Date; orders: number; totalMinor: number | bigint }>>`
+      SELECT sent.day, COUNT(*)::int AS orders,
+        COALESCE(SUM(sent."totalMinor"), 0)::bigint AS "totalMinor"
+      FROM (
+        SELECT DISTINCT ON (history."orderId")
+          date_trunc('day', history."createdAt") AS day,
+          history."orderId",
+          orders."totalMinor"
+        FROM "OrderStatusHistory" AS history
+        INNER JOIN "Order" AS orders ON orders.id = history."orderId"
+        WHERE history."next" = 'OUT_FOR_DELIVERY' AND history."createdAt" >= ${reportStart} AND history."createdAt" < ${reportEnd}
+        ORDER BY history."orderId", history."createdAt" ASC
+      ) AS sent
+      GROUP BY sent.day
+      ORDER BY sent.day ASC
+    `,
+    prisma.$queryRaw<Array<{ day: Date; orders: number; totalMinor: number | bigint }>>`
+      SELECT delivered.day, COUNT(*)::int AS orders,
+        COALESCE(SUM(delivered."totalMinor"), 0)::bigint AS "totalMinor"
+      FROM (
+        SELECT DISTINCT ON (history."orderId")
+          date_trunc('day', history."createdAt") AS day,
+          history."orderId",
+          orders."totalMinor"
+        FROM "OrderStatusHistory" AS history
+        INNER JOIN "Order" AS orders ON orders.id = history."orderId"
+        WHERE history."next" = 'DELIVERED' AND history."createdAt" >= ${reportStart} AND history."createdAt" < ${reportEnd}
+        ORDER BY history."orderId", history."createdAt" ASC
+      ) AS delivered
+      GROUP BY delivered.day
+      ORDER BY delivered.day ASC
+    `,
+  ]);
+
+  const days = Array.from({ length: 14 }, (_, index) => {
+    const date = new Date(reportStart);
+    date.setDate(date.getDate() + index);
+    return { date, orderCount: 0, orderValueMinor: 0, sentOrders: 0, sentValueMinor: 0, deliveredOrders: 0, deliveredValueMinor: 0 };
+  });
+  const dayIndexes = new Map(days.map((day, index) => [day.date.toLocaleDateString("sv-SE"), index]));
+  for (const row of createdByDay) {
+    const index = dayIndexes.get(row.day.toLocaleDateString("sv-SE"));
+    if (index !== undefined) {
+      days[index].orderCount = row.orders;
+      days[index].orderValueMinor = Number(row.totalMinor);
+    }
+  }
+  for (const row of sentByDay) {
+    const index = dayIndexes.get(row.day.toLocaleDateString("sv-SE"));
+    if (index !== undefined) {
+      days[index].sentOrders = row.orders;
+      days[index].sentValueMinor = Number(row.totalMinor);
+    }
+  }
+  for (const row of deliveredByDay) {
+    const index = dayIndexes.get(row.day.toLocaleDateString("sv-SE"));
+    if (index !== undefined) {
+      days[index].deliveredOrders = row.orders;
+      days[index].deliveredValueMinor = Number(row.totalMinor);
+    }
+  }
+  const todayKey = today.toLocaleDateString("sv-SE");
+  const todayReport = days.find((day) => day.date.toLocaleDateString("sv-SE") === todayKey);
+  return {
+    totalOrders,
+    todayOrders,
+    pendingOrders,
+    deliveringOrders,
+    deliveredOrders,
+    deliveredRevenueMinor: deliveredRevenue._sum.totalMinor ?? 0,
+    customers,
+    products,
+    categories,
+    locations,
+    statusCounts: statusGroups.map((group) => ({ status: group.status, count: group._count._all })),
+    todaySentOrders: todayReport?.sentOrders ?? 0,
+    todayDeliveredRevenueMinor: todayReport?.deliveredValueMinor ?? 0,
+    days,
+  };
 }
 
 export async function getAdminOrderDetail(orderId: string) {

@@ -7,6 +7,7 @@ import "./AdminShell.css";
 
 const navigation: Array<{ label: string; href: string; icon: string; section: string; permission?: Permission; permissions?: Permission[] }> = [
   { label: "Vue d'ensemble", href: "/admin/dashboard", icon: "fa-home", section: "Espace de travail", permission: "VIEW_REPORTS" },
+  { label: "Statistiques", href: "/admin/reports", icon: "fa-chart-pie", section: "Espace de travail", permission: "VIEW_REPORTS" },
   { label: "Commandes", href: "/admin/orders", icon: "fa-shopping-cart", section: "Boutique", permissions: ["VIEW_ORDERS", "MANAGE_ORDERS"] },
   { label: "Produits", href: "/admin/products", icon: "fa-box", section: "Boutique", permissions: ["VIEW_PRODUCTS", "MANAGE_PRODUCTS"] },
   { label: "Catégories", href: "/admin/categories", icon: "fa-th-large", section: "Boutique", permissions: ["VIEW_CATEGORIES", "MANAGE_CATEGORIES"] },

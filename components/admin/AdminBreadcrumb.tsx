@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 
 const labels: Record<string, string> = {
   "/admin/dashboard": "Vue d'ensemble",
+  "/admin/reports": "Statistiques",
   "/admin/orders": "Commandes",
   "/admin/products": "Produits",
   "/admin/categories": "Catégories",

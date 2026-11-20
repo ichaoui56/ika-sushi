@@ -1,0 +1,139 @@
+.Ika-business-hours {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e6ece8;
+}
+
+.Ika-business-hours .Ika-admin-form-heading { margin-bottom: 12px; }
+
+.Ika-business-hours-toggle,
+.Ika-business-hours-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #304944;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.Ika-business-hours-toggle input,
+.Ika-business-hours-open input { accent-color: #087c6a; }
+
+.Ika-business-hours-hint {
+  margin: 7px 0 15px;
+  color: #71807a;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.Ika-business-hours-bulk {
+  margin-bottom: 12px;
+  padding: 10px;
+  display: flex;
+  align-items: flex-end;
+  gap: 9px;
+  border: 1px solid #e1e8e3;
+  border-radius: 5px;
+  background: #f8faf8;
+}
+
+.Ika-business-hours-bulk > label {
+  width: 120px;
+  display: grid;
+  gap: 4px;
+  color: #64746f;
+  font-size: 9px;
+}
+
+.Ika-business-hours-bulk input {
+  width: 100%;
+  height: 32px;
+  padding: 4px 6px;
+  border: 1px solid #dfe6e2;
+  border-radius: 4px;
+  color: #263f40;
+  background: #fff;
+  font: inherit;
+  font-size: 11px;
+}
+
+.Ika-business-hours-apply {
+  min-height: 32px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #cbded3;
+  border-radius: 4px;
+  color: #0a6d5f;
+  background: #fff;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.Ika-business-hours-apply:hover { border-color: #9fbeb1; background: #eef7f1; }
+
+.Ika-business-hours-days {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.Ika-business-hours-day {
+  min-width: 0;
+  margin: 0;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: minmax(80px, .7fr) minmax(0, 1.3fr);
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #e1e8e3;
+  border-radius: 5px;
+}
+
+.Ika-business-hours-day legend {
+  padding: 0 5px;
+  color: #183c3d;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.Ika-business-hours-open { font-size: 10px; }
+
+.Ika-business-hours-times {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.Ika-business-hours-times label {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+  color: #71807a;
+  font-size: 9px;
+}
+
+.Ika-business-hours-times input {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  padding: 4px 6px;
+  border: 1px solid #dfe6e2;
+  border-radius: 4px;
+  color: #263f40;
+  background: #fff;
+  font: inherit;
+  font-size: 11px;
+}
+
+.Ika-business-hours-times input:disabled { color: #9aa49f; background: #f3f5f3; }
+
+@media (max-width: 700px) {
+  .Ika-business-hours-days { grid-template-columns: 1fr; }
+  .Ika-business-hours-bulk { align-items: stretch; flex-wrap: wrap; }
+  .Ika-business-hours-bulk > label { flex: 1 1 90px; }
+  .Ika-business-hours-apply { flex: 1 0 100%; justify-content: center; }
+}

@@ -234,16 +234,16 @@
 
 .Ika-orders-card-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 11px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
 }
 
 .Ika-order-card {
   min-width: 0;
-  padding: 14px;
+  padding: 11px;
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 9px;
   border: 1px solid #e1e8e3;
   border-radius: 7px;
   background: #fff;
@@ -877,6 +877,10 @@
 @media (max-width: 1200px) {
   .Ika-orders-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .Ika-orders-toolbar { align-items: stretch; flex-direction: column; }
+}
+
+@media (max-width: 1440px) and (min-width: 1201px) {
+  .Ika-orders-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 760px) {

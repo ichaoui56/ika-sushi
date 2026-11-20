@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import "../style.css";
 import { StoreProvider } from "../components/store/StoreProvider";
 import { StorefrontInteractionBridge } from "../components/store/StorefrontInteractionBridge";
@@ -6,6 +8,7 @@ import { StoreFeedback } from "../components/store/StoreFeedback";
 import { CartDrawer } from "../components/store/CartDrawer";
 import { LocaleProvider } from "../components/i18n/LocaleProvider";
 import { ServiceWorkerRegistration } from "../components/layout/ServiceWorkerRegistration";
+import { isStoreOpenNow } from "../lib/store-hours";
 
 const stylesheets = [
   "bootstrap.min.css",
@@ -28,11 +31,17 @@ export const metadata: Metadata = {
   icons: { icon: "/adventure-bay.webp" },
 };
 
-export default function RootLayout({
+const openAccessPrefixes = ["/admin", "/api", "/closed", "/login", "/register", "/forgot-password", "/delivery"];
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = (await headers()).get("x-ika-pathname");
+  const bypassOpeningHours = !pathname || openAccessPrefixes.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
+  if (!bypassOpeningHours && !(await isStoreOpenNow())) redirect("/closed");
+
   return (
     <html lang="fr">
       <head>

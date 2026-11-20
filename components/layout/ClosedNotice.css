@@ -1,0 +1,183 @@
+.Ika-closed-page {
+  min-height: 100vh;
+  padding: 0 6vw;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  color: #f7f5ec;
+  background: #103f38;
+}
+
+.Ika-closed-topbar {
+  width: min(100%, 1220px);
+  min-height: 84px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(241, 245, 234, .2);
+}
+
+.Ika-closed-topbar img { display: block; width: 164px; height: auto; }
+
+.Ika-closed-languages {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid rgba(241, 245, 234, .3);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .06);
+}
+
+.Ika-closed-languages button {
+  min-width: 38px;
+  min-height: 31px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 3px;
+  color: #e3ebe1;
+  background: transparent;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.Ika-closed-languages button[aria-pressed="true"] { color: #173c37; background: #f1c84b; }
+
+.Ika-closed-layout {
+  width: min(100%, 1220px);
+  margin: 0 auto;
+  padding: 42px 0 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+  align-items: center;
+  gap: clamp(36px, 6vw, 82px);
+}
+
+.Ika-closed-visual {
+  min-height: 520px;
+  padding: 22px 26px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 5px;
+  color: #143e38;
+  background: #f1c84b;
+}
+
+.Ika-closed-visual-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid rgba(20, 62, 56, .28);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.Ika-closed-mural {
+  max-width: 12ch;
+  margin: 24px 0 0;
+  color: #143e38;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.03;
+}
+
+.Ika-closed-visual > img {
+  width: min(78%, 330px);
+  max-height: 300px;
+  margin: 0 auto;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 11px rgba(73, 52, 18, .2));
+}
+
+.Ika-closed-visual-caption {
+  padding-top: 11px;
+  border-top: 1px solid rgba(20, 62, 56, .28);
+  color: rgba(20, 62, 56, .76);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.Ika-closed-main { min-width: 0; padding: 16px 0; }
+
+.Ika-closed-eyebrow {
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e2bd4b;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.Ika-closed-eyebrow i { font-size: 14px; }
+
+.Ika-closed-main h1 {
+  max-width: 13ch;
+  margin: 0;
+  color: #fffdf5;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.08;
+}
+
+.Ika-closed-copy {
+  max-width: 48ch;
+  margin: 15px 0 27px;
+  color: #d3e0d8;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.Ika-closed-hours {
+  padding-top: 14px;
+  border-top: 1px solid rgba(241, 245, 234, .28);
+}
+
+.Ika-closed-hours-heading {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.Ika-closed-hours h2 { margin: 0; color: #fffdf5; font-size: 12px; font-weight: 800; }
+.Ika-closed-hours-heading > span { color: #a9c2b5; font-size: 8px; font-weight: 800; letter-spacing: 1px; }
+.Ika-closed-hours dl { margin: 0; }
+.Ika-closed-hours dl > div { min-height: 30px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid rgba(241, 245, 234, .13); font-size: 10px; }
+.Ika-closed-hours dt { color: #c6d6cc; }
+.Ika-closed-hours dd { margin: 0; color: #f4d45f; font-weight: 700; }
+.Ika-closed-hours > p { margin: 0; color: #c6d6cc; font-size: 11px; }
+
+.Ika-closed-footer { width: min(100%, 1220px); margin: 0 auto; padding: 15px 0; border-top: 1px solid rgba(241, 245, 234, .2); color: #a9c2b5; font-size: 8px; font-weight: 700; letter-spacing: 1px; }
+.Ika-closed-page.is-arabic { font-family: "Cairo", sans-serif; }
+.Ika-closed-page.is-arabic .Ika-closed-main h1,
+.Ika-closed-page.is-arabic .Ika-closed-mural { font-family: "Cairo", sans-serif; }
+.Ika-closed-page.is-arabic .Ika-closed-mural { font-size: 36px; }
+
+@media (max-width: 600px) {
+  .Ika-closed-page { padding: 0 18px; }
+  .Ika-closed-topbar { min-height: 70px; }
+  .Ika-closed-topbar img { width: 132px; }
+  .Ika-closed-layout { padding: 27px 0 32px; grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .Ika-closed-main { order: 1; padding: 0; }
+  .Ika-closed-main h1 { max-width: 16ch; font-size: 31px; }
+  .Ika-closed-copy { margin: 11px 0 18px; font-size: 12px; }
+  .Ika-closed-hours { padding-top: 10px; }
+  .Ika-closed-hours dl > div { min-height: 27px; font-size: 9px; }
+  .Ika-closed-visual { order: 2; min-height: 300px; padding: 16px 18px 13px; }
+  .Ika-closed-mural { max-width: 14ch; margin-top: 18px; font-size: 27px; }
+  .Ika-closed-visual > img { width: min(70%, 220px); max-height: 160px; }
+  .Ika-closed-visual-caption { font-size: 7px; }
+  .Ika-closed-footer { padding: 12px 0; }
+}
